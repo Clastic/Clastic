@@ -1,0 +1,97 @@
+{% extends 'ClasticBackofficeBundle::base.html.twig' %}
+
+{% block page_title %}Dashboard{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-8">
+            <div role="tabpanel" class="tabpanel">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#modules" aria-controls="modules" role="tab" data-toggle="tab">Modules</a></li>
+                    <li role="presentation"><a href="#mycontent" aria-controls="mycontent" role="tab" data-toggle="tab">My content</a></li>
+                    <li role="presentation"><a href="#admin" aria-controls="admin" role="tab" data-toggle="tab"><i class="fa fa-gear"></i></a></li>
+                </ul>
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="modules">
+                        <ul class="modules">
+                            <li>
+                                <a href="{{ path('clastic_backoffice_list') }}">
+                                    <i class="fa fa-book"></i>
+                                    Text
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-th"></i>
+                                    Menu
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-pencil"></i>
+                                    Blog
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-file-image-o"></i>
+                                    Media
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-book"></i>
+                                    Text
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-book"></i>
+                                    Text
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-book"></i>
+                                    Text
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-book"></i>
+                                    Text
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="mycontent">mycontent</div>
+                    <div role="tabpanel" class="tab-pane" id="admin">
+                        <ul class="modules">
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-user"></i>
+                                    Users
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div role="tabpanel" class="tabpanel">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
+                    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="home">home</div>
+                    <div role="tabpanel" class="tab-pane" id="profile">profile</div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}

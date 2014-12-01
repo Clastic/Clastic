@@ -1,0 +1,12 @@
+parameters:
+    router.class: Clastic\AliasBundle\Routing\Router
+    clastic.repo.alias.class: Clastic\AliasBundle\Entity\AliasRepository
+    clastic.repo.alias.factory_argument: 'ClasticAliasBundle:Alias'
+
+services:
+    clastic.repo.alias:
+        class:           %clastic.repo.alias.class%
+        factory_service: doctrine
+        factory_method:  getRepository
+        arguments:
+            - %clastic.repo.alias.factory_argument%

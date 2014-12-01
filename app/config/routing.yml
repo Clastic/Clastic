@@ -1,0 +1,8 @@
+clastic_backoffice:
+    resource: "@ClasticBackofficeBundle/Resources/config/routing.yml"
+    prefix:   /admin/
+
+clastic_core:
+    resource: "@ClasticCoreBundle/Resources/config/routing.yml"
+    prefix:   /
+

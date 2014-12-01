@@ -1,0 +1,72 @@
+{% extends 'ClasticBackofficeBundle::base.html.twig' %}
+
+{% block page_title %}Text{% endblock %}
+
+{% block header_actions %}
+    <div class="btn-group pull-right">
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+            Submodules <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+            <li><a href="#">Category</a></li>
+        </ul>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <section class="node-list">
+                <header class="header"></header>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th></th>
+                                <th>Title</th>
+                                <th>Author</th>
+                                <th>Created</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="checkbox"/></td>
+                                <td><a href="#"><i class="fa fa-pencil"></i></a> <a href="#"><i class="fa fa-trash"></i></a></td>
+                                <td>Een</td>
+                                <td>Dries</td>
+                                <td>2014-10-03 16:05:47</td>
+                                <td><i class="fa fa-pencil-square"></i></td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox"/></td>
+                                <td><a href="#"><i class="fa fa-pencil"></i></a> <a href="#"><i class="fa fa-trash"></i></a></td>
+                                <td>Een</td>
+                                <td>Dries</td>
+                                <td>2014-10-03 16:05:47</td>
+                                <td><i class="fa fa-pencil-square-o"></i></td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox"/></td>
+                                <td><a href="#"><i class="fa fa-pencil"></i></a> <a href="#"><i class="fa fa-trash"></i></a></td>
+                                <td>Een</td>
+                                <td>Dries</td>
+                                <td>2014-10-03 16:05:47</td>
+                                <td><i class="fa fa-check-square-o"></i></td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox"/></td>
+                                <td><a href="#"><i class="fa fa-pencil"></i></a> <a href="#"><i class="fa fa-trash"></i></a></td>
+                                <td>Een</td>
+                                <td>Dries</td>
+                                <td>2014-10-03 16:05:47</td>
+                                <td><i class="fa fa-check-square"></i></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </div>
+{% endblock %}

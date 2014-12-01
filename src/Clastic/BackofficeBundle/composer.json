@@ -1,0 +1,5 @@
+{
+    "require": {
+        "ornicar/gravatar-bundle" : "1.1.2"
+    }
+}
