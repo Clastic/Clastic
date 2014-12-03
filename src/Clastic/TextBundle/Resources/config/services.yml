@@ -1,0 +1,8 @@
+parameters:
+    clastic.text.module.class: Clastic\TextBundle\Module\TextModule
+
+services:
+    clastic.text.module:
+        class: %clastic.text.module.class%
+        tags:
+            - { name: clastic.module }

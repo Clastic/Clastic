@@ -1,4 +1,0 @@
-clastic_core_homepage:
-    path:     /hello/{name}
-    defaults: { _controller: ClasticCoreBundle:Default:index }
-

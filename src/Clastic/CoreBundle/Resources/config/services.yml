@@ -3,6 +3,9 @@
 #    router.class: Clastic\CoreBundle\Routing\Router
 
 services:
+  clastic.module_manager:
+    class: Clastic\CoreBundle\Module\ModuleManager
+
 #    clastic.kernel.listener.routing:
 #        class: Clastic\CoreBundle\Routing\RouterListener
 #        calls:

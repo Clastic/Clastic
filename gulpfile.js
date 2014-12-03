@@ -23,7 +23,8 @@ var paths = {
     'scripts': {
         'vendor': [
             'web/vendor/bootstrap/dist/js/bootstrap.js',
-            'web/vendor/jquery/dist/jquery.js'
+            'web/vendor/jquery/dist/jquery.js',
+            'web/vendor/mousetrap/mousetrap.js'
         ],
         'app': [
             'src/**/Resources/public/scripts/**.js'
@@ -63,7 +64,7 @@ gulp.task('scripts', ['scripts:vendor', 'scripts:app']);
 gulp.task('scripts:vendor', function() {
     gulp.src(paths.scripts.vendor)
         .pipe(concat('vendor.js'))
-        .pipe(stripDebug())
+        //.pipe(stripDebug())
         .pipe(uglify())
         .pipe(rename('vendor.min.js'))
         .pipe(gulp.dest(paths.build))
@@ -73,8 +74,9 @@ gulp.task('scripts:vendor', function() {
 gulp.task('scripts:app', function() {
     gulp.src(paths.scripts.app)
         .pipe(concat('app.js'))
-        .pipe(stripDebug())
+        //.pipe(stripDebug())
         .pipe(uglify())
+        .on('error', errorHandler)
         .pipe(rename('app.min.js'))
         .pipe(gulp.dest(paths.build))
         .pipe(filesize());

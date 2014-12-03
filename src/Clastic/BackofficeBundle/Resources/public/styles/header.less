@@ -1,5 +1,32 @@
-.nav > li > a > img {
-  height: 27px;
-  margin: -15px 0;
-  max-width: none;
+.nav > li > a {
+  padding: 15px;
+  > img {
+    height: 27px;
+    margin: -7px 0;
+    max-width: none;
+  }
+}
+
+.nav ul.modules {
+  min-width: 320px;
+  > li:nth-child(2),
+  > li:nth-child(5), {
+    column-count: 2;
+    column-gap: 0;
+  }
+  ul {
+    .list-unstyled;
+  }
+  li li {
+    &:extend(.dropdown-menu > li);
+    &:hover, &:active {
+      &:extend(.dropdown-menu > li:focus);
+    }
+    a {
+      &:extend(.dropdown-menu > li > a);
+      &:hover, &:active {
+        &:extend(.dropdown-menu > li > a:focus);
+      }
+    }
+  }
 }

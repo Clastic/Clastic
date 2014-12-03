@@ -21,6 +21,7 @@ class AppKernel extends Kernel
             new Clastic\BackofficeBundle\ClasticBackofficeBundle(),
 
             new Ornicar\GravatarBundle\OrnicarGravatarBundle(),
+            new Clastic\TextBundle\ClasticTextBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
