@@ -42,36 +42,41 @@
 }
 
 .tabpanel.tabs-left {
-  .make-row();
-  .nav-tabs {
-    .make-md-column(3);
-    padding-right: 0;
-    li {
-      width: 100%;
-    }
-    & > li > a,
-    & > li > a:hover,
-    & > li > a:focus {
-      border: 1px solid #c5d0dc;
-      border-right: transparent;
-      box-shadow: 0 -2px 3px 0 rgba(0, 0.15, 0, 0);
-      margin-top: 0px;
-      margin-right: -1px;
+  @media (min-width: @screen-md-min) {
+    .make-row();
+    .nav-tabs {
+      .make-md-column(3);
+      padding-right: 0;
+      li {
+        width: 100%;
+      }
+      & > li > a,
+      & > li > a:hover,
+      & > li > a:focus {
+        border: 1px solid #c5d0dc;
+        border-right: transparent;
+        box-shadow: 0 -2px 3px 0 rgba(0, 0.15, 0, 0);
+        margin-top: 0px;
+        margin-right: -1px;
+      }
+
+      & > li.active > a,
+      & > li.active > a:hover,
+      & > li.active > a:focus {
+        border-left: 2px solid #4c8fbd;
+      }
     }
 
-    &> li.active > a,
-    & > li.active > a:hover,
-    & > li.active > a:focus {
-      border-left: 2px solid #4c8fbd;
+    .tab-content {
+      .make-md-column(9);
+    }
+
+    .form-actions {
+      .make-md-column(9);
+      .make-md-column-offset(3);
     }
   }
-  .tab-content {
-    .make-md-column(9);
-  }
-
   .form-actions {
-    .make-md-column(9);
-    .make-md-column-offset(3);
     background-color: #f9f9f9;
     border: 1px solid #c5d0dc;
     border-top: 0;
