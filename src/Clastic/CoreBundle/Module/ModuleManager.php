@@ -29,7 +29,7 @@ class ModuleManager
      */
     public function registerModule(ModuleInterface $module)
     {
-        $this->modules[] = $module;
+        $this->modules[$module->getIdentifier()] = $module;
     }
 
     /**
@@ -38,6 +38,15 @@ class ModuleManager
     public function getModules()
     {
         return $this->modules;
+    }
+
+    public function getModule($name)
+    {
+        if (isset($this->modules[$name])) {
+            return $this->modules[$name];
+        }
+
+        return null;
     }
 }
  

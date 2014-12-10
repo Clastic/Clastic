@@ -51,16 +51,16 @@
                             <li class="dropdown-header">Modules</li>
                             <li>
                                 <ul>
-                                    <li><a href="{{ path('clastic_backoffice_list') }}">Alias</a></li>
-                                    <li><a href="{{ path('clastic_backoffice_list') }}">Text</a></li>
+                                    <li><a href="{{ path('clastic_backoffice_list', {type: 'alias'}) }}">Alias</a></li>
+                                    <li><a href="{{ path('clastic_backoffice_list', {type: 'text'}) }}">Text</a></li>
                                 </ul>
                             </li>
                             <li class="divider"></li>
                             <li class="dropdown-header">Administration</li>
                             <li>
                                 <ul>
-                                    <li><a href="{{ path('clastic_backoffice_list') }}">Users</a></li>
-                                    <li><a href="{{ path('clastic_backoffice_list') }}">Settings</a></li>
+                                    <li><a href="{{ path('clastic_backoffice_list', {type: 'user'}) }}">Users</a></li>
+                                    <li><a href="{{ path('clastic_backoffice_list', {type: 'setting'}) }}">Settings</a></li>
                                 </ul>
                             </li>
                             {#<li><a href="#"><i class="fa fa-gear"></i> Settings</a></li>#}

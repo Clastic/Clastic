@@ -26,5 +26,13 @@ class AliasModule implements ModuleInterface
         return 'Alias';
     }
 
+    /**
+     * The the unique identifier of the module.
+     *
+     * @return string
+     */
+    public function getIdentifier()
+    {
+        return 'alias';
+    }
 }
- 

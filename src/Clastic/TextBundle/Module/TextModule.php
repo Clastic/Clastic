@@ -26,5 +26,15 @@ class TextModule implements ModuleInterface
         return 'Text';
     }
 
+    /**
+     * The name of the module.
+     *
+     * @return string
+     */
+    public function getIdentifier()
+    {
+        return 'text';
+    }
+
 }
  

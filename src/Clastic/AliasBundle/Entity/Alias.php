@@ -15,6 +15,11 @@ class Alias
     private $id;
 
     /**
+     * @var integer
+     */
+    private $nodeId;
+
+    /**
      * @var string
      */
     private $alias;
@@ -33,6 +38,29 @@ class Alias
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set nodeId
+     *
+     * @param integer $nodeId
+     * @return Alias
+     */
+    public function setNodeId($nodeId)
+    {
+        $this->nodeId = $nodeId;
+
+        return $this;
+    }
+
+    /**
+     * Get nodeId
+     *
+     * @return integer 
+     */
+    public function getNodeId()
+    {
+        return $this->nodeId;
     }
 
     /**

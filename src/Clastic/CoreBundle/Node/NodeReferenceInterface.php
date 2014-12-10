@@ -7,25 +7,22 @@
  * file that was distributed with this source code.
  */
 
-namespace Clastic\CoreBundle\Module;
+namespace Clastic\CoreBundle\Node;
+
+use Clastic\CoreBundle\Entity\Node;
 
 /**
  * @author Dries De Peuter <dries@nousefreak.be>
  */
-interface ModuleInterface
+interface NodeReferenceInterface
 {
     /**
-     * The name of the module.
-     *
-     * @return string
+     * @return Node
      */
-    public function getName();
+    public function getNode();
 
     /**
-     * The the unique identifier of the module.
-     *
-     * @return string
+     * @param Node $node
      */
-    public function getIdentifier();
+    public function setNode(Node $node);
 }
- 

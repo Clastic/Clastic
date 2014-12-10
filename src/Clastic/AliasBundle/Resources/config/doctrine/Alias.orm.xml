@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity repository-class="Clastic\AliasBundle\Entity\AliasRepository" name="Clastic\AliasBundle\Entity\Alias">
+    <id name="id" type="integer" column="id">
+      <generator strategy="AUTO"/>
+    </id>
+    <field name="nodeId" type="integer" column="node_id"/>
+    <field name="alias" type="string" column="alias" length="255"/>
+    <field name="path" type="string" column="path" length="255"/>
+  </entity>
+</doctrine-mapping>

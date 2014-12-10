@@ -3,9 +3,9 @@ clastic_backoffice_dashboard:
     defaults: { _controller: ClasticBackofficeBundle:Dashboard:index }
 
 clastic_backoffice_list:
-    path:     /list
+    path:     /{type}/list
     defaults: { _controller: ClasticBackofficeBundle:Node:list }
 
-clastic_backoffice_edit:
-    path:     /edit
-    defaults: { _controller: ClasticBackofficeBundle:Node:form }
+clastic_backoffice_form:
+    path:     /{type}/edit/{node_id}
+    defaults: { _controller: ClasticBackofficeBundle:Node:form, node_id: ~ }
