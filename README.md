@@ -12,5 +12,6 @@ $ composer install
 $ npm install
 $ bower install
 $ gulp build watch
+$ app/console assets:install
 $ app/console server:run
 ```
