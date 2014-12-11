@@ -24,7 +24,8 @@ var paths = {
         'vendor': [
             'web/vendor/bootstrap/dist/js/bootstrap.js',
             'web/vendor/jquery/dist/jquery.js',
-            'web/vendor/mousetrap/mousetrap.js'
+            'web/vendor/mousetrap/mousetrap.js',
+            'http://getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js'
         ],
         'app': [
             'src/**/Resources/public/scripts/**.js'
