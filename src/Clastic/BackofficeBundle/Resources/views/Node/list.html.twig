@@ -1,9 +1,11 @@
 {% extends 'ClasticBackofficeBundle::base.html.twig' %}
 
-{% block page_title %}Text{% endblock %}
+{% block page_title -%}
+    Text
+    <a href="{{ path('clastic_backoffice_form', {type: type}) }}"><i class="fa fa-plus-circle text-success"></i></a>
+{%- endblock %}
 
 {% block header_actions %}
-    <a class="btn btn-success" href="{{ path('clastic_backoffice_form', {type: type}) }}">new</a>
     <div class="btn-group pull-right">
         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
             Submodules <span class="caret"></span>
