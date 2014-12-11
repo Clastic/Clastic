@@ -5,7 +5,7 @@ clastic_backoffice_dashboard:
 clastic_backoffice_node:
     pattern:   /{type}
     defaults:
-        _controller: FrameworkBundle:Redirect:redirectAd
+        _controller: FrameworkBundle:Redirect:redirect
         route: clastic_backoffice_list
         permanent: true
 
