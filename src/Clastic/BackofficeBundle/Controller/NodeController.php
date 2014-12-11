@@ -3,6 +3,7 @@
 namespace Clastic\BackofficeBundle\Controller;
 
 use Clastic\CoreBundle\Entity\Node;
+use Clastic\BackofficeBundle\Form\NodeType;
 use Clastic\CoreBundle\Module\ModuleManager;
 use Clastic\TextBundle\Entity\Text;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -40,29 +41,17 @@ class NodeController extends Controller
             }
         }
 
-
-        $form = $this->createFormBuilder($data)
-          ->add('title', 'text', array(
-                'property_path' => 'node.title'
-            ))
-          ->add('body')
-          ->add('save', 'submit', array('label' => 'Save'))
-          ->getForm();
+        $form = $this->createForm(new NodeType(), $data);
 
         $form->handleRequest($request);
 
         if ($form->isValid()) {
             $data = $form->getData();
+            $node = $data->getNode();
 
-            $data->getNode()
-              ->setTitle($form->get('title')->getViewData());
-
-            $data->getNode()
-              ->setChanged(new \DateTime());
-            $data->getNode()
-              ->setType($type);
-            $data->getNode()
-              ->setUserId(1);
+            $node->setChanged(new \DateTime());
+            $node->setType($type);
+            $node->setUserId(1);
 
             $em->persist($data);
             $em->flush();

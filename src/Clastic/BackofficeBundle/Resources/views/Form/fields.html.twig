@@ -1,0 +1,49 @@
+
+
+{% block form_row -%}
+    {% if form.parent.parent %}
+        <div class="form-group">
+        {% set attr = attr|merge({'class': (attr.class|default('') ~ ' form-control')|trim}) %}
+    {% endif %}
+    {{- form_label(form) -}}
+    {{- form_errors(form) -}}
+    {{- form_widget(form) -}}
+
+    {% if form.parent.parent %}
+        </div>
+    {% endif %}
+{%- endblock form_row %}
+
+{% block tabs_widget -%}
+    <div role="tabpanel" class="tabpanel tabs-left">
+        <ul class="nav nav-tabs" role="tablist">
+            {% for child in form if child.vars.tab_type == 'tabs_tab' -%}
+                <li role="presentation"{% if loop.first %} class="active"{% endif %}>
+                    <a href="#{{ child.vars.id }}" aria-controls="{{ child.vars.id }}" role="tab" data-toggle="tab">
+                        {{ child.vars.name }}
+                    </a>
+                </li>
+            {%- endfor %}
+        </ul>
+        <div class="tab-content">
+            {% for child in form if child.vars.tab_type == 'tabs_tab' -%}
+                <div role="tabpanel" class="tab-pane active" id="{{ child.vars.id }}">
+                    {{- form_widget(child) -}}
+                </div>
+            {%- endfor %}
+        </div>
+        {% for child in form if child.vars.tab_type == 'tabs_tab_actions' -%}
+            <div class="form-actions">
+                {{- form_widget(child) -}}
+            </div>
+        {%- endfor %}
+    </div>
+{%- endblock %}
+
+{% block tab_widget -%}
+    {% for child in form -%}
+        {% if not child.rendered %}
+            {{- form_row(child) -}}
+        {% endif %}
+    {%- endfor %}
+{%- endblock %}

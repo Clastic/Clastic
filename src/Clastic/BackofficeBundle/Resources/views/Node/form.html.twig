@@ -16,15 +16,19 @@
                 {% endfor %}
                 <header class="header"></header>
                 {{ form_start(form, {attr: {role: 'form'}}) }}
-                    <div role="tabpanel" class="tabpanel tabs-left">
-                        <ul class="nav nav-tabs" role="tablist">
-                            <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
-                            <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
-                        </ul>
-                        <div class="tab-content">
-                            <div role="tabpanel" class="tab-pane active" id="home">
+                    {{ form_widget(form) }}
+                {{ form_end(form) }}
 
-                                {{ form_widget(form) }}
+
+                    {#<div role="tabpanel" class="tabpanel tabs-left">#}
+                        {#<ul class="nav nav-tabs" role="tablist">#}
+                            {#<li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>#}
+                            {#<li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>#}
+                        {#</ul>#}
+                        {#<div class="tab-content">#}
+                            {#<div role="tabpanel" class="tab-pane active" id="home">#}
+
+
                                 {#<div class="form-group">#}
                                     {#<label for="exampleInputEmail1">Email address</label>#}
                                     {#<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">#}
@@ -33,21 +37,23 @@
                                     {#<label for="exampleInputPassword1">Password</label>#}
                                     {#<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">#}
                                 {#</div>#}
-                            </div>
-                            <div role="tabpanel" class="tab-pane" id="profile">
-                                profile <br/>
-                                profile <br/>
-                                profile <br/>
-                                profile <br/>
-                            </div>
 
-                        </div>
-                        <div class="form-actions">
-                            <button type="submit" class="btn btn-success">Save</button>
-                            <button type="submit" class="btn btn-info">Cancel</button>
-                        </div>
-                    </div>
-                {{ form_end(form) }}
+
+
+                            {#</div>#}
+                            {#<div role="tabpanel" class="tab-pane" id="profile">#}
+                                {#profile <br/>#}
+                                {#profile <br/>#}
+                                {#profile <br/>#}
+                                {#profile <br/>#}
+                            {#</div>#}
+
+                        {#</div>#}
+                        {#<div class="form-actions">#}
+                            {#<button type="submit" class="btn btn-success">Save</button>#}
+                            {#<button type="submit" class="btn btn-info">Cancel</button>#}
+                        {#</div>#}
+                    {#</div>#}
             </section>
         </div>
     </div>
