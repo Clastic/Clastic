@@ -8,5 +8,4 @@ install:
 
 dev:
 	app/console assets:install --symlink
-	gulp watch
-	app/console server:run
+	gulp watch & app/console server:run
