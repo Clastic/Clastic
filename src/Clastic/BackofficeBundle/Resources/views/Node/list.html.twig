@@ -3,6 +3,7 @@
 {% block page_title %}Text{% endblock %}
 
 {% block header_actions %}
+    <a class="btn btn-success" href="{{ path('clastic_backoffice_form', {type: type}) }}">new</a>
     <div class="btn-group pull-right">
         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
             Submodules <span class="caret"></span>
@@ -30,46 +31,25 @@
                             </tr>
                         </thead>
                         <tbody>
-                        {% for i in range(1,20) %}
+                        {% for record in data %}
                             <tr>
                                 <td>
-                                    <a class="btn btn-success btn-xs" href="{{ path('clastic_backoffice_form', {type: 'text'}) }}"><i class="fa fa-pencil"></i></a>
+                                    <a class="btn btn-success btn-xs" href="{{ path('clastic_backoffice_form', {type: type, node_id: record.node.id}) }}"><i class="fa fa-pencil"></i></a>
                                     <a class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
                                 </td>
-                                <td>Een</td>
+                                <td>{{ record.node.title }}</td>
                                 <td>Dries</td>
-                                <td>2014-10-03 16:05:47</td>
+                                <td>{{ record.node.created|date }}</td>
                                 <td>
                                     <span class="label label-default">online</span>
                                 </td>
                             </tr>
                         {% endfor %}
-                            {#<tr>#}
-                                {#<td><input type="checkbox"/></td>#}
-                                {#<td><a href="#"><i class="fa fa-pencil"></i></a> <a href="#"><i class="fa fa-trash"></i></a></td>#}
-                                {#<td>Een</td>#}
-                                {#<td>Dries</td>#}
-                                {#<td>2014-10-03 16:05:47</td>#}
-                                {#<td><i class="fa fa-pencil-square-o"></i></td>#}
-                            {#</tr>#}
-                            {#<tr>#}
-                                {#<td><input type="checkbox"/></td>#}
-                                {#<td><a href="#"><i class="fa fa-pencil"></i></a> <a href="#"><i class="fa fa-trash"></i></a></td>#}
-                                {#<td>Een</td>#}
-                                {#<td>Dries</td>#}
-                                {#<td>2014-10-03 16:05:47</td>#}
-                                {#<td><i class="fa fa-check-square-o"></i></td>#}
-                            {#</tr>#}
-                            {#<tr>#}
-                                {#<td><input type="checkbox"/></td>#}
-                                {#<td><a href="#"><i class="fa fa-pencil"></i></a> <a href="#"><i class="fa fa-trash"></i></a></td>#}
-                                {#<td>Een</td>#}
-                                {#<td>Dries</td>#}
-                                {#<td>2014-10-03 16:05:47</td>#}
-                                {#<td><i class="fa fa-check-square"></i></td>#}
-                            {#</tr>#}
                         </tbody>
                     </table>
+                </div>
+                <div class="pagerfanta">
+                    {{ pagerfanta(data, 'twitter_bootstrap3') }}
                 </div>
             </section>
         </div>

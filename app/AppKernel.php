@@ -22,6 +22,7 @@ class AppKernel extends Kernel
 
             new Ornicar\GravatarBundle\OrnicarGravatarBundle(),
             new Clastic\TextBundle\ClasticTextBundle(),
+            new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

@@ -2,6 +2,13 @@ clastic_backoffice_dashboard:
     path:     /
     defaults: { _controller: ClasticBackofficeBundle:Dashboard:index }
 
+clastic_backoffice_node:
+    pattern:   /{type}
+    defaults:
+        _controller: FrameworkBundle:Redirect:redirectAd
+        route: clastic_backoffice_list
+        permanent: true
+
 clastic_backoffice_list:
     path:     /{type}/list
     defaults: { _controller: ClasticBackofficeBundle:Node:list }

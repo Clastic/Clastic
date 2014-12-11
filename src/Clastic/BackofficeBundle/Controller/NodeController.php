@@ -6,6 +6,8 @@ use Clastic\CoreBundle\Entity\Node;
 use Clastic\BackofficeBundle\Form\NodeType;
 use Clastic\CoreBundle\Module\ModuleManager;
 use Clastic\TextBundle\Entity\Text;
+use Pagerfanta\Adapter\DoctrineORMAdapter;
+use Pagerfanta\Pagerfanta;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -13,15 +15,19 @@ class NodeController extends Controller
 {
     public function listAction($type)
     {
-//        $data = new Text();
-//
-//        $form = $this->createFormBuilder($data)
-//          ->add('title')
-//          ->add('save', 'submit', array('label' => 'Create Task'))
-//          ->getForm();
+        $queryBuilder = $this->getDoctrine()
+            ->getManager()
+            ->createQueryBuilder()
+            ->select('e')
+            ->from('ClasticTextBundle:Text', 'e')
+            ;
+
+        $adapter = new DoctrineORMAdapter($queryBuilder);
+        $data = new Pagerfanta($adapter);
 
         return $this->render('ClasticBackofficeBundle:Node:list.html.twig', array(
-//            'form' => $form,
+            'data' => $data,
+            'type' => $type,
         ));
     }
 

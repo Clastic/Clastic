@@ -22,7 +22,7 @@ class NodeType extends AbstractType
                             ->add('title', 'text', array(
                                     'property_path' => 'node.title'
                                 ))
-                            ->add('body')
+                            ->add('body', 'textarea')
                     )
                     ->add(
                         $this->createActionTab($builder)
