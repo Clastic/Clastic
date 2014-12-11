@@ -67,6 +67,11 @@ class NodeController extends Controller
             $em->persist($data);
             $em->flush();
 
+            $request->getSession()->getFlashBag()->add(
+                'success',
+                'Your changes were saved!'
+            );
+
             return $this->redirect($this->generateUrl('clastic_backoffice_form', array(
                  'type' => $type,
                  'node_id' => $data->getNode()->getId(),
