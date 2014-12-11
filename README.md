@@ -5,14 +5,21 @@ This project should only be used for development.
 
 # Installation
 
+1. Clone the project
+
 ```
 $ git clone git@github.com:Clastic/Clastic.git
 $ cd Clastic
-$ composer install
-$ npm install
-$ bower install
-$ gulp build watch
-$ app/console assets:install
-$ app/console doctrine:schema:create
-$ app/console server:run
+```
+
+2. Install
+
+```
+make install
+```
+
+3. Setup development env
+
+```
+make dev
 ```
