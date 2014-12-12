@@ -11,7 +11,6 @@ namespace Clastic\TextBundle\Entity;
 
 use Clastic\CoreBundle\Entity\Node;
 use Clastic\CoreBundle\Node\NodeReferenceInterface;
-use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Text
@@ -35,11 +34,10 @@ class Text implements NodeReferenceInterface
      */
     private $body;
 
-
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -65,7 +63,7 @@ class Text implements NodeReferenceInterface
     /**
      * Set body
      *
-     * @param string $body
+     * @param  string $body
      * @return Text
      */
     public function setBody($body)
@@ -78,7 +76,7 @@ class Text implements NodeReferenceInterface
     /**
      * Get body
      *
-     * @return string 
+     * @return string
      */
     public function getBody()
     {
