@@ -9,8 +9,6 @@
 
 namespace Clastic\CoreBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Node
  *
@@ -48,11 +46,10 @@ class Node
      */
     private $changed;
 
-
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -62,7 +59,7 @@ class Node
     /**
      * Set title
      *
-     * @param string $title
+     * @param  string $title
      * @return Node
      */
     public function setTitle($title)
@@ -75,7 +72,7 @@ class Node
     /**
      * Get title
      *
-     * @return string 
+     * @return string
      */
     public function getTitle()
     {
@@ -101,7 +98,7 @@ class Node
     /**
      * Set userId
      *
-     * @param integer $userId
+     * @param  integer $userId
      * @return Node
      */
     public function setUserId($userId)
@@ -114,7 +111,7 @@ class Node
     /**
      * Get userId
      *
-     * @return integer 
+     * @return integer
      */
     public function getUserId()
     {
@@ -124,7 +121,7 @@ class Node
     /**
      * Set created
      *
-     * @param \DateTime $created
+     * @param  \DateTime $created
      * @return Node
      */
     public function setCreated($created)
@@ -137,7 +134,7 @@ class Node
     /**
      * Get created
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreated()
     {
@@ -147,7 +144,7 @@ class Node
     /**
      * Set changed
      *
-     * @param \DateTime $changed
+     * @param  \DateTime $changed
      * @return Node
      */
     public function setChanged($changed)
@@ -160,7 +157,7 @@ class Node
     /**
      * Get changed
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getChanged()
     {

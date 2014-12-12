@@ -28,4 +28,3 @@ interface ModuleInterface
      */
     public function getIdentifier();
 }
- 
