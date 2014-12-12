@@ -14,5 +14,9 @@ clastic_backoffice_list:
     defaults: { _controller: ClasticBackofficeBundle:Node:list }
 
 clastic_backoffice_form:
-    path:     /{type}/edit/{node_id}
-    defaults: { _controller: ClasticBackofficeBundle:Node:form, node_id: ~ }
+    path:     /{type}/edit/{nodeId}
+    defaults: { _controller: ClasticBackofficeBundle:Node:form, nodeId: ~ }
+
+clastic_backoffice_node_delete:
+    path:     /{type}/delete/{nodeId}
+    defaults: { _controller: ClasticBackofficeBundle:Node:delete }
