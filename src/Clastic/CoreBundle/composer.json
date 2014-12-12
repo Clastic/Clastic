@@ -16,5 +16,5 @@
     "autoload": {
         "psr-4": { "Clastic\\CoreBundle\\": "" }
     },
-    "minimum-stability": "stable"
+    "minimum-stability": "dev"
 }
