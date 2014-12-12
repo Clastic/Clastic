@@ -1,0 +1,24 @@
+<li class="dropdown modules js-nav-module-list">
+    <a aria-expanded="true" role="button" data-toggle="dropdown" class="dropdown-toggle" href="#">
+        <i class="fa fa-dot-circle-o"></i> Modules
+        <span class="caret"></span>
+    </a>
+    <ul role="menu" class="dropdown-menu modules">
+        <li class="dropdown-header">Modules</li>
+        <li>
+            <ul>
+                {% for module in modules %}
+                    <li><a href="{{ path('clastic_backoffice_list', {type: module.identifier}) }}">{{ module.name }}</a></li>
+                {% endfor %}
+            </ul>
+        </li>
+        <li class="divider"></li>
+        <li class="dropdown-header">Administration</li>
+        <li>
+            <ul>
+                <li><a href="{{ path('clastic_backoffice_list', {type: 'user'}) }}">Users</a></li>
+                <li><a href="{{ path('clastic_backoffice_list', {type: 'setting'}) }}">Settings</a></li>
+            </ul>
+        </li>
+    </ul>
+</li>

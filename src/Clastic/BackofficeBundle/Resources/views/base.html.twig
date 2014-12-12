@@ -31,43 +31,8 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="dropdown modules js-nav-module-list">
-                        <a aria-expanded="true" role="button" data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <i class="fa fa-dot-circle-o"></i> Modules
-                            <span class="caret"></span>
-                        </a>
-                        <ul role="menu" class="dropdown-menu modules">
-                            <li class="dropdown-header">Modules</li>
-                            <li>
-                                <ul>
-                                    <li><a href="{{ path('clastic_backoffice_list', {type: 'alias'}) }}">Alias</a></li>
-                                    <li><a href="{{ path('clastic_backoffice_list', {type: 'text'}) }}">Text</a></li>
-                                </ul>
-                            </li>
-                            <li class="divider"></li>
-                            <li class="dropdown-header">Administration</li>
-                            <li>
-                                <ul>
-                                    <li><a href="{{ path('clastic_backoffice_list', {type: 'user'}) }}">Users</a></li>
-                                    <li><a href="{{ path('clastic_backoffice_list', {type: 'setting'}) }}">Settings</a></li>
-                                </ul>
-                            </li>
-                            {#<li><a href="#"><i class="fa fa-gear"></i> Settings</a></li>#}
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a aria-expanded="true" role="button" data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <img src="{{ gravatar('dries@nousefreak.be') }}" class="img-circle" alt=""/>
-                            &nbsp;
-                            <span class="caret"></span>
-                        </a>
-                        <ul role="menu" class="dropdown-menu">
-                            <li><a href="#"><i class="fa fa-user"></i> Profile</a></li>
-                            <li><a href="#"><i class="fa fa-gear"></i> Settings</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#"><i class="fa fa-sign-out"></i> Logout</a></li>
-                        </ul>
-                    </li>
+                    {{ render(controller('ClasticBackofficeBundle:Navigation:modules')) }}
+                    {{ render(controller('ClasticBackofficeBundle:Navigation:user')) }}
                 </ul>
             </div>
         </div>
