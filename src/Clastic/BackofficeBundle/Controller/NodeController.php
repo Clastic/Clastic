@@ -9,10 +9,8 @@
 
 namespace Clastic\BackofficeBundle\Controller;
 
-use Clastic\BackofficeBundle\Form\NodeDeleteType;
 use Clastic\CoreBundle\Entity\Node;
 use Clastic\BackofficeBundle\Form\NodeType;
-use Clastic\CoreBundle\Module\ModuleManager;
 use Clastic\CoreBundle\Node\NodeReferenceInterface;
 use Clastic\TextBundle\Entity\Text;
 use Doctrine\ORM\EntityRepository;
@@ -32,6 +30,7 @@ class NodeController extends Controller
 {
     /**
      * @param string $type
+     *
      * @return Response
      */
     public function listAction($type)
@@ -41,8 +40,7 @@ class NodeController extends Controller
             ->createQueryBuilder()
             ->select('e')
             ->from($this->getEntityName($type), 'e')
-            ->orderBy('e.id', 'DESC')
-        ;
+            ->orderBy('e.id', 'DESC');
 
         $adapter = new DoctrineORMAdapter($queryBuilder);
         $data = new Pagerfanta($adapter);
@@ -54,9 +52,10 @@ class NodeController extends Controller
     }
 
     /**
-     * @param string $type
+     * @param string   $type
      * @param int|null $nodeId
-     * @param Request $request
+     * @param Request  $request
+     *
      * @return RedirectResponse|Response
      */
     public function formAction($type, $nodeId, Request $request)
@@ -85,8 +84,8 @@ class NodeController extends Controller
     }
 
     /**
-     * @param string $type
-     * @param int $nodeId
+     * @param  string           $type
+     * @param  int              $nodeId
      * @return RedirectResponse
      */
     public function deleteAction($type, $nodeId)
@@ -104,7 +103,8 @@ class NodeController extends Controller
 
     /**
      * @param string $type
-     * @param int $nodeId
+     * @param int    $nodeId
+     *
      * @return NodeReferenceInterface
      */
     private function resolveData($type, $nodeId)
@@ -126,6 +126,7 @@ class NodeController extends Controller
 
     /**
      * @param string $type
+     *
      * @return NodeReferenceInterface
      */
     private function createData($type)
@@ -154,6 +155,7 @@ class NodeController extends Controller
 
     /**
      * @param string $type
+     *
      * @return EntityRepository
      */
     private function getRepository($type)
@@ -164,6 +166,7 @@ class NodeController extends Controller
 
     /**
      * @param string $type
+     *
      * @return string
      */
     private function getEntityName($type)

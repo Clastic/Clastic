@@ -54,4 +54,3 @@ class TabsTabType extends FormType
         return 'tabs_tab';
     }
 }
- 

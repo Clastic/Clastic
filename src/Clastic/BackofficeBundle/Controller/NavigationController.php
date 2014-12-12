@@ -9,16 +9,9 @@
 
 namespace Clastic\BackofficeBundle\Controller;
 
-use Clastic\BackofficeBundle\Form\NodeDeleteType;
-use Clastic\CoreBundle\Entity\Node;
-use Clastic\BackofficeBundle\Form\NodeType;
 use Clastic\CoreBundle\Module\ModuleManager;
-use Clastic\TextBundle\Entity\Text;
-use Doctrine\ORM\EntityRepository;
-use Pagerfanta\Adapter\DoctrineORMAdapter;
-use Pagerfanta\Pagerfanta;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * NodeController
@@ -27,6 +20,9 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class NavigationController extends Controller
 {
+    /**
+     * @return Response
+     */
     public function modulesAction()
     {
         return $this->render('ClasticBackofficeBundle:Navigation:modules.html.twig', array(
@@ -34,6 +30,9 @@ class NavigationController extends Controller
         ));
     }
 
+    /**
+     * @return Response
+     */
     public function userAction()
     {
         return $this->render('ClasticBackofficeBundle:Navigation:user.html.twig');

@@ -11,6 +11,7 @@ namespace Clastic\BackofficeBundle\Controller;
 
 use Clastic\CoreBundle\Module\ModuleManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * DashboardController
@@ -19,6 +20,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
  */
 class DashboardController extends Controller
 {
+    /**
+     * @return Response
+     */
     public function indexAction()
     {
         return $this->render('ClasticBackofficeBundle:Dashboard:index.html.twig', array(

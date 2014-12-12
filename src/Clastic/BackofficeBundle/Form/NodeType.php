@@ -22,7 +22,7 @@ class NodeType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
-     * @param array $options
+     * @param array                $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -66,7 +66,7 @@ class NodeType extends AbstractType
             'inherit_data' => true,
         ));
     }
-    
+
     /**
      * @param OptionsResolverInterface $resolver
      */

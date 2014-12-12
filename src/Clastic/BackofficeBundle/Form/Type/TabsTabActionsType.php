@@ -41,4 +41,3 @@ class TabsTabActionsType extends TabsTabType
         return 'tabs_tab_actions';
     }
 }
- 
