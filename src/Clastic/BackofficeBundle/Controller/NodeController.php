@@ -13,12 +13,15 @@ use Clastic\BackofficeBundle\Form\NodeDeleteType;
 use Clastic\CoreBundle\Entity\Node;
 use Clastic\BackofficeBundle\Form\NodeType;
 use Clastic\CoreBundle\Module\ModuleManager;
+use Clastic\CoreBundle\Node\NodeReferenceInterface;
 use Clastic\TextBundle\Entity\Text;
 use Doctrine\ORM\EntityRepository;
 use Pagerfanta\Adapter\DoctrineORMAdapter;
 use Pagerfanta\Pagerfanta;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * NodeController
@@ -27,6 +30,10 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class NodeController extends Controller
 {
+    /**
+     * @param string $type
+     * @return Response
+     */
     public function listAction($type)
     {
         $queryBuilder = $this->getDoctrine()
@@ -46,42 +53,25 @@ class NodeController extends Controller
         ));
     }
 
+    /**
+     * @param string $type
+     * @param int|null $nodeId
+     * @param Request $request
+     * @return RedirectResponse|Response
+     */
     public function formAction($type, $nodeId, Request $request)
     {
-        $em = $this->getDoctrine()->getManager();
-
-        if (!is_null($nodeId)) {
-            $data = $this->getRepository($type)->find($nodeId);
-        } else {
-            $data = new Text();
-
-            if (!$data->getNode()) {
-                $node = new Node();
-                $node->setType($type);
-                $node->setUserId(1);
-                $node->setCreated(new \DateTime());
-
-                $data->setNode($node);
-            }
-        }
-
+        $data = $this->resolveData($type, $nodeId);
         $form = $this->createForm(new NodeType(), $data);
-
         $form->handleRequest($request);
 
         if ($form->isValid()) {
             $data = $form->getData();
-            $node = $data->getNode();
+            $this->persistData($data);
 
-            $node->setChanged(new \DateTime());
-
-            $em->persist($data);
-            $em->flush();
-
-            $request->getSession()->getFlashBag()->add(
-                'success',
-                'Your changes were saved!'
-            );
+            $request->getSession()
+                ->getFlashBag()
+                ->add('success', 'Your changes were saved!');
 
             return $this->redirect($this->generateUrl('clastic_backoffice_form', array(
                  'type' => $type,
@@ -94,18 +84,59 @@ class NodeController extends Controller
         ));
     }
 
+    /**
+     * @param string $type
+     * @param int $nodeId
+     * @return RedirectResponse
+     */
     public function deleteAction($type, $nodeId)
     {
         $data = $this->getRepository($type)->find($nodeId);
 
         $em = $this->getDoctrine()->getManager();
-
         $em->remove($data);
         $em->flush();
 
         return $this->redirect($this->generateUrl('clastic_backoffice_list', array(
             'type' => $type,
         )));
+    }
+
+    /**
+     * @param string $type
+     * @param int $nodeId
+     * @return NodeReferenceInterface
+     */
+    private function resolveData($type, $nodeId)
+    {
+        if (!is_null($nodeId)) {
+            return $this->getRepository($type)->find($nodeId);
+        }
+
+        $data = new Text();
+
+        $node = new Node();
+        $node->setType($type);
+        $node->setUserId(1);
+        $node->setCreated(new \DateTime());
+
+        $data->setNode($node);
+
+        return $data;
+    }
+
+    /**
+     * @param NodeReferenceInterface $data
+     */
+    private function persistData(NodeReferenceInterface $data)
+    {
+        $node = $data->getNode();
+
+        $node->setChanged(new \DateTime());
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($data);
+        $em->flush();
     }
 
     /**
@@ -125,13 +156,5 @@ class NodeController extends Controller
     private function getEntityName($type)
     {
         return 'ClasticTextBundle:Text';
-    }
-
-    /**
-     * @return ModuleManager
-     */
-    private function getModuleManager()
-    {
-        return $this->get('clastic.module_manager');
     }
 }
