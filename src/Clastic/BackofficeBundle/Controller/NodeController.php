@@ -1,4 +1,11 @@
 <?php
+/**
+ * This file is part of the Clastic package.
+ *
+ * (c) Dries De Peuter <dries@nousefreak.be>
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
 namespace Clastic\BackofficeBundle\Controller;
 
@@ -11,6 +18,11 @@ use Pagerfanta\Pagerfanta;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
+/**
+ * NodeController
+ *
+ * @author Dries De Peuter <dries@nousefreak.be>
+ */
 class NodeController extends Controller
 {
     public function listAction($type)
@@ -20,7 +32,8 @@ class NodeController extends Controller
             ->createQueryBuilder()
             ->select('e')
             ->from('ClasticTextBundle:Text', 'e')
-            ;
+            ->orderBy('e.id', 'DESC')
+        ;
 
         $adapter = new DoctrineORMAdapter($queryBuilder);
         $data = new Pagerfanta($adapter);
@@ -41,9 +54,12 @@ class NodeController extends Controller
             $data = new Text();
 
             if (!$data->getNode()) {
-                $data->setNode(new Node());
-                $data->getNode()
-                  ->setCreated(new \DateTime());
+                $node = new Node();
+                $node->setType($type);
+                $node->setUserId(1);
+                $node->setCreated(new \DateTime());
+
+                $data->setNode($node);
             }
         }
 
@@ -56,8 +72,6 @@ class NodeController extends Controller
             $node = $data->getNode();
 
             $node->setChanged(new \DateTime());
-            $node->setType($type);
-            $node->setUserId(1);
 
             $em->persist($data);
             $em->flush();
