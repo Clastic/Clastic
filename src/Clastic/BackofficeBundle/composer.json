@@ -1,5 +1,21 @@
 {
+    "name": "clastic/backoffice-bundle",
+    "description": "Clastic Backoffice bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Dries De Peuter",
+            "email": "dries@nousefreak.be"
+        }
+    ],
     "require": {
-        "ornicar/gravatar-bundle" : "1.1.2"
-    }
+        "php": ">=5.3.3",
+        "clastic/core-bundle": "*",
+        "symfony/dependency-injection": "~2.6",
+        "doctrine/doctrine-bundle": "*"
+    },
+    "autoload": {
+        "psr-4": { "Clastic\\BackofficeBundle\\": "" }
+    },
+    "minimum-stability": "dev"
 }
