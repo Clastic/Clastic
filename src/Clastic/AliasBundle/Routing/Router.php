@@ -95,9 +95,9 @@ class Router extends \Symfony\Bundle\FrameworkBundle\Routing\Router
      *
      * If there is no route with the given name, the generator must throw the RouteNotFoundException.
      *
-     * @param string         $name          The name of the route
-     * @param mixed          $parameters    An array of parameters
-     * @param bool|string    $referenceType The type of reference to be generated (one of the constants)
+     * @param string      $name          The name of the route
+     * @param mixed       $parameters    An array of parameters
+     * @param bool|string $referenceType The type of reference to be generated (one of the constants)
      *
      * @return string The generated URL
      *
@@ -125,4 +125,3 @@ class Router extends \Symfony\Bundle\FrameworkBundle\Routing\Router
         return $path;
     }
 }
- 

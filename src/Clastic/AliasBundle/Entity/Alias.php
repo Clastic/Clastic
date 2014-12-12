@@ -9,8 +9,6 @@
 
 namespace Clastic\AliasBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Alias
  *
@@ -38,11 +36,10 @@ class Alias
      */
     private $path;
 
-
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -52,7 +49,7 @@ class Alias
     /**
      * Set nodeId
      *
-     * @param integer $nodeId
+     * @param  integer $nodeId
      * @return Alias
      */
     public function setNodeId($nodeId)
@@ -65,7 +62,7 @@ class Alias
     /**
      * Get nodeId
      *
-     * @return integer 
+     * @return integer
      */
     public function getNodeId()
     {
@@ -75,7 +72,7 @@ class Alias
     /**
      * Set alias
      *
-     * @param string $alias
+     * @param  string $alias
      * @return Alias
      */
     public function setAlias($alias)
@@ -88,7 +85,7 @@ class Alias
     /**
      * Get alias
      *
-     * @return string 
+     * @return string
      */
     public function getAlias()
     {
@@ -98,7 +95,7 @@ class Alias
     /**
      * Set path
      *
-     * @param string $path
+     * @param  string $path
      * @return Alias
      */
     public function setPath($path)
@@ -111,7 +108,7 @@ class Alias
     /**
      * Get path
      *
-     * @return string 
+     * @return string
      */
     public function getPath()
     {
