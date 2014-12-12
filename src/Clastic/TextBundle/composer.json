@@ -1,0 +1,21 @@
+{
+    "name": "clastic/text-bundle",
+    "description": "Clastic Text bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Dries De Peuter",
+            "email": "dries@nousefreak.be"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "clastic/core-bundle": "*",
+        "symfony/dependency-injection": "~2.6",
+        "doctrine/doctrine-bundle": "*"
+    },
+    "autoload": {
+        "psr-4": { "Clastic\\TextBundle\\": "" }
+    },
+    "minimum-stability": "dev"
+}
