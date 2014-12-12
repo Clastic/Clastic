@@ -91,7 +91,7 @@ class NodeController extends Controller
      */
     public function deleteAction($type, $nodeId)
     {
-        $data = $this->getRepository($type)->find($nodeId);
+        $data = $this->lookupData($type, $nodeId);
 
         $em = $this->getDoctrine()->getManager();
         $em->remove($data);
@@ -110,19 +110,27 @@ class NodeController extends Controller
     private function resolveData($type, $nodeId)
     {
         if (!is_null($nodeId)) {
-            return $this->getRepository($type)->find($nodeId);
+            return $this->lookupData($type, $nodeId);
         }
-
-        $data = new Text();
 
         $node = new Node();
         $node->setType($type);
         $node->setUserId(1);
         $node->setCreated(new \DateTime());
 
+        $data = $this->createData($type);
         $data->setNode($node);
 
         return $data;
+    }
+
+    /**
+     * @param string $type
+     * @return NodeReferenceInterface
+     */
+    private function createData($type)
+    {
+        return new Text();
     }
 
     /**
@@ -137,6 +145,11 @@ class NodeController extends Controller
         $em = $this->getDoctrine()->getManager();
         $em->persist($data);
         $em->flush();
+    }
+
+    private function lookupData($type, $nodeId)
+    {
+        return $this->getRepository($type)->find($nodeId);
     }
 
     /**
