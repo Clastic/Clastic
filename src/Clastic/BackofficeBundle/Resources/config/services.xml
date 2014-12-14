@@ -1,0 +1,38 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="clastic.backoffice.type.tabs.class">Clastic\BackofficeBundle\Form\Type\TabsType</parameter>
+        <parameter key="clastic.backoffice.type.tabs_tab.class">Clastic\BackofficeBundle\Form\Type\TabsTabType</parameter>
+        <parameter key="clastic.backoffice.type.tabs_tab_actions.class">Clastic\BackofficeBundle\Form\Type\TabsTabActionsType</parameter>
+        <parameter key="clastic.backoffice.type.node.class">Clastic\BackofficeBundle\Form\NodeType</parameter>
+        <parameter key="clastic.backoffice.extension.node.class">Clastic\BackofficeBundle\Form\Extension\NodeTypeExtension</parameter>
+        <parameter key="clastic.backoffice.node.form_build.class">Clastic\BackofficeBundle\EventListener\NodeFormBuildListener</parameter>
+    </parameters>
+
+    <services>
+        <service id="clastic.backoffice.type.tabs" class="%clastic.backoffice.type.tabs.class%">
+            <tag name="form.type" alias="tabs" />
+        </service>
+
+        <service id="clastic.backoffice.type.tabs_tab" class="%clastic.backoffice.type.tabs_tab.class%">
+            <tag name="form.type" alias="tabs_tab" />
+        </service>
+
+        <service id="clastic.backoffice.type.tabs_tab_actions" class="%clastic.backoffice.type.tabs_tab_actions.class%">
+            <tag name="form.type" alias="tabs_tab_actions" />
+        </service>
+
+        <service id="clastic.backoffice.type.node" class="%clastic.backoffice.type.node.class%">
+            <tag name="form.type" alias="clastic_node" />
+        </service>
+
+        <service id="clastic.backoffice.extension.node" class="%clastic.backoffice.extension.node.class%">
+            <tag name="form.type_extension" alias="clastic_node" />
+            <argument type="service" id="event_dispatcher" />
+        </service>
+    </services>
+</container>

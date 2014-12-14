@@ -30,11 +30,11 @@ class NodeType extends AbstractType
             ->add(
                 $builder->create('tabs', 'tabs', array('inherit_data' => true))
                     ->add(
-                        $this->createTab($builder, 'General')
+                        $this->createTab($builder, 'general', array('label' => 'General'))
                             ->add('title', 'text', array(
-                                    'property_path' => 'node.title'
+                                    'property_path' => 'node.title',
+                                    'label' => 'Title',
                                 ))
-                            ->add('body', 'textarea')
                     )
                     ->add(
                         $this->createActionTab($builder)
@@ -44,7 +44,6 @@ class NodeType extends AbstractType
                                 ))
                     )
             );
-
     }
 
     private function createTab(FormBuilderInterface $builder, $name, $options = array())
@@ -53,8 +52,7 @@ class NodeType extends AbstractType
             $options,
             array(
                 'inherit_data' => true,
-            ))
-        ;
+            ));
 
         return $builder->create($name, 'tabs_tab', $options);
     }

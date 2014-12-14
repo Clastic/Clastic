@@ -10,7 +10,6 @@
 namespace Clastic\BackofficeBundle\Controller;
 
 use Clastic\CoreBundle\Entity\Node;
-use Clastic\BackofficeBundle\Form\NodeType;
 use Clastic\CoreBundle\Node\NodeManager;
 use Clastic\CoreBundle\Node\NodeReferenceInterface;
 use Doctrine\ORM\EntityRepository;
@@ -61,7 +60,7 @@ class NodeController extends Controller
     public function formAction($type, $nodeId, Request $request)
     {
         $data = $this->resolveData($type, $nodeId);
-        $form = $this->createForm(new NodeType(), $data);
+        $form = $this->createForm('clastic_node', $data);
         $form->handleRequest($request);
 
         if ($form->isValid()) {

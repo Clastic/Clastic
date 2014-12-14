@@ -20,7 +20,7 @@
             {% for child in form if child.vars.tab_type == 'tabs_tab' -%}
                 <li role="presentation"{% if loop.first %} class="active"{% endif %}>
                     <a href="#{{ child.vars.id }}" aria-controls="{{ child.vars.id }}" role="tab" data-toggle="tab">
-                        {{ child.vars.name }}
+                        {{ child.vars.label }}
                     </a>
                 </li>
             {%- endfor %}
