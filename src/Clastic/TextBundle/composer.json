@@ -14,6 +14,9 @@
         "symfony/dependency-injection": "~2.6",
         "doctrine/doctrine-bundle": "*"
     },
+    "require-dev": {
+        "clastic/backoffice-bundle": "*"
+    },
     "autoload": {
         "psr-4": { "Clastic\\TextBundle\\": "" }
     },
