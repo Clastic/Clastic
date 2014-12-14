@@ -9,12 +9,12 @@
 
 namespace Clastic\TextBundle\Module;
 
-use Clastic\CoreBundle\Module\ModuleInterface;
+use Clastic\CoreBundle\Module\NodeModuleInterface;
 
 /**
  * @author Dries De Peuter <dries@nousefreak.be>
  */
-class TextModule implements ModuleInterface
+class TextModule implements NodeModuleInterface
 {
     /**
      * The name of the module.
@@ -36,4 +36,11 @@ class TextModule implements ModuleInterface
         return 'text';
     }
 
+    /**
+     * @return string
+     */
+    public function getEntityName()
+    {
+        return 'ClasticTextBundle:Text';
+    }
 }
