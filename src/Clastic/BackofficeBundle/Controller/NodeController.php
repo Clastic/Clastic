@@ -11,8 +11,8 @@ namespace Clastic\BackofficeBundle\Controller;
 
 use Clastic\CoreBundle\Entity\Node;
 use Clastic\BackofficeBundle\Form\NodeType;
+use Clastic\CoreBundle\Node\NodeManager;
 use Clastic\CoreBundle\Node\NodeReferenceInterface;
-use Clastic\TextBundle\Entity\Text;
 use Doctrine\ORM\EntityRepository;
 use Pagerfanta\Adapter\DoctrineORMAdapter;
 use Pagerfanta\Pagerfanta;
@@ -39,7 +39,7 @@ class NodeController extends Controller
             ->getManager()
             ->createQueryBuilder()
             ->select('e')
-            ->from($this->getEntityName($type), 'e')
+            ->from($this->getNodeManager()->getEntityName($type), 'e')
             ->orderBy('e.id', 'DESC');
 
         $adapter = new DoctrineORMAdapter($queryBuilder);
@@ -74,7 +74,7 @@ class NodeController extends Controller
 
             return $this->redirect($this->generateUrl('clastic_backoffice_form', array(
                  'type' => $type,
-                 'node_id' => $data->getNode()->getId(),
+                 'nodeId' => $data->getNode()->getId(),
             )));
         }
 
@@ -84,8 +84,9 @@ class NodeController extends Controller
     }
 
     /**
-     * @param  string           $type
-     * @param  int              $nodeId
+     * @param string $type
+     * @param int    $nodeId
+     *
      * @return RedirectResponse
      */
     public function deleteAction($type, $nodeId)
@@ -118,20 +119,10 @@ class NodeController extends Controller
         $node->setUserId(1);
         $node->setCreated(new \DateTime());
 
-        $data = $this->createData($type);
+        $data = $this->getNodeManager()->createEntity($type);
         $data->setNode($node);
 
         return $data;
-    }
-
-    /**
-     * @param string $type
-     *
-     * @return NodeReferenceInterface
-     */
-    private function createData($type)
-    {
-        return new Text();
     }
 
     /**
@@ -148,6 +139,12 @@ class NodeController extends Controller
         $em->flush();
     }
 
+    /**
+     * @param string $type
+     * @param int    $nodeId
+     *
+     * @return NodeReferenceInterface
+     */
     private function lookupData($type, $nodeId)
     {
         return $this->getRepository($type)->find($nodeId);
@@ -161,16 +158,14 @@ class NodeController extends Controller
     private function getRepository($type)
     {
         return $this->getDoctrine()->getManager()
-            ->getRepository($this->getEntityName($type));
+            ->getRepository($this->getNodeManager()->getEntityName($type));
     }
 
     /**
-     * @param string $type
-     *
-     * @return string
+     * @return NodeManager
      */
-    private function getEntityName($type)
+    private function getNodeManager()
     {
-        return 'ClasticTextBundle:Text';
+        return $this->get('clastic.node_manager');
     }
 }
