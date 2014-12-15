@@ -8,6 +8,7 @@
  */
 
 namespace Clastic\AliasBundle\Entity;
+use Clastic\CoreBundle\Entity\Node;
 
 /**
  * Alias
@@ -22,9 +23,9 @@ class Alias
     private $id;
 
     /**
-     * @var integer
+     * @var Node
      */
-    private $nodeId;
+    private $node;
 
     /**
      * @var string
@@ -47,26 +48,19 @@ class Alias
     }
 
     /**
-     * Set nodeId
-     *
-     * @param  integer $nodeId
-     * @return Alias
+     * @return Node
      */
-    public function setNodeId($nodeId)
+    public function getNode()
     {
-        $this->nodeId = $nodeId;
-
-        return $this;
+        return $this->node;
     }
 
     /**
-     * Get nodeId
-     *
-     * @return integer
+     * @param Node $node
      */
-    public function getNodeId()
+    public function setNode(Node $node)
     {
-        return $this->nodeId;
+        $this->node = $node;
     }
 
     /**

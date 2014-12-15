@@ -38,8 +38,14 @@ class NodeTypeExtension extends AbstractTypeExtension
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $aliasTab = $this->createTab($builder, 'alias', array('label' => 'Alias'));
+
+        $aliasTab->add('alias', 'text', array(
+            'mapped' => false,
+        ));
+
         $builder->get('tabs')
-            ->add($this->createTab($builder, 'alias', array('label' => 'Alias')));
+            ->add($aliasTab);
     }
 
     private function createTab(FormBuilderInterface $builder, $name, $options = array())
