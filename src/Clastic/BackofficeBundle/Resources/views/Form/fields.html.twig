@@ -1,4 +1,4 @@
-
+{% use 'form_div_layout.html.twig' %}
 
 {% block form_row -%}
     {% if form.parent.parent %}
@@ -13,6 +13,29 @@
         </div>
     {% endif %}
 {%- endblock form_row %}
+
+{##
+ # Fields
+ #}
+
+{# Input elements #}
+{% block form_widget_simple %}
+    {% spaceless %}
+        {% set type = type|default('text') %}
+        {% set attr = attr|merge({'class': attr.class|default('') ~ ' form-control'}) %}
+
+        {{ parent() }}
+    {% endspaceless %}
+{% endblock form_widget_simple %}
+
+{% block textarea_widget %}
+    {% spaceless %}
+        {% set attr = attr|merge({'class': attr.class|default('') ~ ' form-control'}) %}
+        {{ parent() }}
+    {% endspaceless %}
+{% endblock textarea_widget %}
+
+{# Custom elements #}
 
 {% block tabs_widget -%}
     <div role="tabpanel" class="tabpanel tabs-left">
