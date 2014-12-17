@@ -13,6 +13,7 @@ use Clastic\CoreBundle\Entity\Node;
 use Clastic\CoreBundle\Event\NodeCreateEvent;
 use Clastic\CoreBundle\Event\NodeResolveEntityNameEvent;
 use Clastic\CoreBundle\NodeEvents;
+use Doctrine\Bundle\DoctrineBundle\Registry;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 /**
@@ -28,12 +29,20 @@ class NodeManager
     private $dispatcher;
 
     /**
-     * @param EventDispatcherInterface $dispatcher
+     * @var Registry
      */
-    public function __construct(EventDispatcherInterface $dispatcher)
+    private $registry;
+
+    /**
+     * @param EventDispatcherInterface $dispatcher
+     * @param Registry                 $registry
+     */
+    public function __construct(EventDispatcherInterface $dispatcher, Registry $registry)
     {
         $this->dispatcher = $dispatcher;
+        $this->registry = $registry;
     }
+
     /**
      * @param string $type
      *
@@ -54,6 +63,25 @@ class NodeManager
         $entity->setNode($event->getNode());
 
         return $entity;
+    }
+
+    /**
+     * @param int         $nodeId
+     * @param null|string $type
+     *
+     * @return NodeReferenceInterface
+     */
+    public function loadNode($nodeId, $type = null)
+    {
+        if (is_null($type)) {
+            $node = $this->registry->getRepository('ClasticCoreBundle:Node')
+                ->find($nodeId);
+            $type = $node->getType();
+        }
+
+        return $this->registry
+            ->getRepository($this->getEntityName($type))
+            ->findOneBy(array('node' => $nodeId));
     }
 
     /**
