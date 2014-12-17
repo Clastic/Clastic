@@ -61,4 +61,4 @@ See also the list of [contributors](https://github.com/Clastic/Clastic/contribut
 License
 -------
 
-Cron is licensed under the MIT license.
+Clastic is licensed under the MIT license.
