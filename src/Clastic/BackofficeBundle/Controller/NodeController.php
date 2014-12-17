@@ -83,18 +83,24 @@ class NodeController extends Controller
     }
 
     /**
-     * @param string $type
-     * @param int    $nodeId
+     * @param string  $type
+     * @param int     $nodeId
+     * @param Request $request
      *
      * @return RedirectResponse
      */
-    public function deleteAction($type, $nodeId)
+    public function deleteAction($type, $nodeId, Request $request)
     {
-        $data = $this->lookupData($type, $nodeId);
+        $data = $this->getNodeManager()->loadNode($nodeId, $type);
+        $title = $data->getNode()->getTitle();
 
         $em = $this->getDoctrine()->getManager();
         $em->remove($data);
         $em->flush();
+
+        $request->getSession()
+            ->getFlashBag()
+            ->add('success', sprintf('Your deleted "%s"!', $title));
 
         return $this->redirect($this->generateUrl('clastic_backoffice_list', array(
             'type' => $type,
@@ -110,7 +116,7 @@ class NodeController extends Controller
     private function resolveData($type, $nodeId)
     {
         if (!is_null($nodeId)) {
-            return $this->lookupData($type, $nodeId);
+            return $this->getNodeManager()->loadNode($nodeId, $type);
         }
 
         $data = $this->getNodeManager()->createNode($type);
@@ -130,28 +136,6 @@ class NodeController extends Controller
         $em = $this->getDoctrine()->getManager();
         $em->persist($data);
         $em->flush();
-    }
-
-    /**
-     * @param string $type
-     * @param int    $nodeId
-     *
-     * @return NodeReferenceInterface
-     */
-    private function lookupData($type, $nodeId)
-    {
-        return $this->getRepository($type)->find($nodeId);
-    }
-
-    /**
-     * @param string $type
-     *
-     * @return EntityRepository
-     */
-    private function getRepository($type)
-    {
-        return $this->getDoctrine()->getManager()
-            ->getRepository($this->getNodeManager()->getEntityName($type));
     }
 
     /**
