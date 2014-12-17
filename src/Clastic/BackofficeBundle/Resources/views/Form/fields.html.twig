@@ -47,3 +47,9 @@
         {% endif %}
     {%- endfor %}
 {%- endblock %}
+
+{% block multi_select_widget -%}
+    <div class="multi_select">
+        {{ block('choice_widget') }}
+    </div>
+{%- endblock multi_select_widget %}

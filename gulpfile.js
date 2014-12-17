@@ -16,6 +16,7 @@ var concat = require('gulp-concat'),
 var paths = {
     'styles': {
         'app': [
+            'web/vendor/multiselect/css/multi-select.css',
             'src/Clastic/**/Resources/public/styles/**.less'
         ],
         'main': 'src/Clastic/**/Resources/public/styles/style.less'
@@ -25,6 +26,8 @@ var paths = {
             'web/vendor/jquery/dist/jquery.js',
             'web/vendor/bootstrap/dist/js/bootstrap.js',
             'web/vendor/mousetrap/mousetrap.js',
+            'web/vendor/quicksearch/dist/jquery.quicksearch.js',
+            'web/vendor/multiselect/js/jquery.multi-select.js',
             'http://getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js'
         ],
         'app': [

@@ -9,6 +9,8 @@
   "dependencies": {
     "bootstrap": "~3.3.1",
     "fontawesome": "~4.2.0",
-    "mousetrap": "~1.4.6"
+    "mousetrap": "~1.4.6",
+    "multiselect": "~0.9.12",
+    "quicksearch": "~2.0.5"
   }
 }
