@@ -9,9 +9,6 @@
 
 namespace Clastic\AliasBundle\Form\Extension;
 
-use Clastic\BackofficeBundle\Event\NodeFormBuildEvent;
-use Clastic\BackofficeBundle\NodeFormEvents;
-use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Form\AbstractTypeExtension;
 use Symfony\Component\Form\FormBuilderInterface;
 
@@ -41,7 +38,7 @@ class NodeTypeExtension extends AbstractTypeExtension
         $aliasTab = $this->createTab($builder, 'alias', array('label' => 'Alias'));
 
         $aliasTab->add('alias', 'text', array(
-            'mapped' => false,
+            'property_path' => 'node.alias.alias',
         ));
 
         $builder->get('tabs')
