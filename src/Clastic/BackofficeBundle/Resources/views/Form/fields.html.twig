@@ -27,7 +27,7 @@
         </ul>
         <div class="tab-content">
             {% for child in form if child.vars.tab_type == 'tabs_tab' -%}
-                <div role="tabpanel" class="tab-pane active" id="{{ child.vars.id }}">
+                <div role="tabpanel" class="tab-pane{% if loop.first %} active{% endif %}" id="{{ child.vars.id }}">
                     {{- form_widget(child) -}}
                 </div>
             {%- endfor %}
