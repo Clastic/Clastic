@@ -9,10 +9,6 @@
 
 namespace Clastic\BackofficeBundle\Form\Extension;
 
-use Clastic\BackofficeBundle\Event\NodeFormBuildEvent;
-use Clastic\BackofficeBundle\NodeFormEvents;
-use Symfony\Component\EventDispatcher\EventDispatcherInterface;
-use Symfony\Component\Form\AbstractTypeExtension;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;

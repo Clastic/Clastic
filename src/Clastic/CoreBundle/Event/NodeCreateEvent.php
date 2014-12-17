@@ -9,13 +9,14 @@
 
 namespace Clastic\CoreBundle\Event;
 
+use Clastic\CoreBundle\Entity\Node;
 use Clastic\CoreBundle\Node\NodeReferenceInterface;
 use Symfony\Component\EventDispatcher\Event;
 
 /**
  * @author Dries De Peuter <dries@nousefreak.be>
  */
-class NodeCreateEntityEvent extends Event
+class NodeCreateEvent extends Event
 {
     /**
      * @var string
@@ -28,11 +29,18 @@ class NodeCreateEntityEvent extends Event
     private $entity;
 
     /**
-     * @param string $type
+     * @var Node
      */
-    public function __construct($type)
+    private $node;
+
+    /**
+     * @param string $type
+     * @param Node   $node
+     */
+    public function __construct($type, Node $node)
     {
         $this->type = $type;
+        $this->node = $node;
     }
 
     /**
@@ -57,5 +65,13 @@ class NodeCreateEntityEvent extends Event
     public function setEntity(NodeReferenceInterface $entity)
     {
         $this->entity = $entity;
+    }
+
+    /**
+     * @return Node
+     */
+    public function getNode()
+    {
+        return $this->node;
     }
 }

@@ -9,7 +9,7 @@
 
 namespace Clastic\CoreBundle\EventListener;
 
-use Clastic\CoreBundle\Event\NodeCreateEntityEvent;
+use Clastic\CoreBundle\Event\NodeCreateEvent;
 use Clastic\CoreBundle\Event\NodeResolveEntityNameEvent;
 use Clastic\CoreBundle\Module\ModuleManager;
 use Clastic\CoreBundle\Module\NodeModuleInterface;
@@ -51,7 +51,7 @@ class NodeListener implements EventSubscriberInterface
     {
         return array(
             NodeEvents::RESOLVE_ENTITY_NAME => 'resolveEntityName',
-            NodeEvents::CREATE_ENTITY => 'createEntity',
+            NodeEvents::CREATE => 'createEntity',
         );
     }
 
@@ -84,11 +84,11 @@ class NodeListener implements EventSubscriberInterface
     }
 
     /**
-     * @param NodeCreateEntityEvent $event
+     * @param NodeCreateEvent $event
      *
      * @throws \Exception
      */
-    public function createEntity(NodeCreateEntityEvent $event)
+    public function createEntity(NodeCreateEvent $event)
     {
         $className = $this->registry
             ->getRepository($this->lookupEntityName($event->getType()))

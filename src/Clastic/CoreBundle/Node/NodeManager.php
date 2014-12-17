@@ -9,7 +9,8 @@
 
 namespace Clastic\CoreBundle\Node;
 
-use Clastic\CoreBundle\Event\NodeCreateEntityEvent;
+use Clastic\CoreBundle\Entity\Node;
+use Clastic\CoreBundle\Event\NodeCreateEvent;
 use Clastic\CoreBundle\Event\NodeResolveEntityNameEvent;
 use Clastic\CoreBundle\NodeEvents;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
@@ -38,14 +39,21 @@ class NodeManager
      *
      * @return NodeReferenceInterface
      */
-    public function createEntity($type)
+    public function createNode($type)
     {
-        $event = new NodeCreateEntityEvent($type);
+        $node = new Node();
+        $node->setType($type);
+        $node->setUserId(1);
+        $node->setCreated(new \DateTime());
 
-        $this->dispatcher
-            ->dispatch(NodeEvents::CREATE_ENTITY, $event);
+        $event = new NodeCreateEvent($type, $node);
+        $event = $this->dispatcher
+            ->dispatch(NodeEvents::CREATE, $event);
 
-        return $event->getEntity();
+        $entity = $event->getEntity();
+        $entity->setNode($event->getNode());
+
+        return $entity;
     }
 
     /**
@@ -56,7 +64,6 @@ class NodeManager
     public function getEntityName($type)
     {
         $event = new NodeResolveEntityNameEvent($type);
-
         $this->dispatcher
             ->dispatch(NodeEvents::RESOLVE_ENTITY_NAME, $event);
 

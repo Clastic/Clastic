@@ -113,13 +113,7 @@ class NodeController extends Controller
             return $this->lookupData($type, $nodeId);
         }
 
-        $node = new Node();
-        $node->setType($type);
-        $node->setUserId(1);
-        $node->setCreated(new \DateTime());
-
-        $data = $this->getNodeManager()->createEntity($type);
-        $data->setNode($node);
+        $data = $this->getNodeManager()->createNode($type);
 
         return $data;
     }

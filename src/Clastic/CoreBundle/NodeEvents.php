@@ -16,6 +16,6 @@ namespace Clastic\CoreBundle;
  */
 final class NodeEvents
 {
-    const CREATE_ENTITY = 'clastic.node.create_entity';
+    const CREATE = 'clastic.node.create';
     const RESOLVE_ENTITY_NAME = 'clastic.node.resolve_entity_name';
 }

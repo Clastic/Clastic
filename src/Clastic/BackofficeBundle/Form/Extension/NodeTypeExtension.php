@@ -9,9 +9,6 @@
 
 namespace Clastic\BackofficeBundle\Form\Extension;
 
-use Clastic\BackofficeBundle\Event\NodeFormBuildEvent;
-use Clastic\BackofficeBundle\NodeFormEvents;
-use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Form\AbstractTypeExtension;
 use Symfony\Component\Form\FormBuilderInterface;
 
@@ -36,7 +33,7 @@ class NodeTypeExtension extends AbstractTypeExtension
     }
 
     /**
-     * @param string $type
+     * @param string                    $type
      * @param AbstractNodeTypeExtension $extension
      */
     public function registerNodeFormExtension($type, AbstractNodeTypeExtension $extension)
