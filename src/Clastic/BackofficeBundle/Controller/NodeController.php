@@ -47,6 +47,7 @@ class NodeController extends Controller
         return $this->render('ClasticBackofficeBundle:Node:list.html.twig', array(
             'data' => $data,
             'type' => $type,
+            'module' => $this->get('clastic.module_manager')->getModule($type),
         ));
     }
 
@@ -79,6 +80,7 @@ class NodeController extends Controller
 
         return $this->render('ClasticBackofficeBundle:Node:form.html.twig', array(
             'form' => $form->createView(),
+            'module' => $this->get('clastic.module_manager')->getModule($type),
         ));
     }
 
@@ -104,6 +106,7 @@ class NodeController extends Controller
 
         return $this->redirect($this->generateUrl('clastic_backoffice_list', array(
             'type' => $type,
+            'module' => $this->get('clastic.module_manager')->getModule($type),
         )));
     }
 

@@ -1,7 +1,7 @@
 {% extends 'ClasticBackofficeBundle::base.html.twig' %}
 
 {% block page_title -%}
-    Text
+    {{ module.name }}
     <a href="{{ path('clastic_backoffice_form', {type: type}) }}"><i class="fa fa-plus-circle text-success"></i></a>
 {%- endblock %}
 
@@ -29,28 +29,32 @@
                 <div class="table-responsive">
                     <table class="table table-striped table-hover">
                         <thead>
-                            <tr>
-                                <th></th>
-                                <th>Title</th>
-                                <th>Author</th>
-                                <th>Created</th>
-                                <th>Status</th>
-                            </tr>
+                            {% block list_header %}
+                                <tr>
+                                    <th></th>
+                                    <th>Title</th>
+                                    <th>Author</th>
+                                    <th>Created</th>
+                                    <th>Status</th>
+                                </tr>
+                            {% endblock %}
                         </thead>
                         <tbody>
                         {% for record in data %}
-                            <tr>
-                                <td>
-                                    <a class="btn btn-success btn-xs" href="{{ path('clastic_backoffice_form', {type: type, nodeId: record.node.id}) }}"><i class="fa fa-pencil"></i></a>
-                                    <a class="btn btn-danger btn-xs" href="{{ path('clastic_backoffice_node_delete', {type: type, nodeId: record.node.id}) }}"><i class="fa fa-trash"></i></a>
-                                </td>
-                                <td>{{ record.node.title }}</td>
-                                <td>Dries</td>
-                                <td>{{ record.node.created|date }}</td>
-                                <td>
-                                    <span class="label label-default">online</span>
-                                </td>
-                            </tr>
+                            {% block list_body %}
+                                <tr>
+                                    <td>
+                                        <a class="btn btn-success btn-xs" href="{{ path('clastic_backoffice_form', {type: type, nodeId: record.node.id}) }}"><i class="fa fa-pencil"></i></a>
+                                        <a class="btn btn-danger btn-xs" href="{{ path('clastic_backoffice_node_delete', {type: type, nodeId: record.node.id}) }}"><i class="fa fa-trash"></i></a>
+                                    </td>
+                                    <td>{{ record.node.title }}</td>
+                                    <td>Dries</td>
+                                    <td>{{ record.node.created|date }}</td>
+                                    <td>
+                                        <span class="label label-default">online</span>
+                                    </td>
+                                </tr>
+                            {% endblock %}
                         {% endfor %}
                         </tbody>
                     </table>
