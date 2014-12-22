@@ -1,0 +1,21 @@
+{
+    "name": "clastic/user-bundle",
+    "description": "Clastic User bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Dries De Peuter",
+            "email": "dries@nousefreak.be"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "clastic/core-bundle": "*",
+        "doctrine/doctrine-bundle": "*",
+        "friendsofsymfony/user-bundle": "~2.0@dev"
+    },
+    "autoload": {
+        "psr-4": { "Clastic\\UserBundle\\": "" }
+    },
+    "minimum-stability": "dev"
+}
