@@ -1,3 +1,5 @@
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
 
 _admin:
     resource: routing_admin.yml
