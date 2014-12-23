@@ -1,6 +1,6 @@
 install:
 	composer install
-	npm install
+	npm install --production
 	bower install
 	app/console assets:install
 	gulp build
