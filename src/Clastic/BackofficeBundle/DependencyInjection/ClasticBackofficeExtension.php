@@ -36,6 +36,7 @@ class ClasticBackofficeExtension extends Extension implements PrependExtensionIn
 
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.xml');
+
     }
 
     /**
@@ -49,6 +50,10 @@ class ClasticBackofficeExtension extends Extension implements PrependExtensionIn
 
         if (true === isset($bundles['TwigBundle'])) {
             $this->configureTwigBundle($container);
+        }
+
+        if (true === isset($bundles['SecurityBundle'])) {
+            $this->configureSecurityBundle($container);
         }
     }
 
@@ -65,6 +70,33 @@ class ClasticBackofficeExtension extends Extension implements PrependExtensionIn
                     $container->prependExtensionConfig(
                         $name,
                         array('form' => array('resources' => array($this->formTemplate)))
+                    );
+                    break;
+            }
+        }
+    }
+
+    /**
+     * @param ContainerBuilder $container The service container
+     *
+     * @return void
+     */
+    protected function configureSecurityBundle(ContainerBuilder $container)
+    {
+        foreach (array_keys($container->getExtensions()) as $name) {
+            switch ($name) {
+                case 'security':
+                    $container->prependExtensionConfig(
+                        $name,
+                        array(
+                            'encoders' => array(
+                                'FOS\UserBundle\Model\UserInterface' => 'sha512',
+                            ),
+                            'role_hierarchy' => array(
+                                'ROLE_ADMIN' => 'ROLE_USER',
+                                'ROLE_SUPER_ADMIN' => 'ROLE_ADMIN',
+                            ),
+                        )
                     );
                     break;
             }
