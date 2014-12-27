@@ -30,6 +30,7 @@ You need the following installed globally on your system:
     ```
     make dev
     ```
+
 Contributing
 ------------
 
