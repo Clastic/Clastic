@@ -6,6 +6,12 @@
 
     <import resource="@FOSUserBundle/Resources/config/routing/security.xml"/>
 
+    <route id="clastic_backoffice_user" path="/{type}">
+        <default key="_controller">FrameworkBundle:Redirect:redirect</default>
+        <default key="route">clastic_backoffice_user_list</default>
+        <default key="permanent">true</default>
+    </route>
+
     <route id="clastic_backoffice_user_list" path="/user/list">
         <default key="_controller">ClasticUserBundle:User:list</default>
     </route>
@@ -15,7 +21,7 @@
         <default key="id" xsi:nil="true" />
     </route>
 
-    <route id="clastic_backoffice_user_form" path="/user/delete/{id}">
+    <route id="clastic_backoffice_user_delete" path="/user/delete/{id}">
         <default key="_controller">ClasticUserBundle:User:delete</default>
     </route>
 </routes>
