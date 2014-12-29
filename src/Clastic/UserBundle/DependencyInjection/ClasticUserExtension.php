@@ -55,7 +55,7 @@ class ClasticUserExtension extends Extension implements PrependExtensionInterfac
                         $name,
                         array(
                             'db_driver' => 'orm',
-                            'firewall_name' => 'main',
+                            'firewall_name' => 'backoffice',
                             'user_class' => 'Clastic\UserBundle\Entity\User',
                         )
                     );
