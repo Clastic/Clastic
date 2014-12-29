@@ -4,13 +4,13 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
-    <!--
+    <parameters>
+        <parameter key="clastic.user.module.class">Clastic\UserBundle\Module\UserModule</parameter>
+    </parameters>
+
     <services>
-        <service id="clastic_user.example" class="Clastic\UserBundle\Example">
-            <argument type="service" id="service_id" />
-            <argument>plain_value</argument>
-            <argument>%parameter_name%</argument>
+        <service id="clastic.user.module" class="%clastic.user.module.class%">
+            <tag name="clastic.module" node_module="false" alias="user" />
         </service>
     </services>
-    -->
 </container>

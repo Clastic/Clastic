@@ -5,4 +5,17 @@
     xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
 
     <import resource="@FOSUserBundle/Resources/config/routing/security.xml"/>
+
+    <route id="clastic_backoffice_user_list" path="/user/list">
+        <default key="_controller">ClasticUserBundle:User:list</default>
+    </route>
+
+    <route id="clastic_backoffice_user_form" path="/user/edit/{id}">
+        <default key="_controller">ClasticUserBundle:User:form</default>
+        <default key="id" xsi:nil="true" />
+    </route>
+
+    <route id="clastic_backoffice_user_form" path="/user/delete/{id}">
+        <default key="_controller">ClasticUserBundle:User:delete</default>
+    </route>
 </routes>
