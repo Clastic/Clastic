@@ -8,6 +8,6 @@
 
     <route id="clastic_backoffice_alias_form" path="/alias/edit/{id}">
         <default key="_controller">ClasticAliasBundle:Alias:form</default>
-        <default key="id">null</default>
+        <default key="id" xsi:nil="true" />
     </route>
 </routes>
