@@ -5,15 +5,18 @@ security:
 
     firewalls:
         backoffice:
-            pattern: ^/
+            pattern: ^/admin/
             form_login:
                 provider: fos_userbundle
                 csrf_provider: form.csrf_provider
-            logout:       true
+                check_path: fos_user_security_check
+                login_path: fos_user_security_login
+            logout:
+                path: fos_user_security_logout
             anonymous:    true
 
     access_control:
-        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/, role: ROLE_ADMIN }
