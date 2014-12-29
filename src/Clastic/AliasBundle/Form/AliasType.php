@@ -33,13 +33,7 @@ class AliasType extends AbstractType
                                     'label' => 'Alias',
                                 ))
                     )
-                    ->add(
-                        $this->createActionTab($builder)
-                            ->add('save', 'submit', array(
-                                    'label' => 'Save',
-                                    'attr' => array('class' => 'btn btn-success'),
-                                ))
-                    )
+                    ->add($this->createActionTab($builder))
             );
     }
 
@@ -57,8 +51,12 @@ class AliasType extends AbstractType
     private function createActionTab(FormBuilderInterface $builder)
     {
         return $builder->create('actions', 'tabs_tab_actions', array(
-                'mapped' => false,
-                'inherit_data' => true,
+            'mapped' => false,
+            'inherit_data' => true,
+        ))
+            ->add('save', 'submit', array(
+                'label' => 'Save',
+                'attr' => array('class' => 'btn btn-success'),
             ));
     }
 
