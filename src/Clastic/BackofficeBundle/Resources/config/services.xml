@@ -12,6 +12,7 @@
         <parameter key="clastic.backoffice.type.multi_select.class">Clastic\BackofficeBundle\Form\Type\MultiSelectType</parameter>
         <parameter key="clastic.backoffice.extension.node.class">Clastic\BackofficeBundle\Form\Extension\NodeTypeExtension</parameter>
         <parameter key="clastic.backoffice.node.form_build.class">Clastic\BackofficeBundle\EventListener\NodeFormBuildListener</parameter>
+        <parameter key="clastic.backoffice.twig.avatar_extension.class">Clastic\BackofficeBundle\Twig\AvatarExtension</parameter>
     </parameters>
 
     <services>
@@ -38,6 +39,11 @@
         <service id="clastic.backoffice.extension.node" class="%clastic.backoffice.extension.node.class%">
             <tag name="form.type_extension" alias="clastic_node" />
             <argument type="service" id="event_dispatcher" />
+        </service>
+
+        <service id="clastic.backoffice.twig.avatar_extension" class="%clastic.backoffice.twig.avatar_extension.class%">
+            <tag name="twig.extension" />
+            <argument type="service" id="security.context" />
         </service>
     </services>
 </container>
