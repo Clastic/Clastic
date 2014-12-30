@@ -12,7 +12,8 @@
         "php": ">=5.3.3",
         "clastic/core-bundle": "*",
         "doctrine/doctrine-bundle": "*",
-        "friendsofsymfony/user-bundle": "~2.0@dev"
+        "friendsofsymfony/user-bundle": "~2.0@dev",
+        "doctrine/doctrine-fixtures-bundle": "~2.2"
     },
     "autoload": {
         "psr-4": { "Clastic\\UserBundle\\": "" }
