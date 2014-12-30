@@ -19,8 +19,8 @@
         "sensio/framework-extra-bundle": "~3.0",
         "incenteev/composer-parameter-handler": "~2.0",
 
-        "ornicar/gravatar-bundle" : "1.1.2",
         "white-october/pagerfanta-bundle": "~1.0",
+        "thomaswelton/gravatarlib": "~0.1",
         "friendsofsymfony/user-bundle": "~2.0@dev"
     },
     "require-dev": {

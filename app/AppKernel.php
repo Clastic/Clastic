@@ -20,7 +20,6 @@ class AppKernel extends Kernel
             new Clastic\CoreBundle\ClasticCoreBundle(),
 
             new Clastic\BackofficeBundle\ClasticBackofficeBundle(),
-            new Ornicar\GravatarBundle\OrnicarGravatarBundle(),
             new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
 
             new Clastic\AliasBundle\ClasticAliasBundle(),
