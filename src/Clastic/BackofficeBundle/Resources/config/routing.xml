@@ -22,7 +22,7 @@
 
     <route id="clastic_backoffice_form" path="/{type}/edit/{nodeId}">
         <default key="_controller">ClasticBackofficeBundle:Node:form</default>
-        <default key="nodeId">null</default>
+        <default key="nodeId" xsi:nil="true" />
     </route>
 
     <route id="clastic_backoffice_node_delete" path="/{type}/delete/{nodeId}">
