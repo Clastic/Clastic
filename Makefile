@@ -5,7 +5,7 @@ install:
 	app/console assets:install
 	gulp build
 	app/console doctrine:schema:update --force
-	app/console doctrine:fixtures:load
+#	app/console doctrine:fixtures:load
 
 dev:
 	app/console assets:install --symlink
