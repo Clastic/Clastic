@@ -24,4 +24,16 @@ class SecurityTest extends WebTestCase
         $this->assertTrue($client->getResponse()->isRedirect());
         $this->assertRegExp('|/admin/login$|', $client->getResponse()->headers->get('location'));
     }
+
+    public function testLoginForm()
+    {
+        $client = static::createClient();
+        $crawler = $client->request('GET', '/admin/login');
+
+        $this->assertEquals(1, $crawler->filter('form')->count());
+        $this->assertEquals(1, $crawler->filter('form input[name="_username"]')->count());
+        $this->assertEquals(1, $crawler->filter('form input[name="_password"]')->count());
+        $this->assertEquals(1, $crawler->filter('form input[name="_remember_me"]')->count());
+        $this->assertEquals(1, $crawler->filter('form button[name="_submit"]')->count());
+    }
 }
