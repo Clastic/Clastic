@@ -20,6 +20,7 @@
         "incenteev/composer-parameter-handler": "~2.0",
 
         "white-october/pagerfanta-bundle": "~1.0",
+        "whiteoctober/breadcrumbs-bundle": "~1.0",
         "thomaswelton/gravatarlib": "~0.1",
         "friendsofsymfony/user-bundle": "~2.0@dev",
         "doctrine/doctrine-fixtures-bundle": "~2.2"
