@@ -17,7 +17,7 @@
             <a class="btn btn-danger btn-xs" href="{{ path('clastic_backoffice_node_delete', {type: type, id: record.id}) }}"><i class="fa fa-trash"></i></a>
         </td>
         <td>{{ record.alias }}</td>
-        <td>Dries</td>
+        <td>{{ record.node.user.username }}</td>
         <td>{{ record.node.created|date }}</td>
         <td>
             <span class="label label-default">online</span>
