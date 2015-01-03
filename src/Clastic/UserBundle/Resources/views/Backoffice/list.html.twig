@@ -11,8 +11,8 @@
 {% block list_body %}
     <tr>
         <td>
-            <a class="btn btn-success btn-xs" href="{{ path('clastic_backoffice_form', {type: type, nodeId: record.id}) }}"><i class="fa fa-pencil"></i></a>
-            <a class="btn btn-danger btn-xs" href="{{ path('clastic_backoffice_node_delete', {type: type, nodeId: record.id}) }}"><i class="fa fa-trash"></i></a>
+            <a class="btn btn-success btn-xs" href="{{ path('clastic_backoffice_form', {type: type, id: record.id}) }}"><i class="fa fa-pencil"></i></a>
+            <a class="btn btn-danger btn-xs" href="{{ path('clastic_backoffice_node_delete', {type: type, id: record.id}) }}"><i class="fa fa-trash"></i></a>
         </td>
         <td>{{ record.username }}</td>
         <td>

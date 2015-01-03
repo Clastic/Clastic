@@ -49,7 +49,6 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
         ;
         $userAdmin->setPassword($encoder->encodePassword('secret', $userAdmin->getSalt()));
 
-
         $manager->persist($userAdmin);
         $manager->flush();
 
