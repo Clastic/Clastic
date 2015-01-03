@@ -1,5 +1,6 @@
 {% extends 'ClasticBackofficeBundle::base.html.twig' %}
 
+{% block html_title %}Clastic - {{ module.name }}{% endblock %}
 {% block page_title -%}
     {{ module.name }}
     <a href="{{ path('clastic_backoffice_form', {type: type}) }}"><i class="fa fa-plus-circle text-success"></i></a>
