@@ -129,6 +129,8 @@ class NodeController extends AbstractModuleController
 
         $data = $this->getNodeManager()->createNode($this->getType());
 
+        $data->getNode()->setUser($this->get('security.context')->getToken()->getUser());
+
         return $data;
     }
 
