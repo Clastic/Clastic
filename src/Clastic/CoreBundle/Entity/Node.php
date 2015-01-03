@@ -9,6 +9,8 @@
 
 namespace Clastic\CoreBundle\Entity;
 
+use Clastic\UserBundle\Entity\User;
+
 /**
  * Node
  *
@@ -32,9 +34,9 @@ class Node
     private $type;
 
     /**
-     * @var integer
+     * @var User
      */
-    private $userId;
+    private $user;
 
     /**
      * @var \DateTime
@@ -59,7 +61,8 @@ class Node
     /**
      * Set title
      *
-     * @param  string $title
+     * @param string $title
+     *
      * @return Node
      */
     public function setTitle($title)
@@ -96,32 +99,34 @@ class Node
     }
 
     /**
-     * Set userId
+     * Set user
      *
-     * @param  integer $userId
+     * @param User $user
+     *
      * @return Node
      */
-    public function setUserId($userId)
+    public function setUser(User $user)
     {
-        $this->userId = $userId;
+        $this->user = $user;
 
         return $this;
     }
 
     /**
-     * Get userId
+     * Get user
      *
-     * @return integer
+     * @return User
      */
-    public function getUserId()
+    public function getUser()
     {
-        return $this->userId;
+        return $this->user;
     }
 
     /**
      * Set created
      *
-     * @param  \DateTime $created
+     * @param \DateTime $created
+     *
      * @return Node
      */
     public function setCreated($created)
@@ -144,7 +149,8 @@ class Node
     /**
      * Set changed
      *
-     * @param  \DateTime $changed
+     * @param \DateTime $changed
+     *
      * @return Node
      */
     public function setChanged($changed)

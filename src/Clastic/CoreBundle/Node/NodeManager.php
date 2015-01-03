@@ -52,7 +52,6 @@ class NodeManager
     {
         $node = new Node();
         $node->setType($type);
-        $node->setUserId(1);
         $node->setCreated(new \DateTime());
 
         $event = new NodeCreateEvent($type, $node);
