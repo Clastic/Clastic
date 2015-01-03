@@ -25,6 +25,6 @@ class TextFormExtension extends AbstractNodeTypeExtension
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $this->findTab($builder, 'general')
-            ->add('body', 'textarea');
+            ->add('body', 'wysiwyg');
     }
 }
