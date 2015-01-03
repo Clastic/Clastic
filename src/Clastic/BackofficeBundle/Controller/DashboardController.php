@@ -10,6 +10,8 @@
 namespace Clastic\BackofficeBundle\Controller;
 
 use Clastic\CoreBundle\Module\ModuleManager;
+use Pagerfanta\Adapter\DoctrineORMAdapter;
+use Pagerfanta\Pagerfanta;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use WhiteOctober\BreadcrumbsBundle\Model\Breadcrumbs;
@@ -29,8 +31,51 @@ class DashboardController extends Controller
         $this->buildBreadcrumbs();
 
         return $this->render('ClasticBackofficeBundle:Dashboard:index.html.twig', array(
-              'modules' => $this->getModuleManager()->getModules(),
-          ));
+            'modules' => $this->getModuleManager()->getModules(),
+            'myContent' => $this->getMyContent(),
+            'recent' => $this->getRecent(),
+        ));
+    }
+
+    /**
+     * @return Pagerfanta
+     */
+    private function getMyContent()
+    {
+        $queryBuilder = $this->getDoctrine()
+            ->getManager()
+            ->createQueryBuilder()
+            ->select('e')
+            ->from('ClasticCoreBundle:Node', 'e')
+            ->where('e.user = :user')
+            ->orderBy('e.id', 'DESC')
+            ->setParameters(array(
+                'user' => $this->get('security.context')->getToken()->getUser(),
+            ));
+
+        $adapter = new DoctrineORMAdapter($queryBuilder);
+        $data = new Pagerfanta($adapter);
+
+        return $data;
+    }
+
+
+    /**
+     * @return Pagerfanta
+     */
+    private function getRecent()
+    {
+        $queryBuilder = $this->getDoctrine()
+            ->getManager()
+            ->createQueryBuilder()
+            ->select('e')
+            ->from('ClasticCoreBundle:Node', 'e')
+            ->orderBy('e.changed', 'DESC');
+
+        $adapter = new DoctrineORMAdapter($queryBuilder);
+        $data = new Pagerfanta($adapter);
+
+        return $data;
     }
 
     /**

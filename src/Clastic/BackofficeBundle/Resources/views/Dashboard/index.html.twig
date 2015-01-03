@@ -12,10 +12,66 @@
                 </ul>
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="mycontent">
-                        mycontent
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Title</th>
+                                        <th>Author</th>
+                                        <th>Created</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                {% for node in myContent %}
+                                    <tr>
+                                        <td>
+                                            <a class="btn btn-success btn-xs" href="{{ path('clastic_backoffice_form', {type: node.type, id: node.id}) }}"><i class="fa fa-pencil"></i></a>
+                                            <a class="btn btn-danger btn-xs" href="{{ path('clastic_backoffice_node_delete', {type: node.type, id: node.id}) }}"><i class="fa fa-trash"></i></a>
+                                        </td>
+                                        <td>{{ node.title }}</td>
+                                        <td>{{ node.user.username }}</td>
+                                        <td>{{ node.created|date }}</td>
+                                        <td>
+                                            <span class="label label-default">online</span>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                     <div role="tabpanel" class="tab-pane" id="recent">
-                        recent
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Title</th>
+                                    <th>Author</th>
+                                    <th>Created</th>
+                                    <th>Status</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for node in recent %}
+                                    <tr>
+                                        <td>
+                                            <a class="btn btn-success btn-xs" href="{{ path('clastic_backoffice_form', {type: node.type, id: node.id}) }}"><i class="fa fa-pencil"></i></a>
+                                            <a class="btn btn-danger btn-xs" href="{{ path('clastic_backoffice_node_delete', {type: node.type, id: node.id}) }}"><i class="fa fa-trash"></i></a>
+                                        </td>
+                                        <td>{{ node.title }}</td>
+                                        <td>{{ node.user.username }}</td>
+                                        <td>{{ node.created|date }}</td>
+                                        <td>
+                                            <span class="label label-default">online</span>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
