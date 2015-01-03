@@ -9,13 +9,9 @@
 
 namespace Clastic\BackofficeBundle\Controller;
 
-use Clastic\CoreBundle\Entity\Node;
 use Clastic\CoreBundle\Node\NodeManager;
 use Clastic\CoreBundle\Node\NodeReferenceInterface;
-use Doctrine\ORM\EntityRepository;
-use Pagerfanta\Adapter\DoctrineORMAdapter;
-use Pagerfanta\Pagerfanta;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -25,104 +21,113 @@ use Symfony\Component\HttpFoundation\Response;
  *
  * @author Dries De Peuter <dries@nousefreak.be>
  */
-class NodeController extends Controller
+class NodeController extends AbstractModuleController
 {
+    /**
+     * @var string
+     */
+    private $type;
+
+    /**
+     * @return string
+     */
+    protected function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * @return string
+     */
+    protected function getListTemplate()
+    {
+        return 'ClasticBackofficeBundle:Node:list.html.twig';
+    }
+
+    /**
+     * @param object $data
+     *
+     * @return Form
+     */
+    protected function buildForm($data)
+    {
+        return $this->createForm('clastic_node', $data);
+    }
+
+    /**
+     * @param object $data
+     *
+     * @return string
+     */
+    protected function resolveDataTitle($data)
+    {
+        if (!$data->getId()) {
+            return 'New';
+        }
+
+        return $data->getNode()->getTitle();
+    }
+
+    /**
+     * @return string
+     */
+    protected function getEntityName()
+    {
+        return $this->getNodeManager()->getEntityName($this->getType());
+    }
+
     /**
      * @param string $type
      *
      * @return Response
      */
-    public function listAction($type)
+    public function listAction($type = null)
     {
-        $queryBuilder = $this->getDoctrine()
-            ->getManager()
-            ->createQueryBuilder()
-            ->select('e')
-            ->from($this->getNodeManager()->getEntityName($type), 'e')
-            ->orderBy('e.id', 'DESC');
+        $this->type = $type;
 
-        $adapter = new DoctrineORMAdapter($queryBuilder);
-        $data = new Pagerfanta($adapter);
-
-        return $this->render('ClasticBackofficeBundle:Node:list.html.twig', array(
-            'data' => $data,
-            'type' => $type,
-            'module' => $this->get('clastic.module_manager')->getModule($type),
-        ));
+        return parent::listAction();
     }
 
     /**
-     * @param string   $type
-     * @param int|null $nodeId
+     * @param int|null $id
      * @param Request  $request
+     * @param string   $type
      *
      * @return RedirectResponse|Response
      */
-    public function formAction($type, $nodeId, Request $request)
+    public function formAction($id, Request $request, $type = null)
     {
-        $data = $this->resolveData($type, $nodeId);
-        $form = $this->createForm('clastic_node', $data);
-        $form->handleRequest($request);
+        $this->type = $type;
 
-        if ($form->isValid()) {
-            $data = $form->getData();
-            $this->persistData($data);
-
-            $request->getSession()
-                ->getFlashBag()
-                ->add('success', 'Your changes were saved!');
-
-            return $this->redirect($this->generateUrl('clastic_backoffice_form', array(
-                 'type' => $type,
-                 'nodeId' => $data->getNode()->getId(),
-            )));
-        }
-
-        return $this->render('ClasticBackofficeBundle:Node:form.html.twig', array(
-            'form' => $form->createView(),
-            'module' => $this->get('clastic.module_manager')->getModule($type),
-        ));
+        return parent::formAction($id, $request);
     }
 
     /**
-     * @param string  $type
-     * @param int     $nodeId
+     * @param int     $id
      * @param Request $request
+     * @param string  $type
      *
      * @return RedirectResponse
      */
-    public function deleteAction($type, $nodeId, Request $request)
+    public function deleteAction($id, Request $request, $type = null)
     {
-        $data = $this->getNodeManager()->loadNode($nodeId, $type);
-        $title = $data->getNode()->getTitle();
+        $this->type = $type;
 
-        $em = $this->getDoctrine()->getManager();
-        $em->remove($data);
-        $em->flush();
-
-        $request->getSession()
-            ->getFlashBag()
-            ->add('success', sprintf('Your deleted "%s"!', $title));
-
-        return $this->redirect($this->generateUrl('clastic_backoffice_list', array(
-            'type' => $type,
-            'module' => $this->get('clastic.module_manager')->getModule($type),
-        )));
+        return parent::deleteAction($id, $request);
     }
 
     /**
-     * @param string $type
-     * @param int    $nodeId
+     * @param int $id
      *
      * @return NodeReferenceInterface
      */
-    private function resolveData($type, $nodeId)
+    protected function resolveData($id)
     {
-        if (!is_null($nodeId)) {
-            return $this->getNodeManager()->loadNode($nodeId, $type);
+        if (!is_null($id)) {
+            return $this->getNodeManager()->loadNode($id, $this->getType());
         }
 
-        $data = $this->getNodeManager()->createNode($type);
+        $data = $this->getNodeManager()->createNode($this->getType());
 
         return $data;
     }
@@ -130,10 +135,9 @@ class NodeController extends Controller
     /**
      * @param NodeReferenceInterface $data
      */
-    private function persistData(NodeReferenceInterface $data)
+    protected function persistData($data)
     {
         $node = $data->getNode();
-
         $node->setChanged(new \DateTime());
 
         $em = $this->getDoctrine()->getManager();

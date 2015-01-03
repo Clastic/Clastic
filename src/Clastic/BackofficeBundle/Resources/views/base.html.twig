@@ -29,11 +29,12 @@
 
         <nav class="breadcrumb-container">
             <div class="container">
-                <ol class="breadcrumb">
-                    <li><a href="{{ path('clastic_backoffice_dashboard') }}">Home</a></li>
-                    <li><a href="#">Library</a></li>
-                    <li class="active">Data</li>
-                </ol>
+                {{ wo_render_breadcrumbs({separator: null}) }}
+                {#<ol class="breadcrumb">#}
+                    {#<li><a href="{{ path('clastic_backoffice_dashboard') }}">Home</a></li>#}
+                    {#<li><a href="#">Library</a></li>#}
+                    {#<li class="active">Data</li>#}
+                {#</ol>#}
             </div>
         </nav>
 

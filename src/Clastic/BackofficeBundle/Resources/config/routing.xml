@@ -20,12 +20,12 @@
         <default key="_controller">ClasticBackofficeBundle:Node:list</default>
     </route>
 
-    <route id="clastic_backoffice_form" path="/{type}/edit/{nodeId}">
+    <route id="clastic_backoffice_form" path="/{type}/edit/{id}">
         <default key="_controller">ClasticBackofficeBundle:Node:form</default>
-        <default key="nodeId" xsi:nil="true" />
+        <default key="id" xsi:nil="true" />
     </route>
 
-    <route id="clastic_backoffice_node_delete" path="/{type}/delete/{nodeId}">
+    <route id="clastic_backoffice_node_delete" path="/{type}/delete/{id}">
         <default key="_controller">ClasticBackofficeBundle:Node:delete</default>
     </route>
 </routes>
