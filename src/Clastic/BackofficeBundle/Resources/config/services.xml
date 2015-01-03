@@ -10,6 +10,7 @@
         <parameter key="clastic.backoffice.type.tabs_tab_actions.class">Clastic\BackofficeBundle\Form\Type\TabsTabActionsType</parameter>
         <parameter key="clastic.backoffice.type.node.class">Clastic\BackofficeBundle\Form\NodeType</parameter>
         <parameter key="clastic.backoffice.type.multi_select.class">Clastic\BackofficeBundle\Form\Type\MultiSelectType</parameter>
+        <parameter key="clastic.backoffice.type.wysiwyg.class">Clastic\BackofficeBundle\Form\Type\WysiwygType</parameter>
         <parameter key="clastic.backoffice.extension.node.class">Clastic\BackofficeBundle\Form\Extension\NodeTypeExtension</parameter>
         <parameter key="clastic.backoffice.node.form_build.class">Clastic\BackofficeBundle\EventListener\NodeFormBuildListener</parameter>
         <parameter key="clastic.backoffice.twig.avatar_extension.class">Clastic\BackofficeBundle\Twig\AvatarExtension</parameter>
@@ -34,6 +35,10 @@
 
         <service id="clastic.backoffice.type.multi_select" class="%clastic.backoffice.type.multi_select.class%">
             <tag name="form.type" alias="multi_select" />
+        </service>
+
+        <service id="clastic.backoffice.type.wysiwyg" class="%clastic.backoffice.type.wysiwyg.class%">
+            <tag name="form.type" alias="wysiwyg" />
         </service>
 
         <service id="clastic.backoffice.extension.node" class="%clastic.backoffice.extension.node.class%">

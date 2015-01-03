@@ -70,4 +70,8 @@
         keepOrder: true,
         dblClick: true
     });
+
+    $(function() {
+        $('textarea.wysiwyg').ckeditor();
+    });
 })();
