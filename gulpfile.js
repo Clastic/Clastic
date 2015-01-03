@@ -23,11 +23,14 @@ var paths = {
     },
     'scripts': {
         'vendor': [
+            'src/**/Resources/public/scripts/**.config.js',
             'web/vendor/jquery/dist/jquery.js',
             'web/vendor/bootstrap/dist/js/bootstrap.js',
             'web/vendor/mousetrap/mousetrap.js',
             'web/vendor/quicksearch/dist/jquery.quicksearch.js',
             'web/vendor/multiselect/js/jquery.multi-select.js',
+            'web/vendor/ckeditor/ckeditor.js',
+            'web/vendor/ckeditor/adapters/jquery.js',
             'http://getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js'
         ],
         'app': [
@@ -69,7 +72,7 @@ gulp.task('scripts:vendor', function() {
     gulp.src(paths.scripts.vendor)
         .pipe(concat('vendor.js'))
         //.pipe(stripDebug())
-        .pipe(uglify())
+        //.pipe(uglify())
         .pipe(rename('vendor.min.js'))
         .pipe(gulp.dest(paths.build))
         .pipe(filesize());
