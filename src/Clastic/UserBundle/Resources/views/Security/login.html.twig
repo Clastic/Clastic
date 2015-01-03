@@ -1,90 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+{% extends 'ClasticBackofficeBundle::html.html.twig' %}
 
-    <title>Clastic login</title>
+{% block html_title %}Clastic{% endblock %}
 
-    <link href="{{ asset('build/app.min.css') }}" rel="stylesheet">
-    <style>
-        body {
-            padding-top: 40px;
-            padding-bottom: 40px;
-            background-color: #eee;
-        }
+{% block html_body %}
+    <div class="container">
 
-        .form-signin {
-            max-width: 330px;
-            padding: 15px;
-            margin: 0 auto;
-        }
-        .form-signin .form-signin-heading,
-        .form-signin .checkbox {
-            margin-bottom: 10px;
-        }
-        .form-signin .checkbox {
-            font-weight: normal;
-        }
-        .form-signin .form-control {
-            position: relative;
-            height: auto;
-            -webkit-box-sizing: border-box;
-            -moz-box-sizing: border-box;
-            box-sizing: border-box;
-            padding: 10px;
-            font-size: 16px;
-        }
-        .form-signin .form-control:focus {
-            z-index: 2;
-        }
-        .form-signin input[type="email"] {
-            margin-bottom: -1px;
-            border-bottom-right-radius: 0;
-            border-bottom-left-radius: 0;
-        }
-        .form-signin input[type="password"] {
-            margin-bottom: 10px;
-            border-top-left-radius: 0;
-            border-top-right-radius: 0;
-        }
+        <form class="form-signin" action="{{ path("fos_user_security_check") }}" method="post">
+            <h2 class="form-signin-heading">Please sign in</h2>
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
 
-    </style>
-</head>
+            {% if error %}
+                <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
 
-<body>
-
-<div class="container">
-
-    <form class="form-signin" action="{{ path("fos_user_security_check") }}" method="post">
-        <h2 class="form-signin-heading">Please sign in</h2>
-        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
-
-        {% if error %}
-            <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-        {% endif %}
-
-        <label for="inputEmail" class="sr-only">{{ 'security.login.username'|trans }}</label>
-        <input type="text" placeholder="{{ 'security.login.username'|trans }}" id="inputEmail" class="form-control" name="_username" value="{{ last_username }}" required="required" />
+            <label for="inputEmail" class="sr-only">{{ 'security.login.username'|trans }}</label>
+            <input type="text" placeholder="{{ 'security.login.username'|trans }}" id="inputEmail" class="form-control" name="_username" value="{{ last_username }}" required="required" />
 
 
-        <label for="inputPassword" class="sr-only">{{ 'security.login.password'|trans }}</label>
-        <input type="password" placeholder="{{ 'security.login.password'|trans }}" id="inputPassword" class="form-control" name="_password" required="required" />
+            <label for="inputPassword" class="sr-only">{{ 'security.login.password'|trans }}</label>
+            <input type="password" placeholder="{{ 'security.login.password'|trans }}" id="inputPassword" class="form-control" name="_password" required="required" />
 
-        <div class="checkbox">
-            <label>
-                <input name="_remember_me" type="checkbox" value="remember-me"> {{ 'security.login.remember_me'|trans }}
-            </label>
-        </div>
-        <button name="_submit" class="btn btn-lg btn-primary btn-block" type="submit">{{ 'security.login.submit'|trans }}</button>
-    </form>
+            <div class="checkbox">
+                <label>
+                    <input name="_remember_me" type="checkbox" value="remember-me"> {{ 'security.login.remember_me'|trans }}
+                </label>
+            </div>
+            <button name="_submit" class="btn btn-lg btn-primary btn-block" type="submit">{{ 'security.login.submit'|trans }}</button>
+        </form>
 
-</div> <!-- /container -->
-
-
-<script src="{{ asset('build/vendor.min.js') }}"></script>
-</body>
-</html>
+    </div>
+{% endblock %}
