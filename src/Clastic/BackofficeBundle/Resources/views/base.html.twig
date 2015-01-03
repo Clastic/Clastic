@@ -1,74 +1,57 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="Dries De Peuter">
-    <link rel="icon" href="{{ asset('bundles/clasticbackoffice/favicon.png') }}">
+{% extends 'ClasticBackofficeBundle::html.html.twig' %}
 
-    <title>Clastic</title>
-
-    <link href="{{ asset('build/app.min.css') }}" rel="stylesheet">
-</head>
-
-<body>
-<div class="sticky-wrapper">
-    <nav class="navbar navbar-default" role="navigation">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="{{ path('clastic_backoffice_dashboard') }}">
-                    <img src="{{ asset('bundles/clasticbackoffice/logo.png') }}" alt=""/>
-                    Clastic
-                </a>
+{% block html_body %}
+    <div class="sticky-wrapper">
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="{{ path('clastic_backoffice_dashboard') }}">
+                        <img src="{{ asset('bundles/clasticbackoffice/logo.png') }}" alt=""/>
+                        Clastic
+                    </a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        {{ render(controller('ClasticBackofficeBundle:Navigation:modules')) }}
+                        {{ render(controller('ClasticBackofficeBundle:Navigation:user')) }}
+                    </ul>
+                </div>
             </div>
-            <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    {{ render(controller('ClasticBackofficeBundle:Navigation:modules')) }}
-                    {{ render(controller('ClasticBackofficeBundle:Navigation:user')) }}
-                </ul>
+        </nav>
+
+        <nav class="breadcrumb-container">
+            <div class="container">
+                <ol class="breadcrumb">
+                    <li><a href="{{ path('clastic_backoffice_dashboard') }}">Home</a></li>
+                    <li><a href="#">Library</a></li>
+                    <li class="active">Data</li>
+                </ol>
             </div>
+        </nav>
+
+        <div class="main-container container">
+            <header class="container-header">
+                <h1>{% block page_title %}{% endblock %}</h1>
+                <div class="header-actions">
+                    {% block header_actions %}{% endblock %}
+                </div>
+            </header>
+            {% block content %}{% endblock %}
         </div>
-    </nav>
-
-    <nav class="breadcrumb-container">
-        <div class="container">
-            <ol class="breadcrumb">
-                <li><a href="{{ path('clastic_backoffice_dashboard') }}">Home</a></li>
-                <li><a href="#">Library</a></li>
-                <li class="active">Data</li>
-            </ol>
-        </div>
-    </nav>
-
-    <div class="main-container container">
-        <header class="container-header">
-            <h1>{% block page_title %}{% endblock %}</h1>
-            <div class="header-actions">
-                {% block header_actions %}{% endblock %}
-            </div>
-        </header>
-        {% block content %}{% endblock %}
+        <div class="push"></div>
     </div>
-    <div class="push"></div>
-</div>
-<footer class="footer">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6"></div>
-            <div class="col-md-6"><span class="pull-right">&copy; Dries De Peuter</span></div>
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6"></div>
+                <div class="col-md-6"><span class="pull-right">&copy; Dries De Peuter</span></div>
+            </div>
         </div>
-    </div>
-</footer>
-
-<script src="{{ asset('build/vendor.min.js') }}"></script>
-<script src="{{ asset('build/app.min.js') }}"></script>
-</body>
-</html>
+    </footer>
+{% endblock %}
