@@ -55,7 +55,7 @@ class Router extends \Symfony\Bundle\FrameworkBundle\Routing\Router
         } catch (ResourceNotFoundException $e) {
 
             $alias = $this->getAliasRepo()->findOneBy(array(
-                'alias' => $request->getPathInfo(),
+                'alias' => substr($request->getPathInfo(), 1),
             ));
 
             if (!$alias) {
