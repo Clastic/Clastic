@@ -112,7 +112,7 @@ class Router extends \Symfony\Bundle\FrameworkBundle\Routing\Router
     {
         $path = parent::generate($name, $parameters, $referenceType);
 
-        if (preg_match('/^(\/[^\/][^\?]+)(\?.*)*/', $path, $matches)) {
+        if (preg_match('/^(\/[a-zA-Z]+\/[0-9]+)(\?.*)*/', $path, $matches)) {
             $alias = $this->getAliasRepo()->findOneBy(array(
                 'path' => $matches[1],
               ));
