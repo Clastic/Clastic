@@ -5,27 +5,9 @@
         xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
 
     <import resource="@ClasticUserBundle/Resources/config/routing_backoffice.xml"/>
+    <import resource="@ClasticNodeBundle/Resources/config/routing_backoffice.xml"/>
 
     <route id="clastic_backoffice_dashboard" path="/">
         <default key="_controller">ClasticBackofficeBundle:Dashboard:index</default>
-    </route>
-
-    <route id="clastic_backoffice_node" path="/{type}">
-        <default key="_controller">FrameworkBundle:Redirect:redirect</default>
-        <default key="route">clastic_backoffice_list</default>
-        <default key="permanent">true</default>
-    </route>
-
-    <route id="clastic_backoffice_list" path="/{type}/list">
-        <default key="_controller">ClasticBackofficeBundle:Node:list</default>
-    </route>
-
-    <route id="clastic_backoffice_form" path="/{type}/edit/{id}">
-        <default key="_controller">ClasticBackofficeBundle:Node:form</default>
-        <default key="id" xsi:nil="true" />
-    </route>
-
-    <route id="clastic_backoffice_node_delete" path="/{type}/delete/{id}">
-        <default key="_controller">ClasticBackofficeBundle:Node:delete</default>
     </route>
 </routes>

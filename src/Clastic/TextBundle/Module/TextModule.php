@@ -9,7 +9,7 @@
 
 namespace Clastic\TextBundle\Module;
 
-use Clastic\CoreBundle\Module\NodeModuleInterface;
+use Clastic\NodeBundle\Module\NodeModuleInterface;
 
 /**
  * @author Dries De Peuter <dries@nousefreak.be>

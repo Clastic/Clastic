@@ -7,11 +7,11 @@
  * file that was distributed with this source code.
  */
 
-namespace Clastic\CoreBundle\Node;
+namespace Clastic\NodeBundle\Node;
 
-use Clastic\CoreBundle\Entity\Node;
-use Clastic\CoreBundle\Event\NodeCreateEvent;
-use Clastic\CoreBundle\Event\NodeResolveEntityNameEvent;
+use Clastic\NodeBundle\Entity\Node;
+use Clastic\NodeBundle\Event\NodeCreateEvent;
+use Clastic\NodeBundle\Event\NodeResolveEntityNameEvent;
 use Clastic\CoreBundle\NodeEvents;
 use Doctrine\Bundle\DoctrineBundle\Registry;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;

@@ -7,10 +7,10 @@
  * file that was distributed with this source code.
  */
 
-namespace Clastic\CoreBundle\Event;
+namespace Clastic\NodeBundle\Event;
 
-use Clastic\CoreBundle\Entity\Node;
-use Clastic\CoreBundle\Node\NodeReferenceInterface;
+use Clastic\NodeBundle\Entity\Node;
+use Clastic\NodeBundle\Node\NodeReferenceInterface;
 use Symfony\Component\EventDispatcher\Event;
 
 /**

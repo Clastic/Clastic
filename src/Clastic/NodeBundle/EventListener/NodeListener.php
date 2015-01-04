@@ -7,12 +7,12 @@
  * file that was distributed with this source code.
  */
 
-namespace Clastic\CoreBundle\EventListener;
+namespace Clastic\NodeBundle\EventListener;
 
-use Clastic\CoreBundle\Event\NodeCreateEvent;
-use Clastic\CoreBundle\Event\NodeResolveEntityNameEvent;
+use Clastic\NodeBundle\Event\NodeCreateEvent;
+use Clastic\NodeBundle\Event\NodeResolveEntityNameEvent;
 use Clastic\CoreBundle\Module\ModuleManager;
-use Clastic\CoreBundle\Module\NodeModuleInterface;
+use Clastic\NodeBundle\Module\NodeModuleInterface;
 use Clastic\CoreBundle\NodeEvents;
 use Doctrine\Bundle\DoctrineBundle\Registry;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;

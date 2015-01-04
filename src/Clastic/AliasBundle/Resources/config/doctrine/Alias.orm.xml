@@ -17,7 +17,7 @@
     <field name="alias" type="string" column="alias" length="255"/>
     <field name="path" type="string" column="path" length="255"/>
 
-    <many-to-one field="node" target-entity="Clastic\CoreBundle\Entity\Node">
+    <many-to-one field="node" target-entity="Clastic\NodeBundle\Entity\Node">
       <cascade><cascade-all/></cascade>
       <join-column name="node_id" referenced-column-name="id" />
     </many-to-one>

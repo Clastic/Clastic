@@ -3,7 +3,7 @@
 {% block html_title %}Clastic - {{ module.name }}{% endblock %}
 {% block page_title -%}
     {{ module.name }}
-    <a href="{{ path('clastic_backoffice_form', {type: type}) }}"><i class="fa fa-plus-circle text-success"></i></a>
+    <a href="{{ path('clastic_node_form', {type: type}) }}"><i class="fa fa-plus-circle text-success"></i></a>
 {%- endblock %}
 
 {% block header_actions %}
@@ -45,8 +45,8 @@
                             {% block list_body %}
                                 <tr>
                                     <td>
-                                        <a class="btn btn-success btn-xs" href="{{ path('clastic_backoffice_form', {type: type, id: record.node.id}) }}"><i class="fa fa-pencil"></i></a>
-                                        <a class="btn btn-danger btn-xs" href="{{ path('clastic_backoffice_node_delete', {type: type, id: record.node.id}) }}"><i class="fa fa-trash"></i></a>
+                                        <a class="btn btn-success btn-xs" href="{{ path('clastic_node_form', {type: type, id: record.node.id}) }}"><i class="fa fa-pencil"></i></a>
+                                        <a class="btn btn-danger btn-xs" href="{{ path('clastic_node_delete', {type: type, id: record.node.id}) }}"><i class="fa fa-trash"></i></a>
                                     </td>
                                     <td>{{ record.node.title }}</td>
                                     <td>{{ record.node.user.username }}</td>
@@ -59,7 +59,7 @@
                         {% else %}
                             <tr>
                                 <td></td>
-                                <td colspan="4">No records found. <a href="{{ path('clastic_backoffice_form', {type: type}) }}">Create your first.</a></td>
+                                <td colspan="4">No records found. <a href="{{ path('clastic_node_form', {type: type}) }}">Create your first.</a></td>
                             </tr>
                         {% endfor %}
                         </tbody>

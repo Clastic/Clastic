@@ -8,7 +8,8 @@
  */
 
 namespace Clastic\AliasBundle\Entity;
-use Clastic\CoreBundle\Entity\Node;
+
+use Clastic\NodeBundle\Entity\Node;
 
 /**
  * Alias

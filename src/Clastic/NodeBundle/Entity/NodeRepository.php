@@ -7,7 +7,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Clastic\CoreBundle\Entity;
+namespace Clastic\NodeBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
 

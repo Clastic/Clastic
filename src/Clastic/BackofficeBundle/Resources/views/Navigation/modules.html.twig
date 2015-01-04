@@ -8,7 +8,7 @@
         <li>
             <ul>
                 {% for module in modules %}
-                    <li><a href="{{ path('clastic_backoffice_list', {type: module.identifier}) }}">{{ module.name }}</a></li>
+                    <li><a href="{{ path('clastic_node_list', {type: module.identifier}) }}">{{ module.name }}</a></li>
                 {% endfor %}
             </ul>
         </li>
@@ -16,8 +16,8 @@
         <li class="dropdown-header">Administration</li>
         <li>
             <ul>
-                <li><a href="{{ path('clastic_backoffice_list', {type: 'user'}) }}">Users</a></li>
-                <li><a href="{{ path('clastic_backoffice_list', {type: 'setting'}) }}">Settings</a></li>
+                <li><a href="{{ path('clastic_node_list', {type: 'user'}) }}">Users</a></li>
+                <li><a href="{{ path('clastic_node_list', {type: 'setting'}) }}">Settings</a></li>
             </ul>
         </li>
     </ul>

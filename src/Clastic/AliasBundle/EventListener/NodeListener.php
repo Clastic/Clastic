@@ -10,8 +10,8 @@
 namespace Clastic\AliasBundle\EventListener;
 
 use Clastic\AliasBundle\Entity\Alias;
-use Clastic\CoreBundle\Event\NodeCreateEvent;
-use Clastic\CoreBundle\Node\NodeReferenceInterface;
+use Clastic\NodeBundle\Event\NodeCreateEvent;
+use Clastic\NodeBundle\Node\NodeReferenceInterface;
 use Doctrine\Common\EventSubscriber;
 use Doctrine\Common\Persistence\Event\LifecycleEventArgs;
 use Doctrine\ORM\Events;

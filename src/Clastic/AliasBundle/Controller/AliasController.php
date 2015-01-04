@@ -12,9 +12,7 @@ namespace Clastic\AliasBundle\Controller;
 use Clastic\AliasBundle\Entity\Alias;
 use Clastic\AliasBundle\Form\AliasType;
 use Clastic\BackofficeBundle\Controller\AbstractModuleController;
-use Clastic\CoreBundle\Entity\Node;
-use Clastic\CoreBundle\Node\NodeReferenceInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Clastic\NodeBundle\Node\NodeReferenceInterface;
 use Symfony\Component\Form\Form;
 
 /**

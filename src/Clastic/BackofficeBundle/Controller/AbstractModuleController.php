@@ -9,7 +9,7 @@
 
 namespace Clastic\BackofficeBundle\Controller;
 
-use Clastic\CoreBundle\Module\NodeModuleInterface;
+use Clastic\NodeBundle\Module\NodeModuleInterface;
 use Pagerfanta\Adapter\DoctrineORMAdapter;
 use Pagerfanta\Pagerfanta;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -110,13 +110,13 @@ abstract class AbstractModuleController extends Controller
                 ->getFlashBag()
                 ->add('success', 'Your changes were saved!');
 
-            return $this->redirect($this->generateUrl('clastic_backoffice_form', array(
+            return $this->redirect($this->generateUrl('clastic_node_form', array(
                 'type' => $this->getType(),
                 'id' => $data->getId(),
             )));
         }
 
-        return $this->render('ClasticBackofficeBundle:Node:form.html.twig', array(
+        return $this->render('ClasticNodeBundle:Backoffice/Node:form.html.twig', array(
             'form' => $form->createView(),
             'module' => $this->get('clastic.module_manager')->getModule($this->getType()),
         ));
@@ -141,7 +141,7 @@ abstract class AbstractModuleController extends Controller
             ->getFlashBag()
             ->add('success', sprintf('You deleted "%s"!', $title));
 
-        return $this->redirect($this->generateUrl('clastic_backoffice_list', array(
+        return $this->redirect($this->generateUrl('clastic_node_list', array(
             'type' => $this->getType(),
             'module' => $this->get('clastic.module_manager')->getModule($this->getType()),
         )));
@@ -160,7 +160,7 @@ abstract class AbstractModuleController extends Controller
         /** @var Breadcrumbs $breadcrumbs */
         $breadcrumbs = $this->get("white_october_breadcrumbs");
         $breadcrumbs->addItem("Home", $this->get("router")->generate("clastic_backoffice_dashboard"));
-        $breadcrumbs->addItem($module->getName(), $this->get("router")->generate("clastic_backoffice_list", array(
+        $breadcrumbs->addItem($module->getName(), $this->get("router")->generate("clastic_node_list", array(
             'type' => $type,
         )));
 

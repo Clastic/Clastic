@@ -7,10 +7,11 @@
  * file that was distributed with this source code.
  */
 
-namespace Clastic\BackofficeBundle\Controller;
+namespace Clastic\NodeBundle\Controller;
 
+use Clastic\BackofficeBundle\Controller\AbstractModuleController;
 use Clastic\CoreBundle\Node\NodeManager;
-use Clastic\CoreBundle\Node\NodeReferenceInterface;
+use Clastic\NodeBundle\Node\NodeReferenceInterface;
 use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -41,7 +42,7 @@ class NodeController extends AbstractModuleController
      */
     protected function getListTemplate()
     {
-        return 'ClasticBackofficeBundle:Node:list.html.twig';
+        return 'ClasticNodeBundle:Backoffice/Node:list.html.twig';
     }
 
     /**

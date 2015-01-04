@@ -1,6 +1,6 @@
 {
-    "name": "clastic/core-bundle",
-    "description": "Clastic Core functionality",
+    "name": "clastic/node-bundle",
+    "description": "Clastic Node bundle",
     "license": "MIT",
     "authors": [
         {
@@ -10,13 +10,11 @@
     ],
     "require": {
         "php": ">=5.3.3",
-        "clastic/user-bundle": "*",
-        "clastic/node-bundle": "*",
-        "symfony/dependency-injection": "~2.6",
+        "clastic/core-bundle": "*",
         "doctrine/doctrine-bundle": "*"
     },
     "autoload": {
-        "psr-4": { "Clastic\\CoreBundle\\": "" }
+        "psr-4": { "Clastic\\NodeBundle\\": "" }
     },
     "minimum-stability": "dev"
 }

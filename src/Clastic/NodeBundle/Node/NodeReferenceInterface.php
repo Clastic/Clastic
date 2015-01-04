@@ -7,9 +7,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Clastic\CoreBundle\Node;
+namespace Clastic\NodeBundle\Node;
 
-use Clastic\CoreBundle\Entity\Node;
+use Clastic\NodeBundle\Entity\Node;
 
 /**
  * @author Dries De Peuter <dries@nousefreak.be>

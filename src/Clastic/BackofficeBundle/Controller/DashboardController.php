@@ -46,7 +46,7 @@ class DashboardController extends Controller
             ->getManager()
             ->createQueryBuilder()
             ->select('e')
-            ->from('ClasticCoreBundle:Node', 'e')
+            ->from('ClasticNodeBundle:Node', 'e')
             ->where('e.user = :user')
             ->orderBy('e.id', 'DESC')
             ->setParameters(array(
@@ -59,7 +59,6 @@ class DashboardController extends Controller
         return $data;
     }
 
-
     /**
      * @return Pagerfanta
      */
@@ -69,7 +68,7 @@ class DashboardController extends Controller
             ->getManager()
             ->createQueryBuilder()
             ->select('e')
-            ->from('ClasticCoreBundle:Node', 'e')
+            ->from('ClasticNodeBundle:Node', 'e')
             ->orderBy('e.changed', 'DESC');
 
         $adapter = new DoctrineORMAdapter($queryBuilder);

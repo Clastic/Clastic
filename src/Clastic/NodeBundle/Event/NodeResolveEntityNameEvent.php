@@ -7,7 +7,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Clastic\CoreBundle\Event;
+namespace Clastic\NodeBundle\Event;
 
 use Symfony\Component\EventDispatcher\Event;
 

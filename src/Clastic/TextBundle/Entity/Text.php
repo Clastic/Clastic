@@ -9,8 +9,8 @@
 
 namespace Clastic\TextBundle\Entity;
 
-use Clastic\CoreBundle\Entity\Node;
-use Clastic\CoreBundle\Node\NodeReferenceInterface;
+use Clastic\NodeBundle\Entity\Node;
+use Clastic\NodeBundle\Node\NodeReferenceInterface;
 
 /**
  * Text

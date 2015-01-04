@@ -1,4 +1,4 @@
-{% extends 'ClasticBackofficeBundle:Node:list.html.twig' %}
+{% extends 'ClasticNodeBundle:Backoffice/Node:list.html.twig' %}
 
 {% block list_header %}
     <tr>
@@ -11,8 +11,8 @@
 {% block list_body %}
     <tr>
         <td>
-            <a class="btn btn-success btn-xs" href="{{ path('clastic_backoffice_form', {type: type, id: record.id}) }}"><i class="fa fa-pencil"></i></a>
-            <a class="btn btn-danger btn-xs" href="{{ path('clastic_backoffice_node_delete', {type: type, id: record.id}) }}"><i class="fa fa-trash"></i></a>
+            <a class="btn btn-success btn-xs" href="{{ path('clastic_node_form', {type: type, id: record.id}) }}"><i class="fa fa-pencil"></i></a>
+            <a class="btn btn-danger btn-xs" href="{{ path('clastic_node_delete', {type: type, id: record.id}) }}"><i class="fa fa-trash"></i></a>
         </td>
         <td>{{ record.username }}</td>
         <td>
