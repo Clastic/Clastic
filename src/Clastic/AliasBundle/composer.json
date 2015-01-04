@@ -12,7 +12,8 @@
         "php": ">=5.3.3",
         "clastic/core-bundle": "*",
         "symfony/dependency-injection": "~2.6",
-        "doctrine/doctrine-bundle": "*"
+        "doctrine/doctrine-bundle": "*",
+        "ocramius/proxy-manager": "1.0.*"
     },
     "autoload": {
         "psr-4": { "Clastic\\AliasBundle\\": "" }

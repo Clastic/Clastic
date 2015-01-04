@@ -15,6 +15,7 @@ use Clastic\NodeBundle\Node\NodeReferenceInterface;
 use Doctrine\Common\EventSubscriber;
 use Doctrine\Common\Persistence\Event\LifecycleEventArgs;
 use Doctrine\ORM\Events;
+use ProxyManager\Factory\LazyLoadingValueHolderFactory;
 
 /**
  * NodeListener
@@ -54,12 +55,21 @@ class NodeListener implements EventSubscriber
 
         if ($entity instanceof NodeReferenceInterface) {
             $node = $entity->getNode();
+            $factory = new LazyLoadingValueHolderFactory();
 
-            $node->alias = $args->getObjectManager()
-                ->getRepository('ClasticAliasBundle:Alias')
-                ->findOneBy(array(
-                        'node' => $node,
-                    ));
+            $node->alias = $factory->createProxy(
+                'Clastic\AliasBundle\Entity\Alias',
+                function (&$wrappedObject, $proxy, $method, $parameters, & $initializer) use ($args, $node) {
+                    $wrappedObject = $args->getObjectManager()
+                        ->getRepository('ClasticAliasBundle:Alias')
+                        ->findOneBy(array(
+                            'node' => $node,
+                        ));
+                    $initializer = null;
+
+                    return true;
+                }
+            );
         }
     }
 
