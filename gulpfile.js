@@ -17,13 +17,13 @@ var paths = {
     'styles': {
         'app': [
             'web/vendor/multiselect/css/multi-select.css',
-            'src/Clastic/**/Resources/public/styles/**.less'
+            'src/Clastic/*/Resources/public/styles/**.less'
         ],
-        'main': 'src/Clastic/**/Resources/public/styles/style.less'
+        'main': 'src/Clastic/*/Resources/public/styles/style.less'
     },
     'scripts': {
         'vendor': [
-            'src/**/Resources/public/scripts/**.config.js',
+            'src/Clastic/*/Resources/public/scripts/**.config.js',
             'web/vendor/jquery/dist/jquery.js',
             'web/vendor/bootstrap/dist/js/bootstrap.js',
             'web/vendor/mousetrap/mousetrap.js',
@@ -31,10 +31,11 @@ var paths = {
             'web/vendor/multiselect/js/jquery.multi-select.js',
             'web/vendor/ckeditor/ckeditor.js',
             'web/vendor/ckeditor/adapters/jquery.js',
+            'web/vendor/jquery-slugify/dist/slugify.min.js',
             'http://getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js'
         ],
         'app': [
-            'src/**/Resources/public/scripts/**.js'
+            'src/Clastic/*/Resources/public/scripts/**.js'
         ]
     },
     'templates': 'src/**/*.twig',
