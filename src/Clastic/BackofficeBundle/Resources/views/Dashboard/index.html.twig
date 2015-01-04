@@ -37,6 +37,11 @@
                                             <span class="label label-default">online</span>
                                         </td>
                                     </tr>
+                                {% else %}
+                                    <tr>
+                                        <td></td>
+                                        <td colspan="4">No records found.</td>
+                                    </tr>
                                 {% endfor %}
                                 </tbody>
                             </table>
@@ -67,6 +72,11 @@
                                         <td>
                                             <span class="label label-default">online</span>
                                         </td>
+                                    </tr>
+                                {% else %}
+                                    <tr>
+                                        <td></td>
+                                        <td colspan="4">No records found.</td>
                                     </tr>
                                 {% endfor %}
                                 </tbody>

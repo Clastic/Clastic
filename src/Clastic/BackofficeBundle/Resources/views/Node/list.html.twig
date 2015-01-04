@@ -56,6 +56,11 @@
                                     </td>
                                 </tr>
                             {% endblock %}
+                        {% else %}
+                            <tr>
+                                <td></td>
+                                <td colspan="4">No records found. <a href="{{ path('clastic_backoffice_form', {type: type}) }}">Create your first.</a></td>
+                            </tr>
                         {% endfor %}
                         </tbody>
                     </table>
