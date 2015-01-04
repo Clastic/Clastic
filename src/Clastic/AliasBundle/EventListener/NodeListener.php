@@ -83,7 +83,9 @@ class NodeListener implements EventSubscriber
         if ($entity instanceof NodeReferenceInterface) {
             $node = $entity->getNode();
 
-            $alias = $node->alias;
+            $node->alias->getId();
+            $alias = $node->alias->getWrappedValueHolderValue();
+
             $alias->setNode($node);
             $alias->setPath(sprintf('node/%s', $node->getId()));
 
@@ -104,8 +106,9 @@ class NodeListener implements EventSubscriber
         if ($entity instanceof NodeReferenceInterface) {
             $alias = $entity->getNode()->alias;
 
+            $alias->getId();
             $args->getObjectManager()
-                ->remove($alias);
+                ->remove($alias->getWrappedValueHolderValue());
             $args->getObjectManager()
                 ->flush();
         }
