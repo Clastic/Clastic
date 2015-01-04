@@ -16,6 +16,7 @@ use Doctrine\Common\EventSubscriber;
 use Doctrine\Common\Persistence\Event\LifecycleEventArgs;
 use Doctrine\ORM\Events;
 use ProxyManager\Factory\LazyLoadingValueHolderFactory;
+use ProxyManager\Proxy\ValueHolderInterface;
 
 /**
  * NodeListener
@@ -81,10 +82,14 @@ class NodeListener implements EventSubscriber
         $entity = $args->getObject();
 
         if ($entity instanceof NodeReferenceInterface) {
+
             $node = $entity->getNode();
 
-            $node->alias->getId();
-            $alias = $node->alias->getWrappedValueHolderValue();
+            $alias = $node->alias;
+            if ($alias instanceof ValueHolderInterface) {
+                $node->alias->getId();
+                $alias = $alias->getWrappedValueHolderValue();
+            }
 
             $alias->setNode($node);
             $alias->setPath(sprintf('node/%s', $node->getId()));
@@ -106,9 +111,14 @@ class NodeListener implements EventSubscriber
         if ($entity instanceof NodeReferenceInterface) {
             $alias = $entity->getNode()->alias;
 
+            if ($alias instanceof ValueHolderInterface) {
+                $alias->getId();
+                $alias = $alias->getWrappedValueHolderValue();
+            }
+
             $alias->getId();
             $args->getObjectManager()
-                ->remove($alias->getWrappedValueHolderValue());
+                ->remove($alias);
             $args->getObjectManager()
                 ->flush();
         }
