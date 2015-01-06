@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<routes xmlns="http://symfony.com/schema/routing"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
+
+    <route id="clastic_backoffice_menu_list" path="/menu/list">
+        <default key="_controller">ClasticMenuBundle:Menu:list</default>
+    </route>
+
+    <route id="clastic_backoffice_menu_form" path="/menu/edit/{id}">
+        <default key="_controller">ClasticMenuBundle:Menu:form</default>
+        <default key="id" xsi:nil="true" />
+    </route>
+
+    <route id="clastic_backoffice_menu_item_list" path="/menu/{menuId}/items/list">
+        <default key="_controller">ClasticMenuBundle:MenuItem:list</default>
+    </route>
+
+    <route id="clastic_backoffice_menu_item_form" path="/menu/{menuId}/items/edit/{id}">
+        <default key="_controller">ClasticMenuBundle:MenuItem:form</default>
+        <default key="id" xsi:nil="true" />
+    </route>
+
+    <route id="clastic_backoffice_menu_item_delete" path="/menu/{menuId}/items/delete/{id}">
+        <default key="_controller">ClasticMenuBundle:MenuItem:delete</default>
+    </route>
+
+</routes>

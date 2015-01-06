@@ -1,5 +1,8 @@
 clastic_alias:
-    resource: "@ClasticAliasBundle/Resources/config/routing.xml"
+    resource: "@ClasticAliasBundle/Resources/config/backoffice_routing.xml"
+
+clastic_menu:
+    resource: "@ClasticMenuBundle/Resources/config/backoffice_routing.xml"
 
 clastic_backoffice:
     resource: "@ClasticBackofficeBundle/Resources/config/routing.xml"
