@@ -22,15 +22,34 @@ You need the following installed globally on your system:
 2. Install
 
     ```
-    make install
+    $ make install
     ```
 
 3. Setup development env
 
     ```
-    make dev
+    $ make dev
     ```
 
+# Update
+
+1. Update your source
+
+    ```
+    $ git pull
+    ```
+
+2. Setup new assets
+
+    ```
+    $ make update
+    ```
+
+3. Start development env
+
+    ```
+    $ make dev
+    ```
 Contributing
 ------------
 

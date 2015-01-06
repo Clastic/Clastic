@@ -4,8 +4,17 @@ install:
 	bower install
 	app/console assets:install
 	gulp build
+	app/console doctrine:schema:create
+	app/console doctrine:fixtures:load -n
+
+update:
+	composer install
+	npm install --production
+	bower install
+	app/console assets:install
+	gulp build
 	app/console doctrine:schema:update --force
-#	app/console doctrine:fixtures:load
+	app/console doctrine:fixtures:load
 
 dev:
 	app/console assets:install --symlink
