@@ -10,6 +10,7 @@
 namespace Clastic\BackofficeBundle\Controller;
 
 use Clastic\NodeBundle\Module\NodeModuleInterface;
+use Doctrine\ORM\QueryBuilder;
 use Pagerfanta\Adapter\DoctrineORMAdapter;
 use Pagerfanta\Pagerfanta;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -76,14 +77,32 @@ abstract class AbstractModuleController extends Controller
             ->from($this->getEntityName($this->getType()), 'e')
             ->orderBy('e.id', 'DESC');
 
-        $adapter = new DoctrineORMAdapter($queryBuilder);
+        $adapter = new DoctrineORMAdapter($this->alterListQuery($queryBuilder));
         $data = new Pagerfanta($adapter);
 
-        return $this->render($this->getListTemplate(), array(
+        return $this->render($this->getListTemplate(), array_merge(array(
             'data' => $data,
             'type' => $this->getType(),
             'module' => $this->get('clastic.module_manager')->getModule($this->getType()),
-        ));
+        ), $this->getExtraListVariables()));
+    }
+
+    /**
+     * @return array
+     */
+    protected function getExtraListVariables()
+    {
+        return array();
+    }
+
+    /**
+     * @param QueryBuilder $qb
+     *
+     * @return QueryBuilder
+     */
+    protected function alterListQuery(QueryBuilder $qb)
+    {
+        return $qb;
     }
 
     /**
@@ -110,15 +129,25 @@ abstract class AbstractModuleController extends Controller
                 ->getFlashBag()
                 ->add('success', 'Your changes were saved!');
 
-            return $this->redirect($this->generateUrl('clastic_node_form', array(
-                'type' => $this->getType(),
-                'id' => $data->getId(),
-            )));
+            return $this->redirect($this->getFormSuccessUrl($data));
         }
 
         return $this->render('ClasticNodeBundle:Backoffice/Node:form.html.twig', array(
             'form' => $form->createView(),
             'module' => $this->get('clastic.module_manager')->getModule($this->getType()),
+        ));
+    }
+
+    /**
+     * @param object $data
+     *
+     * @return string
+     */
+    protected function getFormSuccessUrl($data)
+    {
+        return $this->generateUrl('clastic_node_form', array(
+            'type' => $this->getType(),
+            'id' => $data->getId(),
         ));
     }
 
@@ -141,10 +170,18 @@ abstract class AbstractModuleController extends Controller
             ->getFlashBag()
             ->add('success', sprintf('You deleted "%s"!', $title));
 
-        return $this->redirect($this->generateUrl('clastic_node_list', array(
+        return $this->redirect($this->getListUrl());
+    }
+
+    /**
+     * @return string
+     */
+    protected function getListUrl()
+    {
+        return $this->generateUrl('clastic_node_list', array(
             'type' => $this->getType(),
             'module' => $this->get('clastic.module_manager')->getModule($this->getType()),
-        )));
+        ));
     }
 
     /**
