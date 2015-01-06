@@ -4,6 +4,7 @@ install:
 	bower install
 	app/console assets:install
 	gulp build
+	app/console doctrine:schema:drop --force
 	app/console doctrine:schema:create
 	app/console doctrine:fixtures:load -n
 
