@@ -117,9 +117,11 @@ class MenuItemController extends AbstractModuleController
      */
     protected function alterListQuery(QueryBuilder $qb)
     {
-//        $qb->andWhere('e.menu = :menu');
-//        $qb->setParameter('menu', 'bla');
-//
+        $em = $this->getDoctrine()->getEntityManager();
+
+        $qb->andWhere('e.menu = :menu');
+        $qb->setParameter('menu', $em->getReference('ClasticMenuBundle:Menu', $this->menuId));
+
         return $qb;
     }
 
@@ -183,5 +185,12 @@ class MenuItemController extends AbstractModuleController
         return $this->get('doctrine')
             ->getRepository('ClasticMenuBundle:Menu')
             ->find($this->menuId);
+    }
+
+    protected function persistData(Form $form)
+    {
+        var_dump($form->get('tabs')->get('position_tab')->get('position')->getNormData());die;
+
+        parent::persistData($form);
     }
 }
