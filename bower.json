@@ -13,6 +13,7 @@
     "multiselect": "~0.9.12",
     "quicksearch": "~2.0.5",
     "ckeditor": "~4.4.6",
-    "jquery-slugify": "~1.0.4"
+    "jquery-slugify": "~1.0.4",
+    "jstree": "~3.0.9"
   }
 }

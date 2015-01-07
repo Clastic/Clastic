@@ -26,4 +26,7 @@
         <default key="_controller">ClasticMenuBundle:MenuItem:delete</default>
     </route>
 
+    <route id="clastic_backoffice_menu_item_tree" path="/menu/_tree/{menuId}/data.json">
+        <default key="_controller">ClasticMenuBundle:Tree:ajax</default>
+    </route>
 </routes>

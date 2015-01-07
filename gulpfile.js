@@ -32,6 +32,7 @@ var paths = {
             'web/vendor/ckeditor/ckeditor.js',
             'web/vendor/ckeditor/adapters/jquery.js',
             'web/vendor/jquery-slugify/dist/slugify.min.js',
+            'web/vendor/jstree/dist/jstree.min.js',
             'http://getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js'
         ],
         'app': [

@@ -1,0 +1,16 @@
+{% use 'form_div_layout.html.twig' %}
+
+{% block tree_widget -%}
+    <div class="tree-container">
+        <div class="tree" data-tree='{
+                "menuId": {{ menuId }},
+                "currentId": {{ currentId }},
+                "source": "{{ path('clastic_backoffice_menu_item_tree', {'menuId': 1}) }}"
+            }'>
+            <div class="hidden">
+                {{ block('form_widget_simple') }}
+            </div>
+            <ul></ul>
+        </div>
+    </div>
+{%- endblock tree_widget %}

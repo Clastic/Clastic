@@ -19,7 +19,6 @@ class Menu
      */
     private $title;
 
-
     /**
      * Get id
      *

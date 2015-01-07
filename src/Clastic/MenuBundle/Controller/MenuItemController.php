@@ -85,8 +85,11 @@ class MenuItemController extends AbstractModuleController
                 ->find($id);
         }
 
+        $em = $this->getDoctrine()->getEntityManager();
+
         $menuItem = new MenuItem();
-//        $menuItem->setMenu();
+        $menuItem->setMenu($em->getReference('ClasticMenuBundle:Menu', $this->menuId));
+
         return $menuItem;
     }
 

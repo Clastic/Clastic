@@ -34,6 +34,7 @@ class MenuItemType extends AbstractType
                                 ))
                     )
                     ->add($this->createActionTab($builder))
+                    ->add($this->createPositionTab($builder))
             );
     }
 
@@ -57,6 +58,17 @@ class MenuItemType extends AbstractType
             ->add('save', 'submit', array(
                 'label' => 'Save',
                 'attr' => array('class' => 'btn btn-success'),
+            ));
+    }
+
+    private function createPositionTab(FormBuilderInterface $builder)
+    {
+        return $this->createTab($builder, 'position_tab', array(
+            'label' => 'Position',
+            ))
+            ->add('position', 'tree', array(
+                'mapped' => false,
+                'required' => false,
             ));
     }
 
