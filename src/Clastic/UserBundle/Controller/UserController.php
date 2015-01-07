@@ -89,16 +89,16 @@ class UserController extends AbstractModuleController
         return $user;
     }
     /**
-     * @param User $data
+     * @param Form $form
      */
-    protected function persistData($data)
+    protected function persistData(Form $form)
     {
         /** @var $userManager \FOS\UserBundle\Model\UserManagerInterface */
         $userManager = $this->get('fos_user.user_manager');
-        $userManager->updateUser($data);
+        $userManager->updateUser($form->getData());
 
         $em = $this->getDoctrine()->getManager();
-        $em->persist($data);
+        $em->persist($form->getData());
         $em->flush();
     }
 }
