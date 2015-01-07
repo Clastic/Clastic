@@ -189,8 +189,33 @@ class MenuItemController extends AbstractModuleController
 
     protected function persistData(Form $form)
     {
-        var_dump($form->get('tabs')->get('position_tab')->get('position')->getNormData());die;
-
         parent::persistData($form);
+
+        $positionData = $form->get('tabs')->get('position_tab')->get('position')->getNormData();
+
+        if ($positionData) {
+            $positionData = json_decode($positionData);
+            /** @var MenuItem $data */
+            $data = $form->getData();
+
+            $em = $this->getDoctrine()->getEntityManager();
+            $menuItemRepo = $this->getDoctrine()->getRepository($this->getEntityName());
+
+            $positionData->parent = intval($positionData->parent) ? ($positionData->parent) : 0;
+
+            if (intval($positionData->parent) > 0) {
+                $data->setParent($em->getReference($this->getEntityName(), $positionData->parent));
+            }
+            else {
+                $data->setParent(null);
+            }
+
+            $menuItemRepo->persistAsFirstChild($data);
+            if ($positionData->position) {
+                $menuItemRepo->moveDown($data, $positionData->position);
+            }
+
+            $em->flush();
+        }
     }
 }

@@ -1,7 +1,7 @@
 $(function() {
-    $('div[data-tree]').each(function() {
-        var props = $(this).data("tree");
-        var input = $(this).find("input");
+    $('div[data-tree] ul').each(function() {
+        var props = $(this).parent().data("tree");
+        var input = $(this).parent().find("input");
 
         $(this)
             .jstree({
@@ -48,6 +48,7 @@ $(function() {
                     jstree.open_node(data.node.parent);
                 }
 
+                console.log(data);
                 input.val(JSON.stringify({
                     "parent": data.parent,
                     "position": data.position

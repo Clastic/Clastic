@@ -47,6 +47,9 @@ class TreeController extends Controller
         if (intval($id)) {
             $filter['parent'] = $em->getReference('ClasticMenuBundle:MenuItem', (int) $request->query->get('id'));
         }
+        else {
+            $filter['parent'] = null;
+        }
 
         $items = $this->getDoctrine()
             ->getRepository('ClasticMenuBundle:MenuItem')
