@@ -136,15 +136,16 @@ class NodeController extends AbstractModuleController
     }
 
     /**
-     * @param NodeReferenceInterface $data
+     * @param Form $form
      */
-    protected function persistData($data)
+    protected function persistData(Form $form)
     {
-        $node = $data->getNode();
+        /** @var NodeReferenceInterface $node */
+        $node = $form->getData()->getNode();
         $node->setChanged(new \DateTime());
 
         $em = $this->getDoctrine()->getManager();
-        $em->persist($data);
+        $em->persist($form->getData());
         $em->flush();
     }
 
