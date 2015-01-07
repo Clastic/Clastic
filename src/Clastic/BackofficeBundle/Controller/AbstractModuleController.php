@@ -123,7 +123,7 @@ abstract class AbstractModuleController extends Controller
 
         if ($form->isValid()) {
             $data = $form->getData();
-            $this->persistData($data);
+            $this->persistData($form);
 
             $request->getSession()
                 ->getFlashBag()
@@ -205,12 +205,12 @@ abstract class AbstractModuleController extends Controller
     }
 
     /**
-     * @param object $data
+     * @param Form $form
      */
-    protected function persistData($data)
+    protected function persistData(Form $form)
     {
         $em = $this->getDoctrine()->getManager();
-        $em->persist($data);
+        $em->persist($form->getData());
         $em->flush();
     }
 }
