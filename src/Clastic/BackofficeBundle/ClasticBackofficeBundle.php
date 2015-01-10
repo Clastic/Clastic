@@ -9,8 +9,6 @@
 
 namespace Clastic\BackofficeBundle;
 
-use Clastic\BackofficeBundle\DependencyInjection\Compiler\RegisterModuleFormPass;
-use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
@@ -20,11 +18,4 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
  */
 class ClasticBackofficeBundle extends Bundle
 {
-    /**
-     * @param ContainerBuilder $container
-     */
-    public function build(ContainerBuilder $container)
-    {
-        $container->addCompilerPass(new RegisterModuleFormPass());
-    }
 }

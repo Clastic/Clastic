@@ -7,7 +7,9 @@
     <parameters>
         <parameter key="clastic.node_manager.class">Clastic\NodeBundle\Node\NodeManager</parameter>
         <parameter key="clastic.node_listener.class">Clastic\NodeBundle\EventListener\NodeListener</parameter>
+        <parameter key="clastic.node.form.node.class">Clastic\NodeBundle\Form\NodeType</parameter>
         <parameter key="clastic.node.type.node.class">Clastic\NodeBundle\Form\Type\NodeType</parameter>
+        <parameter key="clastic.node.form.extension.node.class">Clastic\NodeBundle\Form\Extension\NodeTypeExtension</parameter>
     </parameters>
 
     <services>
@@ -22,9 +24,19 @@
             <argument type="service" id="doctrine" />
         </service>
 
+        <service id="clastic.node.form.node" class="%clastic.node.form.node.class%">
+            <tag name="form.type" alias="clastic_node" />
+        </service>
+
         <service id="clastic.node.type.node" class="%clastic.node.type.node.class%">
             <tag name="form.type" alias="node" />
         </service>
+
+        <service id="clastic.node.form.extension.node" class="%clastic.node.form.extension.node.class%">
+            <tag name="form.type_extension" alias="clastic_node" />
+            <argument type="service" id="event_dispatcher" />
+        </service>
+
     </services>
 
 </container>

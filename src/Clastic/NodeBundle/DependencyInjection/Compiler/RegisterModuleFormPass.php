@@ -7,7 +7,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Clastic\BackofficeBundle\DependencyInjection\Compiler;
+namespace Clastic\NodeBundle\DependencyInjection\Compiler;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
@@ -25,7 +25,7 @@ class RegisterModuleFormPass implements CompilerPassInterface
      */
     public function process(ContainerBuilder $container)
     {
-        if (!$container->hasDefinition('clastic.backoffice.extension.node')) {
+        if (!$container->hasDefinition('clastic.node.form.extension.node')) {
             return;
         }
 
@@ -34,7 +34,7 @@ class RegisterModuleFormPass implements CompilerPassInterface
             $type = $container->getDefinition($id)->getTag('clastic.module')[0]['alias'];
             $extension = $attributes[0]['build_service'];
 
-            $container->getDefinition('clastic.backoffice.extension.node')
+            $container->getDefinition('clastic.node.form.extension.node')
                 ->addMethodCall('registerNodeFormExtension', array($type, new Reference($extension)));
 
 //            var_dump($type, $extension);die;

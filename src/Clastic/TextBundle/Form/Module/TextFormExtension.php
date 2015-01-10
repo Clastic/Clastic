@@ -9,7 +9,7 @@
 
 namespace Clastic\TextBundle\Form\Module;
 
-use Clastic\BackofficeBundle\Form\Extension\AbstractNodeTypeExtension;
+use Clastic\NodeBundle\Form\Extension\AbstractNodeTypeExtension;
 use Symfony\Component\Form\FormBuilderInterface;
 
 /**
