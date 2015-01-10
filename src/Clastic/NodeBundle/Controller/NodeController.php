@@ -150,6 +150,19 @@ class NodeController extends AbstractModuleController
     }
 
     /**
+     * @param NodeReferenceInterface $data
+     *
+     * @return string
+     */
+    protected function getFormSuccessUrl($data)
+    {
+        return $this->generateUrl('clastic_node_form', array(
+            'type' => $this->getType(),
+            'id' => $data->getNode()->getId(),
+        ));
+    }
+
+    /**
      * @return NodeManager
      */
     private function getNodeManager()
