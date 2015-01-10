@@ -66,6 +66,17 @@ class TreeController extends Controller
             );
         }, $items);
 
+        if (!$currentId && is_null($filter['parent'])) {
+            $data[] = array(
+                'id' => 'current',
+                'text' => 'New Item',
+                'children' => false,
+                'state' => array(
+                    'disabled' => false,
+                ),
+            );
+        }
+
         return new JsonResponse($data);
     }
 }

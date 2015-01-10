@@ -4,7 +4,7 @@
     <div class="tree-container">
         <div class="tree" data-tree='{
                 "menuId": {{ menuId }},
-                "currentId": {{ currentId }},
+                "currentId": {{ currentId|default('null') }},
                 "source": "{{ path('clastic_backoffice_menu_item_tree', {'menuId': 1}) }}"
             }'>
             <div class="hidden">

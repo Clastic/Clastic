@@ -31,7 +31,7 @@ $(function() {
                 "dnd": {
                     "copy": false,
                     "is_draggable": function(data) {
-                        return (data[0].id == props.currentId);
+                        return (data[0].id == props.currentId || data[0].id == 'current');
                     },
                     "open_onmove": true,
                     "inside_pos": 'last',
@@ -55,6 +55,5 @@ $(function() {
                 }));
             })
         ;
-
     });
 });
