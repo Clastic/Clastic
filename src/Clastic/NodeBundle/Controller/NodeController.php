@@ -10,7 +10,7 @@
 namespace Clastic\NodeBundle\Controller;
 
 use Clastic\BackofficeBundle\Controller\AbstractModuleController;
-use Clastic\CoreBundle\Node\NodeManager;
+use Clastic\NodeBundle\Node\NodeManager;
 use Clastic\NodeBundle\Node\NodeReferenceInterface;
 use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -147,19 +147,6 @@ class NodeController extends AbstractModuleController
         $em = $this->getDoctrine()->getManager();
         $em->persist($form->getData());
         $em->flush();
-    }
-
-    /**
-     * @param NodeReferenceInterface $data
-     *
-     * @return string
-     */
-    protected function getFormSuccessUrl($data)
-    {
-        return $this->generateUrl('clastic_node_form', array(
-            'type' => $this->getType(),
-            'id' => $data->getNode()->getId(),
-        ));
     }
 
     /**
