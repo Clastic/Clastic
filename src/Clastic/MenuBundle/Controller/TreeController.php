@@ -42,13 +42,11 @@ class TreeController extends Controller
         $em = $this->getDoctrine()->getEntityManager();
         $filter = array(
             'menu' => $em->getReference('ClasticMenuBundle:Menu', $menuId),
+            'parent' => null,
         );
 
         if (intval($id)) {
             $filter['parent'] = $em->getReference('ClasticMenuBundle:MenuItem', (int) $request->query->get('id'));
-        }
-        else {
-            $filter['parent'] = null;
         }
 
         $items = $this->getDoctrine()

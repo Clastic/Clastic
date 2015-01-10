@@ -5,7 +5,7 @@
         <div class="tree" data-tree='{
                 "menuId": {{ menuId }},
                 "currentId": {{ currentId|default('null') }},
-                "source": "{{ path('clastic_backoffice_menu_item_tree', {'menuId': 1}) }}"
+                "source": "{{ path('clastic_backoffice_menu_item_tree', {'menuId': menuId}) }}"
             }'>
             <div class="hidden">
                 {{ block('form_widget_simple') }}
