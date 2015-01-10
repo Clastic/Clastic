@@ -1,5 +1,9 @@
 {% extends 'ClasticNodeBundle:Backoffice/Node:list.html.twig' %}
 
+{% block page_title -%}
+    {{ module.name }}
+{%- endblock %}
+
 {% block list_header %}
     <tr>
         <th></th>
