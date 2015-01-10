@@ -145,9 +145,8 @@ abstract class AbstractModuleController extends Controller
      */
     protected function getFormSuccessUrl($data)
     {
-        return $this->generateUrl('clastic_node_form', array(
+        return $this->generateUrl('clastic_node_list', array(
             'type' => $this->getType(),
-            'id' => $data->getId(),
         ));
     }
 
