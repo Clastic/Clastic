@@ -66,7 +66,7 @@ abstract class AbstractModuleController extends Controller
     /**
      * @return Response
      */
-    public function listAction()
+    public function listAction(Request $request)
     {
         $this->buildBreadcrumbs($this->getType());
 
@@ -79,6 +79,7 @@ abstract class AbstractModuleController extends Controller
 
         $adapter = new DoctrineORMAdapter($this->alterListQuery($queryBuilder));
         $data = new Pagerfanta($adapter);
+        $data->setCurrentPage($request->query->get('page', 1));
 
         return $this->render($this->getListTemplate(), array_merge(array(
             'data' => $data,

@@ -82,11 +82,11 @@ class NodeController extends AbstractModuleController
      *
      * @return Response
      */
-    public function listAction($type = null)
+    public function listAction(Request $request, $type = null)
     {
         $this->type = $type;
 
-        return parent::listAction();
+        return parent::listAction($request);
     }
 
     /**

@@ -96,11 +96,11 @@ class MenuItemController extends AbstractModuleController
     /**
      * @return Response
      */
-    public function listAction($menuId = null)
+    public function listAction(Request $request, $menuId = null)
     {
         $this->menuId = $menuId;
 
-        return parent::listAction();
+        return parent::listAction($request);
     }
 
     public function deleteAction($id, Request $request, $menuId = null)
