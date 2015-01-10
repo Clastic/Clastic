@@ -27,12 +27,7 @@ class MenuItemType extends AbstractType
         $builder
             ->add(
                 $builder->create('tabs', 'tabs', array('inherit_data' => true))
-                    ->add(
-                        $this->createTab($builder, 'general', array('label' => 'General'))
-                            ->add('title', 'text', array(
-                                    'label' => 'Title',
-                                ))
-                    )
+                    ->add($this->createGeneralTab($builder))
                     ->add($this->createActionTab($builder))
                     ->add($this->createPositionTab($builder))
             );
@@ -47,6 +42,15 @@ class MenuItemType extends AbstractType
             ));
 
         return $builder->create($name, 'tabs_tab', $options);
+    }
+
+    private function createGeneralTab(FormBuilderInterface $builder)
+    {
+        return $this->createTab($builder, 'general', array('label' => 'General'))
+            ->add('title', 'text', array(
+                'label' => 'Title',
+            ))
+            ->add('node', 'node');
     }
 
     private function createActionTab(FormBuilderInterface $builder)

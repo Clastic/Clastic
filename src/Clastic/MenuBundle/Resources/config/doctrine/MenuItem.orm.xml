@@ -21,6 +21,9 @@
       <gedmo:tree-level/>
     </field>
 
+    <one-to-one field="node" target-entity="Clastic\NodeBundle\Entity\Node">
+    </one-to-one>
+
     <one-to-many field="children" target-entity="MenuItem" mapped-by="parent">
       <order-by>
         <order-by-field name="left" direction="ASC" />

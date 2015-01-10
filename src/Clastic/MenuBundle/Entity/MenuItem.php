@@ -2,6 +2,7 @@
 
 namespace Clastic\MenuBundle\Entity;
 
+use Clastic\NodeBundle\Entity\Node;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -23,6 +24,11 @@ class MenuItem
      * @var Menu
      */
     private $menu;
+
+    /**
+     * @var Node
+     */
+    private $node;
 
     /**
      */
@@ -95,6 +101,22 @@ class MenuItem
     public function setMenu($menu)
     {
         $this->menu = $menu;
+    }
+
+    /**
+     * @return Node
+     */
+    public function getNode()
+    {
+        return $this->node;
+    }
+
+    /**
+     * @param Node $node
+     */
+    public function setNode($node)
+    {
+        $this->node = $node;
     }
 
     public function setParent(MenuItem $parent = null)
