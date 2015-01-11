@@ -27,8 +27,8 @@ class AppKernel extends Kernel
 
             new Clastic\TextBundle\ClasticTextBundle(),
 
-            new Clastic\UserBundle\ClasticUserBundle(),
             new FOS\UserBundle\FOSUserBundle(),
+            new Clastic\UserBundle\ClasticUserBundle(),
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             new Clastic\NodeBundle\ClasticNodeBundle(),
 
