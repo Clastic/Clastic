@@ -11,7 +11,15 @@ var concat = require('gulp-concat'),
     less = require('gulp-less'),
     clean = require('gulp-clean'),
     livereload = require('gulp-livereload'),
-    notify = require("gulp-notify");
+    fs = require('fs'),
+    notify = require("gulp-notify"),
+    _ = require('lodash'),
+    clastic = require('./src/Clastic/CoreBundle/Resources/scripts/Clastic.js'),
+    gulpScript = require('./src/Clastic/CoreBundle/Resources/scripts/GulpScript.js');
+
+global._ = _;
+clastic();
+gulpScript();
 
 var paths = {
     'styles': {
@@ -33,7 +41,6 @@ var paths = {
             'web/vendor/ckeditor/ckeditor.js',
             'web/vendor/ckeditor/adapters/jquery.js',
             'web/vendor/jquery-slugify/dist/slugify.min.js',
-            'web/vendor/jstree/dist/jstree.min.js',
             'web/vendor/select2/dist/js/select2.min.js',
             'web/vendor/parsleyjs/dist/parsley.min.js',
             'web/vendor/bootstrap-datepicker/js/bootstrap-datepicker.js',
@@ -46,6 +53,30 @@ var paths = {
     'templates': 'src/**/*.twig',
     'build': 'web/build/'
 };
+
+var sourceDir = 'src/Clastic';
+var extraScripts = [];
+fs.readdirSync(sourceDir).forEach(function (file) {
+    var pathDefinitions = './' + sourceDir + '/' + file + '/clastic.js';
+    if (fs.existsSync(pathDefinitions) && !fs.statSync(pathDefinitions).isDirectory()) {
+        extraScripts = extraScripts.concat(require(pathDefinitions)(paths));
+    }
+});
+
+extraScripts.sort(function(a, b) {
+    if (a.options.weight < b.options.weight) {
+        return -1;
+    }
+    else if (a.options.weight > b.options.weight) {
+        return 1;
+    }
+    return 0;
+});
+
+extraScripts.forEach(function(script) {
+    paths.scripts[script.type] = paths.scripts[script.type] || [];
+    paths.scripts[script.type].push(script.src);
+});
 
 var errorHandler = notify.onError(function (err) {
     return "Error: " + err.message;
