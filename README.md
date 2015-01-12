@@ -12,11 +12,14 @@ You need the following installed globally on your system:
 
 # Installation
 
+First [fork](https://github.com/Clastic/Clastic/fork) the project.
+
 1. Clone the project
 
     ```
-    $ git clone git@github.com:Clastic/Clastic.git
+    $ git clone git@github.com:[you]/Clastic.git
     $ cd Clastic
+    $ git remote add upstream git@github.com:Clastic/Clastic.git
     ````
 
 2. Install
@@ -36,7 +39,9 @@ You need the following installed globally on your system:
 1. Update your source
 
     ```
-    $ git pull
+    $ git fetch upstream
+    $ git checkout master
+    $ git rebase upstream/master
     ```
 
 2. Setup new assets
