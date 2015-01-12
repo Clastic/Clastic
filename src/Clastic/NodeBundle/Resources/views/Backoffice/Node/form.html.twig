@@ -1,7 +1,7 @@
 {% extends 'ClasticBackofficeBundle::base.html.twig' %}
 
-{% block html_title %}Clastic - {{ module.name }}{% endblock %}
-{% block page_title %}{{ module.name }}{% endblock %}
+{% block html_title %}Clastic - {{ page_title|default(module.name) }}{% endblock %}
+{% block page_title %}{{ page_title|default(module.name) }}{% endblock %}
 
 {% block header_actions %}
 {% endblock %}

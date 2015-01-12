@@ -9,6 +9,7 @@
 
 namespace Clastic\BackofficeBundle\Controller;
 
+use Clastic\BackofficeBundle\Form\DeleteType;
 use Clastic\NodeBundle\Module\NodeModuleInterface;
 use Doctrine\ORM\QueryBuilder;
 use Pagerfanta\Adapter\DoctrineORMAdapter;
@@ -162,15 +163,30 @@ abstract class AbstractModuleController extends Controller
         $data = $this->resolveData($id);
         $title = $this->resolveDataTitle($data);
 
-        $em = $this->getDoctrine()->getManager();
-        $em->remove($data);
-        $em->flush();
+        $form = $this->createForm(new DeleteType(), array(
+            'id' => $data->getId(),
+            'title' => $title,
+        ));
 
-        $request->getSession()
-            ->getFlashBag()
-            ->add('success', sprintf('You deleted "%s"!', $title));
 
-        return $this->redirect($this->getListUrl());
+        $form->handleRequest($request);
+        if ($form->isValid() && $form->get('tabs')->get('actions')->get('delete')->isClicked()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($data);
+            $em->flush();
+
+            $request->getSession()
+                ->getFlashBag()
+                ->add('success', sprintf('You deleted "%s"!', $title));
+
+            return $this->redirect($this->getListUrl());
+        }
+
+        return $this->render('ClasticNodeBundle:Backoffice/Node:form.html.twig', array(
+            'page_title' => sprintf('Delete "%s"?', $title),
+            'form' => $form->createView(),
+            'module' => $this->get('clastic.module_manager')->getModule($this->getType()),
+        ));
     }
 
     /**
