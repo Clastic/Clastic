@@ -168,16 +168,19 @@ abstract class AbstractModuleController extends Controller
             'title' => $title,
         ));
 
-
         $form->handleRequest($request);
-        if ($form->isValid() && $form->get('tabs')->get('actions')->get('delete')->isClicked()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($data);
-            $em->flush();
 
-            $request->getSession()
-                ->getFlashBag()
-                ->add('success', sprintf('You deleted "%s"!', $title));
+        if ($form->isValid()) {
+            if ($form->get('tabs')->get('actions')->get('delete')->isClicked()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->remove($data);
+                $em->flush();
+
+                $request->getSession()
+                    ->getFlashBag()
+                    ->add('success', sprintf('You deleted "%s"!', $title));
+
+            }
 
             return $this->redirect($this->getListUrl());
         }
