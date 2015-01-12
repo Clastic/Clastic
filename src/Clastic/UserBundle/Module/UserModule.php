@@ -9,12 +9,13 @@
 
 namespace Clastic\UserBundle\Module;
 
+use Clastic\CoreBundle\Module\AdministrationModuleInterface;
 use Clastic\CoreBundle\Module\ModuleInterface;
 
 /**
  * @author Dries De Peuter <dries@nousefreak.be>
  */
-class UserModule implements ModuleInterface
+class UserModule implements ModuleInterface, AdministrationModuleInterface
 {
     /**
      * The name of the module.
