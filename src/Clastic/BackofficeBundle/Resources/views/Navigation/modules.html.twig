@@ -16,8 +16,9 @@
         <li class="dropdown-header">Administration</li>
         <li>
             <ul>
-                <li><a href="{{ path('clastic_node_list', {type: 'user'}) }}">Users</a></li>
-                <li><a href="{{ path('clastic_node_list', {type: 'setting'}) }}">Settings</a></li>
+                {% for module in administrationModules %}
+                    <li><a href="{{ path('clastic_node_list', {type: module.identifier}) }}">{{ module.name }}</a></li>
+                {% endfor %}
             </ul>
         </li>
     </ul>

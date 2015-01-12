@@ -26,7 +26,8 @@ class NavigationController extends Controller
     public function modulesAction()
     {
         return $this->render('ClasticBackofficeBundle:Navigation:modules.html.twig', array(
-                'modules' => $this->getModuleManager()->getModules(),
+            'administrationModules' => $this->getModuleManager()->getAdministrationModules(),
+            'modules' => $this->getModuleManager()->getContentModules(),
         ));
     }
 

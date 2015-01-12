@@ -31,7 +31,6 @@ class DashboardController extends Controller
         $this->buildBreadcrumbs();
 
         return $this->render('ClasticBackofficeBundle:Dashboard:index.html.twig', array(
-            'modules' => $this->getModuleManager()->getModules(),
             'myContent' => $this->getMyContent(),
             'recent' => $this->getRecent(),
         ));
