@@ -163,6 +163,9 @@ abstract class AbstractModuleController extends Controller
         $data = $this->resolveData($id);
         $title = $this->resolveDataTitle($data);
 
+        $breadcrumbs = $this->buildBreadcrumbs($this->getType());
+        $breadcrumbs->addItem(sprintf('Delete "%s"', $this->resolveDataTitle($data)));
+
         $form = $this->createForm(new DeleteType(), array(
             'id' => $data->getId(),
             'title' => $title,
