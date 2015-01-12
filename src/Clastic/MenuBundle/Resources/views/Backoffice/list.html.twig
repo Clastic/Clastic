@@ -3,7 +3,6 @@
 {% block list_header %}
     <tr>
         <th></th>
-        <th></th>
         <th>Title</th>
         <th>Status</th>
     </tr>
@@ -12,11 +11,9 @@
 {% block list_body %}
     <tr>
         <td>
-            <a class="btn btn-success btn-xs" href="{{ path('clastic_node_form', {type: type, id: record.id}) }}"><i class="fa fa-pencil"></i></a>
-            <a class="btn btn-danger btn-xs" href="{{ path('clastic_node_delete', {type: type, id: record.id}) }}"><i class="fa fa-trash"></i></a>
-        </td>
-        <td>
-            <a href="{{ path('clastic_backoffice_menu_item_list', {menuId: record.id}) }}">children</a>
+            <a class="btn btn-success btn-xs" title="Edit" href="{{ path('clastic_node_form', {type: type, id: record.id}) }}"><i class="fa fa-pencil"></i></a>
+            <a class="btn btn-danger btn-xs" title="Delete" href="{{ path('clastic_node_delete', {type: type, id: record.id}) }}"><i class="fa fa-trash"></i></a>
+            <a class="btn btn-primary btn-xs" title="Items" href="{{ path('clastic_backoffice_menu_item_list', {menuId: record.id}) }}"><i class="fa fa-list"></i></a>
         </td>
         <td>{{ record.title }}</td>
         <td>
