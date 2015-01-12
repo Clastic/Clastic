@@ -1,4 +1,4 @@
-(function(){
+(function() {
     $('.multi_select > select').multiSelect({
         selectableHeader: "<div class='pool-header'>Avaliable</div>" +
         "<input type='text' class='search-input' autocomplete='off' placeholder='Search'>",
@@ -70,8 +70,4 @@
         keepOrder: true,
         dblClick: true
     });
-
-    $(function() {
-        $('textarea.wysiwyg').ckeditor();
-    });
-})();
+}());
