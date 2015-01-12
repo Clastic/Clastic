@@ -33,6 +33,8 @@ class ModuleManager
     }
 
     /**
+     * Get all modules
+     *
      * @return ModuleInterface[]
      */
     public function getModules()
@@ -40,6 +42,35 @@ class ModuleManager
         return $this->modules;
     }
 
+    /**
+     * Get all modules that handle content.
+     *
+     * @return ModuleInterface[]
+     */
+    public function getContentModules()
+    {
+        return array_filter($this->getModules(), function(ModuleInterface $module) {
+            return ! ($module instanceof AdministrationModuleInterface);
+        });
+    }
+
+    /**
+     * Get all modules that handle administration.
+     *
+     * @return ModuleInterface[]
+     */
+    public function getAdministrationModules()
+    {
+        return array_filter($this->getModules(), function(ModuleInterface $module) {
+            return ($module instanceof AdministrationModuleInterface);
+        });
+    }
+
+    /**
+     * @param string $name
+     *
+     * @return ModuleInterface|null
+     */
     public function getModule($name)
     {
         if (isset($this->modules[$name])) {
