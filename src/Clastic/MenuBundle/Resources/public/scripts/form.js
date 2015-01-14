@@ -1,7 +1,7 @@
 $(function() {
-    $('div[data-tree] ul').each(function() {
-        var props = $(this).parent().data("tree");
-        var input = $(this).parent().find("input");
+    $('div[data-tree]').each(function() {
+        var props = $(this).data("tree");
+        var input = $(this).find("input");
 
         $(this)
             .jstree({
