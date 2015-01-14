@@ -34,6 +34,7 @@ class AppKernel extends Kernel
 
             new Clastic\MenuBundle\ClasticMenuBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
+            new Clastic\BlogBundle\ClasticBlogBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

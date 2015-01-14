@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="clastic.blog.module.class">Clastic\BlogBundle\Module\BlogModule</parameter>
+        <parameter key="clastic.blog.module.form_build.class">Clastic\BlogBundle\Form\Module\BlogFormExtension</parameter>
+    </parameters>
+
+    <services>
+        <service id="clastic.blog.module" class="%clastic.blog.module.class%">
+            <tag name="clastic.module" node_module="true" alias="blog" />
+            <tag name="clastic.node_form" build_service="clastic.blog.module.form_build" />
+        </service>
+
+        <service id="clastic.blog.module.form_build" class="%clastic.blog.module.form_build.class%" />
+    </services>
+</container>
