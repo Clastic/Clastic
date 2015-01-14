@@ -12,6 +12,7 @@
     "mousetrap": "~1.4.6",
     "multiselect": "~0.9.12",
     "quicksearch": "~2.0.5",
-    "ckeditor": "~4.4.6"
+    "ckeditor": "~4.4.6",
+    "select2": "~4.0.0"
   }
 }

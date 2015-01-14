@@ -35,6 +35,13 @@
     {% endspaceless %}
 {% endblock textarea_widget %}
 
+{% block choice_widget_collapsed %}
+    {% spaceless %}
+        {% set attr = attr|merge({'class': attr.class|default('') ~ ' form-control'}) %}
+        {{ parent() }}
+    {% endspaceless %}
+{% endblock choice_widget_collapsed %}
+
 {# Custom elements #}
 
 {% block tabs_widget -%}

@@ -17,7 +17,8 @@ var paths = {
     'styles': {
         'app': [
             'web/vendor/multiselect/css/multi-select.css',
-            'src/Clastic/*/Resources/public/styles/**.less'
+            'src/Clastic/*/Resources/public/styles/**.less',
+            'src/Clastic/*/Resources/public/styles/*/*.less'
         ],
         'main': 'src/Clastic/*/Resources/public/styles/style.less'
     },
@@ -33,6 +34,7 @@ var paths = {
             'web/vendor/ckeditor/adapters/jquery.js',
             'web/vendor/jquery-slugify/dist/slugify.min.js',
             'web/vendor/jstree/dist/jstree.min.js',
+            'web/vendor/select2/dist/js/select2.min.js',
             'http://getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js'
         ],
         'app': [
