@@ -38,6 +38,9 @@
 {% block choice_widget_collapsed %}
     {% spaceless %}
         {% set attr = attr|merge({'class': attr.class|default('') ~ ' form-control'}) %}
+        {% if not multiple %}
+            {% set attr = attr|merge({'class': attr.class ~ ' select2'}) %}
+        {% endif %}
         {{ parent() }}
     {% endspaceless %}
 {% endblock choice_widget_collapsed %}
