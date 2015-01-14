@@ -7,13 +7,8 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "bootstrap": "~3.3.1",
-    "fontawesome": "~4.2.0",
-    "mousetrap": "~1.4.6",
-    "multiselect": "~0.9.12",
-    "quicksearch": "~2.0.5",
-    "ckeditor": "~4.4.6",
-    "jquery-slugify": "~1.0.4",
-    "jstree": "~3.0.9"
+    "clastic_backoffice": "./src/Clastic/BackofficeBundle/bower.json",
+    "clastic_menu": "./src/Clastic/MenuBundle/bower.json",
+    "clastic_alias": "./src/Clastic/AliasBundle/bower.json"
   }
 }

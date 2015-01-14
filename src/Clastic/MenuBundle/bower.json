@@ -1,0 +1,12 @@
+{
+  "name": "clastic_menu",
+  "version": "1.0.0",
+  "authors": [
+    "Dries De Peuter <dries@nousefreak.be>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "jstree": "~3.0.9"
+  }
+}
