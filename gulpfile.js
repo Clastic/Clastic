@@ -35,6 +35,7 @@ var paths = {
             'web/vendor/jquery-slugify/dist/slugify.min.js',
             'web/vendor/jstree/dist/jstree.min.js',
             'web/vendor/select2/dist/js/select2.min.js',
+            'web/vendor/parsleyjs/dist/parsley.min.js',
             'http://getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js'
         ],
         'app': [
