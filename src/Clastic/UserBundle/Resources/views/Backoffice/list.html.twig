@@ -16,7 +16,9 @@
         </td>
         <td>{{ record.username }}</td>
         <td>
-            <span class="label label-default">online</span>
+            {% for role in record.roles %}
+                <span class="label label-default">{{ role }}</span>
+            {% endfor %}
         </td>
     </tr>
 {% endblock %}
