@@ -10,6 +10,7 @@
         <parameter key="clastic.alias.module.class">Clastic\AliasBundle\Module\AliasModule</parameter>
         <parameter key="clastic.alias.extension.node.class">Clastic\AliasBundle\Form\Extension\NodeTypeExtension</parameter>
         <parameter key="clastic.alias.node_listener.class">Clastic\AliasBundle\EventListener\NodeListener</parameter>
+        <parameter key="clastic.alias.form_subscriber.class">Clastic\AliasBundle\EventListener\FormSubscriber</parameter>
     </parameters>
 
     <services>
@@ -21,8 +22,13 @@
             <tag name="clastic.module" node_module="false" alias="alias" />
         </service>
 
+        <service id="clastic.alias.form_subscriber" class="%clastic.alias.form_subscriber.class%">
+            <argument type="service" id="validator" />
+        </service>
+
         <service id="clastic.alias.extension.node" class="%clastic.alias.extension.node.class%">
             <tag name="form.type_extension" alias="clastic_node" />
+            <argument type="service" id="clastic.alias.form_subscriber" />
         </service>
 
         <service id="clastic.alias.node_listener" class="%clastic.alias.node_listener.class%">

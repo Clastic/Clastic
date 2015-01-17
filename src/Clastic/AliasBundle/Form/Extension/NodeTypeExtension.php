@@ -9,6 +9,7 @@
 
 namespace Clastic\AliasBundle\Form\Extension;
 
+use Clastic\AliasBundle\EventListener\FormSubscriber;
 use Symfony\Component\Form\AbstractTypeExtension;
 use Symfony\Component\Form\FormBuilderInterface;
 
@@ -19,6 +20,15 @@ use Symfony\Component\Form\FormBuilderInterface;
  */
 class NodeTypeExtension extends AbstractTypeExtension
 {
+    /**
+     * @var FormSubscriber
+     */
+    private $formSubscriber;
+
+    public function __construct(FormSubscriber $formSubscriber)
+    {
+        $this->formSubscriber = $formSubscriber;
+    }
     /**
      * Returns the name of the type being extended.
      *
@@ -35,6 +45,7 @@ class NodeTypeExtension extends AbstractTypeExtension
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $builder->addEventSubscriber($this->formSubscriber);
         $aliasTab = $this->createTab($builder, 'alias', array('label' => 'Alias'));
 
         $aliasTab->add('alias', 'text', array(
