@@ -11,6 +11,7 @@ namespace Clastic\NodeBundle\Filter;
 
 use Doctrine\ORM\Mapping\ClassMetaData;
 use Doctrine\ORM\Query\Filter\SQLFilter;
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\Security\Core\SecurityContext;
 
 /**
@@ -33,7 +34,12 @@ class NodePublicationConfigurator
 
     public function onKernelRequest()
     {
-        if (!$this->securityContext->getToken()) {
+        $token = $this->securityContext->getToken();
+        if (!$token) {
+            return;
+        }
+
+        if (!$token instanceof UsernamePasswordToken) {
             return;
         }
 
