@@ -52,8 +52,7 @@
                                     <td>{{ record.node.user.username }}</td>
                                     <td>{{ record.node.created|date }}</td>
                                     <td>
-                                        {% set pub = record.node.publication %}
-                                        {% if pub.online %}
+                                        {% if record.node.publication.online %}
                                             <span class="label label-success">online</span>
                                         {% else %}
                                             <span class="label label-danger">offline</span>
