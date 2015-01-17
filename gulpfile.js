@@ -36,6 +36,7 @@ var paths = {
             'web/vendor/jstree/dist/jstree.min.js',
             'web/vendor/select2/dist/js/select2.min.js',
             'web/vendor/parsleyjs/dist/parsley.min.js',
+            'web/vendor/bootstrap-datepicker/js/bootstrap-datepicker.js',
             'http://getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js'
         ],
         'app': [

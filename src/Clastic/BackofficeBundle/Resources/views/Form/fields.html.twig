@@ -45,6 +45,28 @@
     {% endspaceless %}
 {% endblock choice_widget_collapsed %}
 
+
+{% block checkbox_row -%}
+    <div class="checkbox">
+        {% if not compound %}
+            {% set label_attr = label_attr|merge({'for': id}) %}
+        {% endif %}
+        {% if inline is defined and inline %}
+            {% set label_attr = label_attr|merge({'class': (label_attr.class|default('') ~ ' checkbox-inline')|trim}) %}
+        {% endif %}
+        {% if required %}
+            {% set label_attr = label_attr|merge({'class': (label_attr.class|default('') ~ ' required')|trim}) %}
+        {% endif %}
+        {% if label is empty %}
+            {% set label = name|humanize %}
+        {% endif %}
+        <label{% for attrname, attrvalue in label_attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}>
+            {{- form_widget(form) -}} {{ label|trans({}, translation_domain) }}
+        </label>
+        {{- form_errors(form) -}}
+    </div>
+{%- endblock checkbox_row %}
+
 {# Custom elements #}
 
 {% block tabs_widget -%}
@@ -86,3 +108,11 @@
         {{ block('choice_widget') }}
     </div>
 {%- endblock multi_select_widget %}
+
+{% block datepicker_widget -%}
+    <div class='input-group'>
+        {% set attr = attr|merge({'data-provide': 'datepicker'}) %}
+        {{- block('form_widget_simple') -}}
+        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+    </div>
+{%- endblock datepicker_widget %}
