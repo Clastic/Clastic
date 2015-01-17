@@ -118,4 +118,16 @@ class NodePublication
     {
         return $this->publishedTill;
     }
+
+    /**
+     * @return bool
+     */
+    public function isOnline()
+    {
+        $now = new \DateTime();
+
+        return $this->available
+            && $this->publishedFrom <= $now
+            && (is_null($this->publishedTill) || $this->publishedTill >= $now);
+    }
 }
