@@ -1,3 +1,11 @@
+demo:
+    resource: "@DemoBundle/Resources/config/routing.xml"
+    prefix: /
+
+_front:
+    resource: "@ClasticFrontBundle/Resources/config/routing.xml"
+    prefix:   /
+
 _admin:
     resource: routing_admin.yml
     prefix: admin

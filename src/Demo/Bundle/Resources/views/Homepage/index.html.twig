@@ -1,0 +1,20 @@
+{% extends '::base.html.twig' %}
+
+{% block content_header %}
+    <div class="blog-header">
+        <h1 class="blog-title">Clastic</h1>
+        <p class="lead blog-description">Clastic demo site.</p>
+    </div>
+{% endblock %}
+
+{% block content %}
+
+    {% for post in blogPosts %}
+        <div class="blog-post">
+            <h2 class="blog-post-title">{{ post.node.title }}</h2>
+            <p class="blog-post-meta">{{ post.node.created|date() }} by <a href="#">{{ post.node.user.username }}</a></p>
+            <hr/>
+            {{ post.body|raw }}
+        </div>
+    {% endfor %}
+{% endblock %}

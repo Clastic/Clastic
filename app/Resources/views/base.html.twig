@@ -1,13 +1,62 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/favicon.ico">
+
+    <title>Clastic Demo setup</title>
+
+    <link href="/vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/bundles/demo/css/blog.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="blog-masthead">
+        <div class="container">
+            <nav class="blog-nav">
+                <a class="blog-nav-item active" href="/">Home</a>
+                <a class="blog-nav-item" href="/test">New features</a>
+                <a class="blog-nav-item" href="#">Press</a>
+                <a class="blog-nav-item" href="#">New hires</a>
+                <a class="blog-nav-item" href="#">About</a>
+            </nav>
+        </div>
+    </div>
+
+
+    <div class="container">
+        {% block content_header %}{% endblock %}
+        <div class="row">
+            <div class="col-sm-8 blog-main">
+                {% block content %}{% endblock %}
+            </div>
+            <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+                <div class="sidebar-module sidebar-module-inset">
+                    <h4>About</h4>
+                    <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
+                </div>
+                <div class="sidebar-module">
+                    <h4>Elsewhere</h4>
+                    <ol class="list-unstyled">
+                        <li><a href="https://github.com/Clastic">GitHub</a></li>
+                    </ol>
+                </div>
+            </div><!-- /.blog-sidebar -->
+        </div>
+    </div>
+
+    <footer class="blog-footer">
+        <p>This template is an example template from the <a href="http://getbootstrap.com">Bootstrap</a> site created by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+        <p>
+            <a href="#">Back to top</a>
+        </p>
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
 </html>

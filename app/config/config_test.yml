@@ -3,10 +3,10 @@ imports:
 
 doctrine:
     dbal:
-        dbname:   "%test_database_name%"
+        dbname:   "%database_name%"
         driver:   pdo_mysql
-        user:     "%test_database_user%"
-        password: "%test_database_password%"
+        user:     "%database_user%"
+        password: "%database_password%"
 
 framework:
     test: ~
