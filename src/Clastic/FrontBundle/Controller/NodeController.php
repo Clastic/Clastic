@@ -13,6 +13,7 @@ use Clastic\FrontBundle\Event\FrontNodeEvent;
 use Clastic\NodeBundle\Node\NodeReferenceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * Class NodeController
@@ -38,8 +39,14 @@ class NodeController extends Controller
      */
     private function findNode($id)
     {
-        return $this->get('clastic.node_manager')
+        $node = $this->get('clastic.node_manager')
             ->loadNode($id);
+
+        if (!$node) {
+            throw new NotFoundHttpException();
+        }
+
+        return $node;
     }
 
     /**
