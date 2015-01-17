@@ -10,6 +10,7 @@
 namespace Clastic\AliasBundle\EventListener;
 
 use Clastic\AliasBundle\Entity\Alias;
+use ProxyManager\Proxy\ValueHolderInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Form\Extension\Validator\ViolationMapper\ViolationMapper;
 use Symfony\Component\Form\FormEvent;
@@ -52,6 +53,10 @@ class FormSubscriber implements EventSubscriberInterface
     {
         /** @var Alias $alias */
         $alias = $event->getData()->getNode()->alias;
+
+        if ($alias instanceof ValueHolderInterface) {
+            $alias = $alias->getWrappedValueHolderValue();
+        }
 
         $violations = $this->validator->validate($alias);
 
