@@ -11,5 +11,6 @@
     "clastic_menu": "./src/Clastic/MenuBundle/bower.json",
     "clastic_alias": "./src/Clastic/AliasBundle/bower.json"
   },
-  "ignore": []
+  "ignore": [],
+  "main": []
 }
