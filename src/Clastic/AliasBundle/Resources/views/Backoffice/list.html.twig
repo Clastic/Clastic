@@ -23,7 +23,11 @@
         <td>{{ record.node.user.username }}</td>
         <td>{{ record.node.created|date }}</td>
         <td>
-            <span class="label label-default">online</span>
+            {% if record.node.publication.online %}
+                <span class="label label-success">online</span>
+            {% else %}
+                <span class="label label-danger">offline</span>
+            {% endif %}
         </td>
     </tr>
 {% endblock %}
