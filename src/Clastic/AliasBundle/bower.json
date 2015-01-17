@@ -8,5 +8,6 @@
   "private": true,
   "dependencies": {
     "jquery-slugify": "~1.0.4"
-  }
+  },
+  "ignore": []
 }
