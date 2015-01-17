@@ -8,5 +8,6 @@
   "private": true,
   "dependencies": {
     "jstree": "~3.0.9"
-  }
+  },
+  "ignore": []
 }
