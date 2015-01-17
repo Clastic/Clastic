@@ -76,7 +76,7 @@ class NodeManager
     public function loadNode($nodeId, $type = null)
     {
         if (is_null($type)) {
-            $node = $this->registry->getRepository('ClasticCoreBundle:Node')
+            $node = $this->registry->getRepository('ClasticNodeBundle:Node')
                 ->find($nodeId);
             $type = $node->getType();
         }
