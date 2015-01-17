@@ -49,6 +49,11 @@ class Node
     private $changed;
 
     /**
+     * @var NodePublication
+     */
+    private $publication;
+
+    /**
      * Get id
      *
      * @return integer
@@ -168,5 +173,21 @@ class Node
     public function getChanged()
     {
         return $this->changed;
+    }
+
+    /**
+     * @return NodePublication
+     */
+    public function getPublication()
+    {
+        return $this->publication;
+    }
+
+    /**
+     * @param NodePublication $publication
+     */
+    public function setPublication(NodePublication $publication)
+    {
+        $this->publication = $publication;
     }
 }

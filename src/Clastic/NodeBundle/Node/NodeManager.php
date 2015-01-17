@@ -10,6 +10,7 @@
 namespace Clastic\NodeBundle\Node;
 
 use Clastic\NodeBundle\Entity\Node;
+use Clastic\NodeBundle\Entity\NodePublication;
 use Clastic\NodeBundle\Event\NodeCreateEvent;
 use Clastic\NodeBundle\Event\NodeResolveEntityNameEvent;
 use Clastic\CoreBundle\NodeEvents;
@@ -60,6 +61,8 @@ class NodeManager
 
         $entity = $event->getEntity();
         $entity->setNode($event->getNode());
+
+        $entity->getNode()->setPublication(new NodePublication());
 
         return $entity;
     }

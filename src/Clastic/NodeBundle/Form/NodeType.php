@@ -29,21 +29,36 @@ class NodeType extends AbstractType
         $builder
             ->add(
                 $builder->create('tabs', 'tabs', array('inherit_data' => true))
-                    ->add(
-                        $this->createTab($builder, 'general', array('label' => 'General'))
-                            ->add('title', 'text', array(
-                                    'property_path' => 'node.title',
-                                    'label' => 'Title',
-                                ))
-                    )
-                    ->add(
-                        $this->createActionTab($builder)
-                            ->add('save', 'submit', array(
-                                    'label' => 'Save',
-                                    'attr' => array('class' => 'btn btn-success'),
-                                ))
-                    )
+                    ->add($this->createGeneralTab($builder))
+                    ->add($this->createPublicationTab($builder))
+                    ->add($this->createActionTab($builder))
             );
+    }
+
+    private function createGeneralTab(FormBuilderInterface $builder)
+    {
+        return $this->createTab($builder, 'general', array('label' => 'General'))
+            ->add('title', 'text', array(
+                'property_path' => 'node.title',
+                'label' => 'Title',
+            ));
+    }
+    private function createPublicationTab(FormBuilderInterface $builder)
+    {
+        return $this->createTab($builder, 'publication', array('label' => 'Publication'))
+            ->add('available', 'checkbox', array(
+                'property_path' => 'node.publication.available',
+                'label' => 'Available',
+                'required' => false,
+            ))->add('publishedFrom', 'datepicker', array(
+                'property_path' => 'node.publication.publishedFrom',
+                'label' => 'From',
+                'required' => false,
+            ))->add('publishedTill', 'datepicker', array(
+                'property_path' => 'node.publication.publishedTill',
+                'label' => 'Till',
+                'required' => false,
+            ));
     }
 
     private function createTab(FormBuilderInterface $builder, $name, $options = array())
@@ -59,9 +74,14 @@ class NodeType extends AbstractType
 
     private function createActionTab(FormBuilderInterface $builder)
     {
-        return $builder->create('actions', 'tabs_tab_actions', array(
-            'mapped' => false,
-            'inherit_data' => true,
+        return $builder
+            ->create('actions', 'tabs_tab_actions', array(
+                'mapped' => false,
+                'inherit_data' => true,
+            ))
+            ->add('save', 'submit', array(
+            'label' => 'Save',
+            'attr' => array('class' => 'btn btn-success'),
         ));
     }
 
