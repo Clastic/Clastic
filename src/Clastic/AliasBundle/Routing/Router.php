@@ -63,7 +63,7 @@ class Router extends \Symfony\Bundle\FrameworkBundle\Routing\Router
             }
 
             $parameters = $this->getMatcher()
-              ->match($alias->getPath());
+              ->match('/' . $alias->getPath());
             $canonical = $alias->getPath();
         }
 
