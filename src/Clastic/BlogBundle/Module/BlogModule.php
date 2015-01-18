@@ -43,4 +43,12 @@ class BlogModule implements NodeModuleInterface
     {
         return 'ClasticBlogBundle:Blog';
     }
+
+    /**
+     * @return string|bool
+     */
+    public function getDetailTemplate()
+    {
+        return 'ClasticBlogBundle:Front:detail.html.twig';
+    }
 }
