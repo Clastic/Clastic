@@ -213,15 +213,17 @@ abstract class AbstractModuleController extends Controller
      */
     protected function buildBreadcrumbs($type)
     {
-        /** @var NodeModuleInterface $module */
-        $module = $this->get('clastic.module_manager')->getModule($type);
-
         /** @var Breadcrumbs $breadcrumbs */
         $breadcrumbs = $this->get("white_october_breadcrumbs");
         $breadcrumbs->addItem("Home", $this->get("router")->generate("clastic_backoffice_dashboard"));
-        $breadcrumbs->addItem($module->getName(), $this->get("router")->generate("clastic_node_list", array(
-            'type' => $type,
-        )));
+
+        /** @var NodeModuleInterface $module */
+        $module = $this->get('clastic.module_manager')->getModule($type);
+        if ($module) {
+            $breadcrumbs->addItem($module->getName(), $this->get("router")->generate("clastic_node_list", array(
+                'type' => $type,
+            )));
+        }
 
         return $breadcrumbs;
     }
