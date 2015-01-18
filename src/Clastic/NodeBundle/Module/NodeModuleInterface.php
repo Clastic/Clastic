@@ -22,4 +22,9 @@ interface NodeModuleInterface extends ModuleInterface
      * @return string
      */
     public function getEntityName();
+
+    /**
+     * @return string|bool
+     */
+    public function getDetailTemplate();
 }

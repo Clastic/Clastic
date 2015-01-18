@@ -12,6 +12,7 @@ namespace Clastic\FrontBundle\Controller;
 use Clastic\FrontBundle\Event\FrontNodeEvent;
 use Clastic\NodeBundle\Node\NodeReferenceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
@@ -21,15 +22,16 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class NodeController extends Controller
 {
     /**
-     * @param int $id
+     * @param int     $id
+     * @param Request $request
      *
      * @return Response
      */
-    public function detailAction($id)
+    public function detailAction($id, Request $request)
     {
         $record = $this->findNode($id);
 
-        return $this->renderTemplate($record);
+        return $this->renderTemplate($record, $request);
     }
 
     /**
@@ -54,12 +56,13 @@ class NodeController extends Controller
      *
      * @return Response
      */
-    private function renderTemplate(NodeReferenceInterface $record)
+    private function renderTemplate(NodeReferenceInterface $record, Request $request)
     {
         $event = new FrontNodeEvent(
             $record->getNode(),
             'ClasticFrontBundle:Node:detail.html.twig',
-            array('record' => $record)
+            array('record' => $record),
+            $request
         );
         $this->get('event_dispatcher')
             ->dispatch('clastic.node.front', $event);

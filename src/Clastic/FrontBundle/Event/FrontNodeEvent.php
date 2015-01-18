@@ -12,6 +12,7 @@ namespace Clastic\FrontBundle\Event;
 use Clastic\NodeBundle\Entity\Node;
 use Clastic\NodeBundle\Node\NodeReferenceInterface;
 use Symfony\Component\EventDispatcher\Event;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * @author Dries De Peuter <dries@nousefreak.be>
@@ -34,11 +35,12 @@ class FrontNodeEvent extends Event
     private $templateArguments;
 
     /**
-     * @param Node   $node
-     * @param string $template
-     * @param array  $templateArguments
+     * @param Node    $node
+     * @param string  $template
+     * @param array   $templateArguments
+     * @param Request $request
      */
-    public function __construct(Node $node, $template, array $templateArguments)
+    public function __construct(Node $node, $template, array $templateArguments, Request $request)
     {
         $this->node = $node;
         $this->template = $template;
