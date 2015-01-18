@@ -43,4 +43,12 @@ class TextModule implements NodeModuleInterface
     {
         return 'ClasticTextBundle:Text';
     }
+
+    /**
+     * @return string|bool
+     */
+    public function getDetailTemplate()
+    {
+        return 'ClasticTextBundle:Front:detail.html.twig';
+    }
 }
