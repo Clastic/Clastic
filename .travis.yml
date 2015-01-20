@@ -1,0 +1,26 @@
+language: php
+
+php:
+  - 5.3
+  - 5.4
+  - 5.5
+  - 5.6
+  - hhvm
+
+env:
+  global:
+    - SYMFONY_ENV=test
+    - SYMFONY__TEST_DATABASE_NAME=clastic_test
+    - SYMFONY__TEST_DATABASE_USER=travis
+    - SYMFONY__TEST_DATABASE_PASSWORD=""
+
+before_script:
+  - mysql -e 'create database clastic_test;'
+  - composer install --prefer-source --no-interaction
+  - php ./app/console assets:install
+  - php ./app/console doctrine:schema:drop --force
+  - php ./app/console doctrine:schema:create
+  - php ./app/console doctrine:fixtures:load -n
+
+script:
+  - phpunit -c app
