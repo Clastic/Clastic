@@ -33,17 +33,6 @@ var paths = {
     'scripts': {
         'vendor': [
             'src/Clastic/*/Resources/public/scripts/**.config.js',
-            'web/vendor/jquery/dist/jquery.js',
-            'web/vendor/bootstrap/dist/js/bootstrap.js',
-            'web/vendor/mousetrap/mousetrap.js',
-            'web/vendor/quicksearch/dist/jquery.quicksearch.js',
-            'web/vendor/multiselect/js/jquery.multi-select.js',
-            'web/vendor/ckeditor/ckeditor.js',
-            'web/vendor/ckeditor/adapters/jquery.js',
-            'web/vendor/jquery-slugify/dist/slugify.min.js',
-            'web/vendor/select2/dist/js/select2.min.js',
-            'web/vendor/parsleyjs/dist/parsley.min.js',
-            'web/vendor/bootstrap-datepicker/js/bootstrap-datepicker.js',
             'http://getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js'
         ],
         'app': [
@@ -64,13 +53,7 @@ fs.readdirSync(sourceDir).forEach(function (file) {
 });
 
 extraScripts.sort(function(a, b) {
-    if (a.options.weight < b.options.weight) {
-        return -1;
-    }
-    else if (a.options.weight > b.options.weight) {
-        return 1;
-    }
-    return 0;
+    return (a.options.weight < b.options.weight) ? -1 : 1;
 });
 
 extraScripts.forEach(function(script) {
