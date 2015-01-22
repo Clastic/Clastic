@@ -11,15 +11,10 @@ var concat = require('gulp-concat'),
     less = require('gulp-less'),
     clean = require('gulp-clean'),
     livereload = require('gulp-livereload'),
-    fs = require('fs'),
     notify = require("gulp-notify"),
-    _ = require('lodash'),
-    clastic = require('./src/Clastic/CoreBundle/Resources/scripts/Clastic.js'),
-    gulpScript = require('./src/Clastic/CoreBundle/Resources/scripts/GulpScript.js');
+    clasticNamespace = require('./src/Clastic/CoreBundle/Resources/scripts/Clastic.js');
 
-global._ = _;
-clastic();
-gulpScript();
+clasticNamespace();
 
 var paths = {
     'styles': {
@@ -43,23 +38,10 @@ var paths = {
     'build': 'web/build/'
 };
 
-var sourceDir = 'src/Clastic';
-var extraScripts = [];
-fs.readdirSync(sourceDir).forEach(function (file) {
-    var pathDefinitions = './' + sourceDir + '/' + file + '/clastic.js';
-    if (fs.existsSync(pathDefinitions) && !fs.statSync(pathDefinitions).isDirectory()) {
-        extraScripts = extraScripts.concat(require(pathDefinitions)(paths));
-    }
-});
+var clastic = new Clastic.Clastic();
 
-extraScripts.sort(function(a, b) {
-    return (a.options.weight < b.options.weight) ? -1 : 1;
-});
-
-extraScripts.forEach(function(script) {
-    paths.scripts[script.type] = paths.scripts[script.type] || [];
-    paths.scripts[script.type].push(script.src);
-});
+var rootDir = __dirname;
+paths = clastic.resolvePaths(paths, rootDir);
 
 var errorHandler = notify.onError(function (err) {
     return "Error: " + err.message;

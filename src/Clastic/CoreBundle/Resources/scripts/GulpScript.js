@@ -1,5 +1,8 @@
 module.exports = function() {
     'use strict';
+
+    var _ = require('lodash');
+
     global.Clastic = global.Clastic || {};
     var Clastic = global.Clastic;
 
