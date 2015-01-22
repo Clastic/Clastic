@@ -30,21 +30,12 @@ class RegisterModuleFormPass implements CompilerPassInterface
         }
 
         foreach ($container->findTaggedServiceIds('clastic.node_form') as $id => $attributes) {
-
-            $type = $container->getDefinition($id)->getTag('clastic.module')[0]['alias'];
+            $tag = $container->getDefinition($id)->getTag('clastic.module');
+            $type = $tag[0]['alias'];
             $extension = $attributes[0]['build_service'];
 
             $container->getDefinition('clastic.node.form.extension.node')
                 ->addMethodCall('registerNodeFormExtension', array($type, new Reference($extension)));
-
-//            var_dump($type, $extension);die;
-
-//            var_dump($attributes[0]['build_service']);die;
-
-//            var_dump($container->getParameter($attributes[0]['build_service']));die;
-
-//            var_dump($container->getDefinition($id)->getTags(), $attributes);
         }
-//        die;
     }
 }
