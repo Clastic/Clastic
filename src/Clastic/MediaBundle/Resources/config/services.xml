@@ -1,0 +1,26 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="clastic.media.module.class">Clastic\MediaBundle\Module\MediaModule</parameter>
+        <parameter key="clastic.media.file_listener.class">Clastic\MediaBundle\EventListener\FileListener</parameter>
+        <parameter key="clastic.media.type.file_browser.class">Clastic\MediaBundle\Form\Type\FileBrowserType</parameter>
+    </parameters>
+
+    <services>
+        <service id="clastic.media.module" class="%clastic.media.module.class%">
+            <tag name="clastic.module" node_module="false" alias="media" />
+        </service>
+
+        <service id="clastic.media.file_listener" class="%clastic.media.file_listener.class%">
+            <tag name="doctrine.event_subscriber" connection="default" />
+        </service>
+
+        <service id="clastic.media.type.file_browser" class="%clastic.media.type.file_browser.class%">
+            <tag name="form.type" alias="file_browser" />
+        </service>
+    </services>
+</container>

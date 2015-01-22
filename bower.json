@@ -9,7 +9,8 @@
   "dependencies": {
     "clastic_backoffice": "./src/Clastic/BackofficeBundle/bower.json",
     "clastic_menu": "./src/Clastic/MenuBundle/bower.json",
-    "clastic_alias": "./src/Clastic/AliasBundle/bower.json"
+    "clastic_alias": "./src/Clastic/AliasBundle/bower.json",
+    "clastic_media": "./src/Clastic/MediaBundle/bower.json"
   },
   "ignore": [],
   "main": []

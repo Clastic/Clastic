@@ -1,0 +1,19 @@
+{
+    "name": "clastic/media-bundle",
+    "description": "Clastic Media functionality",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Dries De Peuter",
+            "email": "dries@nousefreak.be"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "clastic/core-bundle": "*"
+    },
+    "autoload": {
+        "psr-4": { "Clastic\\MediaBundle\\": "" }
+    },
+    "minimum-stability": "dev"
+}

@@ -1,0 +1,18 @@
+<div class="media-browser">
+    <div class="add">
+        <a href="#"><i class="fa fa-plus-circle text-success"></i></a>
+        <div class="form">
+            {{ form(form) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="tree" data-media='{"source": "{{ path('clastic_backoffice_media_browser_directory') }}"}'></div>
+        </div>
+        <div class="col-md-8">
+            <div class="files" data-media='{"source": "{{ path('clastic_backoffice_media_browser_files') }}"}'>
+
+            </div>
+        </div>
+    </div>
+</div>
