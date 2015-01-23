@@ -1,7 +1,7 @@
 Clastic Development
 ===================
 
- [![Build Status](https://img.shields.io/travis/Clastic/Clastic.svg?style=flat-square)](https://travis-ci.org/Clastic/Clastic)
+ [![Build Status](https://img.shields.io/travis/Clastic/Clastic/master.svg?style=flat-square)](https://travis-ci.org/Clastic/Clastic)
  [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE)
 
 This project should only be used for development.
