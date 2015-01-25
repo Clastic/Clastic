@@ -4,7 +4,7 @@
 /app/bootstrap.php.cache
 /app/cache/*
 /app/config/parameters.yml
-/app/config/phpunit.xml
+/app/phpunit.xml
 /app/logs/*
 !app/cache/.gitkeep
 !app/logs/.gitkeep
