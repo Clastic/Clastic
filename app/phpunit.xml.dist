@@ -17,6 +17,10 @@
     <!--
     <php>
         <server name="KERNEL_DIR" value="/path/to/your/app/" />
+        <server name="env" value="test"/>
+        <server name="SYMFONY__TEST_DATABASE_NAME" value="clastic"/>
+        <server name="SYMFONY__TEST_DATABASE_USER" value="root"/>
+        <server name="SYMFONY__TEST_DATABASE_PASSWORD" value=""/>
     </php>
     -->
 
