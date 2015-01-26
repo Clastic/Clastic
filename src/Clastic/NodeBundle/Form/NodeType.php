@@ -31,6 +31,7 @@ class NodeType extends AbstractType
                 $builder->create('tabs', 'tabs', array('inherit_data' => true))
                     ->add($this->createGeneralTab($builder))
                     ->add($this->createPublicationTab($builder))
+                    ->add($this->createAuthorInformationTab($builder))
                     ->add($this->createActionTab($builder))
             );
     }
@@ -43,6 +44,7 @@ class NodeType extends AbstractType
                 'label' => 'Title',
             ));
     }
+
     private function createPublicationTab(FormBuilderInterface $builder)
     {
         return $this->createTab($builder, 'publication', array('label' => 'Publication'))
@@ -58,6 +60,17 @@ class NodeType extends AbstractType
                 'property_path' => 'node.publication.publishedTill',
                 'label' => 'Till',
                 'required' => false,
+            ));
+    }
+
+    private function createAuthorInformationTab(FormBuilderInterface $builder)
+    {
+        return $this->createTab($builder, 'author_information', array('label' => 'Author information'))
+            ->add('author', 'entity', array(
+                'class' => 'ClasticUserBundle:User',
+                'property_path' => 'node.user',
+                'label' => 'Author',
+                'required' => true,
             ));
     }
 
