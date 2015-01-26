@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="clastic.news.module.class">Clastic\NewsBundle\Module\NewsModule</parameter>
+        <parameter key="clastic.news.module.form_build.class">Clastic\NewsBundle\Form\Module\NewsFormExtension</parameter>
+    </parameters>
+
+    <services>
+        <service id="clastic.news.module" class="%clastic.news.module.class%">
+            <tag name="clastic.module" node_module="true" alias="news" />
+            <tag name="clastic.node_form" build_service="clastic.news.module.form_build" />
+        </service>
+
+        <service id="clastic.news.module.form_build" class="%clastic.news.module.form_build.class%" />
+    </services>
+</container>
