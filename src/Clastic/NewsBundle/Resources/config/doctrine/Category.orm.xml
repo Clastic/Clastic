@@ -5,5 +5,10 @@
       <generator strategy="AUTO"/>
     </id>
     <field name="description" type="text" column="description"/>
+    <many-to-one field="node" target-entity="Clastic\NodeBundle\Entity\Node">
+      <cascade><cascade-all/></cascade>
+      <join-column name="node_id" referenced-column-name="id" />
+    </many-to-one>
+    <many-to-many field="news" mapped-by="categories" target-entity="News"/>
   </entity>
 </doctrine-mapping>

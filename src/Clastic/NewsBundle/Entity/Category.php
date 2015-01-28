@@ -4,6 +4,7 @@ namespace Clastic\NewsBundle\Entity;
 
 use Clastic\NodeBundle\Entity\Node;
 use Clastic\NodeBundle\Node\NodeReferenceInterface;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Category
@@ -26,6 +27,16 @@ class Category implements NodeReferenceInterface
      * @var Node
      */
     private $node;
+
+    /**
+     * @var ArrayCollection
+     */
+    private $news;
+
+    public function __construct()
+    {
+        $this->news = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -74,5 +85,21 @@ class Category implements NodeReferenceInterface
     public function setNode(Node $node)
     {
         $this->node = $node;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getNews()
+    {
+        return $this->news;
+    }
+
+    /**
+     * @param ArrayCollection $news
+     */
+    public function setNews(ArrayCollection $news)
+    {
+        $this->news = $news;
     }
 }
