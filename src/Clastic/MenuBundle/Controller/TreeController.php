@@ -9,14 +9,9 @@
 
 namespace Clastic\MenuBundle\Controller;
 
-use Clastic\AliasBundle\Form\AliasType;
-use Clastic\BackofficeBundle\Controller\AbstractModuleController;
 use Clastic\MenuBundle\Entity\Menu;
 use Clastic\MenuBundle\Entity\MenuItem;
-use Clastic\MenuBundle\Form\MenuType;
-use Clastic\NodeBundle\Node\NodeReferenceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 

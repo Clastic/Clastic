@@ -9,7 +9,6 @@
 
 namespace Clastic\MenuBundle\Controller;
 
-use Clastic\AliasBundle\Form\AliasType;
 use Clastic\BackofficeBundle\Controller\AbstractModuleController;
 use Clastic\MenuBundle\Entity\Menu;
 use Clastic\MenuBundle\Form\MenuType;

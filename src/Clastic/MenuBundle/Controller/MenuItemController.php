@@ -205,8 +205,7 @@ class MenuItemController extends AbstractModuleController
 
             if (intval($positionData->parent) > 0) {
                 $data->setParent($em->getReference($this->getEntityName(), $positionData->parent));
-            }
-            else {
+            } else {
                 $data->setParent(null);
             }
 
