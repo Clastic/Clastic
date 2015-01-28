@@ -7,7 +7,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Dome\Bundle\DataFixtures\ORM;
+namespace Demo\Bundle\DataFixtures\ORM;
 
 use Clastic\UserBundle\Entity\User;
 use Doctrine\Common\DataFixtures\AbstractFixture;
