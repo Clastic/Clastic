@@ -7,14 +7,18 @@
 {%- endblock %}
 
 {% block header_actions %}
-    <div class="btn-group pull-right">
-        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-            Submodules <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Category</a></li>
-        </ul>
-    </div>
+    {% if submodules|length %}
+        <div class="btn-group pull-right">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                Submodules <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+                {% for submodule in submodules %}
+                    <li><a href="{{ path('clastic_node_list', {'type': submodule.identifier}) }}">{{ submodule.name }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
 {% endblock %}
 
 {% block content %}
