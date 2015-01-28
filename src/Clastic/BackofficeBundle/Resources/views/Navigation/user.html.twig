@@ -5,6 +5,8 @@
         <span class="caret"></span>
     </a>
     <ul role="menu" class="dropdown-menu">
+        <li class="dropdown-header">{{ app.user.username }}</li>
+        <li class="divider"></li>
         <li><a href="{{ path('fos_user_profile_show') }}"><i class="fa fa-user"></i> Profile</a></li>
         <li><a href="#"><i class="fa fa-gear"></i> Settings</a></li>
         <li class="divider"></li>
