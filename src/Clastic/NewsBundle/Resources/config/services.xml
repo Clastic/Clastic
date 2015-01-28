@@ -7,6 +7,8 @@
     <parameters>
         <parameter key="clastic.news.module.class">Clastic\NewsBundle\Module\NewsModule</parameter>
         <parameter key="clastic.news.module.form_build.class">Clastic\NewsBundle\Form\Module\NewsFormExtension</parameter>
+        <parameter key="clastic.news_category.module.class">Clastic\NewsBundle\Module\NewsCategoryModule</parameter>
+        <parameter key="clastic.news_category.module.form_build.class">Clastic\NewsBundle\Form\Module\NewsCategoryFormExtension</parameter>
     </parameters>
 
     <services>
@@ -16,5 +18,12 @@
         </service>
 
         <service id="clastic.news.module.form_build" class="%clastic.news.module.form_build.class%" />
+
+        <service id="clastic.news_category.module" class="%clastic.news_category.module.class%">
+            <tag name="clastic.module" node_module="true" alias="news/category" />
+            <tag name="clastic.node_form" build_service="clastic.news_category.module.form_build" />
+        </service>
+
+        <service id="clastic.news_category.module.form_build" class="%clastic.news_category.module.form_build.class%" />
     </services>
 </container>

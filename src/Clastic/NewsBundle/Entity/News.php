@@ -11,7 +11,6 @@ namespace Clastic\NewsBundle\Entity;
 
 use Clastic\NodeBundle\Entity\Node;
 use Clastic\NodeBundle\Node\NodeReferenceInterface;
-use Doctrine\ORM\Mapping as ORM;
 
 /**
  * News
@@ -38,7 +37,7 @@ class News implements NodeReferenceInterface
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -82,7 +81,7 @@ class News implements NodeReferenceInterface
     /**
      * Get body
      *
-     * @return string 
+     * @return string
      */
     public function getBody()
     {

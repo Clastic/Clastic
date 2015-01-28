@@ -9,12 +9,15 @@
 
 namespace Clastic\NewsBundle\Module;
 
+use Clastic\CoreBundle\Module\SubmoduleInterface;
 use Clastic\NodeBundle\Module\NodeModuleInterface;
 
 /**
- * @author Joeri van Dooren
+ * NewsCategoryModule
+ *
+ * @author Dries De Peuter <dries@nousefreak.be>
  */
-class NewsModule implements NodeModuleInterface
+class NewsCategoryModule implements NodeModuleInterface, SubmoduleInterface
 {
     /**
      * The name of the module.
@@ -23,7 +26,7 @@ class NewsModule implements NodeModuleInterface
      */
     public function getName()
     {
-        return 'News';
+        return 'Category';
     }
 
     /**
@@ -33,6 +36,16 @@ class NewsModule implements NodeModuleInterface
      */
     public function getIdentifier()
     {
+        return 'news/category';
+    }
+
+    /**
+     * The identifier of the parent module.
+     *
+     * @return string
+     */
+    public function getParentIdentifier()
+    {
         return 'news';
     }
 
@@ -41,7 +54,7 @@ class NewsModule implements NodeModuleInterface
      */
     public function getEntityName()
     {
-        return 'ClasticNewsBundle:News';
+        return 'ClasticNewsBundle:Category';
     }
 
     /**

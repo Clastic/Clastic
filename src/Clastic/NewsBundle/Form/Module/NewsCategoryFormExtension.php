@@ -13,9 +13,11 @@ use Clastic\NodeBundle\Form\Extension\AbstractNodeTypeExtension;
 use Symfony\Component\Form\FormBuilderInterface;
 
 /**
- * @author Joeri van Dooren
+ * NewsCategoryFormExtension
+ *
+ * @author Dries De Peuter <dries@nousefreak.be>
  */
-class NewsFormExtension extends AbstractNodeTypeExtension
+class NewsCategoryFormExtension extends AbstractNodeTypeExtension
 {
     /**
      * {@inheritdoc}
@@ -23,6 +25,6 @@ class NewsFormExtension extends AbstractNodeTypeExtension
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $this->findTab($builder, 'general')
-          ->add('body', 'wysiwyg');
+          ->add('description', 'wysiwyg');
     }
 }
