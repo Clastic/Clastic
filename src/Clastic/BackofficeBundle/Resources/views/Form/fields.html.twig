@@ -111,6 +111,12 @@
     </div>
 {%- endblock multi_select_widget %}
 
+{% block entity_multi_select_widget %}
+    <div class="multi_select">
+        {{ block('choice_widget') }}
+    </div>
+{% endblock entity_multi_select_widget %}
+
 {% block datepicker_widget -%}
     <div class='input-group'>
         {% set attr = attr|merge({'data-provide': 'datepicker'}) %}

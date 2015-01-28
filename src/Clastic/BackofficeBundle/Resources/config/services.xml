@@ -12,6 +12,7 @@
         <parameter key="clastic.backoffice.type.wysiwyg.class">Clastic\BackofficeBundle\Form\Type\WysiwygType</parameter>
         <parameter key="clastic.backoffice.type.datepicker.class">Clastic\BackofficeBundle\Form\Type\DatePickerType</parameter>
         <parameter key="clastic.backoffice.type.entity_hidden.class">Clastic\BackofficeBundle\Form\Type\EntityHiddenType</parameter>
+        <parameter key="clastic.backoffice.type.entity_multi_select.class">Clastic\BackofficeBundle\Form\Type\EntityMultiSelectType</parameter>
         <parameter key="clastic.backoffice.node.form_build.class">Clastic\BackofficeBundle\EventListener\NodeFormBuildListener</parameter>
         <parameter key="clastic.backoffice.twig.avatar_extension.class">Clastic\BackofficeBundle\Twig\AvatarExtension</parameter>
     </parameters>
@@ -44,6 +45,10 @@
         <service id="clastic.backoffice.type.entity_hidden" class="%clastic.backoffice.type.entity_hidden.class%">
             <tag name="form.type" alias="entity_hidden" />
             <argument type="service" id="doctrine.orm.entity_manager"/>
+        </service>
+
+        <service id="clastic.backoffice.type.entity_multi_select" class="%clastic.backoffice.type.entity_multi_select.class%">
+            <tag name="form.type" alias="entity_multi_select" />
         </service>
 
         <service id="clastic.backoffice.twig.avatar_extension" class="%clastic.backoffice.twig.avatar_extension.class%">
