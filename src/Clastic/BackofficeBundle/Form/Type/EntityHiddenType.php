@@ -9,7 +9,6 @@
 
 namespace Clastic\BackofficeBundle\Form\Type;
 
-use Symfony\Component\Form\AbstractType;
 use Clastic\BackofficeBundle\Form\DataTransformer\EntityToIdTransformer;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\FormBuilderInterface;
