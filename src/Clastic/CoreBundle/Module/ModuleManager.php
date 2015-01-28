@@ -50,7 +50,8 @@ class ModuleManager
     public function getContentModules()
     {
         return array_filter($this->getModules(), function(ModuleInterface $module) {
-            return ! ($module instanceof AdministrationModuleInterface);
+            return ! ($module instanceof AdministrationModuleInterface)
+                && ! ($module instanceof SubmoduleInterface);
         });
     }
 
@@ -63,6 +64,19 @@ class ModuleManager
     {
         return array_filter($this->getModules(), function(ModuleInterface $module) {
             return ($module instanceof AdministrationModuleInterface);
+        });
+    }
+
+    /**
+     * @param string $mainIdentifier
+     *
+     * @return SubmoduleInterface[]
+     */
+    public function getSubmodules($mainIdentifier)
+    {
+        return array_filter($this->getModules(), function(ModuleInterface $module) use ($mainIdentifier) {
+            return ($module instanceof SubmoduleInterface)
+                && $module->getParentIdentifier() == $mainIdentifier;
         });
     }
 
