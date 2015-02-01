@@ -8,7 +8,7 @@
     <field name="type" type="string" column="type" length="64"/>
     <field name="created" type="datetime" column="created" nullable="true"/>
     <field name="changed" type="datetime" column="changed" nullable="false"/>
-    <one-to-one field="publication" target-entity="NodePublication">
+    <one-to-one field="publication" target-entity="NodePublication" fetch="EAGER">
       <cascade><cascade-all/></cascade>
     </one-to-one>
     <many-to-one field="user" target-entity="Clastic\UserBundle\Entity\User">
