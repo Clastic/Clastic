@@ -7,7 +7,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Clastic\MenuBundle\Form\Type;
+namespace Clastic\BackofficeBundle\Form\Type;
 
 use Clastic\MenuBundle\Entity\MenuItem;
 use Symfony\Component\Form\AbstractType;
@@ -22,6 +22,18 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
  */
 class TreeType extends AbstractType
 {
+    /**
+     * @var string
+     */
+    private $source;
+
+    /**
+     * @param string $source Path to the data source.
+     */
+    public function __construct($source)
+    {
+        $this->source = $source;
+    }
 
     /**
      * {@inheritdoc}
@@ -30,11 +42,8 @@ class TreeType extends AbstractType
     {
         parent::finishView($view, $form, $options);
 
-        /** @var MenuItem $menuItem */
-        $menuItem = $form->getParent()->getData();
-
-        $view->vars['currentId'] = $menuItem->getId();
-        $view->vars['menuId'] = $menuItem->getMenu()->getId();
+        $view->vars['tree_current'] = $form->getParent()->getData()->getId();
+        $view->vars['tree_source'] = $this->source;
     }
 
     /**
@@ -46,6 +55,8 @@ class TreeType extends AbstractType
             'attr' => array(
                 'class' => 'tree',
             ),
+            'mapped' => false,
+            'required' => false,
         ));
     }
 
