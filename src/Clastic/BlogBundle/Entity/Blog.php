@@ -4,7 +4,6 @@ namespace Clastic\BlogBundle\Entity;
 
 use Clastic\NodeBundle\Entity\Node;
 use Clastic\NodeBundle\Node\NodeReferenceInterface;
-use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Blog
@@ -26,11 +25,10 @@ class Blog implements NodeReferenceInterface
      */
     private $body;
 
-
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -70,7 +68,7 @@ class Blog implements NodeReferenceInterface
     /**
      * Get body
      *
-     * @return string 
+     * @return string
      */
     public function getBody()
     {

@@ -6,16 +6,11 @@
 
     <parameters>
         <parameter key="clastic.menu.module.class">Clastic\MenuBundle\Module\MenuModule</parameter>
-        <parameter key="clastic.menu.type.tree.class">Clastic\MenuBundle\Form\Type\TreeType</parameter>
     </parameters>
 
     <services>
         <service id="clastic.menu.module" class="%clastic.menu.module.class%">
             <tag name="clastic.module" node_module="false" alias="menu" />
-        </service>
-
-        <service id="clastic.backoffice.type.node" class="%clastic.menu.type.tree.class%">
-            <tag name="form.type" alias="tree" />
         </service>
     </services>
 

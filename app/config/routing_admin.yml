@@ -7,5 +7,8 @@ clastic_menu:
 clastic_media:
     resource: "@ClasticMediaBundle/Resources/config/backoffice_routing.xml"
 
+clastic_news:
+    resource: "@ClasticNewsBundle/Resources/config/backoffice_routing.xml"
+
 clastic_backoffice:
     resource: "@ClasticBackofficeBundle/Resources/config/routing.xml"

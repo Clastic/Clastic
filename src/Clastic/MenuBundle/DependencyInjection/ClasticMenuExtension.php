@@ -13,13 +13,8 @@ use Symfony\Component\DependencyInjection\Loader;
  *
  * To learn more see {@link http://symfony.com/doc/current/cookbook/bundles/extension.html}
  */
-class ClasticMenuExtension extends Extension implements PrependExtensionInterface
+class ClasticMenuExtension extends Extension
 {
-    /**
-     * @var string
-     */
-    private $formTemplate = 'ClasticMenuBundle:Form:fields.html.twig';
-
     /**
      * {@inheritdoc}
      */
@@ -30,38 +25,5 @@ class ClasticMenuExtension extends Extension implements PrependExtensionInterfac
 
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.xml');
-    }
-
-    /**
-     * Allow an extension to prepend the extension configurations.
-     *
-     * @param ContainerBuilder $container
-     */
-    public function prepend(ContainerBuilder $container)
-    {
-        $bundles = $container->getParameter('kernel.bundles');
-
-        if (true === isset($bundles['TwigBundle'])) {
-            $this->configureTwigBundle($container);
-        }
-    }
-
-    /**
-     * @param ContainerBuilder $container The service container
-     *
-     * @return void
-     */
-    protected function configureTwigBundle(ContainerBuilder $container)
-    {
-        foreach (array_keys($container->getExtensions()) as $name) {
-            switch ($name) {
-                case 'twig':
-                    $container->prependExtensionConfig(
-                        $name,
-                        array('form' => array('resources' => array($this->formTemplate)))
-                    );
-                    break;
-            }
-        }
     }
 }

@@ -10,7 +10,6 @@
 namespace Clastic\FrontBundle\Event;
 
 use Clastic\NodeBundle\Entity\Node;
-use Clastic\NodeBundle\Node\NodeReferenceInterface;
 use Symfony\Component\EventDispatcher\Event;
 use Symfony\Component\HttpFoundation\Request;
 

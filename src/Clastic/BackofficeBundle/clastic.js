@@ -10,6 +10,7 @@ module.exports = function() {
         new global.Clastic.GulpScript('web/vendor/ckeditor/adapters/jquery.js', 'vendor', {weight: 10}),
         new global.Clastic.GulpScript('web/vendor/select2/dist/js/select2.min.js', 'vendor', {weight: 10}),
         new global.Clastic.GulpScript('web/vendor/parsleyjs/dist/parsley.min.js', 'vendor', {weight: 10}),
-        new global.Clastic.GulpScript('web/vendor/bootstrap-datepicker/js/bootstrap-datepicker.js', 'vendor', {weight: 10})
+        new global.Clastic.GulpScript('web/vendor/bootstrap-datepicker/js/bootstrap-datepicker.js', 'vendor', {weight: 10}),
+        new global.Clastic.GulpScript('web/vendor/jstree/dist/jstree.min.js', 'vendor', {weight: 10})
     ];
 };

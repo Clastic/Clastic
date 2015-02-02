@@ -53,6 +53,11 @@ class Node
      */
     private $publication;
 
+    public function __construct()
+    {
+        $this->created = new \DateTime();
+        $this->changed = new \DateTime();
+    }
     /**
      * Get id
      *

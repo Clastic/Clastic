@@ -10,7 +10,8 @@
 namespace Clastic\BackofficeBundle\Controller;
 
 use Clastic\BackofficeBundle\Form\DeleteType;
-use Clastic\NodeBundle\Module\NodeModuleInterface;
+use Clastic\CoreBundle\Module\ModuleInterface;
+use Clastic\CoreBundle\Module\SubmoduleInterface;
 use Doctrine\ORM\QueryBuilder;
 use Pagerfanta\Adapter\DoctrineORMAdapter;
 use Pagerfanta\Pagerfanta;
@@ -65,6 +66,8 @@ abstract class AbstractModuleController extends Controller
     abstract protected function getEntityName();
 
     /**
+     * @param Request $request
+     *
      * @return Response
      */
     public function listAction(Request $request)
@@ -82,10 +85,13 @@ abstract class AbstractModuleController extends Controller
         $data = new Pagerfanta($adapter);
         $data->setCurrentPage($request->query->get('page', 1));
 
+        $module = $this->getModule($this->getType());
+
         return $this->render($this->getListTemplate(), array_merge(array(
             'data' => $data,
             'type' => $this->getType(),
-            'module' => $this->get('clastic.module_manager')->getModule($this->getType()),
+            'module' => $module,
+            'submodules' => $this->getSubmodules($module)
         ), $this->getExtraListVariables()));
     }
 
@@ -134,9 +140,12 @@ abstract class AbstractModuleController extends Controller
             return $this->redirect($this->getFormSuccessUrl($data));
         }
 
+        $module = $this->getModule($this->getType());
+
         return $this->render('ClasticNodeBundle:Backoffice/Node:form.html.twig', array(
             'form' => $form->createView(),
-            'module' => $this->get('clastic.module_manager')->getModule($this->getType()),
+            'module' => $module,
+            'submodules' => $this->getSubmodules($module),
         ));
     }
 
@@ -182,16 +191,18 @@ abstract class AbstractModuleController extends Controller
                 $request->getSession()
                     ->getFlashBag()
                     ->add('success', sprintf('You deleted "%s"!', $title));
-
             }
 
             return $this->redirect($this->getListUrl());
         }
 
+        $module = $this->getModule($this->getType());
+
         return $this->render('ClasticNodeBundle:Backoffice/Node:form.html.twig', array(
             'page_title' => sprintf('Delete "%s"?', $title),
             'form' => $form->createView(),
-            'module' => $this->get('clastic.module_manager')->getModule($this->getType()),
+            'module' => $module,
+            'submodules' => $this->getSubmodules($module),
         ));
     }
 
@@ -202,7 +213,7 @@ abstract class AbstractModuleController extends Controller
     {
         return $this->generateUrl('clastic_node_list', array(
             'type' => $this->getType(),
-            'module' => $this->get('clastic.module_manager')->getModule($this->getType()),
+            'module' => $this->getModule($this->getType()),
         ));
     }
 
@@ -217,15 +228,28 @@ abstract class AbstractModuleController extends Controller
         $breadcrumbs = $this->get("white_october_breadcrumbs");
         $breadcrumbs->addItem("Home", $this->get("router")->generate("clastic_backoffice_dashboard"));
 
-        /** @var NodeModuleInterface $module */
-        $module = $this->get('clastic.module_manager')->getModule($type);
+        $module = $this->getModule($type);
         if ($module) {
-            $breadcrumbs->addItem($module->getName(), $this->get("router")->generate("clastic_node_list", array(
-                'type' => $type,
-            )));
+            $this->buildModuleBreadcrumb($breadcrumbs, $module);
         }
 
         return $breadcrumbs;
+    }
+
+    /**
+     * @param Breadcrumbs     $breadcrumbs
+     * @param ModuleInterface $module
+     */
+    protected function buildModuleBreadcrumb(Breadcrumbs $breadcrumbs, ModuleInterface $module)
+    {
+        if ($module instanceof SubmoduleInterface) {
+            $parentModule = $this->getModule($module->getParentIdentifier());
+            $this->buildModuleBreadcrumb($breadcrumbs, $parentModule);
+        }
+
+        $breadcrumbs->addItem($module->getName(), $this->get("router")->generate("clastic_node_list", array(
+            'type' => $module->getIdentifier(),
+        )));
     }
 
     /**
@@ -236,5 +260,31 @@ abstract class AbstractModuleController extends Controller
         $em = $this->getDoctrine()->getManager();
         $em->persist($form->getData());
         $em->flush();
+    }
+
+    /**
+     * @param string $identifier
+     *
+     * @return ModuleInterface
+     */
+    private function getModule($identifier)
+    {
+        return $this->get('clastic.module_manager')
+            ->getModule($identifier);
+    }
+
+    /**
+     * @param ModuleInterface $module
+     *
+     * @return SubmoduleInterface[]
+     */
+    private function getSubmodules(ModuleInterface $module)
+    {
+        if ($module instanceof SubmoduleInterface) {
+            $module = $this->getModule($module->getParentIdentifier());
+        }
+
+        return $this->get('clastic.module_manager')
+            ->getSubmodules($module->getIdentifier());
     }
 }

@@ -7,12 +7,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Clastic\MenuBundle\Form\Type;
+namespace Clastic\BackofficeBundle\Form\Type;
 
-use Clastic\MenuBundle\Entity\MenuItem;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\FormInterface;
-use Symfony\Component\Form\FormView;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
@@ -20,32 +17,15 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
  *
  * @author Dries De Peuter <dries@nousefreak.be>
  */
-class TreeType extends AbstractType
+class EntityMultiSelectType extends AbstractType
 {
-
-    /**
-     * {@inheritdoc}
-     */
-    public function finishView(FormView $view, FormInterface $form, array $options)
-    {
-        parent::finishView($view, $form, $options);
-
-        /** @var MenuItem $menuItem */
-        $menuItem = $form->getParent()->getData();
-
-        $view->vars['currentId'] = $menuItem->getId();
-        $view->vars['menuId'] = $menuItem->getMenu()->getId();
-    }
-
     /**
      * {@inheritdoc}
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'attr' => array(
-                'class' => 'tree',
-            ),
+            'multiple' => true,
         ));
     }
 
@@ -54,7 +34,7 @@ class TreeType extends AbstractType
      */
     public function getParent()
     {
-        return 'text';
+        return 'entity';
     }
 
     /**
@@ -62,6 +42,6 @@ class TreeType extends AbstractType
      */
     public function getName()
     {
-        return 'tree';
+        return 'entity_multi_select';
     }
 }

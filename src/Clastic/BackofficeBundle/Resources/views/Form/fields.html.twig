@@ -111,6 +111,12 @@
     </div>
 {%- endblock multi_select_widget %}
 
+{% block entity_multi_select_widget %}
+    <div class="multi_select">
+        {{ block('choice_widget') }}
+    </div>
+{% endblock entity_multi_select_widget %}
+
 {% block datepicker_widget -%}
     <div class='input-group'>
         {% set attr = attr|merge({'data-provide': 'datepicker'}) %}
@@ -118,3 +124,16 @@
         <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
     </div>
 {%- endblock datepicker_widget %}
+
+{% block tree_widget -%}
+    <div class="tree-container">
+        <div class="tree" data-tree='{
+                "currentId": {{ tree_current|default('null') }},
+                "source": "{{ tree_source|raw }}"
+            }'>
+        </div>
+        <div class="hidden">
+            {{ block('form_widget_simple') }}
+        </div>
+    </div>
+{%- endblock tree_widget %}

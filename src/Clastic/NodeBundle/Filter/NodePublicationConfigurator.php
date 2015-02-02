@@ -9,8 +9,6 @@
 
 namespace Clastic\NodeBundle\Filter;
 
-use Doctrine\ORM\Mapping\ClassMetaData;
-use Doctrine\ORM\Query\Filter\SQLFilter;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\Security\Core\SecurityContext;
 

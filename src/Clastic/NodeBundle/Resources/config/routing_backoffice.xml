@@ -12,14 +12,17 @@
 
     <route id="clastic_node_list" path="/{type}/list">
         <default key="_controller">ClasticNodeBundle:Node:list</default>
+        <requirement key="type">[^/]+(/[^/]+)?</requirement>
     </route>
 
     <route id="clastic_node_form" path="/{type}/edit/{id}">
         <default key="_controller">ClasticNodeBundle:Node:form</default>
         <default key="id" xsi:nil="true" />
+        <requirement key="type">[^/]+(/[^/]+)?</requirement>
     </route>
 
     <route id="clastic_node_delete" path="/{type}/delete/{id}">
         <default key="_controller">ClasticNodeBundle:Node:delete</default>
+        <requirement key="type">[^/]+(/[^/]+)?</requirement>
     </route>
 </routes>

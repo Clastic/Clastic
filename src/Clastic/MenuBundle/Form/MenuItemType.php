@@ -9,6 +9,8 @@
 
 namespace Clastic\MenuBundle\Form;
 
+use Clastic\BackofficeBundle\Form\Type\TreeType;
+use Symfony\Bundle\FrameworkBundle\Routing\Router;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
@@ -18,6 +20,20 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
  */
 class MenuItemType extends AbstractType
 {
+    /**
+     * @var Router
+     */
+    private $router;
+
+    /**
+     * @param Router $router
+     */
+    function __construct(Router $router)
+    {
+        $this->router = $router;
+    }
+
+
     /**
      * @param FormBuilderInterface $builder
      * @param array                $options
@@ -67,13 +83,16 @@ class MenuItemType extends AbstractType
 
     private function createPositionTab(FormBuilderInterface $builder)
     {
+        $treeType = new TreeType(
+            $this->router->generate(
+                'clastic_backoffice_menu_item_tree',
+                array('menuId' => $builder->getData()->getMenu()->getId()))
+        );
+
         return $this->createTab($builder, 'position_tab', array(
             'label' => 'Position',
             ))
-            ->add('position', 'tree', array(
-                'mapped' => false,
-                'required' => false,
-            ));
+            ->add('position', $treeType);
     }
 
     /**

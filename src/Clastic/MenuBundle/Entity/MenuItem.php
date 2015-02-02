@@ -3,7 +3,6 @@
 namespace Clastic\MenuBundle\Entity;
 
 use Clastic\NodeBundle\Entity\Node;
-use Doctrine\ORM\Mapping as ORM;
 
 /**
  * MenuItem
@@ -57,7 +56,7 @@ class MenuItem
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -67,7 +66,7 @@ class MenuItem
     /**
      * Set title
      *
-     * @param string $title
+     * @param  string   $title
      * @return MenuItem
      */
     public function setTitle($title)
@@ -80,7 +79,7 @@ class MenuItem
     /**
      * Get title
      *
-     * @return string 
+     * @return string
      */
     public function getTitle()
     {

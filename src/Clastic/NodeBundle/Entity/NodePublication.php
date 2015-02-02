@@ -2,8 +2,6 @@
 
 namespace Clastic\NodeBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * NodePublication
  */
@@ -29,7 +27,6 @@ class NodePublication
      */
     private $publishedTill;
 
-
     /**
      * Set the default publication to true.
      */
@@ -40,7 +37,7 @@ class NodePublication
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -64,7 +61,7 @@ class NodePublication
     /**
      * Get available
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getAvailable()
     {
@@ -88,7 +85,7 @@ class NodePublication
     /**
      * Get publishedFrom
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getPublishedFrom()
     {
@@ -112,7 +109,7 @@ class NodePublication
     /**
      * Get publishedTill
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getPublishedTill()
     {

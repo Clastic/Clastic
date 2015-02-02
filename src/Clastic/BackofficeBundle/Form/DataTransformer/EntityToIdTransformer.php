@@ -36,6 +36,7 @@ class EntityToIdTransformer implements DataTransformerInterface
         if (null === $entity) {
             return;
         }
+
         return $entity->getId();
     }
     public function reverseTransform($id)
@@ -49,6 +50,7 @@ class EntityToIdTransformer implements DataTransformerInterface
         if (null === $entity) {
             throw new TransformationFailedException();
         }
+
         return $entity;
     }
 }

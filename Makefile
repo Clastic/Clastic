@@ -7,6 +7,7 @@ install:
 	app/console doctrine:schema:drop --force
 	app/console doctrine:schema:create
 	app/console doctrine:fixtures:load -n
+	app/console cache:clear
 
 update:
 	composer install
@@ -16,6 +17,7 @@ update:
 	gulp build
 	app/console doctrine:schema:update --force
 	app/console doctrine:fixtures:load
+	app/console cache:clear
 
 dev:
 	app/console assets:install --symlink

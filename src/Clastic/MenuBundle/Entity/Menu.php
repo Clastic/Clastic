@@ -2,8 +2,6 @@
 
 namespace Clastic\MenuBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Menu
  */
@@ -22,7 +20,7 @@ class Menu
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -32,7 +30,7 @@ class Menu
     /**
      * Set title
      *
-     * @param string $title
+     * @param  string $title
      * @return Menu
      */
     public function setTitle($title)
@@ -45,7 +43,7 @@ class Menu
     /**
      * Get title
      *
-     * @return string 
+     * @return string
      */
     public function getTitle()
     {
