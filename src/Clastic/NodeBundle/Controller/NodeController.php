@@ -10,6 +10,7 @@
 namespace Clastic\NodeBundle\Controller;
 
 use Clastic\BackofficeBundle\Controller\AbstractModuleController;
+use Clastic\NodeBundle\Event\NodeFormPersistEvent;
 use Clastic\NodeBundle\Node\NodeManager;
 use Clastic\NodeBundle\Node\NodeReferenceInterface;
 use Symfony\Component\Form\Form;
@@ -147,6 +148,9 @@ class NodeController extends AbstractModuleController
         $em = $this->getDoctrine()->getManager();
         $em->persist($form->getData());
         $em->flush();
+
+        $this->get('event_dispatcher')
+            ->dispatch(NodeFormPersistEvent::NODE_FORM_PERSIST, new NodeFormPersistEvent($node, $form, $em));
     }
 
     /**
