@@ -9,6 +9,7 @@
         <parameter key="clastic.news.module.form_build.class">Clastic\NewsBundle\Form\Module\NewsFormExtension</parameter>
         <parameter key="clastic.news_category.module.class">Clastic\NewsBundle\Module\NewsCategoryModule</parameter>
         <parameter key="clastic.news_category.module.form_build.class">Clastic\NewsBundle\Form\Module\NewsCategoryFormExtension</parameter>
+        <parameter key="clastic.news_category.node_form_listener.class">Clastic\NewsBundle\EventListener\NodeFormPersistListener</parameter>
     </parameters>
 
     <services>
@@ -24,6 +25,13 @@
             <tag name="clastic.node_form" build_service="clastic.news_category.module.form_build" />
         </service>
 
-        <service id="clastic.news_category.module.form_build" class="%clastic.news_category.module.form_build.class%" />
+        <service id="clastic.news_category.module.form_build" class="%clastic.news_category.module.form_build.class%">
+            <argument type="service" id="router"/>
+        </service>
+
+
+        <service id="clastic.news_category.node_form_listener" class="%clastic.news_category.node_form_listener.class%">
+            <tag name="kernel.event_subscriber" />
+        </service>
     </services>
 </container>

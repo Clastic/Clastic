@@ -2,13 +2,13 @@
 
 namespace Clastic\NewsBundle\Entity;
 
-use Doctrine\ORM\EntityRepository;
+use Gedmo\Tree\Entity\Repository\NestedTreeRepository;
 
 /**
  * CategoryRepository
  *
  * @author Dries De Peuter <dries@nousefreak.be>
  */
-class CategoryRepository extends EntityRepository
+class CategoryRepository extends NestedTreeRepository
 {
 }

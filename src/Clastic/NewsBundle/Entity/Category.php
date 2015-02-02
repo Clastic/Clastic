@@ -33,6 +33,31 @@ class Category implements NodeReferenceInterface
      */
     private $news;
 
+
+    /**
+     */
+    private $left;
+
+    /**
+     */
+    private $level;
+
+    /**
+     */
+    private $right;
+
+    /**
+     */
+    private $root;
+
+    /**
+     */
+    private $parent;
+
+    /**
+     */
+    private $children;
+
     public function __construct()
     {
         $this->news = new ArrayCollection();
@@ -101,5 +126,37 @@ class Category implements NodeReferenceInterface
     public function setNews(ArrayCollection $news)
     {
         $this->news = $news;
+    }
+
+    /**
+     * @return Category
+     */
+    public function getParent()
+    {
+        return $this->parent;
+    }
+
+    /**
+     * @param Category $parent
+     */
+    public function setParent(Category $parent = null)
+    {
+        $this->parent = $parent;
+    }
+
+    /**
+     * @return Category[]
+     */
+    public function getChildren()
+    {
+        return $this->children;
+    }
+
+    /**
+     * @param Category[] $children
+     */
+    public function setChildren($children)
+    {
+        $this->children = $children;
     }
 }
