@@ -9,6 +9,7 @@
 
 namespace Clastic\NewsBundle\EventListener;
 
+use Clastic\NewsBundle\Entity\Category;
 use Clastic\NodeBundle\Event\NodeFormPersistEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
@@ -36,6 +37,10 @@ class NodeFormPersistListener implements EventSubscriberInterface
      */
     public function saveCategoryTree(NodeFormPersistEvent $event)
     {
+        if (! $event->getForm()->getData() instanceof Category) {
+            return;
+        }
+
         $positionData = $event->getForm()->get('tabs')->get('general')->get('position')->getNormData();
 
         if ($positionData) {
