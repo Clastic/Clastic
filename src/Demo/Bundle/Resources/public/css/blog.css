@@ -46,24 +46,24 @@ h6, .h6 {
 }
 
 /* Nav links */
-.blog-nav-item {
+.nav-item {
     position: relative;
     display: inline-block;
     padding: 10px;
     font-weight: 500;
     color: #cdddeb;
 }
-.blog-nav-item:hover,
-.blog-nav-item:focus {
+.nav-item:hover,
+.nav-item:focus {
     color: #fff;
     text-decoration: none;
 }
 
 /* Active state gets a caret at the bottom */
-.blog-nav .active {
+.nav .active {
     color: #fff;
 }
-.blog-nav .active:after {
+.nav .active:after {
     position: absolute;
     bottom: 0;
     left: 50%;
