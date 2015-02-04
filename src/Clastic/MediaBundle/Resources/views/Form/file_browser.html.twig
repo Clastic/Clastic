@@ -1,3 +1,4 @@
+<script src="/vendor/handlebars/handlebars.min.js"></script>
 <div class="media-browser">
     <div class="add">
         <a href="#"><i class="fa fa-plus-circle text-success"></i></a>
@@ -10,7 +11,7 @@
             <div class="tree" data-media='{"source": "{{ path('clastic_backoffice_media_browser_directory') }}"}'></div>
         </div>
         <div class="col-md-8">
-            <div class="files" data-media='{"source": "{{ path('clastic_backoffice_media_browser_files') }}"}'>
+            <div class="files" data-media='{"source": "{{ path('clastic_backoffice_media_browser_files') }}"}' data-prototype='{% include 'ClasticMediaBundle:Form:file_browser_file.html.twig'|e %}'>
 
             </div>
         </div>

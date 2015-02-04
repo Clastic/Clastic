@@ -90,6 +90,7 @@ class BrowserController extends Controller
             return array(
                 'id' => $file->getId(),
                 'text' => $file->getName(),
+                'path' => '/uploads/documents/' . $file->getPath(),
             );
         }, $files);
 
