@@ -64,6 +64,7 @@ class MenuExtension extends \Twig_Extension
                 'id' => $item->getId(),
                 '_node' => $item,
                 '_active' => ('/' . $item->getNode()->alias->getAlias() == $url),
+                '_link' => $item->getNode()->alias->getAlias(),
             );
         }, $qb->getQuery()->getResult());
 

@@ -1,5 +1,5 @@
 <nav class="nav">
     {% for item in tree %}
-        <a class="nav-item {{ item._active ? "active" }}" href="{{ item._node.node.alias.alias }}">{{ item.title }}</a>
+        <a class="nav-item {{ item._active ? "active" }}" href="{{ item._link }}">{{ item.title }}</a>
     {% endfor %}
 </nav>
