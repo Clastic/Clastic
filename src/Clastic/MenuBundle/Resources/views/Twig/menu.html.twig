@@ -1,0 +1,5 @@
+<nav class="blog-nav">
+    {% for item in tree %}
+        <a class="blog-nav-item {{ item._active ? "active" }}" href="{{ item._node.node.alias.alias }}">{{ item.title }}</a>
+    {% endfor %}
+</nav>

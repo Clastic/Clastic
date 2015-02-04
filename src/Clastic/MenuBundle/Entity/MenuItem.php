@@ -127,4 +127,44 @@ class MenuItem
     {
         return $this->parent;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getLeft()
+    {
+        return $this->left;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLevel()
+    {
+        return $this->level;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRight()
+    {
+        return $this->right;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRoot()
+    {
+        return $this->root;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getChildren()
+    {
+        return $this->children;
+    }
 }

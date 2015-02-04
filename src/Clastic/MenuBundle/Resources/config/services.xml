@@ -6,11 +6,23 @@
 
     <parameters>
         <parameter key="clastic.menu.module.class">Clastic\MenuBundle\Module\MenuModule</parameter>
+        <parameter key="clastic.menu.twig_extension.menu.class">Clastic\MenuBundle\Twig\MenuExtension</parameter>
+        <parameter key="clastic.repo.menu_item.class">Clastic\MenuBundle\Entity\MenuItemRepository</parameter>
+        <parameter key="clastic.repo.menu_item.factory_argument">ClasticMenuBundle:MenuItem</parameter>
     </parameters>
 
     <services>
         <service id="clastic.menu.module" class="%clastic.menu.module.class%">
             <tag name="clastic.module" node_module="false" alias="menu" />
+        </service>
+
+        <service id="clastic.menu.twig_extension.menu" class="%clastic.menu.twig_extension.menu.class%" public="false">
+            <tag name="twig.extension" />
+            <argument type="service" id="clastic.repo.menu_item"/>
+        </service>
+
+        <service id="clastic.repo.menu_item" class="%clastic.repo.menu_item.class%" factory-service="doctrine" factory-method="getRepository">
+            <argument>%clastic.repo.menu_item.factory_argument%</argument>
         </service>
     </services>
 
