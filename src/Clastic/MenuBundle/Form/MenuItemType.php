@@ -28,11 +28,10 @@ class MenuItemType extends AbstractType
     /**
      * @param Router $router
      */
-    function __construct(Router $router)
+    public function __construct(Router $router)
     {
         $this->router = $router;
     }
-
 
     /**
      * @param FormBuilderInterface $builder

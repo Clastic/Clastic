@@ -16,37 +16,37 @@ use Clastic\BackofficeBundle\Tests\AuthenticatedWebTestCase;
  */
 class MenuModuleTest extends AuthenticatedWebTestCase
 {
-  protected $listUrl = '/admin/menu/list';
-  protected $formUrl = '/admin/menu/edit';
+    protected $listUrl = '/admin/menu/list';
+    protected $formUrl = '/admin/menu/edit';
 
-  public function testInMenu()
-  {
-    $client = $this->createAuthorizedClient();
-    $crawler = $client->request('GET', '/admin/');
+    public function testInMenu()
+    {
+        $client = $this->createAuthorizedClient();
+        $crawler = $client->request('GET', '/admin/');
 
-    $this->assertTrue($client->getResponse()->isSuccessful());
-    $this->assertEquals(1, $crawler->filter('nav li a:contains("Menu")')->count());
+        $this->assertTrue($client->getResponse()->isSuccessful());
+        $this->assertEquals(1, $crawler->filter('nav li a:contains("Menu")')->count());
 
-    $a = $crawler->filter('nav li a:contains("Menu")');
-    $this->assertEquals($this->listUrl, $a->attr('href'));
-  }
+        $a = $crawler->filter('nav li a:contains("Menu")');
+        $this->assertEquals($this->listUrl, $a->attr('href'));
+    }
 
-  public function testList()
-  {
-    $client = $this->createAuthorizedClient();
-    $crawler = $client->request('GET', $this->listUrl);
+    public function testList()
+    {
+        $client = $this->createAuthorizedClient();
+        $crawler = $client->request('GET', $this->listUrl);
 
-    $this->assertTrue($client->getResponse()->isSuccessful());
-    $this->assertEquals(1, $crawler->filter('nav li a:contains("Menu")')->count());
-    $this->assertGreaterThan(0, $crawler->filter('table')->count());
-  }
+        $this->assertTrue($client->getResponse()->isSuccessful());
+        $this->assertEquals(1, $crawler->filter('nav li a:contains("Menu")')->count());
+        $this->assertGreaterThan(0, $crawler->filter('table')->count());
+    }
 
-  public function testForm()
-  {
-    $client = $this->createAuthorizedClient();
-    $crawler = $client->request('GET', $this->formUrl);
+    public function testForm()
+    {
+        $client = $this->createAuthorizedClient();
+        $crawler = $client->request('GET', $this->formUrl);
 
-    $this->assertTrue($client->getResponse()->isSuccessful());
-    $this->assertGreaterThan(0, $crawler->filter('form')->count());
-  }
+        $this->assertTrue($client->getResponse()->isSuccessful());
+        $this->assertGreaterThan(0, $crawler->filter('form')->count());
+    }
 }
