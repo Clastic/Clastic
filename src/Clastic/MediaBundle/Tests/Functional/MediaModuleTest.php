@@ -16,26 +16,26 @@ use Clastic\BackofficeBundle\Tests\AuthenticatedWebTestCase;
  */
 class MediaModuleTest extends AuthenticatedWebTestCase
 {
-  protected $listUrl = '/admin/media/list';
+    protected $listUrl = '/admin/media/list';
 
-  public function testInMenu()
-  {
-    $client = $this->createAuthorizedClient();
-    $crawler = $client->request('GET', '/admin/');
+    public function testInMenu()
+    {
+        $client = $this->createAuthorizedClient();
+        $crawler = $client->request('GET', '/admin/');
 
-    $this->assertTrue($client->getResponse()->isSuccessful());
-    $this->assertEquals(1, $crawler->filter('nav li a:contains("Media")')->count());
+        $this->assertTrue($client->getResponse()->isSuccessful());
+        $this->assertEquals(1, $crawler->filter('nav li a:contains("Media")')->count());
 
-    $a = $crawler->filter('nav li a:contains("Media")');
-    $this->assertEquals($this->listUrl, $a->attr('href'));
-  }
+        $a = $crawler->filter('nav li a:contains("Media")');
+        $this->assertEquals($this->listUrl, $a->attr('href'));
+    }
 
-  public function testList()
-  {
-    $client = $this->createAuthorizedClient();
-    $crawler = $client->request('GET', $this->listUrl);
+    public function testList()
+    {
+        $client = $this->createAuthorizedClient();
+        $crawler = $client->request('GET', $this->listUrl);
 
-    $this->assertTrue($client->getResponse()->isSuccessful());
-    $this->assertEquals(1, $crawler->filter('nav li a:contains("Media")')->count());
-  }
+        $this->assertTrue($client->getResponse()->isSuccessful());
+        $this->assertEquals(1, $crawler->filter('nav li a:contains("Media")')->count());
+    }
 }

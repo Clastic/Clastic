@@ -31,7 +31,6 @@ class MediaController extends AbstractModuleController
         return 'media';
     }
 
-
     /**
      * @param Request $request
      *

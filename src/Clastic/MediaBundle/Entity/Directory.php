@@ -3,7 +3,6 @@
 namespace Clastic\MediaBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Directory
@@ -40,7 +39,6 @@ class Directory
      */
     private $files;
 
-
     public function __construct()
     {
         $this->children = new ArrayCollection();
@@ -50,7 +48,7 @@ class Directory
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -60,7 +58,7 @@ class Directory
     /**
      * Set name
      *
-     * @param string $name
+     * @param  string    $name
      * @return Directory
      */
     public function setName($name)
@@ -73,7 +71,7 @@ class Directory
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -83,7 +81,7 @@ class Directory
     /**
      * Set path
      *
-     * @param string $path
+     * @param  string    $path
      * @return Directory
      */
     public function setPath($path)
@@ -96,7 +94,7 @@ class Directory
     /**
      * Get path
      *
-     * @return string 
+     * @return string
      */
     public function getPath()
     {

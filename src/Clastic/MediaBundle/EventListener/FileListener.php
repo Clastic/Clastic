@@ -9,15 +9,10 @@
 
 namespace Clastic\MediaBundle\EventListener;
 
-use Clastic\AliasBundle\Entity\Alias;
 use Clastic\MediaBundle\Entity\File;
-use Clastic\NodeBundle\Event\NodeCreateEvent;
-use Clastic\NodeBundle\Node\NodeReferenceInterface;
 use Doctrine\Common\EventSubscriber;
 use Doctrine\Common\Persistence\Event\LifecycleEventArgs;
 use Doctrine\ORM\Events;
-use ProxyManager\Factory\LazyLoadingValueHolderFactory;
-use ProxyManager\Proxy\ValueHolderInterface;
 
 /**
  * NodeListener

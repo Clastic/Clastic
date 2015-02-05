@@ -2,7 +2,6 @@
 
 namespace Clastic\MediaBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
@@ -53,7 +52,7 @@ class File
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -63,7 +62,7 @@ class File
     /**
      * Set name
      *
-     * @param string $name
+     * @param  string $name
      * @return File
      */
     public function setName($name)
@@ -76,7 +75,7 @@ class File
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -100,7 +99,7 @@ class File
     /**
      * Get path
      *
-     * @return string 
+     * @return string
      */
     public function getPath()
     {
@@ -124,7 +123,7 @@ class File
     /**
      * Get size
      *
-     * @return integer 
+     * @return integer
      */
     public function getSize()
     {
@@ -148,7 +147,7 @@ class File
     /**
      * Get meta
      *
-     * @return array 
+     * @return array
      */
     public function getMeta()
     {
