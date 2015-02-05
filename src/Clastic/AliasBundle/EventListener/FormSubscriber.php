@@ -19,7 +19,7 @@ use Symfony\Component\Validator\ConstraintViolationInterface;
 use Symfony\Component\Validator\Validator\RecursiveValidator;
 
 /**
- * NodeListener
+ * FormSubscriber
  *
  * @author Dries De Peuter <dries@nousefreak.be>
  */
@@ -30,7 +30,10 @@ class FormSubscriber implements EventSubscriberInterface
      */
     private $validator;
 
-    public function __construct($validator)
+    /**
+     * @param RecursiveValidator $validator
+     */
+    public function __construct(RecursiveValidator $validator)
     {
         $this->validator = $validator;
     }

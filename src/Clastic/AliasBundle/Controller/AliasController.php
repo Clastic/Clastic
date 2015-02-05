@@ -100,5 +100,4 @@ class AliasController extends AbstractModuleController
         return parent::formAction($id, $request);
     }
 
-
 }

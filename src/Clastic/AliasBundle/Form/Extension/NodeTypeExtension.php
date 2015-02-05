@@ -25,6 +25,9 @@ class NodeTypeExtension extends AbstractTypeExtension
      */
     private $formSubscriber;
 
+    /**
+     * @param FormSubscriber $formSubscriber
+     */
     public function __construct(FormSubscriber $formSubscriber)
     {
         $this->formSubscriber = $formSubscriber;
@@ -56,6 +59,13 @@ class NodeTypeExtension extends AbstractTypeExtension
             ->add($aliasTab);
     }
 
+    /**
+     * @param FormBuilderInterface $builder
+     * @param string               $name
+     * @param array                $options
+     *
+     * @return FormBuilderInterface
+     */
     private function createTab(FormBuilderInterface $builder, $name, $options = array())
     {
         $options = array_replace(
@@ -66,5 +76,4 @@ class NodeTypeExtension extends AbstractTypeExtension
 
         return $builder->create($name, 'tabs_tab', $options);
     }
-
 }

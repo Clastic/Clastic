@@ -49,6 +49,8 @@ class NodeListener implements EventSubscriber
 
     /**
      * @param LifecycleEventArgs $args
+     *
+     * @return null
      */
     public function postLoad(LifecycleEventArgs $args)
     {

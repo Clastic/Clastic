@@ -16,35 +16,44 @@ use Clastic\BackofficeBundle\Tests\AuthenticatedWebTestCase;
  */
 class AliasModuleTest extends AuthenticatedWebTestCase
 {
-  protected $listUrl = '/admin/alias/list';
-  protected $newUrl = '/admin/alias/edit';
+    protected $listUrl = '/admin/alias/list';
+    protected $newUrl = '/admin/alias/edit';
 
-  public function testInMenu()
-  {
-    $client = $this->createAuthorizedClient();
-    $crawler = $client->request('GET', '/admin/');
+    public function testInMenu()
+    {
+        $client = $this->createAuthorizedClient();
+        $crawler = $client->request('GET', '/admin/');
 
-    $this->assertTrue($client->getResponse()->isSuccessful());
-    $this->assertEquals(1, $crawler->filter('nav li a:contains("Alias")')->count());
+        $this->assertTrue($client->getResponse()->isSuccessful());
+        $this->assertEquals(
+            1,
+            $crawler->filter('nav li a:contains("Alias")')->count()
+        );
 
-    $a = $crawler->filter('nav li a:contains("Alias")');
-    $this->assertEquals($this->listUrl, $a->attr('href'));
-  }
+        $a = $crawler->filter('nav li a:contains("Alias")');
+        $this->assertEquals($this->listUrl, $a->attr('href'));
+    }
 
-  public function testList()
-  {
-    $client = $this->createAuthorizedClient();
-    $crawler = $client->request('GET', $this->listUrl);
+    public function testList()
+    {
+        $client = $this->createAuthorizedClient();
+        $crawler = $client->request('GET', $this->listUrl);
 
-    $this->assertTrue($client->getResponse()->isSuccessful());
-    $this->assertEquals(1, $crawler->filter('nav li a:contains("Alias")')->count());
-  }
+        $this->assertTrue($client->getResponse()->isSuccessful());
+        $this->assertEquals(
+            1,
+            $crawler->filter('nav li a:contains("Alias")')->count()
+        );
+    }
 
-  public function testNoNewForm()
-  {
-    $client = $this->createAuthorizedClient();
-    $client->request('GET', $this->newUrl);
+    /**
+     * New form is not implemented yet.
+     */
+    public function testNoNewForm()
+    {
+        $client = $this->createAuthorizedClient();
+        $client->request('GET', $this->newUrl);
 
-    $this->assertFalse($client->getResponse()->isSuccessful());
-  }
+        $this->assertFalse($client->getResponse()->isSuccessful());
+    }
 }

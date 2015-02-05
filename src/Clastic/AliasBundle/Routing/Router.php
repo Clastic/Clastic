@@ -26,6 +26,12 @@ class Router extends \Symfony\Bundle\FrameworkBundle\Routing\Router
 {
     private $container;
 
+    /**
+     * @param ContainerInterface  $container
+     * @param mixed               $resource
+     * @param array               $options
+     * @param RequestContext|null $context
+     */
     public function __construct(ContainerInterface $container, $resource, array $options = array(), RequestContext $context = null)
     {
         parent::__construct($container, $resource, $options, $context);
