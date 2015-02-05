@@ -14,6 +14,10 @@ use Clastic\AliasBundle\Form\AliasType;
 use Clastic\BackofficeBundle\Controller\AbstractModuleController;
 use Clastic\NodeBundle\Node\NodeReferenceInterface;
 use Symfony\Component\Form\Form;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Exception\RouteNotFoundException;
 
 /**
  * NodeController
@@ -80,4 +84,21 @@ class AliasController extends AbstractModuleController
 
         return new Alias();
     }
+
+    /**
+     * @param int|null $id
+     * @param Request  $request
+     *
+     * @return RedirectResponse|Response
+     */
+    public function formAction($id, Request $request)
+    {
+        if (is_null($id)) {
+            throw new RouteNotFoundException();
+        }
+
+        return parent::formAction($id, $request);
+    }
+
+
 }
