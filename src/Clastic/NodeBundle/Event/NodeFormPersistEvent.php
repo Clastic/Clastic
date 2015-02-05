@@ -10,7 +10,6 @@
 namespace Clastic\NodeBundle\Event;
 
 use Clastic\NodeBundle\Entity\Node;
-use Clastic\NodeBundle\Node\NodeReferenceInterface;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\EventDispatcher\Event;
 use Symfony\Component\Form\Form;
@@ -36,7 +35,6 @@ class NodeFormPersistEvent extends Event
      * @var EntityManager
      */
     private $em;
-
 
     /**
      * @param Node          $node
