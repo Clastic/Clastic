@@ -46,7 +46,9 @@ class AvatarExtension extends \Twig_Extension
     }
 
     /**
-     * @return mixed
+     * Get the email from the user logged in.
+     *
+     * @return string
      */
     public function getUserEmail()
     {
@@ -54,12 +56,16 @@ class AvatarExtension extends \Twig_Extension
     }
 
     /**
+     * Get the img path for the gravatar of the current user.
+     *
+     * @param int $size
+     *
      * @return string
      */
-    public function buildAvatar()
+    public function buildAvatar($size = 150)
     {
         $gravatar = new Gravatar();
-        $gravatar->setAvatarSize(150);
+        $gravatar->setAvatarSize($size);
 
         return $gravatar->buildGravatarURL($this->getUserEmail());
     }
