@@ -9,8 +9,6 @@
 
 namespace Clastic\NewsBundle\Controller;
 
-use Clastic\MenuBundle\Entity\Menu;
-use Clastic\MenuBundle\Entity\MenuItem;
 use Clastic\NewsBundle\Entity\Category;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -24,7 +22,7 @@ use Symfony\Component\HttpFoundation\Request;
 class TreeController extends Controller
 {
     /**
-     * @param Request    $request
+     * @param Request $request
      *
      * @return JsonResponse
      * @throws \Doctrine\ORM\ORMException

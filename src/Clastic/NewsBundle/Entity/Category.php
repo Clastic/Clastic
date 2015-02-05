@@ -33,7 +33,6 @@ class Category implements NodeReferenceInterface
      */
     private $news;
 
-
     /**
      */
     private $left;
@@ -76,7 +75,8 @@ class Category implements NodeReferenceInterface
     /**
      * Set description
      *
-     * @param  string   $description
+     * @param string $description
+     *
      * @return Category
      */
     public function setDescription($description)

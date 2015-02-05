@@ -29,7 +29,7 @@ class NewsCategoryFormExtension extends AbstractNodeTypeExtension
     /**
      * @param Router $router
      */
-    function __construct(Router $router)
+    public function __construct(Router $router)
     {
         $this->router = $router;
     }
