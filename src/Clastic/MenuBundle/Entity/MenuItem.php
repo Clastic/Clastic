@@ -52,10 +52,12 @@ class MenuItem
     private $root;
 
     /**
+     * @var MenuItem
      */
     private $parent;
 
     /**
+     * @var MenuItem[]
      */
     private $children;
 
@@ -72,7 +74,8 @@ class MenuItem
     /**
      * Set title
      *
-     * @param  string   $title
+     * @param string $title
+     *
      * @return MenuItem
      */
     public function setTitle($title)
@@ -119,7 +122,7 @@ class MenuItem
     /**
      * @param Node $node
      */
-    public function setNode($node)
+    public function setNode(Node $node)
     {
         $this->node = $node;
     }
@@ -140,11 +143,17 @@ class MenuItem
         $this->url = $url;
     }
 
+    /**
+     * @param MenuItem $parent
+     */
     public function setParent(MenuItem $parent = null)
     {
         $this->parent = $parent;
     }
 
+    /**
+     * @return MenuItem
+     */
     public function getParent()
     {
         return $this->parent;

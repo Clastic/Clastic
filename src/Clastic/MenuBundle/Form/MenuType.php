@@ -14,6 +14,8 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
+ * MenuType
+ *
  * @author Dries De Peuter <dries@nousefreak.be>
  */
 class MenuType extends AbstractType
@@ -40,6 +42,13 @@ class MenuType extends AbstractType
             );
     }
 
+    /**
+     * @param FormBuilderInterface $builder
+     * @param string               $name
+     * @param array                $options
+     *
+     * @return FormBuilderInterface
+     */
     private function createTab(FormBuilderInterface $builder, $name, $options = array())
     {
         $options = array_replace(
@@ -51,6 +60,11 @@ class MenuType extends AbstractType
         return $builder->create($name, 'tabs_tab', $options);
     }
 
+    /**
+     * @param FormBuilderInterface $builder
+     *
+     * @return FormBuilderInterface
+     */
     private function createActionTab(FormBuilderInterface $builder)
     {
         return $builder->create('actions', 'tabs_tab_actions', array(

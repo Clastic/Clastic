@@ -35,7 +35,8 @@ class Menu
     /**
      * Set title
      *
-     * @param  string $title
+     * @param string $title
+     *
      * @return Menu
      */
     public function setTitle($title)

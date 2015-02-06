@@ -48,6 +48,13 @@ class MenuItemType extends AbstractType
             );
     }
 
+    /**
+     * @param FormBuilderInterface $builder
+     * @param string               $name
+     * @param array                $options
+     *
+     * @return FormBuilderInterface
+     */
     private function createTab(FormBuilderInterface $builder, $name, $options = array())
     {
         $options = array_replace(
@@ -59,6 +66,11 @@ class MenuItemType extends AbstractType
         return $builder->create($name, 'tabs_tab', $options);
     }
 
+    /**
+     * @param FormBuilderInterface $builder
+     *
+     * @return FormBuilderInterface
+     */
     private function createGeneralTab(FormBuilderInterface $builder)
     {
         return $this->createTab($builder, 'general', array('label' => 'General'))
@@ -74,6 +86,11 @@ class MenuItemType extends AbstractType
             ));
     }
 
+    /**
+     * @param FormBuilderInterface $builder
+     *
+     * @return FormBuilderInterface
+     */
     private function createActionTab(FormBuilderInterface $builder)
     {
         return $builder->create('actions', 'tabs_tab_actions', array(
@@ -86,6 +103,11 @@ class MenuItemType extends AbstractType
             ));
     }
 
+    /**
+     * @param FormBuilderInterface $builder
+     *
+     * @return FormBuilderInterface
+     */
     private function createPositionTab(FormBuilderInterface $builder)
     {
         $treeType = new TreeType(

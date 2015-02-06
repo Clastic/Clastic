@@ -125,6 +125,9 @@ class MenuItemController extends AbstractModuleController
         return $qb;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function formAction($id, Request $request, $menuId = null)
     {
         $this->menuId = $menuId;
@@ -132,6 +135,9 @@ class MenuItemController extends AbstractModuleController
         return parent::formAction($id, $request);
     }
 
+    /**
+     * @return array
+     */
     protected function getExtraListVariables()
     {
         return array(
@@ -139,6 +145,11 @@ class MenuItemController extends AbstractModuleController
         );
     }
 
+    /**
+     * @param object $data
+     *
+     * @return string
+     */
     protected function getFormSuccessUrl($data)
     {
         return $this->generateUrl('clastic_backoffice_menu_item_form', array(
@@ -187,6 +198,11 @@ class MenuItemController extends AbstractModuleController
             ->find($this->menuId);
     }
 
+    /**
+     * @param Form $form
+     *
+     * @throws \Doctrine\ORM\ORMException
+     */
     protected function persistData(Form $form)
     {
         parent::persistData($form);
