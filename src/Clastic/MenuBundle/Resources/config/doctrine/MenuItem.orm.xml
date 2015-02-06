@@ -8,6 +8,8 @@
       <generator strategy="AUTO"/>
     </id>
     <field name="title" type="string" column="title" length="255"/>
+    <field name="url" type="string" column="url" length="255" nullable="true"/>
+
     <field name="left" column="lft" type="integer">
       <gedmo:tree-left/>
     </field>

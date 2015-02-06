@@ -45,16 +45,24 @@ class MenuExtension extends \Twig_Extension
         );
     }
 
-    public function renderMenu($menuId, $depth = 1)
+    public function renderMenu($menuIdentifier, $depth = 1)
     {
         $qb = $this->repo->getNodesHierarchyQueryBuilder(null, false, array(), true)
-            ->andWhere('node.menu = :menu')
-            ->setParameter('menu', $menuId);
+            ->join('ClasticMenuBundle:Menu', 'menu', 'menu.id = node.menu')
+            ->andWhere('menu.identifier = :identifier')
+            ->setParameter('identifier', $menuIdentifier);
 
         $globals = $this->environment->getGlobals();
-        $url = $globals['app']->getRequest()->server->get('REQUEST_URI');
+        $currentUrl = $globals['app']->getRequest()->server->get('REQUEST_URI');
 
-        $items = array_map(function(MenuItem $item) use ($url) {
+        $items = array_map(function(MenuItem $item) use ($currentUrl) {
+
+            $url = $item->getUrl();
+            $node = $item->getNode();
+            if ($node) {
+                $url = '/' . $node->alias->getAlias();
+            }
+
             return array(
                 'title' => $item->getTitle(),
                 'left' => $item->getLeft(),
@@ -63,8 +71,8 @@ class MenuExtension extends \Twig_Extension
                 'level' => $item->getLevel(),
                 'id' => $item->getId(),
                 '_node' => $item,
-                '_active' => ('/' . $item->getNode()->alias->getAlias() == $url),
-                '_link' => $item->getNode()->alias->getAlias(),
+                '_active' => ($url == $currentUrl),
+                '_link' => $url,
             );
         }, $qb->getQuery()->getResult());
 

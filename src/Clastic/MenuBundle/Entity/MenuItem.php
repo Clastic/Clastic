@@ -3,6 +3,7 @@
 namespace Clastic\MenuBundle\Entity;
 
 use Clastic\NodeBundle\Entity\Node;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 /**
  * MenuItem
@@ -28,6 +29,11 @@ class MenuItem
      * @var Node
      */
     private $node;
+
+    /**
+     * @var string
+     */
+    private $url;
 
     /**
      */
@@ -118,6 +124,22 @@ class MenuItem
         $this->node = $node;
     }
 
+    /**
+     * @return string
+     */
+    public function getUrl()
+    {
+        return $this->url;
+    }
+
+    /**
+     * @param string $url
+     */
+    public function setUrl($url)
+    {
+        $this->url = $url;
+    }
+
     public function setParent(MenuItem $parent = null)
     {
         $this->parent = $parent;
@@ -166,5 +188,17 @@ class MenuItem
     public function getChildren()
     {
         return $this->children;
+    }
+
+    /**
+     * @param ExecutionContextInterface $context
+     */
+    public function validate(ExecutionContextInterface $context)
+    {
+        if (!$this->node && !$this->url) {
+            $context->buildViolation('Provide a Node or an url')
+                ->atPath('node')
+                ->addViolation();
+        }
     }
 }

@@ -18,6 +18,11 @@ class Menu
     private $title;
 
     /**
+     * @var string
+     */
+    private $identifier;
+
+    /**
      * Get id
      *
      * @return integer
@@ -48,5 +53,21 @@ class Menu
     public function getTitle()
     {
         return $this->title;
+    }
+
+    /**
+     * @return string
+     */
+    public function getIdentifier()
+    {
+        return $this->identifier;
+    }
+
+    /**
+     * @param string $identifier
+     */
+    public function setIdentifier($identifier)
+    {
+        $this->identifier = $identifier;
     }
 }

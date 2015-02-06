@@ -32,6 +32,9 @@ class MenuType extends AbstractType
                             ->add('title', 'text', array(
                                     'label' => 'Title',
                                 ))
+                            ->add('identifier', 'text', array(
+                                'label' => 'Identifier',
+                            ))
                     )
                     ->add($this->createActionTab($builder))
             );

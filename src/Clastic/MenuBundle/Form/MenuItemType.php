@@ -65,7 +65,13 @@ class MenuItemType extends AbstractType
             ->add('title', 'text', array(
                 'label' => 'Title',
             ))
-            ->add('node', 'node');
+            ->add('node', 'node', array(
+                'required' => false,
+                'placeholder' => 'None',
+            ))
+            ->add('url', 'text', array(
+                'required' => false,
+            ));
     }
 
     private function createActionTab(FormBuilderInterface $builder)

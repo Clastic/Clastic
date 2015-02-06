@@ -10,6 +10,7 @@
 namespace Demo\Bundle\DataFixtures\ORM;
 
 use Clastic\BlogBundle\Entity\Blog;
+use Clastic\MenuBundle\Entity\MenuItem;
 use Clastic\NodeBundle\Node\NodeManager;
 use Clastic\UserBundle\Entity\User;
 use Doctrine\Common\DataFixtures\AbstractFixture;
@@ -21,7 +22,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 /**
  * @author Dries De Peuter <dries@nousefreak.be>
  */
-class BlogData extends AbstractFixture implements OrderedFixtureInterface, ContainerAwareInterface
+class MenuData extends AbstractFixture implements OrderedFixtureInterface, ContainerAwareInterface
 {
     /**
      * @var ContainerInterface
@@ -41,20 +42,19 @@ class BlogData extends AbstractFixture implements OrderedFixtureInterface, Conta
      */
     public function load(ObjectManager $manager)
     {
-        /** @var NodeManager $nodeManager */
-        $nodeManager = $this->container->get('clastic.node_manager');
+        $menuItemHome = new MenuItem();
+        $menuItemHome->setMenu($this->getReference('menu-main'));
+        $menuItemHome->setTitle('Home');
+        $menuItemHome->setUrl('/');
+        $manager->persist($menuItemHome);
 
-        /** @var Blog $blog */
-        $blog = $nodeManager->createNode('blog');
-        $blog->getNode()->setTitle('First blogpost');
-        $blog->setBody('<p>Some content</p>');
-        $blog->getNode()->alias->setAlias('test');
-        $blog->getNode()->setUser($this->getReference('user-demo'));
+        $menuItemBlog = new MenuItem();
+        $menuItemBlog->setMenu($this->getReference('menu-main'));
+        $menuItemBlog->setTitle('Test blog');
+        $menuItemBlog->setNode($this->getReference('demo-blog-first'));
+        $manager->persist($menuItemBlog);
 
-        $manager->persist($blog);
         $manager->flush();
-
-        $this->setReference('demo-blog-first', $blog);
     }
 
     /**
@@ -62,6 +62,6 @@ class BlogData extends AbstractFixture implements OrderedFixtureInterface, Conta
      */
     public function getOrder()
     {
-        return 20;
+        return 21;
     }
 }
