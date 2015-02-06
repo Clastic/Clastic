@@ -53,6 +53,7 @@ class NodeController extends Controller
 
     /**
      * @param NodeReferenceInterface $record
+     * @param Request                $request
      *
      * @return Response
      */
