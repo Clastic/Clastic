@@ -1,0 +1,21 @@
+{% extends '::base.html.twig' %}
+
+{% block page_title %}An Error Occurred: {{ status_text }}{% endblock %}
+
+{% block content_header %}
+    <div class="blog-header">
+        <h1>An Error Occurred</h1>
+        <p class="lead blog-description">The server returned a "{{ status_code }} {{ status_text }}".</p>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <div>
+                Something is broken. Please let us know what you were doing when this error occurred.
+                We will fix it as soon as possible. Sorry for any inconvenience caused.
+            </div>
+        </div>
+    </div>
+{% endblock %}
