@@ -40,9 +40,15 @@ class News implements NodeReferenceInterface
      */
     private $categories;
 
+    /**
+     * @var ArrayCollection
+     */
+    private $tags;
+
     public function __construct()
     {
         $this->categories = new ArrayCollection();
+        $this->tags = new ArrayCollection();
     }
 
     /**
@@ -113,5 +119,21 @@ class News implements NodeReferenceInterface
     public function setCategories(ArrayCollection $categories)
     {
         $this->categories = $categories;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getTags()
+    {
+        return $this->tags;
+    }
+
+    /**
+     * @param ArrayCollection $tags
+     */
+    public function setTags(ArrayCollection $tags)
+    {
+        $this->tags = $tags;
     }
 }

@@ -34,6 +34,15 @@ class NewsFormExtension extends AbstractNodeTypeExtension
                         'required' => false,
                     ))
             );
+        $builder->get('tabs')
+            ->add(
+                $this->createTab($builder, 'tag', array('label' => 'Tag'))
+                    ->add('tags', 'entity_multi_select', array(
+                        'class' => 'ClasticNewsBundle:Tag',
+                        'property' => 'node.title',
+                        'required' => false,
+                    ))
+            );
     }
 
     private function createTab(FormBuilderInterface $builder, $name, $options = array())
