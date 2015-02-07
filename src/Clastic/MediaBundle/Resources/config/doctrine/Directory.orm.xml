@@ -6,7 +6,7 @@
     </id>
     <field name="name" type="string" column="name" length="255"/>
     <field name="path" type="string" column="path" length="255"/>
-    <one-to-many field="files" target-entity="File" mapped-by="parent" />
+    <one-to-many field="files" target-entity="File" mapped-by="directory" />
     <one-to-many field="children" target-entity="Directory" mapped-by="parent" />
     <many-to-one field="parent" target-entity="Directory" inversed-by="children" />
   </entity>
