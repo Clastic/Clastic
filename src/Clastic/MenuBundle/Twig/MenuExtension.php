@@ -59,7 +59,7 @@ class MenuExtension extends \Twig_Extension
 
             $url = $item->getUrl();
             $node = $item->getNode();
-            if ($node) {
+            if ($node && $node->alias) {
                 $url = '/' . $node->alias->getAlias();
             }
 
