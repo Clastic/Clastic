@@ -52,7 +52,13 @@ class AvatarExtension extends \Twig_Extension
      */
     public function getUserEmail()
     {
-        return $this->context->getToken()->getUser()->getEmail();
+        $token = $this->context->getToken();
+
+        if (!$token) {
+            return null;
+        }
+
+        return $token->getUser()->getEmail();
     }
 
     /**
