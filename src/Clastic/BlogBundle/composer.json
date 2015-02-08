@@ -1,6 +1,6 @@
 {
-    "name": "clastic/text-bundle",
-    "description": "Clastic Text bundle",
+    "name": "clastic/blog-bundle",
+    "description": "Clastic Blog bundle",
     "license": "MIT",
     "authors": [
         {
@@ -18,7 +18,7 @@
         "clastic/backoffice-bundle": "*"
     },
     "autoload": {
-        "psr-4": { "Clastic\\TextBundle\\": "" }
+        "psr-4": { "Clastic\\BlogBundle\\": "" }
     },
     "minimum-stability": "dev"
 }
