@@ -7,7 +7,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Clastic\NewsBundle\EventListener;
+namespace Clastic\TaxonomyBundle\EventListener;
 
 use Clastic\NewsBundle\Entity\Category;
 use Clastic\NodeBundle\Event\NodeFormPersistEvent;

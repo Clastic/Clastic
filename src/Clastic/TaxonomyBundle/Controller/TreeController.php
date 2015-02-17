@@ -7,15 +7,15 @@
  * file that was distributed with this source code.
  */
 
-namespace Clastic\NewsBundle\Controller;
+namespace Clastic\TaxonomyBundle\Controller;
 
-use Clastic\NewsBundle\Entity\Category;
+use Clastic\TaxonomyBundle\Model\Taxonomy;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * MenuController
+ * TreeController
  *
  * @author Dries De Peuter <dries@nousefreak.be>
  */
@@ -30,6 +30,7 @@ class TreeController extends Controller
     public function ajaxAction(Request $request)
     {
         $id = $request->query->get('id');
+        $entityName = $request->query->get('entityName');
         $currentId = $request->query->get('currentId');
 
         $em = $this->getDoctrine()->getManager();
@@ -38,14 +39,14 @@ class TreeController extends Controller
         );
 
         if (intval($id)) {
-            $filter['parent'] = $em->getReference('ClasticNewsBundle:Category', (int) $request->query->get('id'));
+            $filter['parent'] = $em->getReference($entityName, (int) $request->query->get('id'));
         }
 
         $items = $this->getDoctrine()
-            ->getRepository('ClasticNewsBundle:Category')
+            ->getRepository($entityName)
             ->findBy($filter);
 
-        $data = array_map(function(Category $item) use ($currentId) {
+        $data = array_map(function(Taxonomy $item) use ($currentId) {
             return array(
                 'id' => $item->getId(),
                 'text' => $item->getNode()->getTitle(),

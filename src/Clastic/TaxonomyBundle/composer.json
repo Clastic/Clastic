@@ -1,0 +1,25 @@
+{
+    "name": "clastic/taxonomy-bundle",
+    "description": "Clastic Taxonomy bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Dries De Peuter",
+            "email": "dries@nousefreak.be"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "clastic/core-bundle": "*",
+        "symfony/dependency-injection": "~2.6",
+        "doctrine/doctrine-bundle": "*",
+        "stof/doctrine-extensions-bundle": "~1.1"
+    },
+    "require-dev": {
+        "clastic/backoffice-bundle": "*"
+    },
+    "autoload": {
+        "psr-4": { "Clastic\\TaxonomyBundle\\": "" }
+    },
+    "minimum-stability": "dev"
+}
