@@ -4,6 +4,7 @@ namespace Clastic\BlogBundle\Entity;
 
 use Clastic\NodeBundle\Entity\Node;
 use Clastic\NodeBundle\Node\NodeReferenceInterface;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Blog
@@ -24,6 +25,16 @@ class Blog implements NodeReferenceInterface
      * @var string
      */
     private $body;
+
+    /**
+     * @var ArrayCollection
+     */
+    private $categories;
+
+    public function __construct()
+    {
+        $this->categories = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -73,5 +84,21 @@ class Blog implements NodeReferenceInterface
     public function getBody()
     {
         return $this->body;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getCategories()
+    {
+        return $this->categories;
+    }
+
+    /**
+     * @param ArrayCollection $categories
+     */
+    public function setCategories(ArrayCollection $categories)
+    {
+        $this->categories = $categories;
     }
 }

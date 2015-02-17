@@ -9,5 +9,15 @@
       <cascade><cascade-all/></cascade>
       <join-column name="node_id" referenced-column-name="id" />
     </many-to-one>
+    <many-to-many field="categories" inversed-by="blogs" target-entity="Category">
+      <join-table name="Blog_Category">
+          <join-columns>
+              <join-column name="blog_id" referenced-column-name="id" />
+          </join-columns>
+          <inverse-join-columns>
+              <join-column name="category_id" referenced-column-name="id" />
+          </inverse-join-columns>
+      </join-table>
+    </many-to-many>
   </entity>
 </doctrine-mapping>

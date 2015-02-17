@@ -7,6 +7,8 @@
     <parameters>
         <parameter key="clastic.blog.module.class">Clastic\BlogBundle\Module\BlogModule</parameter>
         <parameter key="clastic.blog.module.form_build.class">Clastic\BlogBundle\Form\Module\BlogFormExtension</parameter>
+        <parameter key="clastic.blog_category.module.class">Clastic\BlogBundle\Module\BlogCategoryModule</parameter>
+        <parameter key="clastic.blog_category.node_form_listener.class">Clastic\BlogBundle\EventListener\NodeFormPersistListener</parameter>
     </parameters>
 
     <services>
@@ -16,5 +18,10 @@
         </service>
 
         <service id="clastic.blog.module.form_build" class="%clastic.blog.module.form_build.class%" />
+
+        <service id="clastic.blog_category.module" class="%clastic.blog_category.module.class%">
+            <tag name="clastic.module" node_module="true" alias="blog/category" />
+            <tag name="clastic.node_form" build_service="clastic.taxonomy.module.form_build" />
+        </service>
     </services>
 </container>
