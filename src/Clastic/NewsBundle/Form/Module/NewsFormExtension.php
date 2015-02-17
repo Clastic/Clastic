@@ -27,7 +27,11 @@ class NewsFormExtension extends AbstractNodeTypeExtension
 
         $builder->get('tabs')
             ->add(
-                $this->createTab($builder, 'category', array('label' => 'Category'))
+                $this
+                    ->createTab($builder, 'category', array(
+                        'label' => 'Category',
+                        'position' => 'first',
+                    ))
                     ->add('categories', 'entity_multi_select', array(
                         'class' => 'ClasticNewsBundle:Category',
                         'property' => 'node.title',
@@ -36,7 +40,11 @@ class NewsFormExtension extends AbstractNodeTypeExtension
             );
         $builder->get('tabs')
             ->add(
-                $this->createTab($builder, 'tag', array('label' => 'Tag'))
+                $this
+                    ->createTab($builder, 'tag', array(
+                        'label' => 'Tag',
+                        'position' => 'first',
+                    ))
                     ->add('tags', 'entity_multi_select', array(
                         'class' => 'ClasticNewsBundle:Tag',
                         'property' => 'node.title',

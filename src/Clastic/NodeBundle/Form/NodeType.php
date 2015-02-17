@@ -38,7 +38,11 @@ class NodeType extends AbstractType
 
     private function createGeneralTab(FormBuilderInterface $builder)
     {
-        return $this->createTab($builder, 'general', array('label' => 'General'))
+        return $this
+            ->createTab($builder, 'general', array(
+                'label' => 'General',
+                'position' => 'first',
+            ))
             ->add('title', 'text', array(
                 'property_path' => 'node.title',
                 'label' => 'Title',
@@ -47,7 +51,10 @@ class NodeType extends AbstractType
 
     private function createPublicationTab(FormBuilderInterface $builder)
     {
-        return $this->createTab($builder, 'publication', array('label' => 'Publication'))
+        return $this
+            ->createTab($builder, 'publication', array(
+                'label' => 'Publication',
+            ))
             ->add('available', 'checkbox', array(
                 'property_path' => 'node.publication.available',
                 'label' => 'Available',
@@ -65,7 +72,10 @@ class NodeType extends AbstractType
 
     private function createAuthorInformationTab(FormBuilderInterface $builder)
     {
-        return $this->createTab($builder, 'author_information', array('label' => 'Author information'))
+        return $this
+            ->createTab($builder, 'author_information', array(
+                'label' => 'Author information',
+            ))
             ->add('author', 'entity', array(
                 'class' => 'ClasticUserBundle:User',
                 'property_path' => 'node.user',

@@ -22,6 +22,7 @@ class AppKernel extends Kernel
             new Clastic\BackofficeBundle\ClasticBackofficeBundle(),
             new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
             new WhiteOctober\BreadcrumbsBundle\WhiteOctoberBreadcrumbsBundle(),
+            new Ivory\OrderedFormBundle\IvoryOrderedFormBundle(),
 
             new Clastic\AliasBundle\ClasticAliasBundle(),
 
