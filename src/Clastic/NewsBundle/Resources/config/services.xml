@@ -24,15 +24,7 @@
 
         <service id="clastic.news_category.module" class="%clastic.news_category.module.class%">
             <tag name="clastic.module" node_module="true" alias="news/category" />
-            <tag name="clastic.node_form" build_service="clastic.news_category.module.form_build" />
-        </service>
-
-        <service id="clastic.news_category.module.form_build" class="%clastic.news_category.module.form_build.class%">
-            <argument type="service" id="router"/>
-        </service>
-
-        <service id="clastic.news_category.node_form_listener" class="%clastic.news_category.node_form_listener.class%">
-            <tag name="kernel.event_subscriber" />
+            <tag name="clastic.node_form" build_service="clastic.taxonomy.module.form_build" />
         </service>
 
         <service id="clastic.news_tag.module" class="%clastic.news_tag.module.class%">
