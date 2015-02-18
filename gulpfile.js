@@ -40,7 +40,7 @@ var paths = {
 
 var clastic = new Clastic.Clastic();
 
-var rootDir = __dirname;
+var rootDir = __dirname + '/src/Clastic';
 paths = clastic.resolvePaths(paths, rootDir);
 
 var errorHandler = notify.onError(function (err) {

@@ -11,12 +11,11 @@ module.exports = function() {
     global.Clastic.Clastic.prototype.resolvePaths = function(paths, rootDir) {
         var fs = require('fs');
 
-        require(rootDir + '/src/Clastic/CoreBundle/Resources/scripts/GulpScript.js')();
+        require('./GulpScript.js')();
 
-        var sourceDir = 'src/Clastic';
         var extraScripts = [];
-        fs.readdirSync(sourceDir).forEach(function (file) {
-            var pathDefinitions = rootDir + '/' + sourceDir + '/' + file + '/clastic.js';
+        fs.readdirSync(rootDir).forEach(function (file) {
+            var pathDefinitions = rootDir + '/' + file + '/clastic.js';
             if (fs.existsSync(pathDefinitions) && !fs.statSync(pathDefinitions).isDirectory()) {
                 extraScripts = extraScripts.concat(require(pathDefinitions)(paths));
             }
