@@ -10,6 +10,7 @@
 namespace Clastic\AliasBundle\EventListener;
 
 use Clastic\AliasBundle\Entity\Alias;
+use Clastic\NodeBundle\Entity\Node;
 use Clastic\NodeBundle\Event\NodeCreateEvent;
 use Clastic\NodeBundle\Node\NodeReferenceInterface;
 use Doctrine\Common\EventSubscriber;
@@ -56,24 +57,33 @@ class NodeListener implements EventSubscriber
     {
         $entity = $args->getObject();
 
+        if ($entity instanceof Node) {
+            $entity->alias = $this->createAliasProxy($args, $entity);
+        }
+
         if ($entity instanceof NodeReferenceInterface) {
             $node = $entity->getNode();
-            $factory = new LazyLoadingValueHolderFactory();
-
-            $node->alias = $factory->createProxy(
-                'Clastic\AliasBundle\Entity\Alias',
-                function (&$wrappedObject, $proxy, $method, $parameters, & $initializer) use ($args, $node) {
-                    $wrappedObject = $args->getObjectManager()
-                        ->getRepository('ClasticAliasBundle:Alias')
-                        ->findOneBy(array(
-                            'node' => $node,
-                        ));
-                    $initializer = null;
-
-                    return true;
-                }
-            );
+            $node->alias = $this->createAliasProxy($args, $node);
         }
+    }
+
+    private function createAliasProxy(LifecycleEventArgs $args, Node $node)
+    {
+        $factory = new LazyLoadingValueHolderFactory();
+
+        return $factory->createProxy(
+            'Clastic\AliasBundle\Entity\Alias',
+            function (&$wrappedObject, $proxy, $method, $parameters, & $initializer) use ($args, $node) {
+                $wrappedObject = $args->getObjectManager()
+                    ->getRepository('ClasticAliasBundle:Alias')
+                    ->findOneBy(array(
+                        'node' => $node,
+                    ));
+                $initializer = null;
+
+                return true;
+            }
+        );
     }
 
     /**
