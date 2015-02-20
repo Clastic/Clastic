@@ -74,6 +74,7 @@ class MenuExtension extends \Twig_Extension
 
             $url = $item->getUrl();
             $node = $item->getNode();
+            // TODO Remove getTitle once a solution is found.
             if ($node && $node->getTitle() && isset($node->alias)) {
                 $url = '/' . $node->alias->getAlias();
             }
