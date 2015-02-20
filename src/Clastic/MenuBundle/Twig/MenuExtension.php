@@ -28,16 +28,25 @@ class MenuExtension extends \Twig_Extension
      */
     private $repo;
 
+    /**
+     * @param MenuItemRepository $repository
+     */
     public function __construct(MenuItemRepository $repository)
     {
         $this->repo = $repository;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function initRuntime(\Twig_Environment $environment)
     {
         $this->environment = $environment;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getFunctions()
     {
         return array(
@@ -45,6 +54,12 @@ class MenuExtension extends \Twig_Extension
         );
     }
 
+    /**
+     * @param string $menuIdentifier
+     * @param int    $depth
+     *
+     * @return string
+     */
     public function renderMenu($menuIdentifier, $depth = 1)
     {
         $qb = $this->repo->getNodesHierarchyQueryBuilder(null, false, array(), true)
@@ -59,7 +74,7 @@ class MenuExtension extends \Twig_Extension
 
             $url = $item->getUrl();
             $node = $item->getNode();
-            if ($node && $node->alias) {
+            if ($node && $node->getTitle() && isset($node->alias)) {
                 $url = '/' . $node->alias->getAlias();
             }
 
@@ -81,6 +96,9 @@ class MenuExtension extends \Twig_Extension
         ));
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getName()
     {
         return 'clastic_menu';
