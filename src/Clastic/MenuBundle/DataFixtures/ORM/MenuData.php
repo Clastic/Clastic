@@ -9,7 +9,6 @@
 
 namespace Clastic\MenuBundle\DataFixtures\ORM;
 
-use Clastic\MediaBundle\Entity\Directory;
 use Clastic\MenuBundle\Entity\Menu;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;

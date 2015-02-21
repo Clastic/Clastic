@@ -9,10 +9,8 @@
 
 namespace Clastic\NewsBundle\Form\Module;
 
-use Clastic\BackofficeBundle\Form\Type\TreeType;
 use Clastic\NodeBundle\Form\Extension\AbstractNodeTypeExtension;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Routing\Router;
 
 /**
  * NewsCategoryFormExtension

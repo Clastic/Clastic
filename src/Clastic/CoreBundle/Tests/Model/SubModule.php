@@ -32,7 +32,6 @@ class SubModule extends Module implements SubmoduleInterface
         $this->parent = $parent;
     }
 
-
     /**
      * The identifier of the parent module.
      *

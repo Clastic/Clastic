@@ -5,7 +5,6 @@ namespace Clastic\NewsBundle\Entity;
 use Clastic\NodeBundle\Entity\Node;
 use Clastic\NodeBundle\Node\NodeReferenceInterface;
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Tag
@@ -45,7 +44,7 @@ class Tag implements NodeReferenceInterface
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -55,7 +54,7 @@ class Tag implements NodeReferenceInterface
     /**
      * Set title
      *
-     * @param string $title
+     * @param  string $title
      * @return Tag
      */
     public function setTitle($title)
@@ -68,7 +67,7 @@ class Tag implements NodeReferenceInterface
     /**
      * Get title
      *
-     * @return string 
+     * @return string
      */
     public function getTitle()
     {
@@ -78,7 +77,7 @@ class Tag implements NodeReferenceInterface
     /**
      * Set description
      *
-     * @param string $description
+     * @param  string $description
      * @return Tag
      */
     public function setDescription($description)
@@ -91,7 +90,7 @@ class Tag implements NodeReferenceInterface
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
     public function getDescription()
     {

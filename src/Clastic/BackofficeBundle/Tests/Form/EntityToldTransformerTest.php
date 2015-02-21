@@ -73,7 +73,6 @@ class EntityToldTransformerTest extends \PHPUnit_Framework_TestCase
             ->method('getRepository')
             ->willReturn($repo);
 
-
         $transformer = new EntityToIdTransformer($objectManager, 'class');
 
         $this->setExpectedException('Symfony\Component\Form\Exception\TransformationFailedException');
@@ -103,7 +102,6 @@ class EntityToldTransformerTest extends \PHPUnit_Framework_TestCase
             ->expects($this->once())
             ->method('getRepository')
             ->willReturn($repo);
-
 
         $transformer = new EntityToIdTransformer($objectManager, 'class');
 
