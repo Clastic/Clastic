@@ -47,6 +47,7 @@ class BlogData extends AbstractFixture implements OrderedFixtureInterface, Conta
         /** @var Blog $blog */
         $blog = $nodeManager->createNode('blog');
         $blog->getNode()->setTitle('First blogpost');
+        $blog->setIntroduction('<p>Introduction</p>');
         $blog->setBody('<p>Some content</p>');
         $blog->getNode()->alias->setAlias('test');
         $blog->getNode()->setUser($this->getReference('user-demo'));
