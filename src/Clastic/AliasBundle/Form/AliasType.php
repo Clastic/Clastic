@@ -29,7 +29,7 @@ class AliasType extends AbstractType
                 $builder->create('tabs', 'tabs', array('inherit_data' => true))
                     ->add(
                         $this->createTab($builder, 'general', array('label' => 'General'))
-                            ->add('alias', 'text', array(
+                            ->add('alias', 'alias', array(
                                     'label' => 'Alias',
                                 ))
                     )
