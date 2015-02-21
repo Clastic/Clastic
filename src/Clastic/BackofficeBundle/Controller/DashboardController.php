@@ -33,6 +33,7 @@ class DashboardController extends Controller
         return $this->render('ClasticBackofficeBundle:Dashboard:index.html.twig', array(
             'myContent' => $this->getMyContent(),
             'recent' => $this->getRecent(),
+            'moduleManager' => $this->getModuleManager(),
         ));
     }
 
