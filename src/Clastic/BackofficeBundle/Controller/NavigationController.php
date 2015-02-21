@@ -9,6 +9,7 @@
 
 namespace Clastic\BackofficeBundle\Controller;
 
+use Clastic\CoreBundle\Module\ModuleInterface;
 use Clastic\CoreBundle\Module\ModuleManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
@@ -25,10 +26,28 @@ class NavigationController extends Controller
      */
     public function modulesAction()
     {
+        $adminModules = $this->getModuleManager()->getAdministrationModules();
+        uasort($adminModules, $this->getModuleSortCallback());
+
+        $contentModules = $this->getModuleManager()->getContentModules();
+        uasort($contentModules, $this->getModuleSortCallback());
+
         return $this->render('ClasticBackofficeBundle:Navigation:modules.html.twig', array(
-            'administrationModules' => $this->getModuleManager()->getAdministrationModules(),
-            'modules' => $this->getModuleManager()->getContentModules(),
+            'administrationModules' => $adminModules,
+            'modules' => $contentModules,
         ));
+    }
+
+    /**
+     * Callback to sort the Modules by name.
+     *
+     * @return callable
+     */
+    private function getModuleSortCallback()
+    {
+        return function(ModuleInterface $a, ModuleInterface $b) {
+            return strcmp($a->getName(), $b->getName());
+        };
     }
 
     /**
