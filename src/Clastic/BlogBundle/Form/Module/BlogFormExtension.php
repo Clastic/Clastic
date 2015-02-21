@@ -38,15 +38,4 @@ class BlogFormExtension extends AbstractNodeTypeExtension
                     ))
             );
     }
-
-    private function createTab(FormBuilderInterface $builder, $name, $options = array())
-    {
-        $options = array_replace(
-            $options,
-            array(
-                'inherit_data' => true,
-            ));
-
-        return $builder->create($name, 'tabs_tab', $options);
-    }
 }

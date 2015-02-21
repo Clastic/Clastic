@@ -45,4 +45,24 @@ abstract class AbstractNodeTypeExtension
     {
         return $builder->get('tabs')->get($name);
     }
+
+    /**
+     * Create a new tab.
+     *
+     * @param FormBuilderInterface $builder
+     * @param string               $name
+     * @param array                $options
+     *
+     * @return FormBuilderInterface
+     */
+    final protected function createTab(FormBuilderInterface $builder, $name, $options = array())
+    {
+        $options = array_replace(
+            $options,
+            array(
+                'inherit_data' => true,
+            ));
+
+        return $builder->create($name, 'tabs_tab', $options);
+    }
 }
