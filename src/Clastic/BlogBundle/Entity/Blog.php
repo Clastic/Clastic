@@ -24,6 +24,11 @@ class Blog implements NodeReferenceInterface
     /**
      * @var string
      */
+    private $introduction;
+
+    /**
+     * @var string
+     */
     private $body;
 
     /**
@@ -60,6 +65,26 @@ class Blog implements NodeReferenceInterface
     public function setNode(Node $node)
     {
         $this->node = $node;
+    }
+
+    /**
+     * Get introduction
+     *
+     * @return string
+     */
+    public function getIntroduction()
+    {
+        return $this->introduction;
+    }
+
+    /**
+     * Set introduction
+     *
+     * @param string $introduction
+     */
+    public function setIntroduction($introduction)
+    {
+        $this->introduction = $introduction;
     }
 
     /**

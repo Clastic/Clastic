@@ -4,6 +4,7 @@
     <id name="id" type="integer" column="id">
       <generator strategy="AUTO"/>
     </id>
+    <field name="introduction" type="text" column="introduction"/>
     <field name="body" type="text" column="body"/>
     <many-to-one field="node" target-entity="Clastic\NodeBundle\Entity\Node">
       <cascade><cascade-all/></cascade>

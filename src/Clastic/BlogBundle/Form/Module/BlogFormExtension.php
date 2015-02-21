@@ -25,6 +25,7 @@ class BlogFormExtension extends AbstractNodeTypeExtension
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $this->findTab($builder, 'general')
+            ->add('introduction', 'wysiwyg')
             ->add('body', 'wysiwyg');
 
         $builder->get('tabs')
