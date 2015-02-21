@@ -81,6 +81,11 @@ class NodeType extends AbstractType
                 'property_path' => 'node.user',
                 'label' => 'Author',
                 'required' => true,
+            ))
+            ->add('created', 'datepicker', array(
+                'property_path' => 'node.created',
+                'label' => 'Created',
+                'disabled' => true,
             ));
     }
 
