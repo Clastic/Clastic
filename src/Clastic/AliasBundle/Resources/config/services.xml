@@ -11,6 +11,7 @@
         <parameter key="clastic.alias.extension.node.class">Clastic\AliasBundle\Form\Extension\NodeTypeExtension</parameter>
         <parameter key="clastic.alias.node_listener.class">Clastic\AliasBundle\EventListener\NodeListener</parameter>
         <parameter key="clastic.alias.form_subscriber.class">Clastic\AliasBundle\EventListener\FormSubscriber</parameter>
+        <parameter key="clastic.alias.type.alias.class">Clastic\AliasBundle\Form\Type\AliasType</parameter>
     </parameters>
 
     <services>
@@ -34,6 +35,11 @@
         <service id="clastic.alias.node_listener" class="%clastic.alias.node_listener.class%">
             <tag name="doctrine.event_subscriber" connection="default" />
             <tag name="kernel.event_listener" event="clastic.node.create" method="create" />
+        </service>
+
+        <service id="clastic.alias.type.alias" class="%clastic.alias.type.alias.class%">
+            <tag name="form.type" alias="alias" />
+            <argument type="service" id="request_stack"/>
         </service>
     </services>
 </container>

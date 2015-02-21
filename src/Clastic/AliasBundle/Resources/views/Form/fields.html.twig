@@ -1,0 +1,10 @@
+{% use 'form_div_layout.html.twig' %}
+
+{# Custom elements #}
+
+{% block alias_widget -%}
+    <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">{{ prefix_text }}</span>
+        {{ block('form_widget_simple') }}
+    </div>
+{%- endblock alias_widget %}

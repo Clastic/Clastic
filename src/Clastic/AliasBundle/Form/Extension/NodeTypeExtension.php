@@ -51,7 +51,7 @@ class NodeTypeExtension extends AbstractTypeExtension
         $builder->addEventSubscriber($this->formSubscriber);
         $aliasTab = $this->createTab($builder, 'alias', array('label' => 'Alias'));
 
-        $aliasTab->add('alias', 'text', array(
+        $aliasTab->add('alias', 'alias', array(
             'property_path' => 'node.alias.alias',
         ));
 
