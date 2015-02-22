@@ -1,4 +1,5 @@
 install:
+	mkdir -p -m 777 web/uploads
 	composer install
 	npm install --production
 	bower install
