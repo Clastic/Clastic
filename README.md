@@ -58,6 +58,7 @@ First [fork](https://github.com/Clastic/Clastic/fork) the project.
     ```
     $ make dev
     ```
+
 Contributing
 ------------
 
