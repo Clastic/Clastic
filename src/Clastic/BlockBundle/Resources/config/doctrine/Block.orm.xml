@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity repository-class="Clastic\BlockBundle\Entity\BlockRepository" name="Clastic\BlockBundle\Entity\Block">
+    <id name="id" type="integer" column="id">
+      <generator strategy="AUTO"/>
+    </id>
+    <field name="identifier" type="string" column="identifier" length="50"/>
+    <field name="title" type="string" column="title" length="255"/>
+    <field name="body" type="text" column="body"/>
+  </entity>
+</doctrine-mapping>

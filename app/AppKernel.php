@@ -41,6 +41,7 @@ class AppKernel extends Kernel
             new Clastic\MediaBundle\ClasticMediaBundle(),
             new Clastic\NewsBundle\ClasticNewsBundle(),
             new Clastic\TaxonomyBundle\ClasticTaxonomyBundle(),
+            new Clastic\BlockBundle\ClasticBlockBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

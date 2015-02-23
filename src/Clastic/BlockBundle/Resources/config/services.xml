@@ -1,0 +1,33 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="clastic.block.module.class">Clastic\BlockBundle\Module\BlockModule</parameter>
+        <parameter key="clastic.repo.block.class">Clastic\BlockBundle\Entity\BlockRepository</parameter>
+        <parameter key="clastic.repo.block.factory_argument">ClasticBlockBundle:Block</parameter>
+        <parameter key="clastic.block_manager.class">Clastic\BlockBundle\Block\BlockManager</parameter>
+        <parameter key="clastic.block.twig_extension.block.class">Clastic\BlockBundle\Twig\BlockExtension</parameter>
+    </parameters>
+
+    <services>
+        <service id="clastic.block.module" class="%clastic.block.module.class%">
+            <tag name="clastic.module" node_module="false" alias="block" />
+        </service>
+
+        <service id="clastic.repo.block" class="%clastic.repo.block.class%" factory-service="doctrine" factory-method="getRepository">
+            <argument>%clastic.repo.block.factory_argument%</argument>
+        </service>
+
+        <service id="clastic.block_manager" class="%clastic.block_manager.class%">
+            <argument type="service" id="clastic.repo.block"/>
+        </service>
+
+        <service id="clastic.block.twig_extension.block" class="%clastic.block.twig_extension.block.class%" public="false">
+            <tag name="twig.extension" />
+            <argument type="service" id="clastic.block_manager"/>
+        </service>
+    </services>
+</container>
