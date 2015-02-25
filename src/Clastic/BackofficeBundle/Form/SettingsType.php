@@ -13,11 +13,11 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 /**
- * DeleteType
+ * SettingsType
  *
  * @author Dries De Peuter <dries@nousefreak.be>
  */
-class DeleteType extends AbstractType
+class SettingsType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -29,9 +29,9 @@ class DeleteType extends AbstractType
                 $builder->create('tabs', 'tabs', array('inherit_data' => true))
                     ->add(
                         $this->createActionTab($builder)
-                            ->add('delete', 'submit', array(
-                                'label' => 'Delete',
-                                'attr' => array('class' => 'btn btn-danger pull-left'),
+                            ->add('save', 'submit', array(
+                                'label' => 'Save',
+                                'attr' => array('class' => 'btn btn-success pull-left'),
                             ))
                             ->add('cancel', 'submit', array(
                                 'label' => 'Cancel',
@@ -56,6 +56,6 @@ class DeleteType extends AbstractType
      */
     public function getName()
     {
-        return 'clastic_delete';
+        return 'clastic_settings';
     }
 }

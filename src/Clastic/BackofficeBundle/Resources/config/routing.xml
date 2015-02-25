@@ -10,4 +10,9 @@
     <route id="clastic_backoffice_dashboard" path="/">
         <default key="_controller">ClasticBackofficeBundle:Dashboard:index</default>
     </route>
+
+    <route id="clastic_backoffice_setting" path="/{type}/settings">
+        <default key="_controller">ClasticBackofficeBundle:Settings:form</default>
+        <requirement key="type">[^/]+(/[^/]+)?</requirement>
+    </route>
 </routes>

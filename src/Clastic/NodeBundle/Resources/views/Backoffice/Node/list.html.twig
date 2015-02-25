@@ -7,6 +7,8 @@
 {%- endblock %}
 
 {% block header_actions %}
+    <a href="{{ path('clastic_backoffice_setting', {type: type}) }}"><i class="fa fa-cog text-muted"></i></a>
+
     {% if submodules|length %}
         <div class="btn-group pull-right">
             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
