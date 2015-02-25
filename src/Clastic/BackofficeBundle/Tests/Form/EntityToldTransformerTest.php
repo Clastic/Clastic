@@ -15,6 +15,8 @@ use Clastic\BackofficeBundle\Form\DataTransformer\EntityToIdTransformer;
  * EntityToldTransformerTest
  *
  * @author Dries De Peuter <dries@nousefreak.be>
+ *
+ * @group unit
  */
 class EntityToldTransformerTest extends \PHPUnit_Framework_TestCase
 {

@@ -18,6 +18,8 @@ use Clastic\CoreBundle\Tests\Model\SubModule;
  * ModuleManagerTest
  *
  * @author Dries De Peuter <dries@nousefreak.be>
+ *
+ * @group unit
  */
 class ModuleManagerTest extends \PHPUnit_Framework_TestCase
 {
