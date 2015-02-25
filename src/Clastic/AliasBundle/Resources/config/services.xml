@@ -9,6 +9,7 @@
         <parameter key="clastic.repo.alias.factory_argument">ClasticAliasBundle:Alias</parameter>
         <parameter key="clastic.alias.module.class">Clastic\AliasBundle\Module\AliasModule</parameter>
         <parameter key="clastic.alias.extension.node.class">Clastic\AliasBundle\Form\Extension\NodeTypeExtension</parameter>
+        <parameter key="clastic.alias.extension.settings.class">Clastic\AliasBundle\Form\Extension\SettingsTypeExtension</parameter>
         <parameter key="clastic.alias.node_listener.class">Clastic\AliasBundle\EventListener\NodeListener</parameter>
         <parameter key="clastic.alias.form_subscriber.class">Clastic\AliasBundle\EventListener\FormSubscriber</parameter>
         <parameter key="clastic.alias.type.alias.class">Clastic\AliasBundle\Form\Type\AliasType</parameter>
@@ -30,6 +31,13 @@
         <service id="clastic.alias.extension.node" class="%clastic.alias.extension.node.class%">
             <tag name="form.type_extension" alias="clastic_node" />
             <argument type="service" id="clastic.alias.form_subscriber" />
+            <argument type="service" id="doctrine"/>
+        </service>
+
+        <service id="clastic.alias.extension.settings" class="%clastic.alias.extension.settings.class%">
+            <tag name="form.type_extension" alias="clastic_settings" />
+            <argument type="service" id="doctrine"/>
+            <argument type="service" id="clastic.module_manager"/>
         </service>
 
         <service id="clastic.alias.node_listener" class="%clastic.alias.node_listener.class%">

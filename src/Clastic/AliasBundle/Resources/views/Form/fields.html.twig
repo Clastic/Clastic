@@ -3,6 +3,9 @@
 {# Custom elements #}
 
 {% block alias_widget -%}
+    {% if autofill %}
+        {%- set attr = attr|merge({'data-alias-pattern': alias_pattern|default('{title}') }) -%}
+    {% endif %}
     <div class="input-group">
         <span class="input-group-addon" id="basic-addon1">{{ prefix_text }}</span>
         {{ block('form_widget_simple') }}

@@ -10,6 +10,7 @@
 namespace Clastic\AliasBundle\Form\Extension;
 
 use Clastic\AliasBundle\EventListener\FormSubscriber;
+use Symfony\Bridge\Doctrine\RegistryInterface;
 use Symfony\Component\Form\AbstractTypeExtension;
 use Symfony\Component\Form\FormBuilderInterface;
 
@@ -26,12 +27,20 @@ class NodeTypeExtension extends AbstractTypeExtension
     private $formSubscriber;
 
     /**
-     * @param FormSubscriber $formSubscriber
+     * @var RegistryInterface
      */
-    public function __construct(FormSubscriber $formSubscriber)
+    private $registry;
+
+    /**
+     * @param FormSubscriber    $formSubscriber
+     * @param RegistryInterface $registry
+     */
+    public function __construct(FormSubscriber $formSubscriber, RegistryInterface $registry)
     {
         $this->formSubscriber = $formSubscriber;
+        $this->registry = $registry;
     }
+
     /**
      * Returns the name of the type being extended.
      *
@@ -53,10 +62,24 @@ class NodeTypeExtension extends AbstractTypeExtension
 
         $aliasTab->add('alias', 'alias', array(
             'property_path' => 'node.alias.alias',
+            'alias_pattern' => $this->findPattern($builder),
         ));
 
         $builder->get('tabs')
             ->add($aliasTab);
+    }
+
+    protected function findPattern(FormBuilderInterface $builder)
+    {
+        $pattern = $this->registry->getRepository('ClasticAliasBundle:AliasPattern')->findOneBy(array(
+            'moduleIdentifier' => $builder->getData()->getNode()->getType(),
+        ));
+
+        if ($pattern) {
+            return $pattern->getPattern();
+        }
+
+        return '{title}';
     }
 
     /**

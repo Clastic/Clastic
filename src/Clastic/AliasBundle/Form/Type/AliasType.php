@@ -13,6 +13,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\HttpFoundation\RequestStack;
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
  * MultiSelectType
@@ -32,6 +33,19 @@ class AliasType extends AbstractType
     }
 
     /**
+     * @param OptionsResolverInterface $resolver
+     */
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    {
+        parent::setDefaultOptions($resolver);
+
+        $resolver->setDefaults(array(
+            'autofill' => true,
+            'alias_pattern' => '{title}',
+        ));
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function buildView(FormView $view, FormInterface $form, array $options)
@@ -40,6 +54,8 @@ class AliasType extends AbstractType
 
         $view->vars = array_replace($view->vars, array(
             'prefix_text' => $this->requestStack->getMasterRequest()->getSchemeAndHttpHost() . '/',
+            'autofill' => $options['autofill'],
+            'alias_pattern' => $options['alias_pattern'],
         ));
     }
 

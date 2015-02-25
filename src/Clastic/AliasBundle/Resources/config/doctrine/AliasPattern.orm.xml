@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity repository-class="Clastic\AliasBundle\Entity\AliasPatternRepository" name="Clastic\AliasBundle\Entity\AliasPattern">
+    <id name="id" type="integer" column="id">
+      <generator strategy="AUTO"/>
+    </id>
+    <field name="moduleIdentifier" type="string" column="module_identifier" length="120"/>
+    <field name="pattern" type="string" column="pattern" length="255"/>
+  </entity>
+</doctrine-mapping>
