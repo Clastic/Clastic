@@ -12,8 +12,6 @@ namespace Clastic\BlockBundle\Controller;
 use Clastic\BackofficeBundle\Controller\AbstractModuleController;
 use Clastic\BlockBundle\Entity\Block;
 use Clastic\BlockBundle\Form\BlockType;
-use Clastic\MenuBundle\Entity\Menu;
-use Clastic\MenuBundle\Form\MenuType;
 use Clastic\NodeBundle\Node\NodeReferenceInterface;
 use Symfony\Component\Form\Form;
 

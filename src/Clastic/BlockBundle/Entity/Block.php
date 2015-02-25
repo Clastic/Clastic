@@ -2,8 +2,6 @@
 
 namespace Clastic\BlockBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Block
  */
@@ -29,11 +27,10 @@ class Block
      */
     private $body;
 
-
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -43,7 +40,7 @@ class Block
     /**
      * Set identifier
      *
-     * @param string $identifier
+     * @param  string $identifier
      * @return Block
      */
     public function setIdentifier($identifier)
@@ -56,7 +53,7 @@ class Block
     /**
      * Get identifier
      *
-     * @return string 
+     * @return string
      */
     public function getIdentifier()
     {
@@ -66,7 +63,7 @@ class Block
     /**
      * Set title
      *
-     * @param string $title
+     * @param  string $title
      * @return Block
      */
     public function setTitle($title)
@@ -79,7 +76,7 @@ class Block
     /**
      * Get title
      *
-     * @return string 
+     * @return string
      */
     public function getTitle()
     {
@@ -89,7 +86,7 @@ class Block
     /**
      * Set body
      *
-     * @param string $body
+     * @param  string $body
      * @return Block
      */
     public function setBody($body)
@@ -102,7 +99,7 @@ class Block
     /**
      * Get body
      *
-     * @return string 
+     * @return string
      */
     public function getBody()
     {

@@ -11,11 +11,9 @@ namespace Clastic\AliasBundle\Form\Extension;
 
 use Clastic\AliasBundle\Entity\AliasPattern;
 use Clastic\AliasBundle\Entity\AliasPatternRepository;
-use Clastic\AliasBundle\EventListener\FormSubscriber;
 use Clastic\CoreBundle\Module\ModuleManager;
 use Clastic\NodeBundle\Module\NodeModuleInterface;
 use Symfony\Bridge\Doctrine\RegistryInterface;
-use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Form\AbstractTypeExtension;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;

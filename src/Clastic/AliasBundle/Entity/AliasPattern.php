@@ -2,8 +2,6 @@
 
 namespace Clastic\AliasBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * AliasPattern
  */
@@ -24,11 +22,10 @@ class AliasPattern
      */
     private $pattern;
 
-
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -38,7 +35,7 @@ class AliasPattern
     /**
      * Set moduleIdentifier
      *
-     * @param string $moduleIdentifier
+     * @param  string       $moduleIdentifier
      * @return AliasPattern
      */
     public function setModuleIdentifier($moduleIdentifier)
@@ -51,7 +48,7 @@ class AliasPattern
     /**
      * Get moduleIdentifier
      *
-     * @return string 
+     * @return string
      */
     public function getModuleIdentifier()
     {
@@ -61,7 +58,7 @@ class AliasPattern
     /**
      * Set pattern
      *
-     * @param string $pattern
+     * @param  string       $pattern
      * @return AliasPattern
      */
     public function setPattern($pattern)
@@ -74,7 +71,7 @@ class AliasPattern
     /**
      * Get pattern
      *
-     * @return string 
+     * @return string
      */
     public function getPattern()
     {
