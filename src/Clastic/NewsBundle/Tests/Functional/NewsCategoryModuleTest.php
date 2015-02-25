@@ -15,6 +15,8 @@ use Clastic\BackofficeBundle\Tests\AuthenticatedWebTestCase;
  * NewsCategoryModuleTest
  *
  * @author Dries De Peuter <dries@nousefreak.be>
+ *
+ * @group functional
  */
 class NewsCategoryModuleTest extends AuthenticatedWebTestCase
 {

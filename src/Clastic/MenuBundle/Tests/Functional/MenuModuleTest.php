@@ -13,6 +13,8 @@ use Clastic\BackofficeBundle\Tests\AuthenticatedWebTestCase;
 
 /**
  * @author Dries De Peuter <dries@nousefreak.be>
+ *
+ * @group functional
  */
 class MenuModuleTest extends AuthenticatedWebTestCase
 {

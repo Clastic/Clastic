@@ -13,6 +13,8 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 /**
  * @author Dries De Peuter <dries@nousefreak.be>
+ *
+ * @group functional
  */
 class SecurityTest extends WebTestCase
 {

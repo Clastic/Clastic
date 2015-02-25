@@ -13,6 +13,8 @@ use Clastic\BackofficeBundle\Tests\AuthenticatedWebTestCase;
 
 /**
  * @author Joeri van Dooren
+ *
+ * @group functional
  */
 class NewsModuleTest extends AuthenticatedWebTestCase
 {
