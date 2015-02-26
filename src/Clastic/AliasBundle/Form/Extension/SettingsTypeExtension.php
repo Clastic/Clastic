@@ -11,6 +11,7 @@ namespace Clastic\AliasBundle\Form\Extension;
 
 use Clastic\AliasBundle\Entity\AliasPattern;
 use Clastic\AliasBundle\Entity\AliasPatternRepository;
+use Clastic\AliasBundle\Module\AliasModule;
 use Clastic\CoreBundle\Module\ModuleManager;
 use Clastic\NodeBundle\Module\NodeModuleInterface;
 use Symfony\Bridge\Doctrine\RegistryInterface;
@@ -66,7 +67,7 @@ class SettingsTypeExtension extends AbstractTypeExtension
 
         $module = $this->moduleManager->getModule($data['module']);
 
-        if (!$module instanceof NodeModuleInterface) {
+        if (!$module instanceof AliasModule) {
             return;
         }
 
@@ -74,13 +75,41 @@ class SettingsTypeExtension extends AbstractTypeExtension
         $builder->addEventListener(FormEvents::PRE_SET_DATA, array($this, 'load'));
 
         $builder->get('tabs')
-            ->add(
-                $this->createTab($builder, 'alias', array('label' => 'Alias'))
-                    ->add('alias_pattern', 'alias', array(
-                        'required' => false,
-                        'autofill' => false,
-                    ))
-            );
+            ->add($this->createAliasTab($builder));
+    }
+
+    private function createAliasTab(FormBuilderInterface $builder)
+    {
+        $tab = $this->createTab($builder, 'alias', array('label' => 'Alias'));
+
+        foreach ($this->moduleManager->getContentModules() as $module) {
+            if (!$module instanceof NodeModuleInterface) {
+                continue;
+            }
+
+            $mainModuleName = $module->getName();
+
+            $fieldset = $builder
+                ->create('fieldset_' . $module->getIdentifier(), 'fieldset', array(
+                    'legend' => $mainModuleName,
+                ))->add($this->getModuleId($module->getIdentifier()), 'alias', array(
+                    'required' => false,
+                    'autofill' => false,
+                    'label' => false,
+                ));
+
+            foreach ($this->moduleManager->getSubmodules($module->getIdentifier()) as $submodule) {
+                $fieldset->add($this->getModuleId($submodule->getIdentifier()), 'alias', array(
+                    'required' => false,
+                    'autofill' => false,
+                    'label' => $submodule->getName(),
+                ));
+            }
+
+            $tab->add($fieldset);
+        }
+
+        return $tab;
     }
 
     /**
@@ -107,18 +136,24 @@ class SettingsTypeExtension extends AbstractTypeExtension
     public function load(FormEvent $event)
     {
         $data = $event->getData();
+        $patterns = $this->getRepo()->findAll();
 
-        $pattern = $this->getRepo()->findOneBy(array(
-            'moduleIdentifier' => $data['module'],
-        ));
+        foreach ($this->moduleManager->getContentModules() as $module) {
+            if (!$module instanceof NodeModuleInterface) {
+                continue;
+            }
 
-        $data = $event->getData();
-
-        if ($pattern) {
-            $data['alias_pattern'] = $pattern->getPattern();
-        } else {
-            $data['alias_pattern'] = '{title}';
+            $data[$this->getModuleId($module->getIdentifier())] = '{title}';
+            foreach ($this->moduleManager->getSubmodules($module->getIdentifier()) as $submodule) {
+                $data[$this->getModuleId($submodule->getIdentifier())] = '{title}';
+            }
         }
+
+        /** @var AliasPattern $pattern */
+        foreach ($patterns as $pattern) {
+            $data[$this->getModuleId($pattern->getModuleIdentifier())] = $pattern->getPattern();
+        }
+
         $event->setData($data);
     }
 
@@ -129,18 +164,25 @@ class SettingsTypeExtension extends AbstractTypeExtension
     {
         $data = $event->getData();
 
-        $pattern = $this->getRepo()->findOneBy(array(
-            'moduleIdentifier' => $data['module'],
-        ));
+        foreach ($data as $key => $value) {
+            if (!preg_match('/^alias_pattern_(.*)/', $key, $matches)) {
+                continue;
+            }
 
-        if (!$pattern) {
-            $pattern = new AliasPattern();
-            $pattern->setModuleIdentifier($data['module']);
+            $identifier = $this->unClean($matches[1]);
+
+            $pattern = $this->getRepo()->findOneBy(array(
+                'moduleIdentifier' => $identifier,
+            ));
+
+            if (!$pattern) {
+                $pattern = new AliasPattern();
+                $pattern->setModuleIdentifier($identifier);
+            }
+            $pattern->setPattern($value);
+
+            $this->registry->getManager()->persist($pattern);
         }
-
-        $pattern->setPattern($data['alias_pattern']);
-
-        $this->registry->getManager()->persist($pattern);
     }
 
     /**
@@ -150,4 +192,19 @@ class SettingsTypeExtension extends AbstractTypeExtension
     {
         return $this->registry->getRepository('ClasticAliasBundle:AliasPattern');
     }
+
+    private function getModuleId($rawModuleId)
+    {
+        return $this->clean(sprintf('alias_pattern_%s', $rawModuleId));
+    }
+
+    private function clean($string)
+    {
+        return str_replace('/', ':', $string);
+    }
+    private function unClean($string)
+    {
+        return str_replace(':', '/', $string);
+    }
+
 }
