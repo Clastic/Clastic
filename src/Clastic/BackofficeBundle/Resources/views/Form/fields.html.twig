@@ -105,6 +105,15 @@
     {%- endfor %}
 {%- endblock %}
 
+{% block fieldset_widget %}
+    <fieldset {{ block('widget_container_attributes') }}>
+        {% if legend is defined and legend is not empty %}
+            <legend>{{ legend }}</legend>
+        {% endif %}
+        {{ form_widget(form) }}
+    </fieldset>
+{% endblock %}
+
 {% block multi_select_widget -%}
     <div class="multi_select">
         {{ block('choice_widget') }}
