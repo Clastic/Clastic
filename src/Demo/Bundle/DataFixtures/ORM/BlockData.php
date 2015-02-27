@@ -42,7 +42,7 @@ class BlockData extends AbstractFixture implements OrderedFixtureInterface, Cont
         $block = new Block();
         $block->setIdentifier('about');
         $block->setTitle('About');
-        $block->setBody('<p>Site build using <a href="https://github.com/Clastic/Clastic">Clastic</a>.</p>');
+        $block->setBody('<p>Site built using <a href="https://github.com/Clastic/Clastic">Clastic</a>.</p>');
 
         $manager->persist($block);
         $manager->flush();
