@@ -63,11 +63,24 @@
             {% set label = name|humanize %}
         {% endif %}
         <label{% for attrname, attrvalue in label_attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}>
-            {{- form_widget(form) -}} {{ label|trans({}, translation_domain) }}
+        {{- form_widget(form) -}} {{ label|trans({}, translation_domain) }}
         </label>
         {{- form_errors(form) -}}
     </div>
 {%- endblock checkbox_row %}
+
+{% block collection_widget %}
+    {% set label = false %}
+    {{ block('form_label') }}
+    <ul class="collection list-group list-unstyled" data-prototype="{{ form_widget(prototype)|e }}">
+        {% for item in form.children %}
+            <li class="list-group-item">
+                {{ form_widget(item) }}
+                {{ form_errors(item) }}
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock collection_widget %}
 
 {# Custom elements #}
 
