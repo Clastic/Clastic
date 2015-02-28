@@ -46,7 +46,13 @@ class BlockExtension extends \Twig_Extension
      */
     public function renderBlock($identifier)
     {
-        return $this->blockManager->get($identifier)->getBody();
+        $block = $this->blockManager->get($identifier);
+
+        if (!$block) {
+            return '';
+        }
+
+        return $block->getBody();
     }
 
     /**
