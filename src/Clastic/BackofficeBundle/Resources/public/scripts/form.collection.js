@@ -21,18 +21,15 @@
         var prototype = $collectionHolder.data('prototype');
         var index = $collectionHolder.data('index');
         $collectionHolder.data('index', index + 1);
-        var $data = $('<div class="col-md-11"></div>').append(prototype.replace(/__name__/g, index));
-        var $newFormLi = $('<li class="list-group-item row"></li>').append($data);
+        var $newFormLi = $('<li class="list-group-item"></li>').append(prototype.replace(/__name__/g, index));
 
         $newLinkLi.before($newFormLi);
         addCollectionDeleteLink($newFormLi);
     }
     function addCollectionDeleteLink($tagFormLi) {
-        var $linkDiv = $('<div class="col-md-1"></div>');
         var $removeFormA = $('<a href="#" class="remove"><i class="fa fa-minus-circle"></i></a>');
 
-        $linkDiv.append($removeFormA);
-        $tagFormLi.append($linkDiv);
+        $tagFormLi.append($removeFormA);
 
         $removeFormA.on('click', function(e) {
             e.preventDefault();
