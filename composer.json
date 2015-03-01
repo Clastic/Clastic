@@ -1,10 +1,25 @@
 {
-    "name": "symfony/framework-standard-edition",
+    "name": "clastic/clastic",
     "license": "MIT",
-    "type": "project",
-    "description": "The \"Symfony Standard Edition\" distribution",
+    "type": "library",
+    "description": "The Clastic Base CMS.",
     "autoload": {
-        "psr-0": { "": "src/", "SymfonyStandard": "app/" }
+        "psr-0": { "": "src/" }
+    },
+    "replace": {
+        "clastic/alias-bundle": "self.version",
+        "clastic/backoffice-bundle": "self.version",
+        "clastic/block-bundle": "self.version",
+        "clastic/blog-bundle": "self.version",
+        "clastic/core-bundle": "self.version",
+        "clastic/front-bundle": "self.version",
+        "clastic/media-bundle": "self.version",
+        "clastic/menu-bundle": "self.version",
+        "clastic/news-bundle": "self.version",
+        "clastic/node-bundle": "self.version",
+        "clastic/taxonomy-bundle": "self.version",
+        "clastic/text-bundle": "self.version",
+        "clastic/user-bundle": "self.version"
     },
     "require": {
         "php": ">=5.3.3",
