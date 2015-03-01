@@ -16,6 +16,7 @@
         <parameter key="clastic.backoffice.type.tree.class">Clastic\BackofficeBundle\Form\Type\TreeType</parameter>
         <parameter key="clastic.backoffice.type.settings.class">Clastic\BackofficeBundle\Form\SettingsType</parameter>
         <parameter key="clastic.backoffice.type.fieldset.class">Clastic\BackofficeBundle\Form\Type\FieldsetType</parameter>
+        <parameter key="clastic.backoffice.type.link.class">Clastic\BackofficeBundle\Form\Type\LinkType</parameter>
         <parameter key="clastic.backoffice.node.form_build.class">Clastic\BackofficeBundle\EventListener\NodeFormBuildListener</parameter>
         <parameter key="clastic.backoffice.twig.avatar_extension.class">Clastic\BackofficeBundle\Twig\AvatarExtension</parameter>
         <parameter key="clastic.backoffice.exception_listener.class">Clastic\BackofficeBundle\EventListener\ExceptionListener</parameter>
@@ -66,6 +67,10 @@
 
         <service id="clastic.backoffice.type.fieldset" class="%clastic.backoffice.type.fieldset.class%">
             <tag name="form.type" alias="fieldset" />
+        </service>
+
+        <service id="clastic.backoffice.type.link" class="%clastic.backoffice.type.link.class%">
+            <tag name="form.type" alias="link" />
         </service>
 
         <service id="clastic.backoffice.twig.avatar_extension" class="%clastic.backoffice.twig.avatar_extension.class%">
