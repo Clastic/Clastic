@@ -11,4 +11,12 @@
             <constraint name="Valid" />
         </property>
     </class>
+    <class name="Clastic\BlogBundle\Entity\Category">
+        <property name="description">
+            <constraint name="NotBlank" />
+        </property>
+        <property name="node">
+            <constraint name="Valid" />
+        </property>
+    </class>
 </constraint-mapping>
