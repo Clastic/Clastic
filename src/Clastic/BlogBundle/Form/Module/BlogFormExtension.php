@@ -37,19 +37,5 @@ class BlogFormExtension extends AbstractNodeTypeExtension
                         'required' => false,
                     ))
             );
-
-        $builder->get('tabs')->add($this
-            ->createTab($builder, 'links', array(
-                'label' => 'Links',
-                'position' => 'first',
-            ))
-            ->add('links', 'collection', array(
-                'type' => 'link',
-                'allow_add' => true,
-                'allow_delete' => true,
-                'required' => false,
-                'mapped' => false,
-            ))
-        );
     }
 }
