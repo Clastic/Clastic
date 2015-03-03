@@ -40,7 +40,7 @@ class NodeDetailTemplateListener implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return array(
-            'clastic.node.front' => 'setTemplate',
+            'clastic.node.front' => array('setTemplate', 10),
         );
     }
 
