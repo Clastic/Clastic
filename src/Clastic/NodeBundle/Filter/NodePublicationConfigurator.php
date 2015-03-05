@@ -9,6 +9,7 @@
 
 namespace Clastic\NodeBundle\Filter;
 
+use Doctrine\ORM\EntityManager;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\Security\Core\SecurityContext;
 
@@ -17,6 +18,9 @@ use Symfony\Component\Security\Core\SecurityContext;
  */
 class NodePublicationConfigurator
 {
+    /**
+     * @var EntityManager
+     */
     protected $em;
 
     /**
@@ -24,12 +28,19 @@ class NodePublicationConfigurator
      */
     protected $securityContext;
 
-    public function __construct($em, SecurityContext $securityContext)
+    /**
+     * @param EntityManager   $em
+     * @param SecurityContext $securityContext
+     */
+    public function __construct(EntityManager $em, SecurityContext $securityContext)
     {
         $this->em              = $em;
         $this->securityContext = $securityContext;
     }
 
+    /**
+     * Enable the NodePublicationFilter when not in the backoffice..
+     */
     public function onKernelRequest()
     {
         $token = $this->securityContext->getToken();
@@ -41,7 +52,7 @@ class NodePublicationConfigurator
             return;
         }
 
-        if ($this->securityContext->getToken()->getProviderKey() != 'backoffice') {
+        if ($token->getProviderKey() != 'backoffice') {
             return;
         }
 

@@ -25,11 +25,11 @@ class NodePublicationFilter extends SQLFilter
     public function addFilterConstraint(ClassMetadata $targetEntity, $targetTableAlias)
     {
         if (!$this->applyPublication) {
-            return "";
+            return '';
         }
 
         if (!$targetEntity->reflClass->implementsInterface('Clastic\NodeBundle\Node\NodeReferenceInterface')) {
-            return "";
+            return '';
         }
 
         $joinSql = 'SELECT COUNT(n_n.id) FROM Node n_n JOIN NodePublication n_np ON n_n.publication_id = n_np.id';
@@ -37,7 +37,6 @@ class NodePublicationFilter extends SQLFilter
         $filterSql = 'n_np.available = 1'
             . ' AND (n_np.publishedFrom > NOW() OR n_np.publishedFrom IS NULL)'
             . ' AND (n_np.publishedTill < NOW() OR n_np.publishedTill IS NULL)'
-
         ;
 
         return sprintf('(%s WHERE n_n.id = %s.node_id AND (%s)) = 1', $joinSql, $targetTableAlias, $filterSql);

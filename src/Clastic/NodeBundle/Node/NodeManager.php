@@ -60,8 +60,11 @@ class NodeManager
             ->dispatch(NodeEvents::CREATE, $event);
 
         $entity = $event->getEntity();
-        $entity->setNode($event->getNode());
+        if (!$entity) {
+            throw new \Exception('Not found.');
+        }
 
+        $entity->setNode($event->getNode());
         $entity->getNode()->setPublication(new NodePublication());
 
         return $entity;
