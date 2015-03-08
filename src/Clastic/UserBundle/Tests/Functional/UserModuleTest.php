@@ -26,7 +26,7 @@ class UserModuleTest extends AuthenticatedWebTestCase
         $client = $this->createAuthorizedClient();
         $crawler = $client->request('GET', '/admin/');
 
-        $this->assertTrue($client->getResponse()->isSuccessful());
+        $this->assertTrue($client->getResponse()->isSuccessful(), "Request failed");
         $this->assertEquals(1, $crawler->filter('nav li a:contains("User")')->count());
 
         $a = $crawler->filter('nav li a:contains("User")');
@@ -38,7 +38,7 @@ class UserModuleTest extends AuthenticatedWebTestCase
         $client = $this->createAuthorizedClient();
         $crawler = $client->request('GET', $this->listUrl);
 
-        $this->assertTrue($client->getResponse()->isSuccessful());
+        $this->assertTrue($client->getResponse()->isSuccessful(), "Request failed");
         $this->assertEquals(1, $crawler->filter('nav li a:contains("User")')->count());
         $this->assertGreaterThan(0, $crawler->filter('table')->count());
     }
@@ -48,7 +48,7 @@ class UserModuleTest extends AuthenticatedWebTestCase
         $client = $this->createAuthorizedClient();
         $crawler = $client->request('GET', $this->formUrl);
 
-        $this->assertTrue($client->getResponse()->isSuccessful());
+        $this->assertTrue($client->getResponse()->isSuccessful(), "Request failed");
         $this->assertGreaterThan(0, $crawler->filter('form')->count());
     }
 }

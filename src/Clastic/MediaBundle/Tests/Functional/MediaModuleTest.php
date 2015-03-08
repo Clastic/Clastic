@@ -25,7 +25,7 @@ class MediaModuleTest extends AuthenticatedWebTestCase
         $client = $this->createAuthorizedClient();
         $crawler = $client->request('GET', '/admin/');
 
-        $this->assertTrue($client->getResponse()->isSuccessful());
+        $this->assertTrue($client->getResponse()->isSuccessful(), "Request failed");
         $this->assertEquals(1, $crawler->filter('nav li a:contains("Media")')->count());
 
         $a = $crawler->filter('nav li a:contains("Media")');
@@ -37,7 +37,7 @@ class MediaModuleTest extends AuthenticatedWebTestCase
         $client = $this->createAuthorizedClient();
         $crawler = $client->request('GET', $this->listUrl);
 
-        $this->assertTrue($client->getResponse()->isSuccessful());
+        $this->assertTrue($client->getResponse()->isSuccessful(), "Request failed");
         $this->assertEquals(1, $crawler->filter('nav li a:contains("Media")')->count());
     }
 }

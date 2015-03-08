@@ -23,7 +23,7 @@ class DashboardTest extends AuthenticatedWebTestCase
         $client = $this->createAuthorizedClient();
         $crawler = $client->request('GET', '/admin/');
 
-        $this->assertTrue($client->getResponse()->isSuccessful());
+        $this->assertTrue($client->getResponse()->isSuccessful(), "Request failed");
         $this->assertGreaterThan(0, $crawler->filter('html:contains("Dashboard")')->count());
     }
 }

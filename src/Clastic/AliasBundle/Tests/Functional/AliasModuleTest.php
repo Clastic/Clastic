@@ -26,7 +26,7 @@ class AliasModuleTest extends AuthenticatedWebTestCase
         $client = $this->createAuthorizedClient();
         $crawler = $client->request('GET', '/admin/');
 
-        $this->assertTrue($client->getResponse()->isSuccessful());
+        $this->assertTrue($client->getResponse()->isSuccessful(), "Request failed");
         $this->assertEquals(
             1,
             $crawler->filter('nav li a:contains("Alias")')->count()
@@ -41,7 +41,7 @@ class AliasModuleTest extends AuthenticatedWebTestCase
         $client = $this->createAuthorizedClient();
         $crawler = $client->request('GET', $this->listUrl);
 
-        $this->assertTrue($client->getResponse()->isSuccessful());
+        $this->assertTrue($client->getResponse()->isSuccessful(), "Request failed");
         $this->assertEquals(
             1,
             $crawler->filter('nav li a:contains("Alias")')->count()
@@ -56,7 +56,7 @@ class AliasModuleTest extends AuthenticatedWebTestCase
         $client = $this->createAuthorizedClient();
         $client->request('GET', $this->newUrl);
 
-        $this->assertFalse($client->getResponse()->isSuccessful());
+        $this->assertTrue($client->getResponse()->isSuccessful(), "Request should failed");
     }
 
     public function testListNoAddButton()
@@ -64,7 +64,7 @@ class AliasModuleTest extends AuthenticatedWebTestCase
         $client = $this->createAuthorizedClient();
         $crawler = $client->request('GET', $this->listUrl);
 
-        $this->assertTrue($client->getResponse()->isSuccessful());
+        $this->assertTrue($client->getResponse()->isSuccessful(), "Request failed");
         $this->assertEquals(
             0,
             $crawler->filter('h1 a')->count()
@@ -80,6 +80,6 @@ class AliasModuleTest extends AuthenticatedWebTestCase
         $client = $this->createAuthorizedClient();
         $client->request('GET', $this->newUrl);
 
-        $this->assertFalse($client->getResponse()->isSuccessful());
+        $this->assertTrue($client->getResponse()->isSuccessful(), "Request should failed");
     }
 }
