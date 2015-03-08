@@ -10,10 +10,6 @@
 namespace Clastic\NodeBundle\Tests\Unit\Node;
 
 use Clastic\NodeBundle\Entity\Node;
-use Clastic\NodeBundle\Event\NodeCreateEvent;
-use Clastic\NodeBundle\Node\NodeManager;
-use Clastic\NodeBundle\Tests\Stubs\NodeReferenceEntity;
-use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\Form\Test\TypeTestCase;
 
 /**

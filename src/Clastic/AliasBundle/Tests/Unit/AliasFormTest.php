@@ -54,10 +54,8 @@ class AliasModuleTest extends TypeTestCase
             ),
         );
 
-
         $type = new AliasType();
         $form = $this->factory->create($type, new Alias());
-
 
         // submit the data to the form directly
         $form->submit($formData);
@@ -76,7 +74,6 @@ class AliasModuleTest extends TypeTestCase
 
         $type = new AliasType();
         $form = $this->factory->create($type, new Alias());
-
 
         // submit the data to the form directly
         $form->submit($formData);
