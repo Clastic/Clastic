@@ -58,4 +58,28 @@ class AliasModuleTest extends AuthenticatedWebTestCase
 
         $this->assertFalse($client->getResponse()->isSuccessful());
     }
+
+    public function testListNoAddButton()
+    {
+        $client = $this->createAuthorizedClient();
+        $crawler = $client->request('GET', $this->listUrl);
+
+        $this->assertTrue($client->getResponse()->isSuccessful());
+        $this->assertEquals(
+            0,
+            $crawler->filter('h1 a')->count()
+        );
+        $this->assertEquals(
+            0,
+            $crawler->filter(sprintf('a[href="%s"]', $this->newUrl))->count()
+        );
+    }
+
+    public function testNoAddForm()
+    {
+        $client = $this->createAuthorizedClient();
+        $client->request('GET', $this->newUrl);
+
+        $this->assertFalse($client->getResponse()->isSuccessful());
+    }
 }
