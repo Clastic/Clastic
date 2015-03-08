@@ -56,7 +56,7 @@ class AliasModuleTest extends AuthenticatedWebTestCase
         $client = $this->createAuthorizedClient();
         $client->request('GET', $this->newUrl);
 
-        $this->assertTrue($client->getResponse()->isSuccessful(), "Request should failed");
+        $this->assertFalse($client->getResponse()->isSuccessful(), "Request should failed");
     }
 
     public function testListNoAddButton()
@@ -80,6 +80,6 @@ class AliasModuleTest extends AuthenticatedWebTestCase
         $client = $this->createAuthorizedClient();
         $client->request('GET', $this->newUrl);
 
-        $this->assertTrue($client->getResponse()->isSuccessful(), "Request should failed");
+        $this->assertFalse($client->getResponse()->isSuccessful(), "Request should failed");
     }
 }
