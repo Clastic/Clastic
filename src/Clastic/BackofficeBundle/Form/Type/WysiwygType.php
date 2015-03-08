@@ -9,7 +9,9 @@
 
 namespace Clastic\BackofficeBundle\Form\Type;
 
+use Clastic\BackofficeBundle\Form\DataTransformer\SanitizerTransformer;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
@@ -29,6 +31,14 @@ class WysiwygType extends AbstractType
                 'class' => 'wysiwyg',
             ),
         ));
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
+        $builder->addViewTransformer(new SanitizerTransformer());
     }
 
     /**

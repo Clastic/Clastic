@@ -17,7 +17,8 @@
         "thomaswelton/gravatarlib": "~0.1",
         "white-october/pagerfanta-bundle": "~1.0",
         "whiteoctober/breadcrumbs-bundle": "~1.0",
-        "egeloen/ordered-form-bundle": "~1.0"
+        "egeloen/ordered-form-bundle": "~1.0",
+        "ezyang/htmlpurifier": "~4.6"
     },
     "autoload": {
         "psr-4": { "Clastic\\BackofficeBundle\\": "" }
