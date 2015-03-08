@@ -28,4 +28,6 @@ script:
 
 matrix:
   allow_failures:
-    - php: hhvm-nightly # hhvm-nightly currently chokes on composer installation
+    - php:
+      - hhvm # Dropping hhvm support for now. Can't determine if failures are correct.
+      - hhvm-nightly # hhvm-nightly currently chokes on composer installation
