@@ -7,7 +7,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Clastic\AliasBundle\Tests\Controller;
+namespace Clastic\AliasBundle\Tests\Functional;
 
 use Clastic\BackofficeBundle\Tests\AuthenticatedWebTestCase;
 
