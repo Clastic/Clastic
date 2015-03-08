@@ -7,7 +7,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Clastic\AliasBundle\Tests\Unit;
+namespace Clastic\AliasBundle\Tests\Unit\Form;
 
 use Clastic\AliasBundle\Entity\Alias;
 use Clastic\AliasBundle\Form\AliasType;
