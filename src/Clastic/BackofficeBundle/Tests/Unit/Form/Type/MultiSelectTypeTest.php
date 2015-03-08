@@ -7,28 +7,23 @@
  * file that was distributed with this source code.
  */
 
-namespace Clastic\AliasBundle\Tests\Unit\Form\Type;
+namespace Clastic\BackofficeBundle\Tests\Unit\Form\Type;
 
-use Clastic\AliasBundle\Form\Type\AliasType;
+use Clastic\BackofficeBundle\Form\Type\MultiSelectType;
 use Symfony\Component\Form\Test\TypeTestCase;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
  * @author Dries De Peuter <dries@nousefreak.be>
  *
- * @group functional
+ * @group unit
  */
-class AliasTypeTest extends TypeTestCase
+class MultiSelectTypeTest extends TypeTestCase
 {
     public function testSubmitValidData()
     {
-        $formData = 'alias';
+        $formData = array();
 
-        $requestStack = new RequestStack();
-        $requestStack->push(new Request());
-
-        $type = new AliasType($requestStack);
+        $type = new MultiSelectType();
         $form = $this->factory->create($type);
 
         // submit the data to the form directly
@@ -36,5 +31,12 @@ class AliasTypeTest extends TypeTestCase
 
         $this->assertTrue($form->isSynchronized());
         $this->assertEquals($formData, $form->getData());
+    }
+
+    public function testParent()
+    {
+        $type = new MultiSelectType();
+
+        $this->assertEquals('choice', $type->getParent());
     }
 }

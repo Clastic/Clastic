@@ -9,12 +9,8 @@
 
 namespace Clastic\BackofficeBundle\Tests\Unit\Form\Type;
 
-use Clastic\AliasBundle\Form\Type\AliasType;
 use Clastic\BackofficeBundle\Form\Type\DatePickerType;
-use Symfony\Component\Form\FormBuilder;
 use Symfony\Component\Form\Test\TypeTestCase;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
  * @author Dries De Peuter <dries@nousefreak.be>
@@ -57,5 +53,12 @@ class DatePickerTypeTest extends TypeTestCase
         $form->submit('2.6.2010');
 
         $this->assertEquals('2.6.2010', $form->getViewData());
+    }
+
+    public function testParent()
+    {
+        $type = new DatePickerType();
+
+        $this->assertEquals('date', $type->getParent());
     }
 }
