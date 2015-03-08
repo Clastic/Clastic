@@ -7,7 +7,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Clastic\BackofficeBundle\Tests\Form;
+namespace Clastic\BackofficeBundle\Tests\Unit\Form;
 
 use Clastic\BackofficeBundle\Form\DataTransformer\EntityToIdTransformer;
 
