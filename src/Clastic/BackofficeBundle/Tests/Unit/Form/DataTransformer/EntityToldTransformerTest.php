@@ -7,7 +7,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Clastic\BackofficeBundle\Tests\Unit\Form;
+namespace Clastic\BackofficeBundle\Tests\Unit\Form\DataTransformer;
 
 use Clastic\BackofficeBundle\Form\DataTransformer\EntityToIdTransformer;
 
@@ -98,11 +98,13 @@ class EntityToldTransformerTest extends \PHPUnit_Framework_TestCase
         $repo
             ->expects($this->once())
             ->method('find')
+            ->with(1)
             ->willReturn($result);
 
         $objectManager
             ->expects($this->once())
             ->method('getRepository')
+            ->with('class')
             ->willReturn($repo);
 
         $transformer = new EntityToIdTransformer($objectManager, 'class');
