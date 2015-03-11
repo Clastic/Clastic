@@ -48,6 +48,7 @@ class NodeManager
      * @param string $type
      *
      * @return NodeReferenceInterface
+     * @throws \Exception
      */
     public function createNode($type)
     {
