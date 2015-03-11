@@ -7,14 +7,12 @@
  * file that was distributed with this source code.
  */
 
-namespace Clastic\CoreBundle\Tests\Model;
-
-use Clastic\CoreBundle\Module\AdministrationModuleInterface;
+namespace Clastic\CoreBundle\Tests\Stubs;
 
 /**
  * @author Dries De Peuter <dries@nousefreak.be>
  */
-class AdministrationModule extends Module implements AdministrationModuleInterface
+class ContentModule extends Module
 {
 
 }

@@ -7,12 +7,12 @@
  * file that was distributed with this source code.
  */
 
-namespace Clastic\CoreBundle\Tests;
+namespace Clastic\CoreBundle\Tests\Unit;
 
 use Clastic\CoreBundle\Module\ModuleManager;
-use Clastic\CoreBundle\Tests\Model\AdministrationModule;
-use Clastic\CoreBundle\Tests\Model\ContentModule;
-use Clastic\CoreBundle\Tests\Model\SubModule;
+use Clastic\CoreBundle\Tests\Stubs\AdministrationModule;
+use Clastic\CoreBundle\Tests\Stubs\ContentModule;
+use Clastic\CoreBundle\Tests\Stubs\SubModule;
 
 /**
  * ModuleManagerTest

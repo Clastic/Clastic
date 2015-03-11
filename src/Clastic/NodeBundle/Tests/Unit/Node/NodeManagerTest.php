@@ -60,4 +60,94 @@ class NodeManagerTest extends TypeTestCase
         $manager = new NodeManager($dispatcher, $registry);
         $this->assertEquals($nodeReferenceEntity, $manager->createNode('bla'));
     }
+
+    public function testLoadNodeFound()
+    {
+        $node = new Node();
+        $node->setType('nodeType');
+
+        $nodeReferenceEntity = new NodeReferenceEntity();
+
+        $repository = $this->getMockBuilder('Doctrine\Common\Persistence\ObjectRepository')
+            ->getMock();
+        $repository
+            ->expects($this->once())
+            ->method('find')
+            ->willReturn($node);
+        $repository
+            ->expects($this->once())
+            ->method('findOneBy')
+            ->willReturn($nodeReferenceEntity);
+
+        $registry = $this->getMockBuilder('Doctrine\Bundle\DoctrineBundle\Registry')
+            ->disableOriginalConstructor()
+            ->getMock();
+        $registry
+            ->expects($this->exactly(2))
+            ->method('getRepository')
+            ->withConsecutive(array('ClasticNodeBundle:Node'), array(null))
+            ->willReturnOnConsecutiveCalls($repository, $repository);
+
+        $dispatcher = $this->getMockBuilder('Symfony\Component\EventDispatcher\EventDispatcher')
+            ->getMock();
+        $dispatcher
+            ->expects($this->once())
+            ->method('dispatch')
+            ->willReturnArgument(1);
+
+        $manager = new NodeManager($dispatcher, $registry);
+        $this->assertEquals($nodeReferenceEntity, $manager->loadNode(1));
+    }
+
+
+    public function testLoadNodeWithType()
+    {
+        $node = new Node();
+        $node->setType('nodeType');
+
+        $nodeReferenceEntity = new NodeReferenceEntity();
+
+        $repository = $this->getMockBuilder('Doctrine\Common\Persistence\ObjectRepository')
+            ->getMock();
+        $repository
+            ->expects($this->once())
+            ->method('findOneBy')
+            ->willReturn($nodeReferenceEntity);
+
+        $registry = $this->getMockBuilder('Doctrine\Bundle\DoctrineBundle\Registry')
+            ->disableOriginalConstructor()
+            ->getMock();
+        $registry
+            ->expects($this->once())
+            ->method('getRepository')
+            ->with(null)
+            ->willReturn($repository);
+
+        $dispatcher = $this->getMockBuilder('Symfony\Component\EventDispatcher\EventDispatcher')
+            ->getMock();
+        $dispatcher
+            ->expects($this->once())
+            ->method('dispatch')
+            ->willReturnArgument(1);
+
+        $manager = new NodeManager($dispatcher, $registry);
+        $this->assertEquals($nodeReferenceEntity, $manager->loadNode(1, 'nodeType'));
+    }
+
+    public function testGetEntityName()
+    {
+        $registry = $this->getMockBuilder('Doctrine\Bundle\DoctrineBundle\Registry')
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $dispatcher = $this->getMockBuilder('Symfony\Component\EventDispatcher\EventDispatcher')
+            ->getMock();
+        $dispatcher
+            ->expects($this->once())
+            ->method('dispatch')
+            ->willReturnArgument(1);
+
+        $manager = new NodeManager($dispatcher, $registry);
+        $manager->getEntityName('type');
+    }
 }
