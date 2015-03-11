@@ -11,6 +11,7 @@ namespace Clastic\BackofficeBundle\Tests\Unit\Form\Type;
 
 use Clastic\BackofficeBundle\Form\Type\DatePickerType;
 use Symfony\Component\Form\Test\TypeTestCase;
+use Symfony\Component\Intl\Util\IntlTestHelper;
 
 /**
  * @author Dries De Peuter <dries@nousefreak.be>
@@ -19,6 +20,25 @@ use Symfony\Component\Form\Test\TypeTestCase;
  */
 class DatePickerTypeTest extends TypeTestCase
 {
+    private $defaultTimezone;
+
+    protected function setUp()
+    {
+        parent::setUp();
+
+        // we test against "de_AT", so we need the full implementation
+        IntlTestHelper::requireFullIntl($this);
+
+        \Locale::setDefault('de_AT');
+
+        $this->defaultTimezone = date_default_timezone_get();
+    }
+
+    protected function tearDown()
+    {
+        date_default_timezone_set($this->defaultTimezone);
+    }
+
     public function testThrowExceptionIfYearsIsInvalid()
     {
         $this->setExpectedException('Symfony\Component\OptionsResolver\Exception\InvalidOptionsException');
