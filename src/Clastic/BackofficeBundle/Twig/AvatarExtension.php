@@ -72,6 +72,7 @@ class AvatarExtension extends \Twig_Extension
     {
         $gravatar = new Gravatar();
         $gravatar->setAvatarSize($size);
+        $gravatar->enableSecureImages();
 
         return $gravatar->buildGravatarURL($this->getUserEmail());
     }
