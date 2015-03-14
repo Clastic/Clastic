@@ -33,6 +33,11 @@ class ModuleGenerator extends Generator
         $this->filesystem = $filesystem;
     }
 
+    /**
+     * @param BundleInterface $bundle
+     * @param string          $module
+     * @param string          $entity
+     */
     public function generate(BundleInterface $bundle, $module, $entity)
     {
         $parameters = array(
@@ -76,12 +81,13 @@ class ModuleGenerator extends Generator
     }
 
     /**
+     * <parameters>
+     *  <parameter key="app.project.module.class">AppBundle\Module\ProjectModule</parameter>
+     * </parameters>
      * <service id="app.project.module" class="%app.project.module.class%">
      *  <tag name="clastic.module" node_module="true" alias="project" />
      *  <tag name="clastic.node_form" build_service="app.project.module.form_build" />
      * </service>
-     *
-     * <parameter key="app.project.module.class">AppBundle\Module\ProjectModule</parameter>
      *
      * @param BundleInterface $bundle
      * @param array           $data
