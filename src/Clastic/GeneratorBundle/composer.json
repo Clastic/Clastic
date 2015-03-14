@@ -1,0 +1,18 @@
+{
+    "name": "clastic/generator-bundle",
+    "description": "Clastic Generator bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Dries De Peuter",
+            "email": "dries@nousefreak.be"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3"
+    },
+    "autoload": {
+        "psr-4": { "Clastic\\GeneratorBundle\\": "" }
+    },
+    "minimum-stability": "dev"
+}

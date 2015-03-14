@@ -1,0 +1,47 @@
+<?php
+
+namespace {{ namespace }}\Module;
+
+use Clastic\NodeBundle\Module\NodeModuleInterface;
+
+/**
+ * {{ module }}
+ */
+class {{ module }}Module implements NodeModuleInterface
+{
+    /**
+     * The name of the module.
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return '{{ module }}';
+    }
+
+    /**
+     * The name of the module.
+     *
+     * @return string
+     */
+    public function getIdentifier()
+    {
+        return '{{ identifier }}';
+    }
+
+    /**
+     * @return string
+     */
+    public function getEntityName()
+    {
+        return '{{ entity }}';
+    }
+
+    /**
+     * @return string|bool
+     */
+    public function getDetailTemplate()
+    {
+        return '{{ bundle }}:{{ module }}:detail.html.twig';
+    }
+}
