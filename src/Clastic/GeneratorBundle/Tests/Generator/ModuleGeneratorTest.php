@@ -51,6 +51,36 @@ class ModuleGeneratorTest extends GeneratorTest
         }
     }
 
+    public function testGeneratedXml()
+    {
+        mkdir($this->tmpDir . '/Resources/config/', 0777, true);
+        copy(__DIR__ . '/../Stubs/services.xml', $this->tmpDir . '/Resources/config/services.xml');
+        $this->getGenerator()->generate($this->getBundle(), 'Test', 'ClasticBlogBundle:Blog ');
+
+        $xml = <<<EOL
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="foo_bar_bundle.test.module.class">Foo\BarBundle\Module\TestModule</parameter>
+        <parameter key="foo_bar_bundle.test.module.form_extension.class">Foo\BarBundle\Form\Module\TestFormExtension</parameter>
+    </parameters>
+    <services>
+        <service id="foo_bar_bundle.test.module" class="%foo_bar_bundle.test.module.class%">
+            <tag name="clastic.module" node_module="true" alias="test"/>
+            <tag name="clastic.node_form" build_service="foo_bar_bundle.test.module.form_extension"/>
+        </service>
+        <service id="foo_bar_bundle.test.module.form_extension" class="%foo_bar_bundle.test.module.form_extension.class%"/>
+    </services>
+</container>
+EOL;
+
+        $this->assertXmlStringEqualsXmlString($xml, file_get_contents($this->tmpDir . '/Resources/config/services.xml'));
+    }
+
     protected function getGenerator()
     {
         $generator = new ModuleGenerator($this->filesystem);
