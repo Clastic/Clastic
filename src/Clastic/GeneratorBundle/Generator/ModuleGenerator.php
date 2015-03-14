@@ -63,13 +63,15 @@ class ModuleGenerator extends Generator
 
     private function updateDependencyInjection(BundleInterface $bundle, array $parameters)
     {
+        $file = $bundle->getPath().'/Resources/config/services.';
+
         switch (true)
         {
-            case file_exists($bundle->getPath().'/Resources/config/services.xml'):
+            case file_exists($file . 'xml'):
                 $this->updateDependencyInjectionXml($bundle, $parameters);
                 break;
             default;
-                throw new \RuntimeException('Dependency injection type not found');
+                throw new \RuntimeException(sprintf('Dependency injection type not found. %s{%s}', $file, implode(',', array('xml'))));
         }
     }
 
