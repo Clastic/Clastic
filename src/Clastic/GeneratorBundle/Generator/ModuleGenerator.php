@@ -91,10 +91,8 @@ class ModuleGenerator extends Generator
         $file = $bundle->getPath().'/Resources/config/services.xml';
         $xml = simplexml_load_file($file);
 
-        $parameters = $xml->xpath('//parameters');
-        $parameters = empty($parameters) ? $xml->addChild('parameters') : $parameters[0];
-        $services = $xml->xpath('//services');
-        $services = empty($services) ? $xml->addChild('services') : $services[0];
+        $parameters = $xml->parameters ? $xml->parameters : $xml->addChild('parameters');
+        $services = $xml->services ? $xml->services : $xml->addChild('services');
 
         $moduleServiceName = sprintf('%s.%s.module', $data['bundle_alias'], $data['identifier']);
 
