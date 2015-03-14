@@ -19,6 +19,9 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
  */
 class FieldsetType extends FormType
 {
+    /**
+     * {@inheritdoc}
+     */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
@@ -27,6 +30,9 @@ class FieldsetType extends FormType
         ));
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function buildView(FormView $view, FormInterface $form, array $options)
     {
         if (false !== $options['legend']) {

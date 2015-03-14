@@ -45,8 +45,8 @@ class NavigationController extends Controller
      */
     private function getModuleSortCallback()
     {
-        return function(ModuleInterface $a, ModuleInterface $b) {
-            return strcmp($a->getName(), $b->getName());
+        return function(ModuleInterface $left, ModuleInterface $right) {
+            return strcmp($left->getName(), $right->getName());
         };
     }
 

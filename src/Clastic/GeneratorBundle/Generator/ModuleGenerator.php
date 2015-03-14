@@ -63,10 +63,13 @@ class ModuleGenerator extends Generator
 
     private function updateDependencyInjection(BundleInterface $bundle, array $parameters)
     {
-        if (file_exists($bundle->getPath().'/Resources/config/services.xml')) {
-            $this->updateDependencyInjectionXml($bundle, $parameters);
-        } else {
-            throw new \RuntimeException('Dependency injection type not found');
+        switch (true)
+        {
+            case file_exists($bundle->getPath().'/Resources/config/services.xml'):
+                $this->updateDependencyInjectionXml($bundle, $parameters);
+                break;
+            default;
+                throw new \RuntimeException('Dependency injection type not found');
         }
     }
 
@@ -115,7 +118,6 @@ class ModuleGenerator extends Generator
         $formExtensionService = $services->addChild('service');
         $formExtensionService->addAttribute('id', sprintf('%s.form_extension', $moduleServiceName));
         $formExtensionService->addAttribute('class', sprintf('%%%s.form_extension.class%%', $moduleServiceName));
-
 
         $xml->saveXML($file);
     }

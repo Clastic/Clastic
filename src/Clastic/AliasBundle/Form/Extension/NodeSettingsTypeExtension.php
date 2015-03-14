@@ -112,10 +112,10 @@ class NodeSettingsTypeExtension extends AbstractTypeExtension
             'moduleIdentifier' => $data['module'],
         ));
 
+
+        $data['alias_pattern'] = '{title}';
         if ($pattern) {
             $data['alias_pattern'] = $pattern->getPattern();
-        } else {
-            $data['alias_pattern'] = '{title}';
         }
         $event->setData($data);
     }

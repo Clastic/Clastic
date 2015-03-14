@@ -11,6 +11,7 @@ namespace Clastic\TaxonomyBundle\EventListener;
 
 use Clastic\NewsBundle\Entity\Category;
 use Clastic\NodeBundle\Event\NodeFormPersistEvent;
+use Gedmo\Tree\Entity\Repository\NestedTreeRepository;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**
@@ -49,14 +50,14 @@ class NodeFormPersistListener implements EventSubscriberInterface
             $data = $event->getForm()->getData();
 
             $em = $event->getEm();
+            /** @var NestedTreeRepository $repo */
             $repo = $em->getRepository($entityName);
 
             $positionData->parent = intval($positionData->parent) ? ($positionData->parent) : 0;
 
+            $data->setParent(null);
             if (intval($positionData->parent) > 0) {
                 $data->setParent($em->getReference($entityName, $positionData->parent));
-            } else {
-                $data->setParent(null);
             }
 
             $repo->persistAsFirstChild($data);

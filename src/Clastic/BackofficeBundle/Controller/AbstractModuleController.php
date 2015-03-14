@@ -184,9 +184,9 @@ abstract class AbstractModuleController extends Controller
 
         if ($form->isValid()) {
             if ($form->get('tabs')->get('actions')->get('delete')->isClicked()) {
-                $em = $this->getDoctrine()->getManager();
-                $em->remove($data);
-                $em->flush();
+                $manager = $this->getDoctrine()->getManager();
+                $manager->remove($data);
+                $manager->flush();
 
                 $request->getSession()
                     ->getFlashBag()
@@ -257,9 +257,9 @@ abstract class AbstractModuleController extends Controller
      */
     protected function persistData(Form $form)
     {
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($form->getData());
-        $em->flush();
+        $manager = $this->getDoctrine()->getManager();
+        $manager->persist($form->getData());
+        $manager->flush();
     }
 
     /**

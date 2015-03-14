@@ -15,6 +15,7 @@ use Clastic\MenuBundle\Entity\MenuItem;
 use Clastic\MenuBundle\Form\MenuItemType;
 use Clastic\NodeBundle\Node\NodeReferenceInterface;
 use Doctrine\ORM\QueryBuilder;
+use Gedmo\Tree\Entity\Repository\NestedTreeRepository;
 use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -215,14 +216,14 @@ class MenuItemController extends AbstractModuleController
             $data = $form->getData();
 
             $em = $this->getDoctrine()->getEntityManager();
+            /** @var NestedTreeRepository $menuItemRepo */
             $menuItemRepo = $this->getDoctrine()->getRepository($this->getEntityName());
 
             $positionData->parent = intval($positionData->parent) ? ($positionData->parent) : 0;
 
+            $data->setParent(null);
             if (intval($positionData->parent) > 0) {
                 $data->setParent($em->getReference($this->getEntityName(), $positionData->parent));
-            } else {
-                $data->setParent(null);
             }
 
             $menuItemRepo->persistAsFirstChild($data);
