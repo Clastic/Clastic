@@ -116,6 +116,10 @@ class FileListener implements EventSubscriber
             return;
         }
 
+//        file_put_contents(
+//            $this->getUploadRootDir() . '/' . $file->getPath(),
+//            file_get_contents($file->file->getPathname())
+//        );
         // if there is an error when moving the file, an exception will
         // be automatically thrown by move(). This will properly prevent
         // the entity from being persisted to the database on error
@@ -131,17 +135,10 @@ class FileListener implements EventSubscriber
         $file->file = null;
     }
 
-    private function getUploadDir()
-    {
-        // get rid of the __DIR__ so it doesn't screw up
-        // when displaying uploaded doc/image in the view.
-        return 'uploads/documents';
-    }
-
     protected function getUploadRootDir()
     {
         // the absolute directory path where uploaded
         // documents should be saved
-        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+        return 'data://uploads/media';
     }
 }

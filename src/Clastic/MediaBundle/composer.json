@@ -10,7 +10,9 @@
     ],
     "require": {
         "php": ">=5.3.3",
-        "clastic/core-bundle": "*"
+        "clastic/core-bundle": "*",
+        "knplabs/knp-gaufrette-bundle": "0.1.7",
+        "knplabs/gaufrette": "0.1.9"
     },
     "autoload": {
         "psr-4": { "Clastic\\MediaBundle\\": "" }

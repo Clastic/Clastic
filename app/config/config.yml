@@ -78,3 +78,14 @@ stof_doctrine_extensions:
     orm:
         default:
             tree: true
+
+knp_gaufrette:
+    adapters:
+        local_data:
+            local:
+                directory: %kernel.root_dir%/../web/uploads2
+    filesystems:
+        uploads:
+            adapter: local_data
+    stream_wrapper:
+        protocol: data
