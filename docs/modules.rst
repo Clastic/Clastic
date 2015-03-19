@@ -14,17 +14,12 @@ Clastic uses modules to expose data to the backend.
 
 To generate a module you must first create an entity.
 
-.. code-block:: bash
-
-    php app/console doctrine:generate:entity
-
-Fill in all the field you need.
+See :doc:`entities` for more information on the entities.
 
 .. note::
 
-    You don't need to define fields like title, author, ... when you choose to make them Nodes.
+    The generator only supports Node modules at the moment.
 
-Once you created your entity you can generate your module.
 
 .. code-block:: bash
 

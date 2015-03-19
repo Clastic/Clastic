@@ -15,5 +15,6 @@ User guide
     :maxdepth: 2
 
     overview
+    entities
     modules
 
