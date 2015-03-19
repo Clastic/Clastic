@@ -4,6 +4,7 @@ namespace Clastic\BlogBundle\Entity;
 
 use Clastic\NodeBundle\Entity\Node;
 use Clastic\NodeBundle\Node\NodeReferenceInterface;
+use Clastic\NodeBundle\Node\NodeReferenceTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
@@ -11,15 +12,12 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class Blog implements NodeReferenceInterface
 {
+    use NodeReferenceTrait;
+
     /**
      * @var integer
      */
     private $id;
-
-    /**
-     * @var Node
-     */
-    private $node;
 
     /**
      * @var string
@@ -49,22 +47,6 @@ class Blog implements NodeReferenceInterface
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * @return Node
-     */
-    public function getNode()
-    {
-        return $this->node;
-    }
-
-    /**
-     * @param Node $node
-     */
-    public function setNode(Node $node)
-    {
-        $this->node = $node;
     }
 
     /**
