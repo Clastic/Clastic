@@ -53,6 +53,8 @@ to simplify this process.
 
     Now is a good time to have a first commit!
 
+.. _development:
+
 Development
 -----------
 
