@@ -23,6 +23,8 @@ The recommended way to start your projects with `Composer <http://getcomposer.or
 management tool for PHP that allows you to declare the dependencies your project needs and installs them into your
 project.
 
+If you get an error, remove the word 'php' in front of the line. This depends on your php installation.
+
 .. code-block:: bash
 
     php composer create-project clastic/standard-edition path/to/install -s dev
