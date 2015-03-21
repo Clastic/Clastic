@@ -29,29 +29,7 @@ If you get an error, remove the word 'php' in front of the line. This depends on
 
     $ composer create-project clastic/standard-edition path/to/install -s dev
 
-.. note::
-
-    If the installation fails, check if the ``composer`` executable works. You might need to
-    use ``php composer.phar create-project path/to/install -s dev`` if you installed composer locally.
-
-During the installation you will be asked to fill in some parameters. Make sure all the values are correct.
-
-You should now have a project located in ``path/to/install``. Please go to this folder and continue.
-
-.. code-block:: bash
-
-    $ cd path/to/install
-
-Clastic needs multiple assets to be installed in the correct place. The standard project contains a `Makefile`
-to simplify this process.
-
-.. code-block:: bash
-
-    make install
-
-.. note::
-
-    Now is a good time to have a first commit!
+If you want more information. See the :doc:`installation` documentation.
 
 .. _development:
 
