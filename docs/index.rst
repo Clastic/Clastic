@@ -15,6 +15,7 @@ User guide
     :maxdepth: 2
 
     overview
+    installation
     entities
     modules
 
