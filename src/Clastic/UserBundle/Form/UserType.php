@@ -14,16 +14,22 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
+ * UserType
+ *
  * @author Dries De Peuter <dries@nousefreak.be>
  */
 class UserType extends AbstractType
 {
     private $isNew;
 
+    /**
+     * @param bool $isNew
+     */
     public function __construct($isNew)
     {
         $this->isNew = $isNew;
     }
+
     /**
      * @param FormBuilderInterface $builder
      * @param array                $options
@@ -38,6 +44,21 @@ class UserType extends AbstractType
                     ->add($this->createRoleTab($builder))
                     ->add($this->createActionTab($builder))
             );
+    }
+
+    private function getAvailableRoles(FormBuilderInterface $builder)
+    {
+        $roles = array(
+            'ROLE_ADMIN' => 'Admin',
+            'ROLE_USER' => 'User',
+        );
+
+        if ($builder->getData() && $builder->getData()->getId() === 1) {
+            $roles['ROLE_SUPER_ADMIN'] = sprintf('%s (super)', $roles['ROLE_ADMIN']);
+            unset($roles['ROLE_ADMIN']);
+        }
+
+        return $roles;
     }
 
     private function createGeneralTab(FormBuilderInterface $builder)
@@ -70,10 +91,7 @@ class UserType extends AbstractType
     {
         return $this->createTab($builder, 'role', array('label' => 'Role'))
             ->add('roles', 'multi_select', array(
-                'choices' => array(
-                    'ROLE_ADMIN' => 'Admin',
-                    'ROLE_USER' => 'User',
-                ),
+                'choices' => $this->getAvailableRoles($builder),
             ));
     }
 
