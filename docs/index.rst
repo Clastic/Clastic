@@ -18,4 +18,5 @@ User guide
     installation
     entities
     modules
+    bundles
 
