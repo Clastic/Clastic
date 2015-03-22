@@ -37,3 +37,21 @@
     }
   }
 }
+
+.nav ul {
+  @media (max-width: @screen-sm-min) {
+    > li.divider,
+    .dropdown-header {
+      display: none;
+    }
+    li {
+
+      > a {
+        color: #fff !important;
+      }
+      > a:hover, li a:hover {
+        background-color: transparent !important;
+      }
+    }
+  }
+}
