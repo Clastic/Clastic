@@ -5,9 +5,9 @@
   "private": true,
   "description": "Clastic Standard Edition",
   "dependencies": {
+    "del": "^1.1.1",
     "gulp": "^3.8.10",
     "gulp-autoprefixer": "^2.0.0",
-    "gulp-clean": "^0.3.1",
     "gulp-concat": "^2.4.2",
     "gulp-filesize": "0.0.6",
     "gulp-less": "^3.0.0",

@@ -9,7 +9,7 @@ var concat = require('gulp-concat'),
     filesize = require('gulp-filesize'),
     rename = require('gulp-rename'),
     less = require('gulp-less'),
-    clean = require('gulp-clean'),
+    del = require('del'),
     livereload = require('gulp-livereload'),
     notify = require("gulp-notify"),
     clasticNamespace = require('./src/Clastic/CoreBundle/Resources/scripts/Clastic.js');
@@ -49,9 +49,10 @@ var errorHandler = notify.onError(function (err) {
 
 gulp.task('default', ['clean', 'build', 'watch']);
 
-gulp.task('clean', function () {
-    return gulp.src('build', {read: false})
-        .pipe(clean());
+gulp.task('clean', function (cb) {
+    del([
+        paths.build + '/**'
+    ], cb);
 });
 
 gulp.task('build', ['scripts', 'styles']);
