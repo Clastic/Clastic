@@ -76,16 +76,17 @@ Have fun!
 .. _installing_dependencies:
 
 Installing dependencies
------------------------
+=======================
 
 PHP
-~~~
+---
 
 To install PHP refer to your option of choice. Installation instructions are different for every platform.
-See the `PHP Installation Guide<http://php.net/manual/en/install.php>`_.
+See the `PHP Installation Guide<http://php.net/manual/en/install.php>`_. Make sure your PHP version is higher than
+`5.4.0`.
 
 Composer
-~~~~~~~~
+--------
 
 Composer is a dependency manager for PHP.
 
@@ -97,17 +98,17 @@ for detailed information.
     $ curl -sS https://getcomposer.org/installer | php
 
 Node.js
-~~~~~~~
+-------
 
 Install node.js using the official installers available at `<https://nodejs.org/download/>`_.
 
 NPM
-~~~
+---
 
 Npm comes included with node.js.
 
 Gulp
-~~~~
+----
 
 Gulp is a streaming build system. It is used to build assets.
 
@@ -119,7 +120,7 @@ for detailed information.
     $ npm install --global gulp
 
 Bower
-~~~~~
+-----
 
 Use the following code to install, see the `Official installation documentation<http://bower.io/#install-bower>`_
 for detailed information.
