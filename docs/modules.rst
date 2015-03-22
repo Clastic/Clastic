@@ -23,7 +23,7 @@ See :doc:`entities` for more information on the entities.
 
 .. code-block:: bash
 
-    php app/console clastic:generate:module
+    $ php app/console clastic:generate:module
 
 After generation your modules will be available in the backoffice.
 

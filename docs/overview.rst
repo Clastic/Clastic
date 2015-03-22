@@ -40,7 +40,7 @@ You can now start your developement environment.
 
 .. code-block:: bash
 
-    make dev
+    $ make dev
 
 You can now access your website at http://127.0.0.1:8000/ and the backoffice at http://127.0.0.1:8000/admin/. You can logon using admin as username and secret as password. Note you should immediately change this.
 
