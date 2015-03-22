@@ -24,14 +24,23 @@ Backoffice
 
 The backoffice bundle contains the basic features of the backoffice including the form types.
 
- - `DatePicker<https://github.com/Clastic/BackofficeBundle/blob/master/Form/Type/DatePickerType.php>`_
- - `EntityHidden<https://github.com/Clastic/BackofficeBundle/blob/master/Form/Type/EntityHiddenType.php>`_
- - `EntityMultiSelect<https://github.com/Clastic/BackofficeBundle/blob/master/Form/Type/EntityMultiSelectType.php>`_
- - `Fieldset<https://github.com/Clastic/BackofficeBundle/blob/master/Form/Type/FieldsetType.php>`_
- - `Link<https://github.com/Clastic/BackofficeBundle/blob/master/Form/Type/LinkType.php>`_
- - `MultiSelect<https://github.com/Clastic/BackofficeBundle/blob/master/Form/Type/MultiSelectType.php>`_
- - `Tree<https://github.com/Clastic/BackofficeBundle/blob/master/Form/Type/TreeType.php>`_
- - `Wysiwyg<https://github.com/Clastic/BackofficeBundle/blob/master/Form/Type/WysiwygType.php>`_
+ - `DatePicker`_
+ - `EntityHidden`_
+ - `EntityMultiSelect`_
+ - `Fieldset`_
+ - `Link`_
+ - `MultiSelect`_
+ - `Tree`_
+ - `Wysiwyg`_
+
+.. _DatePicker: https://github.com/Clastic/BackofficeBundle/blob/master/Form/Type/DatePickerType.php
+.. _EntityHidden: https://github.com/Clastic/BackofficeBundle/blob/master/Form/Type/EntityHiddenType.php
+.. _EntityMultiSelect: https://github.com/Clastic/BackofficeBundle/blob/master/Form/Type/EntityMultiSelectType.php
+.. _Fieldset: https://github.com/Clastic/BackofficeBundle/blob/master/Form/Type/FieldsetType.php
+.. _Link: https://github.com/Clastic/BackofficeBundle/blob/master/Form/Type/LinkType.php
+.. _MultiSelect: https://github.com/Clastic/BackofficeBundle/blob/master/Form/Type/MultiSelectType.php
+.. _Tree: https://github.com/Clastic/BackofficeBundle/blob/master/Form/Type/TreeType.php
+.. _Wysiwyg: https://github.com/Clastic/BackofficeBundle/blob/master/Form/Type/WysiwygType.php
 
 User
 ~~~~
