@@ -2,6 +2,11 @@
 
 {% trans_default_domain 'FOSUserBundle' %}
 
+{% block html_head %}
+    {{ parent() }}
+    <meta name="robots" content="noindex, nofollow">
+{% endblock html_head %}
+
 {% block html_title %}Clastic{% endblock %}
 
 {% block html_body %}

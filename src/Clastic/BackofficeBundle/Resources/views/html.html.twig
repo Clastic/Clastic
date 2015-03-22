@@ -4,17 +4,21 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
+    <meta name="description" content="Clastic Backoffice">
     <meta name="author" content="Dries De Peuter">
+    <meta name="Generator" content="Clastic (http://clastic.nousefreak.be)">
+
     <link rel="icon" href="{{ asset('bundles/clasticbackoffice/favicon.png') }}">
 
     <title>{% block html_title %}{% endblock %}</title>
 
     <link href="{{ asset('build/app.min.css') }}" rel="stylesheet">
+
+    {% block html_head %}{% endblock html_head %}
 </head>
 
 <body>
-    {% block html_body %}{% endblock %}
+    {% block html_body %}{% endblock html_body %}
     <script src="{{ asset('build/vendor.min.js') }}"></script>
     <script src="{{ asset('build/app.min.js') }}"></script>
 </body>
