@@ -73,6 +73,14 @@ You can logon using admin as username and secret as password. Note you should im
 
 Have fun!
 
+.. _production:
+
+Production
+==========
+
+For any information about setting up a production server. Please refer to
+the `symfony documentation <http://symfony.com/doc/current/cookbook/configuration/web_server_configuration.html>`_.
+
 .. _installing_dependencies:
 
 Installing dependencies
