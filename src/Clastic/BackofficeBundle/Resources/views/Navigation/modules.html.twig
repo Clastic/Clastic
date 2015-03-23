@@ -1,10 +1,12 @@
+{% trans_default_domain 'clastic' %}
+
 <li class="dropdown modules js-nav-module-list">
     <a aria-expanded="true" role="button" data-toggle="dropdown" class="dropdown-toggle" href="#">
-        <i class="fa fa-dot-circle-o"></i> Modules
+        <i class="fa fa-dot-circle-o"></i> {{ 'navigation.module.modules'|trans }}
         <span class="caret"></span>
     </a>
     <ul role="menu" class="dropdown-menu modules">
-        <li class="dropdown-header">Modules</li>
+        <li class="dropdown-header">{{ 'navigation.module.modules'|trans }}</li>
         <li>
             <ul>
                 {% for module in modules %}
@@ -13,7 +15,7 @@
             </ul>
         </li>
         <li class="divider"></li>
-        <li class="dropdown-header">Administration</li>
+        <li class="dropdown-header">{{ 'navigation.module.administration'|trans }}</li>
         <li>
             <ul>
                 {% for module in administrationModules %}

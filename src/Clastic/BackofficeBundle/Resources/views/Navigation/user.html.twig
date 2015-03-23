@@ -1,3 +1,5 @@
+{% trans_default_domain 'clastic' %}
+
 <li class="dropdown">
     <a aria-expanded="true" role="button" data-toggle="dropdown" class="dropdown-toggle" href="#">
         <img src="{{ avatar() }}" class="img-circle" alt=""/>
@@ -7,9 +9,9 @@
     <ul role="menu" class="dropdown-menu">
         <li class="dropdown-header">{{ app.user.username }}</li>
         <li class="divider"></li>
-        <li><a href="{{ path('fos_user_profile_show') }}"><i class="fa fa-user"></i> Profile</a></li>
-        <li><a href="#"><i class="fa fa-gear"></i> Settings</a></li>
+        <li><a href="{{ path('fos_user_profile_show') }}"><i class="fa fa-user"></i> {{ 'navigation.user.profile'|trans }}</a></li>
+        <li><a href="#"><i class="fa fa-gear"></i> {{ 'navigation.user.settings'|trans }}</a></li>
         <li class="divider"></li>
-        <li><a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-sign-out"></i> Logout</a></li>
+        <li><a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-sign-out"></i> {{ 'navigation.user.logout'|trans }}</a></li>
     </ul>
 </li>

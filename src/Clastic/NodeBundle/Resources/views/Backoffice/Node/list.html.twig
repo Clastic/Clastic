@@ -1,5 +1,7 @@
 {% extends 'ClasticBackofficeBundle::base.html.twig' %}
 
+{% trans_default_domain 'clastic' %}
+
 {% block html_title %}Clastic - {{ module.name }}{% endblock %}
 {% block page_title -%}
     {{ module.name }}
@@ -12,7 +14,7 @@
     {% if submodules|length %}
         <div class="btn-group pull-right">
             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                Submodules <span class="caret"></span>
+                {{ 'list.submodules'|trans }} <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" role="menu">
                 {% for submodule in submodules %}
@@ -39,10 +41,10 @@
                             {% block list_header %}
                                 <tr>
                                     <th></th>
-                                    <th>Title</th>
-                                    <th>Author</th>
-                                    <th>Created</th>
-                                    <th>Status</th>
+                                    <th>{{ 'list.title'|trans }}</th>
+                                    <th>{{ 'list.author'|trans }}</th>
+                                    <th>{{ 'list.created'|trans }}</th>
+                                    <th>{{ 'list.status'|trans }}</th>
                                 </tr>
                             {% endblock %}
                         </thead>
@@ -69,7 +71,7 @@
                         {% else %}
                             <tr>
                                 <td></td>
-                                <td colspan="4">No records found. <a href="{{ path('clastic_node_form', {type: type}) }}">Create your first.</a></td>
+                                <td colspan="4">{{ 'list.no_results'|trans }} <a href="{{ path('clastic_node_form', {type: type}) }}">Create your first.</a></td>
                             </tr>
                         {% endfor %}
                         </tbody>

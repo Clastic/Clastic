@@ -19,6 +19,7 @@ use Gedmo\Tree\Entity\Repository\NestedTreeRepository;
 use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Translation\TranslatorInterface;
 use WhiteOctober\BreadcrumbsBundle\Model\Breadcrumbs;
 
 /**
@@ -176,15 +177,21 @@ class MenuItemController extends AbstractModuleController
      */
     protected function buildBreadcrumbs($type)
     {
+        /** @var TranslatorInterface $translator */
+        $translator = $this->get('translator');
+
         $breadcrumbs = parent::buildBreadcrumbs($type);
 
         $breadcrumbs->addItem($this->getCurrentMenu()->getTitle(), $this->get("router")->generate("clastic_backoffice_menu_form", array(
             'id' => $this->menuId,
         )));
 
-        $breadcrumbs->addItem('Items', $this->get("router")->generate("clastic_backoffice_menu_item_list", array(
-            'menuId' => $this->menuId,
-        )));
+        $breadcrumbs->addItem(
+            $translator->trans('Items', [], 'clastic'),
+            $this->get("router")->generate("clastic_backoffice_menu_item_list", array(
+                'menuId' => $this->menuId,
+            ))
+        );
 
         return $breadcrumbs;
     }

@@ -1,5 +1,7 @@
 {% extends 'ClasticNodeBundle:Backoffice/Node:list.html.twig' %}
 
+{% trans_default_domain 'clastic' %}
+
 {% block page_title -%}
     Menu Item
     <a href="{{ path('clastic_backoffice_menu_item_form', {menuId: menuId}) }}"><i class="fa fa-plus-circle text-success"></i></a>
@@ -8,8 +10,8 @@
 {% block list_header %}
     <tr>
         <th></th>
-        <th>Title</th>
-        <th>Status</th>
+        <th>{{ 'list.title'|trans }}</th>
+        <th>{{ 'list.status'|trans }}</th>
     </tr>
 {% endblock %}
 
@@ -20,8 +22,6 @@
             <a class="btn btn-danger btn-xs" href="{{ path('clastic_backoffice_menu_item_delete', {menuId: menuId, id: record.id}) }}"><i class="fa fa-trash"></i></a>
         </td>
         <td>{{ record.title }}</td>
-        <td>
-            <span class="label label-default">online</span>
-        </td>
+        <td></td>
     </tr>
 {% endblock %}

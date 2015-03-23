@@ -1,14 +1,16 @@
 {% extends 'ClasticBackofficeBundle::base.html.twig' %}
 
-{% block page_title %}Dashboard{% endblock %}
+{% trans_default_domain 'clastic' %}
+
+{% block page_title %}{{ 'dashboard.title'|trans }}{% endblock %}
 
 {% block content %}
     <div class="row">
         <div class="col-md-12">
             <div role="tabpanel" class="tabpanel">
                 <ul class="nav nav-tabs" role="tablist">
-                    <li role="presentation" class="active"><a href="#recent" aria-controls="recent" role="tab" data-toggle="tab">Recent</a></li>
-                    <li role="presentation"><a href="#mycontent" aria-controls="mycontent" role="tab" data-toggle="tab">My content</a></li>
+                    <li role="presentation" class="active"><a href="#recent" aria-controls="recent" role="tab" data-toggle="tab">{{ 'dashboard.recent'|trans }}</a></li>
+                    <li role="presentation"><a href="#mycontent" aria-controls="mycontent" role="tab" data-toggle="tab">{{ 'dashboard.my_content'|trans }}</a></li>
                 </ul>
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane" id="recent">
@@ -17,10 +19,10 @@
                                 <thead>
                                 <tr>
                                     <th></th>
-                                    <th>Title</th>
-                                    <th>Author</th>
-                                    <th>Created</th>
-                                    <th>Status</th>
+                                    <th>{{ 'list.title'|trans }}</th>
+                                    <th>{{ 'list.author'|trans }}</th>
+                                    <th>{{ 'list.created'|trans }}</th>
+                                    <th>{{ 'list.status'|trans }}</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -44,7 +46,7 @@
                                 {% else %}
                                     <tr>
                                         <td></td>
-                                        <td colspan="4">No records found.</td>
+                                        <td colspan="4">{{ 'list.no_results'|trans }}</td>
                                     </tr>
                                 {% endfor %}
                                 </tbody>
@@ -57,10 +59,10 @@
                                 <thead>
                                 <tr>
                                     <th></th>
-                                    <th>Title</th>
-                                    <th>Author</th>
-                                    <th>Created</th>
-                                    <th>Status</th>
+                                    <th>{{ 'list.title'|trans }}</th>
+                                    <th>{{ 'list.author'|trans }}</th>
+                                    <th>{{ 'list.created'|trans }}</th>
+                                    <th>{{ 'list.status'|trans }}</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -84,7 +86,7 @@
                                 {% else %}
                                     <tr>
                                         <td></td>
-                                        <td colspan="4">No records found.</td>
+                                        <td colspan="4">{{ 'list.no_results'|trans }}</td>
                                     </tr>
                                 {% endfor %}
                                 </tbody>
@@ -94,28 +96,6 @@
                 </div>
             </div>
         </div>
-        {#<div class="col-md-4">#}
-            {#<div role="tabpanel" class="tabpanel">#}
-                {#<ul class="nav nav-tabs" role="tablist">#}
-                    {#<li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>#}
-                    {#<li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>#}
-                    {#<li role="presentation"><a href="#help" aria-controls="profile" role="tab" data-toggle="tab"><i class="fa fa-question-circle"></i></a></li>#}
-                {#</ul>#}
-                {#<div class="tab-content">#}
-                    {#<div role="tabpanel" class="tab-pane active" id="home">home</div>#}
-                    {#<div role="tabpanel" class="tab-pane" id="profile">profile</div>#}
-                    {#<div role="tabpanel" class="tab-pane" id="help">#}
-                        {#Keyboard shortcuts:#}
-                        {#<dl>#}
-                            {#<dt>m</dt>#}
-                            {#<dd>Toggle module list</dd>#}
-                        {#</dl>#}
-                    {#</div>#}
-                {#</div>#}
-
-            {#</div>#}
-        {#</div>#}
-
     </div>
 
 {% endblock %}

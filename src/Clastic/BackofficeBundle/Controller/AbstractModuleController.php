@@ -20,6 +20,7 @@ use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Translation\TranslatorInterface;
 use WhiteOctober\BreadcrumbsBundle\Model\Breadcrumbs;
 
 /**
@@ -224,9 +225,15 @@ abstract class AbstractModuleController extends Controller
      */
     protected function buildBreadcrumbs($type)
     {
+        /** @var TranslatorInterface $translator */
+        $translator = $this->get('translator');
+
         /** @var Breadcrumbs $breadcrumbs */
         $breadcrumbs = $this->get("white_october_breadcrumbs");
-        $breadcrumbs->addItem("Home", $this->get("router")->generate("clastic_backoffice_dashboard"));
+        $breadcrumbs->addItem(
+            $translator->trans('home', [], 'clastic'),
+            $this->get("router")->generate("clastic_backoffice_dashboard")
+        );
 
         $module = $this->getModule($type);
         if ($module) {

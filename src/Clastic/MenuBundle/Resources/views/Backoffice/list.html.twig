@@ -1,10 +1,12 @@
 {% extends 'ClasticNodeBundle:Backoffice/Node:list.html.twig' %}
 
+{% trans_default_domain 'clastic' %}
+
 {% block list_header %}
     <tr>
         <th></th>
-        <th>Title</th>
-        <th>Status</th>
+        <th>{{ 'list.title'|trans }}</th>
+        <th>{{ 'list.status'|trans }}</th>
     </tr>
 {% endblock %}
 
@@ -16,8 +18,6 @@
             <a class="btn btn-primary btn-xs" title="Items" href="{{ path('clastic_backoffice_menu_item_list', {menuId: record.id}) }}"><i class="fa fa-list"></i></a>
         </td>
         <td>{{ record.title }}</td>
-        <td>
-            <span class="label label-default">online</span>
-        </td>
+        <td></td>
     </tr>
 {% endblock %}

@@ -1,5 +1,7 @@
 {% extends 'ClasticNodeBundle:Backoffice/Node:list.html.twig' %}
 
+{% trans_default_domain 'clastic' %}
+
 {% block page_title -%}
     {{ module.name }}
 {%- endblock %}
@@ -7,10 +9,10 @@
 {% block list_header %}
     <tr>
         <th></th>
-        <th>Alias</th>
-        <th>Author</th>
-        <th>Created</th>
-        <th>Status</th>
+        <th>{{ 'list.title'|trans }}</th>
+        <th>{{ 'list.author'|trans }}</th>
+        <th>{{ 'list.created'|trans }}</th>
+        <th>{{ 'list.status'|trans }}</th>
     </tr>
 {% endblock %}
 

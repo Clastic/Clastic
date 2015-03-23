@@ -1,0 +1,5 @@
+form:
+  media:
+    modal:
+      save: Save changes
+      close: Close

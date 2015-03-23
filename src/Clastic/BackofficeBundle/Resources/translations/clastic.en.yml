@@ -1,0 +1,23 @@
+list:
+  title: Title
+  author: Author
+  created: Created
+  status: Status
+  no_results: No records found.
+  submodules: Submodules
+
+navigation:
+  module:
+    modules: Modules
+    administration: Administration
+  user:
+    profile: Profile
+    settings: Settings
+    logout: Logout
+
+dashboard:
+  title: Dashboard
+  recent: Recent
+  my_content: My content
+
+home: Home
