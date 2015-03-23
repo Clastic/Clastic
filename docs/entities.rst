@@ -29,7 +29,7 @@ the doctrine generator.
 
 .. code-block:: bash
 
-    php app/console doctrine:generate:entity
+    $ php app/console doctrine:generate:entity
 
 Fill in all the field you need.
 
@@ -73,4 +73,13 @@ Add the following code to your xml definition.
       <cascade><cascade-all/></cascade>
       <join-column name="node_id" referenced-column-name="id" />
     </many-to-one>
+
+Generate
+~~~~~~~~
+
+Now your entity is ready to generate a table. Do so by calling the following command.
+
+.. code-block:: bash
+
+    $ php app/console doctrine:schema:update [--force]
 
