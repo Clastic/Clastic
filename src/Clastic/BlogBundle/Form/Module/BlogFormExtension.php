@@ -24,18 +24,16 @@ class BlogFormExtension extends AbstractNodeTypeExtension
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $this->findTab($builder, 'general')
+        $this->getTabHelper($builder)->findTab('general')
             ->add('introduction', 'wysiwyg')
             ->add('body', 'wysiwyg');
 
-        $builder->get('tabs')
-            ->add(
-                $this->createTab($builder, 'category', array('label' => 'Category'))
-                    ->add('categories', 'entity_multi_select', array(
-                        'class' => 'ClasticBlogBundle:Category',
-                        'property' => 'node.title',
-                        'required' => false,
-                    ))
-            );
+        $this->getTabHelper($builder)
+            ->createTab('category', 'Category')
+            ->add('categories', 'entity_multi_select', array(
+                'class' => 'ClasticBlogBundle:Category',
+                'property' => 'node.title',
+                'required' => false,
+            ));
     }
 }
