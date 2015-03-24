@@ -105,13 +105,13 @@ abstract class AbstractModuleController extends Controller
     }
 
     /**
-     * @param QueryBuilder $qb
+     * @param QueryBuilder $queryBuilder
      *
      * @return QueryBuilder
      */
-    protected function alterListQuery(QueryBuilder $qb)
+    protected function alterListQuery(QueryBuilder $queryBuilder)
     {
-        return $qb;
+        return $queryBuilder;
     }
 
     /**

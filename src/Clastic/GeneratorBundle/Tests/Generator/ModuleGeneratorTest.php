@@ -23,7 +23,6 @@ class ModuleGeneratorTest extends GeneratorTest
         copy(__DIR__ . '/../Stubs/services_empty.xml', $this->tmpDir . '/Resources/config/services.xml');
         $this->getGenerator()->generate($this->getBundle(), 'Test', 'ClasticBlogBundle:Blog ');
 
-
         $files = array(
             'Module/TestModule.php',
             'Form/Module/TestFormExtension.php',

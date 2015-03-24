@@ -63,7 +63,7 @@ class NodePublication
      *
      * @return boolean
      */
-    public function getAvailable()
+    public function isAvailable()
     {
         return $this->available;
     }

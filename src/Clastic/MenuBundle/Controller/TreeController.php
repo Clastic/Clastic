@@ -9,7 +9,6 @@
 
 namespace Clastic\MenuBundle\Controller;
 
-use Clastic\MenuBundle\Entity\Menu;
 use Clastic\MenuBundle\Entity\MenuItem;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -31,17 +30,17 @@ class TreeController extends Controller
      */
     public function ajaxAction(Request $request, $menuId)
     {
-        $id = $request->query->get('id');
+        $entityId = $request->query->get('id');
         $currentId = $request->query->get('currentId');
 
-        $em = $this->getDoctrine()->getEntityManager();
+        $objectManager = $this->getDoctrine()->getManager();
         $filter = array(
-            'menu' => $em->getReference('ClasticMenuBundle:Menu', $menuId),
+            'menu' => $objectManager->getReference('ClasticMenuBundle:Menu', $menuId),
             'parent' => null,
         );
 
-        if (intval($id)) {
-            $filter['parent'] = $em->getReference('ClasticMenuBundle:MenuItem', (int) $request->query->get('id'));
+        if (intval($entityId)) {
+            $filter['parent'] = $objectManager->getReference('ClasticMenuBundle:MenuItem', (int) $request->query->get('id'));
         }
 
         $items = $this->getDoctrine()

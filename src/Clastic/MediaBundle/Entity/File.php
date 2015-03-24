@@ -62,7 +62,8 @@ class File
     /**
      * Set name
      *
-     * @param  string $name
+     * @param string $name
+     *
      * @return File
      */
     public function setName($name)

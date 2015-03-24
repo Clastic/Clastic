@@ -21,7 +21,7 @@ class NodePublicationConfigurator
     /**
      * @var EntityManager
      */
-    protected $em;
+    protected $entityManager;
 
     /**
      * @var SecurityContext
@@ -29,12 +29,12 @@ class NodePublicationConfigurator
     protected $securityContext;
 
     /**
-     * @param EntityManager   $em
+     * @param EntityManager   $entityManager
      * @param SecurityContext $securityContext
      */
-    public function __construct(EntityManager $em, SecurityContext $securityContext)
+    public function __construct(EntityManager $entityManager, SecurityContext $securityContext)
     {
-        $this->em              = $em;
+        $this->entityManager   = $entityManager;
         $this->securityContext = $securityContext;
     }
 
@@ -57,7 +57,7 @@ class NodePublicationConfigurator
         }
 
         /** @var NodePublicationFilter $filter */
-        $filter = $this->em->getFilters()->enable('node_publication_filter');
+        $filter = $this->entityManager->getFilters()->enable('node_publication_filter');
         $filter->setApplyPublication(false);
     }
 }

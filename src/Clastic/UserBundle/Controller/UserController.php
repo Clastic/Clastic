@@ -12,7 +12,6 @@ namespace Clastic\UserBundle\Controller;
 use Clastic\BackofficeBundle\Controller\AbstractModuleController;
 use Clastic\UserBundle\Entity\User;
 use Clastic\UserBundle\Form\UserType;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Form;
 
 /**
@@ -97,8 +96,8 @@ class UserController extends AbstractModuleController
         $userManager = $this->get('fos_user.user_manager');
         $userManager->updateUser($form->getData());
 
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($form->getData());
-        $em->flush();
+        $objectManager = $this->getDoctrine()->getManager();
+        $objectManager->persist($form->getData());
+        $objectManager->flush();
     }
 }

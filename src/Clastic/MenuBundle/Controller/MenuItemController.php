@@ -17,6 +17,7 @@ use Clastic\NodeBundle\Node\NodeReferenceInterface;
 use Doctrine\ORM\QueryBuilder;
 use Gedmo\Tree\Entity\Repository\NestedTreeRepository;
 use Symfony\Component\Form\Form;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Translation\TranslatorInterface;
@@ -96,6 +97,9 @@ class MenuItemController extends AbstractModuleController
     }
 
     /**
+     * @param Request  $request
+     * @param null|int $menuId
+     *
      * @return Response
      */
     public function listAction(Request $request, $menuId = null)
@@ -105,6 +109,13 @@ class MenuItemController extends AbstractModuleController
         return parent::listAction($request);
     }
 
+    /**
+     * @param int      $id
+     * @param Request  $request
+     * @param null|int $menuId
+     *
+     * @return RedirectResponse
+     */
     public function deleteAction($id, Request $request, $menuId = null)
     {
         $this->menuId = $menuId;
@@ -113,18 +124,18 @@ class MenuItemController extends AbstractModuleController
     }
 
     /**
-     * @param QueryBuilder $qb
+     * @param QueryBuilder $queryBuilder
      *
      * @return QueryBuilder
      */
-    protected function alterListQuery(QueryBuilder $qb)
+    protected function alterListQuery(QueryBuilder $queryBuilder)
     {
-        $em = $this->getDoctrine()->getEntityManager();
+        $entityManager = $this->getDoctrine()->getEntityManager();
 
-        $qb->andWhere('e.menu = :menu');
-        $qb->setParameter('menu', $em->getReference('ClasticMenuBundle:Menu', $this->menuId));
+        $queryBuilder->andWhere('e.menu = :menu');
+        $queryBuilder->setParameter('menu', $entityManager->getReference('ClasticMenuBundle:Menu', $this->menuId));
 
-        return $qb;
+        return $queryBuilder;
     }
 
     /**
@@ -222,7 +233,7 @@ class MenuItemController extends AbstractModuleController
             /** @var MenuItem $data */
             $data = $form->getData();
 
-            $em = $this->getDoctrine()->getEntityManager();
+            $entityManager = $this->getDoctrine()->getEntityManager();
             /** @var NestedTreeRepository $menuItemRepo */
             $menuItemRepo = $this->getDoctrine()->getRepository($this->getEntityName());
 
@@ -230,7 +241,7 @@ class MenuItemController extends AbstractModuleController
 
             $data->setParent(null);
             if (intval($positionData->parent) > 0) {
-                $data->setParent($em->getReference($this->getEntityName(), $positionData->parent));
+                $data->setParent($entityManager->getReference($this->getEntityName(), $positionData->parent));
             }
 
             $menuItemRepo->persistAsFirstChild($data);
@@ -238,7 +249,7 @@ class MenuItemController extends AbstractModuleController
                 $menuItemRepo->moveDown($data, $positionData->position);
             }
 
-            $em->flush();
+            $entityManager->flush();
         }
     }
 }

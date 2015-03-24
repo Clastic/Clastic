@@ -29,7 +29,7 @@ class TreeController extends Controller
      */
     public function ajaxAction(Request $request)
     {
-        $id = $request->query->get('id');
+        $parentId = $request->query->get('id');
         $entityName = $request->query->get('entityName');
         $currentId = $request->query->get('currentId');
 
@@ -38,8 +38,8 @@ class TreeController extends Controller
             'parent' => null,
         );
 
-        if (intval($id)) {
-            $filter['parent'] = $em->getReference($entityName, (int) $request->query->get('id'));
+        if (intval($parentId)) {
+            $filter['parent'] = $em->getReference($entityName, (int) $parentId);
         }
 
         $items = $this->getDoctrine()

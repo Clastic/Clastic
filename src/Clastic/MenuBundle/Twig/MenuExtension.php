@@ -9,9 +9,9 @@
 
 namespace Clastic\MenuBundle\Twig;
 
-use Clastic\MenuBundle\Entity\Menu;
 use Clastic\MenuBundle\Entity\MenuItem;
 use Clastic\MenuBundle\Entity\MenuItemRepository;
+use Symfony\Bundle\FrameworkBundle\Templating\GlobalVariables;
 
 /**
  * @author Dries De Peuter <dries@nousefreak.be>
@@ -62,13 +62,16 @@ class MenuExtension extends \Twig_Extension
      */
     public function renderMenu($menuIdentifier, $depth = 1)
     {
-        $qb = $this->repo->getNodesHierarchyQueryBuilder(null, false, array(), true)
+        $queryBuilder = $this->repo->getNodesHierarchyQueryBuilder(null, false, array(), true)
             ->join('ClasticMenuBundle:Menu', 'menu', 'menu.id = node.menu')
             ->andWhere('menu.identifier = :identifier')
             ->setParameter('identifier', $menuIdentifier);
 
         $globals = $this->environment->getGlobals();
-        $currentUrl = $globals['app']->getRequest()->server->get('REQUEST_URI');
+
+        /** @var GlobalVariables $variables */
+        $variables = $globals['app'];
+        $currentUrl = $variables->getRequest()->server->get('REQUEST_URI');
 
         $items = array_map(function(MenuItem $item) use ($currentUrl) {
 
@@ -90,7 +93,7 @@ class MenuExtension extends \Twig_Extension
                 '_active' => ($url == $currentUrl),
                 '_link' => $url,
             );
-        }, $qb->getQuery()->getResult());
+        }, $queryBuilder->getQuery()->getResult());
 
         return $this->environment->render('ClasticMenuBundle:Twig:menu.html.twig', array(
             'tree' => $this->repo->buildTree($items),

@@ -21,11 +21,11 @@ class EntityHiddenTypeTest extends TypeTestCase
 {
     public function testParent()
     {
-        $om = $this->getMockBuilder('Doctrine\Common\Persistence\ObjectManager')
+        $objectManager = $this->getMockBuilder('Doctrine\Common\Persistence\ObjectManager')
             ->disableOriginalConstructor()
             ->getMock();
 
-        $type = new EntityHiddenType($om);
+        $type = new EntityHiddenType($objectManager);
 
         $this->assertEquals('hidden', $type->getParent());
     }

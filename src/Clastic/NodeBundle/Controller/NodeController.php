@@ -10,6 +10,7 @@
 namespace Clastic\NodeBundle\Controller;
 
 use Clastic\BackofficeBundle\Controller\AbstractModuleController;
+use Clastic\NodeBundle\Entity\Node;
 use Clastic\NodeBundle\Event\NodeFormPersistEvent;
 use Clastic\NodeBundle\Node\NodeManager;
 use Clastic\NodeBundle\Node\NodeReferenceInterface;
@@ -79,7 +80,8 @@ class NodeController extends AbstractModuleController
     }
 
     /**
-     * @param string $type
+     * @param Request     $request
+     * @param null|string $type
      *
      * @return Response
      */
@@ -141,16 +143,16 @@ class NodeController extends AbstractModuleController
      */
     protected function persistData(Form $form)
     {
-        /** @var NodeReferenceInterface $node */
+        /** @var Node $node */
         $node = $form->getData()->getNode();
         $node->setChanged(new \DateTime());
 
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($form->getData());
-        $em->flush();
+        $objectManager = $this->getDoctrine()->getManager();
+        $objectManager->persist($form->getData());
+        $objectManager->flush();
 
         $this->get('event_dispatcher')
-            ->dispatch(NodeFormPersistEvent::NODE_FORM_PERSIST, new NodeFormPersistEvent($node, $form, $em));
+            ->dispatch(NodeFormPersistEvent::NODE_FORM_PERSIST, new NodeFormPersistEvent($node, $form, $objectManager));
     }
 
     /**

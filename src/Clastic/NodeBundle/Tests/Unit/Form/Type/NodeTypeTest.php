@@ -9,7 +9,6 @@
 
 namespace Clastic\NodeBundle\Tests\Unit\Form\Type;
 
-use Clastic\BackofficeBundle\Form\Type\WysiwygType;
 use Clastic\NodeBundle\Form\Type\NodeType;
 use Symfony\Component\Form\Test\TypeTestCase;
 

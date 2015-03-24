@@ -70,8 +70,7 @@ class ModuleGenerator extends Generator
     {
         $file = $bundle->getPath().'/Resources/config/services.';
 
-        switch (true)
-        {
+        switch (true) {
             case file_exists($file . 'xml'):
                 $this->updateDependencyInjectionXml($bundle, $parameters);
                 break;

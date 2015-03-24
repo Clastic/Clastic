@@ -12,14 +12,11 @@ namespace Clastic\GeneratorBundle\Command;
 use Clastic\GeneratorBundle\ClasticGeneratorBundle;
 use Clastic\GeneratorBundle\Generator\ModuleGenerator;
 use Sensio\Bundle\GeneratorBundle\Command\GeneratorCommand;
-use Sensio\Bundle\GeneratorBundle\Command\Helper\QuestionHelper;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\DependencyInjection\Container;
 use Symfony\Component\Console\Question\Question;
 use Symfony\Component\Console\Question\ConfirmationQuestion;
-use Doctrine\DBAL\Types\Type;
 use Symfony\Component\HttpKernel\Bundle\BundleInterface;
 
 /**
@@ -45,7 +42,10 @@ EOT
     }
 
     /**
-     * @throws \InvalidArgumentException
+     * @param InputInterface  $input
+     * @param OutputInterface $output
+     *
+     * @return int
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
@@ -76,8 +76,14 @@ EOT
         $output->writeln('Generating the module code: <info>OK</info>');
 
         $questionHelper->writeGeneratorSummary($output, array());
+
+        return 0;
     }
 
+    /**
+     * @param InputInterface  $input
+     * @param OutputInterface $output
+     */
     protected function interact(InputInterface $input, OutputInterface $output)
     {
         $questionHelper = $this->getQuestionHelper();
@@ -104,9 +110,10 @@ EOT
             list($bundle, $module) = $this->parseShortcutNotation($module);
 
             try {
-                $b = $this->getContainer()->get('kernel')->getBundle($bundle);
+                /** @var BundleInterface $bundleInstance */
+                $bundleInstance = $this->getContainer()->get('kernel')->getBundle($bundle);
 
-                if (!file_exists($b->getPath().'/Module/'.str_replace('\\', '/', $module).'.php')) {
+                if (!file_exists($bundleInstance->getPath().'/Module/'.str_replace('\\', '/', $module).'.php')) {
                     break;
                 }
 

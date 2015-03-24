@@ -11,7 +11,6 @@ namespace Clastic\NodeBundle\Tests\Unit\Filter;
 
 use Clastic\NodeBundle\Filter\NodePublicationConfigurator;
 use Symfony\Component\Form\Test\TypeTestCase;
-use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 
 /**
  * @author Dries De Peuter <dries@nousefreak.be>
@@ -20,7 +19,7 @@ class NodePublicationConfiguratorTest extends TypeTestCase
 {
     public function testNoToken()
     {
-        $em = $this->getMockBuilder('Doctrine\ORM\EntityManager')
+        $entityManager = $this->getMockBuilder('Doctrine\ORM\EntityManager')
             ->disableOriginalConstructor()
             ->getMock();
 
@@ -32,7 +31,7 @@ class NodePublicationConfiguratorTest extends TypeTestCase
             ->method('getToken')
             ->willReturn(null);
 
-        $configurator = new NodePublicationConfigurator($em, $securityContext);
+        $configurator = new NodePublicationConfigurator($entityManager, $securityContext);
         $configurator->onKernelRequest();
     }
 
@@ -54,10 +53,10 @@ class NodePublicationConfiguratorTest extends TypeTestCase
             ->method('enable')
             ->willReturn($nodePublicationFilter);
 
-        $em = $this->getMockBuilder('Doctrine\ORM\EntityManager')
+        $entityManager = $this->getMockBuilder('Doctrine\ORM\EntityManager')
             ->disableOriginalConstructor()
             ->getMock();
-        $em->expects($this->once())
+        $entityManager->expects($this->once())
             ->method('getFilters')
             ->willReturn($filterCollection);
 
@@ -77,16 +76,16 @@ class NodePublicationConfiguratorTest extends TypeTestCase
             ->method('getToken')
             ->willReturn($token);
 
-        $configurator = new NodePublicationConfigurator($em, $securityContext);
+        $configurator = new NodePublicationConfigurator($entityManager, $securityContext);
         $configurator->onKernelRequest();
     }
 
     public function testOtherFirewall()
     {
-        $em = $this->getMockBuilder('Doctrine\ORM\EntityManager')
+        $entityManager = $this->getMockBuilder('Doctrine\ORM\EntityManager')
             ->disableOriginalConstructor()
             ->getMock();
-        $em->expects($this->never())
+        $entityManager->expects($this->never())
             ->method('getFilters');
 
         $token = $this->getMockBuilder('Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken')
@@ -105,7 +104,7 @@ class NodePublicationConfiguratorTest extends TypeTestCase
             ->method('getToken')
             ->willReturn($token);
 
-        $configurator = new NodePublicationConfigurator($em, $securityContext);
+        $configurator = new NodePublicationConfigurator($entityManager, $securityContext);
         $configurator->onKernelRequest();
     }
 
@@ -118,10 +117,10 @@ class NodePublicationConfiguratorTest extends TypeTestCase
             ->expects($this->never())
             ->method('enable');
 
-        $em = $this->getMockBuilder('Doctrine\ORM\EntityManager')
+        $entityManager = $this->getMockBuilder('Doctrine\ORM\EntityManager')
             ->disableOriginalConstructor()
             ->getMock();
-        $em->expects($this->never())
+        $entityManager->expects($this->never())
             ->method('getFilters');
 
         $token = $this->getMockBuilder('Symfony\Component\Security\Core\Authentication\Token\TokenInterface')
@@ -139,7 +138,7 @@ class NodePublicationConfiguratorTest extends TypeTestCase
             ->method('getToken')
             ->willReturn($token);
 
-        $configurator = new NodePublicationConfigurator($em, $securityContext);
+        $configurator = new NodePublicationConfigurator($entityManager, $securityContext);
         $configurator->onKernelRequest();
     }
 }

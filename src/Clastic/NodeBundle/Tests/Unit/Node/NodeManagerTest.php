@@ -13,7 +13,6 @@ use Clastic\NodeBundle\Entity\Node;
 use Clastic\NodeBundle\Event\NodeCreateEvent;
 use Clastic\NodeBundle\Node\NodeManager;
 use Clastic\NodeBundle\Tests\Stubs\NodeReferenceEntity;
-use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\Form\Test\TypeTestCase;
 
 /**
@@ -98,7 +97,6 @@ class NodeManagerTest extends TypeTestCase
         $manager = new NodeManager($dispatcher, $registry);
         $this->assertEquals($nodeReferenceEntity, $manager->loadNode(1));
     }
-
 
     public function testLoadNodeWithType()
     {
