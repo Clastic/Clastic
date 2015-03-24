@@ -39,7 +39,6 @@ class AppKernel extends Kernel
             new Demo\Bundle\DemoBundle(),
             new Clastic\FrontBundle\ClasticFrontBundle(),
             new Clastic\MediaBundle\ClasticMediaBundle(),
-            new Clastic\NewsBundle\ClasticNewsBundle(),
             new Clastic\TaxonomyBundle\ClasticTaxonomyBundle(),
             new Clastic\BlockBundle\ClasticBlockBundle(),
         );
