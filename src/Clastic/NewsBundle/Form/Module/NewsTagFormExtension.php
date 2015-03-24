@@ -24,7 +24,7 @@ class NewsTagFormExtension extends AbstractNodeTypeExtension
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $this->findTab($builder, 'general')
+        $this->getTabHelper($builder)->findTab('general')
           ->add('description', 'wysiwyg');
     }
 }

@@ -22,34 +22,27 @@ class NewsFormExtension extends AbstractNodeTypeExtension
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $this->findTab($builder, 'general')
+        $this->getTabHelper($builder)->findTab('general')
           ->add('body', 'wysiwyg');
 
-        $builder->get('tabs')
-            ->add(
-                $this
-                    ->createTab($builder, 'category', array(
-                        'label' => 'Category',
-                        'position' => 'first',
-                    ))
-                    ->add('categories', 'entity_multi_select', array(
-                        'class' => 'ClasticNewsBundle:Category',
-                        'property' => 'node.title',
-                        'required' => false,
-                    ))
-            );
-        $builder->get('tabs')
-            ->add(
-                $this
-                    ->createTab($builder, 'tag', array(
-                        'label' => 'Tag',
-                        'position' => 'first',
-                    ))
-                    ->add('tags', 'entity_multi_select', array(
-                        'class' => 'ClasticNewsBundle:Tag',
-                        'property' => 'node.title',
-                        'required' => false,
-                    ))
-            );
+        $this->getTabHelper($builder)
+            ->createTab('category', 'Category', array(
+                'position' => 'first',
+            ))
+            ->add('categories', 'entity_multi_select', array(
+                'class' => 'ClasticNewsBundle:Category',
+                'property' => 'node.title',
+                'required' => false,
+            ));
+
+        $this->getTabHelper($builder)
+            ->createTab('tag', 'Tag', array(
+                'position' => 'first',
+            ))
+            ->add('tags', 'entity_multi_select', array(
+                'class' => 'ClasticNewsBundle:Tag',
+                'property' => 'node.title',
+                'required' => false,
+            ));
     }
 }
