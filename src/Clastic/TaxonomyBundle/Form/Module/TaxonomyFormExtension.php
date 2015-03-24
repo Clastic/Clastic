@@ -44,7 +44,7 @@ class TaxonomyFormExtension extends AbstractNodeTypeExtension
                 'entityName' => get_class($builder->getData()),
             ));
 
-        $this->findTab($builder, 'general')
+        $this->getTabHelper($builder)->findTab('general')
           ->add('description', 'wysiwyg')
           ->add('position', new TreeType($url));
     }
