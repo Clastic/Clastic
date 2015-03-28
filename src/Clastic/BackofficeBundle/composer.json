@@ -11,7 +11,7 @@
     "require": {
         "php": ">=5.3.3",
         "clastic/core-bundle": "*",
-        "clastic/user-bundle": "*",
+        "clastic/security-bundle": "*",
         "symfony/dependency-injection": "~2.6",
         "doctrine/doctrine-bundle": "*",
         "thomaswelton/gravatarlib": "~0.1",
