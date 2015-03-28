@@ -75,8 +75,8 @@ gulp.task('scripts', ['scripts:vendor', 'scripts:app']);
 gulp.task('scripts:vendor', function() {
     gulp.src(paths.scripts.vendor)
         .pipe(concat('vendor.js'))
-        .pipe(stripDebug())
-        .pipe(uglify())
+        //.pipe(stripDebug())
+        //.pipe(uglify())
         .pipe(rename('vendor.min.js'))
         .pipe(gulp.dest(paths.build))
         .pipe(filesize());
@@ -86,7 +86,7 @@ gulp.task('scripts:app', function() {
     gulp.src(paths.scripts.app)
         .pipe(concat('app.js'))
         //.pipe(stripDebug())
-        .pipe(uglify())
+        //.pipe(uglify())
         .on('error', errorHandler)
         .pipe(rename('app.min.js'))
         .pipe(gulp.dest(paths.build))
@@ -101,7 +101,6 @@ gulp.task('styles:app', function() {
         .pipe(less())
         .on('error', errorHandler)
         .pipe(concat('app.css'))
-        .pipe(cmq({log: true}))
         .pipe(autoprefix('last 2 versions'))
         .pipe(minifyCSS({
             keepSpecialComments: 0
