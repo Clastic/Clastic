@@ -42,7 +42,8 @@
         "ocramius/proxy-manager": "1.0.*",
         "stof/doctrine-extensions-bundle": "~1.1",
         "egeloen/ordered-form-bundle": "~1.0",
-        "ezyang/htmlpurifier": "~4.6"
+        "ezyang/htmlpurifier": "~4.6",
+        "helios-ag/fm-elfinder-bundle": "~5"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"
@@ -69,7 +70,8 @@
         ]
     },
     "config": {
-        "bin-dir": "bin"
+        "bin-dir": "bin",
+        "component-dir": "web/assets"
     },
     "extra": {
         "symfony-app-dir": "app",

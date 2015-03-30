@@ -5,19 +5,21 @@
     {{ module.name }}
 {%- endblock %}
 
+{% block html_head %}
+    {% include "FMElfinderBundle:Elfinder:helper/assets_css.html.twig" with {'prefix': 'assets', 'theme': ''} %}
+{% endblock html_head %}
+
 {% block content %}
     <div class="row">
         <div class="col-md-12">
-            <section class="node-list">
-                {% for flashMessage in app.session.flashbag.get('success') %}
-                    <div class="alert alert-success" role="alert">
-                        {{ flashMessage }}
-                    </div>
-                {% endfor %}
-                <header class="header"></header>
-
-                {% include "ClasticMediaBundle:Form:file_browser.html.twig" %}
-            </section>
+            {{ render(controller('FMElfinderBundle:ElFinder:show', {'instance': 'default', 'homeFolder': ''} )) }}
         </div>
     </div>
+{% endblock %}
+
+{% block html_body_js %}
+    {{ parent() }}
+    <script src="/assets/jquery-ui/jquery-ui.min.js"></script>
+    <script src="/assets/elfinder/js/elfinder.min.js"></script>
+    <script src="/assets/elfinder/js/i18n/elfinder.en.js"></script>
 {% endblock %}

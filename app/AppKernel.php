@@ -34,6 +34,7 @@ class AppKernel extends Kernel
             new Clastic\NodeBundle\ClasticNodeBundle(),
 
             new Clastic\MenuBundle\ClasticMenuBundle(),
+            new FM\ElfinderBundle\FMElfinderBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new Clastic\BlogBundle\ClasticBlogBundle(),
             new Demo\Bundle\DemoBundle(),

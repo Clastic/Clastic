@@ -10,10 +10,14 @@
     ],
     "require": {
         "php": ">=5.3.3",
-        "clastic/core-bundle": "*"
+        "clastic/core-bundle": "*",
+        "helios-ag/fm-elfinder-bundle": "~5.0"
     },
     "autoload": {
         "psr-4": { "Clastic\\MediaBundle\\": "" }
+    },
+    "config": {
+        "component-dir": "web/assets"
     },
     "minimum-stability": "dev"
 }
