@@ -17,7 +17,9 @@
                 dataType: "script",
                 cache: true
             }).done(function() {
-                $elements.ckeditor();
+                var config = {};
+                $elements.trigger('ckeditor-config', config);
+                $elements.ckeditor(config);
             });
         });
     });
