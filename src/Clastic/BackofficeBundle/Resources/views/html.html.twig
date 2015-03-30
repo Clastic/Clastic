@@ -19,7 +19,9 @@
 
 <body>
     {% block html_body %}{% endblock html_body %}
-    <script src="{{ asset('build/vendor.min.js') }}"></script>
-    <script src="{{ asset('build/app.min.js') }}"></script>
+    {% block html_body_js %}
+        <script src="{{ asset('build/vendor.min.js') }}"></script>
+        <script src="{{ asset('build/app.min.js') }}"></script>
+    {% endblock html_body_js %}
 </body>
 </html>
