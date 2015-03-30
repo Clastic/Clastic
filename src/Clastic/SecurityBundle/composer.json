@@ -11,7 +11,7 @@
     "require": {
         "php": ">=5.3.3",
         "clastic/core-bundle": "*",
-        "doctrine/user-bundle": "*"
+        "clastic/user-bundle": "*"
     },
     "autoload": {
         "psr-4": { "Clastic\\SecurityBundle\\": "" }
