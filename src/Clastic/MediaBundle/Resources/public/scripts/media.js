@@ -4,8 +4,8 @@
 
         if ($elfinder.length) {
             $elfinder.elfinder({
-                url : '/admin/efconnect',
-                lang : 'en'
+                url: '/admin/efconnect',
+                lang: 'en'
             });
         }
     });
