@@ -19,8 +19,6 @@
             <tag name="doctrine.event_subscriber" connection="default" />
         </service>
 
-        <service id="clastic.media.type.file_browser" class="%clastic.media.type.file_browser.class%">
-            <tag name="form.type" alias="file_browser" />
-        </service>
+        <service id="clastic.elfinder.driver.filesystem" class="Clastic\MediaBundle\ElFinder\Driver\ElFinderVolumeClasticFileSystem"/>
     </services>
 </container>

@@ -91,7 +91,7 @@ fm_elfinder:
                 roots:
                     uploads:
                         show_hidden: false
-                        driver: LocalFileSystem
+                        driver: clastic.elfinder.driver.filesystem
                         path: uploads
                         upload_allow: ['all']
                         upload_deny: []
