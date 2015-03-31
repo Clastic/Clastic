@@ -19,6 +19,10 @@
             <tag name="doctrine.event_subscriber" connection="default" />
         </service>
 
-        <service id="clastic.elfinder.driver.filesystem" class="Clastic\MediaBundle\ElFinder\Driver\ElFinderVolumeClasticFileSystem"/>
+        <service id="elfinder.driver.rootDriver" class="FM\ElFinderPHP\Driver\ElFinderVolumeLocalFileSystem"/>
+
+        <service id="clastic.elfinder.driver.filesystem" class="Clastic\MediaBundle\ElFinder\Driver\ElFinderVolumeClasticFileSystem">
+            <argument type="service" id="elfinder.driver.rootDriver"/>
+        </service>
     </services>
 </container>
