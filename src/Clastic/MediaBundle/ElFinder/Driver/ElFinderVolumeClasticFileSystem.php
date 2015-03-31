@@ -9,7 +9,10 @@
 
 namespace Clastic\MediaBundle\ElFinder\Driver;
 
+use Clastic\MediaBundle\ElFinder\ElFinderEvent;
 use FM\ElFinderPHP\Driver\ElFinderVolumeDriver;
+use Symfony\Component\EventDispatcher\EventDispatcher;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 /**
  * ElFinderVolumeClasticFileSystem
@@ -24,11 +27,18 @@ class ElFinderVolumeClasticFileSystem extends ElFinderVolumeDriver
     private $driver;
 
     /**
-     * @param ElFinderVolumeDriver $driver
+     * @var EventDispatcherInterface
      */
-    public function __construct(ElFinderVolumeDriver $driver)
+    private $dispatcher;
+
+    /**
+     * @param ElFinderVolumeDriver     $driver
+     * @param EventDispatcherInterface $dispatcher
+     */
+    public function __construct(ElFinderVolumeDriver $driver, EventDispatcherInterface $dispatcher)
     {
         $this->driver = $driver;
+        $this->dispatcher = $dispatcher;
     }
 
     /**
@@ -36,6 +46,9 @@ class ElFinderVolumeClasticFileSystem extends ElFinderVolumeDriver
      */
     public function driverId()
     {
+        $this->dispatcher
+            ->dispatch('elfinder.' . __METHOD__, new ElFinderEvent(func_get_args()));
+
         return $this->driver->driverId();
     }
 
@@ -44,6 +57,9 @@ class ElFinderVolumeClasticFileSystem extends ElFinderVolumeDriver
      */
     public function id()
     {
+        $this->dispatcher
+            ->dispatch('elfinder.' . __METHOD__, new ElFinderEvent(func_get_args()));
+
         return $this->driver->id();
     }
 
@@ -52,6 +68,9 @@ class ElFinderVolumeClasticFileSystem extends ElFinderVolumeDriver
      */
     public function debug()
     {
+        $this->dispatcher
+            ->dispatch('elfinder.' . __METHOD__, new ElFinderEvent(func_get_args()));
+
         return $this->driver->debug();
     }
 
@@ -60,6 +79,9 @@ class ElFinderVolumeClasticFileSystem extends ElFinderVolumeDriver
      */
     public function mount(array $opts)
     {
+        $this->dispatcher
+            ->dispatch('elfinder.' . __METHOD__, new ElFinderEvent(func_get_args()));
+
         return $this->driver->mount($opts);
     }
 
@@ -68,7 +90,10 @@ class ElFinderVolumeClasticFileSystem extends ElFinderVolumeDriver
      */
     public function umount()
     {
-        return $this->driver->umount();
+        $this->dispatcher
+            ->dispatch('elfinder.' . __METHOD__, new ElFinderEvent(func_get_args()));
+
+        $this->driver->umount();
     }
 
     /**
@@ -76,6 +101,9 @@ class ElFinderVolumeClasticFileSystem extends ElFinderVolumeDriver
      */
     public function error()
     {
+        $this->dispatcher
+            ->dispatch('elfinder.' . __METHOD__, new ElFinderEvent(func_get_args()));
+
         return $this->driver->error();
     }
 
@@ -84,6 +112,9 @@ class ElFinderVolumeClasticFileSystem extends ElFinderVolumeDriver
      */
     public function getMimeTable()
     {
+        $this->dispatcher
+            ->dispatch('elfinder.' . __METHOD__, new ElFinderEvent(func_get_args()));
+
         return $this->driver->getMimeTable();
     }
 
@@ -92,6 +123,9 @@ class ElFinderVolumeClasticFileSystem extends ElFinderVolumeDriver
      */
     public function setMimesFilter($mimes)
     {
+        $this->dispatcher
+            ->dispatch('elfinder.' . __METHOD__, new ElFinderEvent(func_get_args()));
+
         $this->driver->setMimesFilter($mimes);
     }
 
@@ -100,6 +134,9 @@ class ElFinderVolumeClasticFileSystem extends ElFinderVolumeDriver
      */
     public function root()
     {
+        $this->dispatcher
+            ->dispatch('elfinder.' . __METHOD__, new ElFinderEvent(func_get_args()));
+
         return $this->driver->root();
     }
 
@@ -108,6 +145,9 @@ class ElFinderVolumeClasticFileSystem extends ElFinderVolumeDriver
      */
     public function defaultPath()
     {
+        $this->dispatcher
+            ->dispatch('elfinder.' . __METHOD__, new ElFinderEvent(func_get_args()));
+
         return $this->driver->defaultPath();
     }
 
@@ -116,6 +156,9 @@ class ElFinderVolumeClasticFileSystem extends ElFinderVolumeDriver
      */
     public function options($hash)
     {
+        $this->dispatcher
+            ->dispatch('elfinder.' . __METHOD__, new ElFinderEvent(func_get_args()));
+
         return $this->driver->options($hash);
     }
 
@@ -124,6 +167,9 @@ class ElFinderVolumeClasticFileSystem extends ElFinderVolumeDriver
      */
     public function getOptionsPlugin($name = '')
     {
+        $this->dispatcher
+            ->dispatch('elfinder.' . __METHOD__, new ElFinderEvent(func_get_args()));
+
         return $this->driver->getOptionsPlugin($name);
     }
 
@@ -132,6 +178,9 @@ class ElFinderVolumeClasticFileSystem extends ElFinderVolumeDriver
      */
     public function commandDisabled($cmd)
     {
+        $this->dispatcher
+            ->dispatch('elfinder.' . __METHOD__, new ElFinderEvent(func_get_args()));
+
         return $this->driver->commandDisabled($cmd);
     }
 
@@ -140,6 +189,9 @@ class ElFinderVolumeClasticFileSystem extends ElFinderVolumeDriver
      */
     public function mimeAccepted($mime, $mimes = array(), $empty = true)
     {
+        $this->dispatcher
+            ->dispatch('elfinder.' . __METHOD__, new ElFinderEvent(func_get_args()));
+
         return $this->driver->mimeAccepted($mime, $mimes, $empty);
     }
 
@@ -148,6 +200,9 @@ class ElFinderVolumeClasticFileSystem extends ElFinderVolumeDriver
      */
     public function isReadable()
     {
+        $this->dispatcher
+            ->dispatch('elfinder.' . __METHOD__, new ElFinderEvent(func_get_args()));
+
         return $this->driver->isReadable();
     }
 
@@ -156,6 +211,9 @@ class ElFinderVolumeClasticFileSystem extends ElFinderVolumeDriver
      */
     public function copyFromAllowed()
     {
+        $this->dispatcher
+            ->dispatch('elfinder.' . __METHOD__, new ElFinderEvent(func_get_args()));
+
         return $this->driver->copyFromAllowed();
     }
 
@@ -164,6 +222,9 @@ class ElFinderVolumeClasticFileSystem extends ElFinderVolumeDriver
      */
     public function path($hash)
     {
+        $this->dispatcher
+            ->dispatch('elfinder.' . __METHOD__, new ElFinderEvent(func_get_args()));
+
         return $this->driver->path($hash);
     }
 
@@ -172,6 +233,9 @@ class ElFinderVolumeClasticFileSystem extends ElFinderVolumeDriver
      */
     public function realpath($hash)
     {
+        $this->dispatcher
+            ->dispatch('elfinder.' . __METHOD__, new ElFinderEvent(func_get_args()));
+
         return $this->driver->realpath($hash);
     }
 
@@ -180,6 +244,9 @@ class ElFinderVolumeClasticFileSystem extends ElFinderVolumeDriver
      */
     public function removed()
     {
+        $this->dispatcher
+            ->dispatch('elfinder.' . __METHOD__, new ElFinderEvent(func_get_args()));
+
         return $this->driver->removed();
     }
 
@@ -188,6 +255,9 @@ class ElFinderVolumeClasticFileSystem extends ElFinderVolumeDriver
      */
     public function resetRemoved()
     {
+        $this->dispatcher
+            ->dispatch('elfinder.' . __METHOD__, new ElFinderEvent(func_get_args()));
+
         $this->driver->resetRemoved();
     }
 
@@ -196,6 +266,9 @@ class ElFinderVolumeClasticFileSystem extends ElFinderVolumeDriver
      */
     public function closest($hash, $attr, $val)
     {
+        $this->dispatcher
+            ->dispatch('elfinder.' . __METHOD__, new ElFinderEvent(func_get_args()));
+
         return $this->driver->closest($hash, $attr, $val);
     }
 
@@ -204,6 +277,9 @@ class ElFinderVolumeClasticFileSystem extends ElFinderVolumeDriver
      */
     public function file($hash)
     {
+        $this->dispatcher
+            ->dispatch('elfinder.' . __METHOD__, new ElFinderEvent(func_get_args()));
+
         return $this->driver->file($hash);
     }
 
@@ -212,6 +288,9 @@ class ElFinderVolumeClasticFileSystem extends ElFinderVolumeDriver
      */
     public function dir($hash, $resolveLink = false)
     {
+        $this->dispatcher
+            ->dispatch('elfinder.' . __METHOD__, new ElFinderEvent(func_get_args()));
+
         return $this->driver->dir($hash, $resolveLink);
     }
 
@@ -220,6 +299,9 @@ class ElFinderVolumeClasticFileSystem extends ElFinderVolumeDriver
      */
     public function scandir($hash)
     {
+        $this->dispatcher
+            ->dispatch('elfinder.' . __METHOD__, new ElFinderEvent(func_get_args()));
+
         return $this->driver->scandir($hash);
     }
 
@@ -228,6 +310,9 @@ class ElFinderVolumeClasticFileSystem extends ElFinderVolumeDriver
      */
     public function ls($hash)
     {
+        $this->dispatcher
+            ->dispatch('elfinder.' . __METHOD__, new ElFinderEvent(func_get_args()));
+
         return $this->driver->ls($hash);
     }
 
@@ -236,6 +321,9 @@ class ElFinderVolumeClasticFileSystem extends ElFinderVolumeDriver
      */
     public function tree($hash = '', $deep = 0, $exclude = '')
     {
+        $this->dispatcher
+            ->dispatch('elfinder.' . __METHOD__, new ElFinderEvent(func_get_args()));
+
         return $this->driver->tree($hash, $deep, $exclude);
     }
 
@@ -244,6 +332,9 @@ class ElFinderVolumeClasticFileSystem extends ElFinderVolumeDriver
      */
     public function parents($hash, $lineal = false)
     {
+        $this->dispatcher
+            ->dispatch('elfinder.' . __METHOD__, new ElFinderEvent(func_get_args()));
+
         return $this->driver->parents($hash, $lineal);
     }
 
@@ -252,6 +343,9 @@ class ElFinderVolumeClasticFileSystem extends ElFinderVolumeDriver
      */
     public function tmb($hash)
     {
+        $this->dispatcher
+            ->dispatch('elfinder.' . __METHOD__, new ElFinderEvent(func_get_args()));
+
         return $this->driver->tmb($hash);
     }
 
@@ -260,6 +354,9 @@ class ElFinderVolumeClasticFileSystem extends ElFinderVolumeDriver
      */
     public function size($hash)
     {
+        $this->dispatcher
+            ->dispatch('elfinder.' . __METHOD__, new ElFinderEvent(func_get_args()));
+
         return $this->driver->size($hash);
     }
 
@@ -268,6 +365,9 @@ class ElFinderVolumeClasticFileSystem extends ElFinderVolumeDriver
      */
     public function open($hash)
     {
+        $this->dispatcher
+            ->dispatch('elfinder.' . __METHOD__, new ElFinderEvent(func_get_args()));
+
         return $this->driver->open($hash);
     }
 
@@ -276,6 +376,9 @@ class ElFinderVolumeClasticFileSystem extends ElFinderVolumeDriver
      */
     public function close($fp, $hash)
     {
+        $this->dispatcher
+            ->dispatch('elfinder.' . __METHOD__, new ElFinderEvent(func_get_args()));
+
         $this->driver->close($fp, $hash);
     }
 
@@ -284,6 +387,9 @@ class ElFinderVolumeClasticFileSystem extends ElFinderVolumeDriver
      */
     public function mkdir($dst, $name)
     {
+        $this->dispatcher
+            ->dispatch('elfinder.' . __METHOD__, new ElFinderEvent(func_get_args()));
+
         return $this->driver->mkdir($dst, $name);
     }
 
@@ -292,6 +398,9 @@ class ElFinderVolumeClasticFileSystem extends ElFinderVolumeDriver
      */
     public function mkfile($dst, $name)
     {
+        $this->dispatcher
+            ->dispatch('elfinder.' . __METHOD__, new ElFinderEvent(func_get_args()));
+
         return $this->driver->mkfile($dst, $name);
     }
 
@@ -300,6 +409,9 @@ class ElFinderVolumeClasticFileSystem extends ElFinderVolumeDriver
      */
     public function rename($hash, $name)
     {
+        $this->dispatcher
+            ->dispatch('elfinder.' . __METHOD__, new ElFinderEvent(func_get_args()));
+
         return $this->driver->rename($hash, $name);
     }
 
@@ -308,6 +420,9 @@ class ElFinderVolumeClasticFileSystem extends ElFinderVolumeDriver
      */
     public function duplicate($hash, $suffix = 'copy')
     {
+        $this->dispatcher
+            ->dispatch('elfinder.' . __METHOD__, new ElFinderEvent(func_get_args()));
+
         return $this->driver->duplicate($hash, $suffix);
     }
 
@@ -316,6 +431,9 @@ class ElFinderVolumeClasticFileSystem extends ElFinderVolumeDriver
      */
     public function upload($fp, $dst, $name, $tmpname)
     {
+        $this->dispatcher
+            ->dispatch('elfinder.' . __METHOD__, new ElFinderEvent(func_get_args()));
+
         return $this->driver->upload($fp, $dst, $name, $tmpname);
     }
 
@@ -324,6 +442,9 @@ class ElFinderVolumeClasticFileSystem extends ElFinderVolumeDriver
      */
     public function paste($volume, $src, $dst, $rmSrc = false)
     {
+        $this->dispatcher
+            ->dispatch('elfinder.' . __METHOD__, new ElFinderEvent(func_get_args()));
+
         return $this->driver->paste($volume, $src, $dst, $rmSrc);
     }
 
@@ -332,6 +453,9 @@ class ElFinderVolumeClasticFileSystem extends ElFinderVolumeDriver
      */
     public function getContents($hash)
     {
+        $this->dispatcher
+            ->dispatch('elfinder.' . __METHOD__, new ElFinderEvent(func_get_args()));
+
         return $this->driver->getContents($hash);
     }
 
@@ -340,6 +464,9 @@ class ElFinderVolumeClasticFileSystem extends ElFinderVolumeDriver
      */
     public function putContents($hash, $content)
     {
+        $this->dispatcher
+            ->dispatch('elfinder.' . __METHOD__, new ElFinderEvent(func_get_args()));
+
         return $this->driver->putContents($hash, $content);
     }
 
@@ -348,6 +475,9 @@ class ElFinderVolumeClasticFileSystem extends ElFinderVolumeDriver
      */
     public function extract($hash)
     {
+        $this->dispatcher
+            ->dispatch('elfinder.' . __METHOD__, new ElFinderEvent(func_get_args()));
+
         return $this->driver->extract($hash);
     }
 
@@ -356,6 +486,9 @@ class ElFinderVolumeClasticFileSystem extends ElFinderVolumeDriver
      */
     public function archive($hashes, $mime)
     {
+        $this->dispatcher
+            ->dispatch('elfinder.' . __METHOD__, new ElFinderEvent(func_get_args()));
+
         $this->driver->archive($hashes, $mime);
     }
 

@@ -23,6 +23,7 @@
 
         <service id="clastic.elfinder.driver.filesystem" class="Clastic\MediaBundle\ElFinder\Driver\ElFinderVolumeClasticFileSystem">
             <argument type="service" id="elfinder.driver.rootDriver"/>
+            <argument type="service" id="event_dispatcher"/>
         </service>
     </services>
 </container>
