@@ -78,21 +78,3 @@ stof_doctrine_extensions:
     orm:
         default:
             tree: true
-
-fm_elfinder:
-    instances:
-        default:
-            locale: %locale%
-            editor: ckeditor
-            fullscreen: true
-            theme: smoothness
-            include_assets: true
-            connector:
-                roots:
-                    uploads:
-                        show_hidden: false
-                        driver: clastic.elfinder.driver.filesystem
-                        path: uploads
-                        upload_allow: ['all']
-                        upload_deny: []
-                        upload_max_size: 20M
