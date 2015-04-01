@@ -1,10 +1,2 @@
-/app export-ignore
-/bin export-ignore
 /docs export-ignore
-/web export-ignore
-/.travis.yml export-ignore
-/bower.json export-ignore
-/Makefile export-ignore
-/gulpfile.js export-ignore
-/package.json export-ignore
 /Vagrantfile export-ignore
