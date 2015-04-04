@@ -10,12 +10,14 @@ It allows developers to build better applications without the fuss of creating a
 
 Clastic can be used as a backend for any type of application, from personal blog to high traffic mobile app api.
 
+For more information and a demo check out [http://clastic.nousefreak.be/](http://clastic.nousefreak.be/).
+
 Installation
 ------------
 
 The best way to install Clastic is to download the Standard Edition.
 
-Detailed information available at [http://clastic.nousefreak.be/](http://clastic.nousefreak.be/).
+Detailed information available at [http://clastic.readthedocs.org/en/latest/installation/](http://clastic.readthedocs.org/en/latest/installation/).
 
 Contributing
 ------------
