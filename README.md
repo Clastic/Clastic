@@ -10,22 +10,12 @@ It allows developers to build better applications without the fuss of creating a
 
 Clastic can be used as a backend for any type of application, from personal blog to high traffic mobile app api.
 
-Requirements
-------------
-
-PHP 5.3.2 or above
-
-You need the following installed globally on your system:
- - [composer](http://getcomposer.org)
- - [nodejs and npm](http://nodejs.org)
- - [gulp](http://gulpjs.com)
-
 Installation
 ------------
 
 The best way to install Clastic is to download the Standard Edition.
 
-Detailed information available at [http://clastic.nousefreak.be/download](http://clastic.nousefreak.be/download).
+Detailed information available at [http://clastic.nousefreak.be/](http://clastic.nousefreak.be/).
 
 Contributing
 ------------
