@@ -7,32 +7,19 @@
  * file that was distributed with this source code.
  */
 
-namespace Clastic\MenuBundle\Form;
+namespace Clastic\BlockBundle\Form\Type;
 
-use Clastic\BackofficeBundle\Form\Type\TreeType;
-use Symfony\Bundle\FrameworkBundle\Routing\Router;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
+ * MenuType
+ *
  * @author Dries De Peuter <dries@nousefreak.be>
  */
-class MenuItemType extends AbstractType
+class BlockFormType extends AbstractType
 {
-    /**
-     * @var Router
-     */
-    private $router;
-
-    /**
-     * @param Router $router
-     */
-    public function __construct(Router $router)
-    {
-        $this->router = $router;
-    }
-
     /**
      * @param FormBuilderInterface $builder
      * @param array                $options
@@ -43,8 +30,8 @@ class MenuItemType extends AbstractType
             ->add(
                 $builder->create('tabs', 'tabs', array('inherit_data' => true))
                     ->add($this->createGeneralTab($builder))
+                    ->add($this->createContentTab($builder))
                     ->add($this->createActionTab($builder))
-                    ->add($this->createPositionTab($builder))
             );
     }
 
@@ -66,24 +53,23 @@ class MenuItemType extends AbstractType
         return $builder->create($name, 'tabs_tab', $options);
     }
 
-    /**
-     * @param FormBuilderInterface $builder
-     *
-     * @return FormBuilderInterface
-     */
     private function createGeneralTab(FormBuilderInterface $builder)
     {
-        return $this->createTab($builder, 'general', array('label' => 'General'))
+        return $this
+            ->createTab($builder, 'general', array('label' => 'General'))
             ->add('title', 'text', array(
                 'label' => 'Title',
             ))
-            ->add('node', 'node', array(
-                'required' => false,
-                'placeholder' => 'None',
-            ))
-            ->add('url', 'text', array(
-                'required' => false,
+            ->add('identifier', 'text', array(
+                'label' => 'Identifier',
             ));
+    }
+
+    private function createContentTab(FormBuilderInterface $builder)
+    {
+        return $this
+            ->createTab($builder, 'content', array('label' => 'Content'))
+            ->add('body', 'wysiwyg');
     }
 
     /**
@@ -101,25 +87,6 @@ class MenuItemType extends AbstractType
                 'label' => 'Save',
                 'attr' => array('class' => 'btn btn-success'),
             ));
-    }
-
-    /**
-     * @param FormBuilderInterface $builder
-     *
-     * @return FormBuilderInterface
-     */
-    private function createPositionTab(FormBuilderInterface $builder)
-    {
-        $treeType = new TreeType(
-            $this->router->generate(
-                'clastic_backoffice_menu_item_tree',
-                array('menuId' => $builder->getData()->getMenu()->getId()))
-        );
-
-        return $this->createTab($builder, 'position_tab', array(
-            'label' => 'Position',
-            ))
-            ->add('position', $treeType);
     }
 
     /**

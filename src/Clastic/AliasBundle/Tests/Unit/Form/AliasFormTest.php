@@ -10,6 +10,8 @@
 namespace Clastic\AliasBundle\Tests\Unit\Form;
 
 use Clastic\AliasBundle\Entity\Alias;
+use Clastic\AliasBundle\Form\Type\AliasFormType;
+use Clastic\AliasBundle\Form\TypeAliasFormType;
 use Clastic\AliasBundle\Form\AliasType;
 use Clastic\BackofficeBundle\Form\Type\TabsTabActionsType;
 use Clastic\BackofficeBundle\Form\Type\TabsTabType;
@@ -54,7 +56,7 @@ class AliasModuleTest extends TypeTestCase
             ),
         );
 
-        $type = new AliasType();
+        $type = new AliasFormType();
         $form = $this->factory->create($type, new Alias());
 
         // submit the data to the form directly
@@ -72,7 +74,7 @@ class AliasModuleTest extends TypeTestCase
     {
         $formData = array();
 
-        $type = new AliasType();
+        $type = new AliasFormType();
         $form = $this->factory->create($type, new Alias());
 
         // submit the data to the form directly

@@ -11,7 +11,6 @@ namespace Clastic\GeneratorBundle\Generator;
 
 use Sensio\Bundle\GeneratorBundle\Generator\Generator;
 use Symfony\Component\DependencyInjection\Container;
-use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpKernel\Bundle\BundleInterface;
 
 /**
@@ -21,18 +20,6 @@ use Symfony\Component\HttpKernel\Bundle\BundleInterface;
  */
 class ModuleGenerator extends Generator
 {
-    private $filesystem;
-
-    /**
-     * Constructor.
-     *
-     * @param Filesystem $filesystem A Filesystem instance
-     */
-    public function __construct(Filesystem $filesystem)
-    {
-        $this->filesystem = $filesystem;
-    }
-
     /**
      * @param BundleInterface $bundle
      * @param string          $module

@@ -7,7 +7,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Clastic\NodeBundle\Form;
+namespace Clastic\NodeBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -18,7 +18,7 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
  *
  * @author Dries De Peuter <dries@nousefreak.be>
  */
-class NodeType extends AbstractType
+class NodeFormType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder

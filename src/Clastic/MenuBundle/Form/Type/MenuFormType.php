@@ -7,16 +7,18 @@
  * file that was distributed with this source code.
  */
 
-namespace Clastic\AliasBundle\Form;
+namespace Clastic\MenuBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
+ * MenuType
+ *
  * @author Dries De Peuter <dries@nousefreak.be>
  */
-class AliasType extends AbstractType
+class MenuFormType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -29,9 +31,12 @@ class AliasType extends AbstractType
                 $builder->create('tabs', 'tabs', array('inherit_data' => true))
                     ->add(
                         $this->createTab($builder, 'general', array('label' => 'General'))
-                            ->add('alias', 'alias', array(
-                                    'label' => 'Alias',
+                            ->add('title', 'text', array(
+                                    'label' => 'Title',
                                 ))
+                            ->add('identifier', 'text', array(
+                                'label' => 'Identifier',
+                            ))
                     )
                     ->add($this->createActionTab($builder))
             );
@@ -86,6 +91,6 @@ class AliasType extends AbstractType
      */
     public function getName()
     {
-        return 'clastic_alias';
+        return 'clastic_menu';
     }
 }

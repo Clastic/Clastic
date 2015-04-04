@@ -11,7 +11,7 @@ namespace Clastic\UserBundle\Controller;
 
 use Clastic\BackofficeBundle\Controller\AbstractModuleController;
 use Clastic\UserBundle\Entity\User;
-use Clastic\UserBundle\Form\UserType;
+use Clastic\UserBundle\Form\Type\UserFormType;
 use Symfony\Component\Form\Form;
 
 /**
@@ -44,7 +44,7 @@ class UserController extends AbstractModuleController
      */
     protected function buildForm($data)
     {
-        return $this->createForm(new UserType(is_null($data->getId())), $data);
+        return $this->createForm(new UserFormType(is_null($data->getId())), $data);
     }
 
     /**

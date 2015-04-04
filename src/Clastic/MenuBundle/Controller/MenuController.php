@@ -11,7 +11,7 @@ namespace Clastic\MenuBundle\Controller;
 
 use Clastic\BackofficeBundle\Controller\AbstractModuleController;
 use Clastic\MenuBundle\Entity\Menu;
-use Clastic\MenuBundle\Form\MenuType;
+use Clastic\MenuBundle\Form\Type\MenuFormType;
 use Clastic\NodeBundle\Node\NodeReferenceInterface;
 use Symfony\Component\Form\Form;
 
@@ -45,7 +45,7 @@ class MenuController extends AbstractModuleController
      */
     protected function buildForm($data)
     {
-        return $this->createForm(new MenuType(), $data);
+        return $this->createForm(new MenuFormType(), $data);
     }
 
     /**

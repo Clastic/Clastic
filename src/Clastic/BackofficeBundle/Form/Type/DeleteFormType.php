@@ -7,17 +7,17 @@
  * file that was distributed with this source code.
  */
 
-namespace Clastic\BackofficeBundle\Form;
+namespace Clastic\BackofficeBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 /**
- * DeleteType
+ * DeleteForm
  *
  * @author Dries De Peuter <dries@nousefreak.be>
  */
-class DeleteType extends AbstractType
+class DeleteFormType extends AbstractType
 {
     /**
      * {@inheritdoc}

@@ -7,7 +7,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Clastic\BackofficeBundle\Form;
+namespace Clastic\BackofficeBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -17,7 +17,7 @@ use Symfony\Component\Form\FormBuilderInterface;
  *
  * @author Dries De Peuter <dries@nousefreak.be>
  */
-class SettingsType extends AbstractType
+class SettingsFormType extends AbstractType
 {
     /**
      * {@inheritdoc}

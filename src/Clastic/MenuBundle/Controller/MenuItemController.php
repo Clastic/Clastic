@@ -12,7 +12,7 @@ namespace Clastic\MenuBundle\Controller;
 use Clastic\BackofficeBundle\Controller\AbstractModuleController;
 use Clastic\MenuBundle\Entity\Menu;
 use Clastic\MenuBundle\Entity\MenuItem;
-use Clastic\MenuBundle\Form\MenuItemType;
+use Clastic\MenuBundle\Form\Type\MenuItemFormType;
 use Clastic\NodeBundle\Node\NodeReferenceInterface;
 use Doctrine\ORM\QueryBuilder;
 use Gedmo\Tree\Entity\Repository\NestedTreeRepository;
@@ -55,7 +55,7 @@ class MenuItemController extends AbstractModuleController
      */
     protected function buildForm($data)
     {
-        return $this->createForm(new MenuItemType($this->get('router')), $data);
+        return $this->createForm(new MenuItemFormType($this->get('router')), $data);
     }
 
     /**

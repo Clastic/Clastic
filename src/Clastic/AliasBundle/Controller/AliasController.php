@@ -10,7 +10,7 @@
 namespace Clastic\AliasBundle\Controller;
 
 use Clastic\AliasBundle\Entity\Alias;
-use Clastic\AliasBundle\Form\AliasType;
+use Clastic\AliasBundle\Form\AliasFormType;
 use Clastic\BackofficeBundle\Controller\AbstractModuleController;
 use Clastic\NodeBundle\Node\NodeReferenceInterface;
 use Symfony\Component\Form\Form;
@@ -49,7 +49,7 @@ class AliasController extends AbstractModuleController
      */
     protected function buildForm($data)
     {
-        return $this->createForm(new AliasType(), $data);
+        return $this->createForm(new AliasFormType(), $data);
     }
 
     /**

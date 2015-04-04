@@ -11,7 +11,7 @@ namespace Clastic\MediaBundle\Controller;
 
 use Clastic\BackofficeBundle\Controller\AbstractModuleController;
 use Clastic\MediaBundle\Entity\File;
-use Clastic\MediaBundle\Form\FileType;
+use Clastic\MediaBundle\Form\Type\FileFormType;
 use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -41,7 +41,7 @@ class MediaController extends AbstractModuleController
         $this->buildBreadcrumbs($this->getType());
 
         $file = new File();
-        $form = $this->createForm(new FileType(), $file);
+        $form = $this->createForm(new FileFormType(), $file);
 
         $form->handleRequest($request);
 
@@ -70,7 +70,7 @@ class MediaController extends AbstractModuleController
      */
     protected function resolveData($id)
     {
-        // TODO: Implement resolveData() method.
+        return null;
     }
 
     /**
@@ -78,7 +78,7 @@ class MediaController extends AbstractModuleController
      */
     protected function getListTemplate()
     {
-        // TODO: Implement getListTemplate() method.
+        return null;
     }
 
     /**
@@ -88,7 +88,7 @@ class MediaController extends AbstractModuleController
      */
     protected function buildForm($data)
     {
-        // TODO: Implement buildForm() method.
+        return null;
     }
 
     /**
@@ -98,7 +98,7 @@ class MediaController extends AbstractModuleController
      */
     protected function resolveDataTitle($data)
     {
-        // TODO: Implement resolveDataTitle() method.
+        return null;
     }
 
     /**
@@ -106,6 +106,6 @@ class MediaController extends AbstractModuleController
      */
     protected function getEntityName()
     {
-        // TODO: Implement getEntityName() method.
+        return null;
     }
 }

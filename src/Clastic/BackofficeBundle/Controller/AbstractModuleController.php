@@ -9,7 +9,7 @@
 
 namespace Clastic\BackofficeBundle\Controller;
 
-use Clastic\BackofficeBundle\Form\DeleteType;
+use Clastic\BackofficeBundle\Form\Type\DeleteFormType;
 use Clastic\CoreBundle\Module\ModuleInterface;
 use Clastic\CoreBundle\Module\SubmoduleInterface;
 use Doctrine\ORM\QueryBuilder;
@@ -176,7 +176,7 @@ abstract class AbstractModuleController extends Controller
         $breadcrumbs = $this->buildBreadcrumbs($this->getType());
         $breadcrumbs->addItem(sprintf('Delete "%s"', $this->resolveDataTitle($data)));
 
-        $form = $this->createForm(new DeleteType(), array(
+        $form = $this->createForm(new DeleteFormType(), array(
             'id' => $data->getId(),
             'title' => $title,
         ));

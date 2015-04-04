@@ -124,4 +124,12 @@ class Directory
     {
         return $this->children;
     }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getFiles()
+    {
+        return $this->files;
+    }
 }

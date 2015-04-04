@@ -7,7 +7,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Clastic\MediaBundle\Form;
+namespace Clastic\MediaBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -16,7 +16,7 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 /**
  * @author Dries De Peuter <dries@nousefreak.be>
  */
-class FileType extends AbstractType
+class FileFormType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder

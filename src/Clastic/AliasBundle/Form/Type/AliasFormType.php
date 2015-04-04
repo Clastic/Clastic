@@ -7,18 +7,16 @@
  * file that was distributed with this source code.
  */
 
-namespace Clastic\BlockBundle\Form;
+namespace Clastic\AliasBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
- * MenuType
- *
  * @author Dries De Peuter <dries@nousefreak.be>
  */
-class BlockType extends AbstractType
+class AliasFormType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -29,8 +27,12 @@ class BlockType extends AbstractType
         $builder
             ->add(
                 $builder->create('tabs', 'tabs', array('inherit_data' => true))
-                    ->add($this->createGeneralTab($builder))
-                    ->add($this->createContentTab($builder))
+                    ->add(
+                        $this->createTab($builder, 'general', array('label' => 'General'))
+                            ->add('alias', 'alias', array(
+                                    'label' => 'Alias',
+                                ))
+                    )
                     ->add($this->createActionTab($builder))
             );
     }
@@ -51,25 +53,6 @@ class BlockType extends AbstractType
             ));
 
         return $builder->create($name, 'tabs_tab', $options);
-    }
-
-    private function createGeneralTab(FormBuilderInterface $builder)
-    {
-        return $this
-            ->createTab($builder, 'general', array('label' => 'General'))
-            ->add('title', 'text', array(
-                'label' => 'Title',
-            ))
-            ->add('identifier', 'text', array(
-                'label' => 'Identifier',
-            ));
-    }
-
-    private function createContentTab(FormBuilderInterface $builder)
-    {
-        return $this
-            ->createTab($builder, 'content', array('label' => 'Content'))
-            ->add('body', 'wysiwyg');
     }
 
     /**
@@ -103,6 +86,6 @@ class BlockType extends AbstractType
      */
     public function getName()
     {
-        return 'clastic_menu';
+        return 'clastic_alias';
     }
 }

@@ -16,6 +16,7 @@
         </service>
 
         <service id="clastic.media.file_listener" class="%clastic.media.file_listener.class%">
+            <argument>%kernel.root_dir%</argument>
             <tag name="doctrine.event_subscriber" connection="default" />
         </service>
 

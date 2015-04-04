@@ -28,4 +28,12 @@ class ElFinderEvent extends Event
     {
         $this->data = $data;
     }
+
+    /**
+     * @return array
+     */
+    public function getData()
+    {
+        return $this->data;
+    }
 }

@@ -7,7 +7,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Clastic\UserBundle\Form;
+namespace Clastic\UserBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -18,7 +18,7 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
  *
  * @author Dries De Peuter <dries@nousefreak.be>
  */
-class UserType extends AbstractType
+class UserFormType extends AbstractType
 {
     private $isNew;
 

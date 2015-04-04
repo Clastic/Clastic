@@ -22,6 +22,19 @@ use Doctrine\ORM\Events;
 class FileListener implements EventSubscriber
 {
     /**
+     * @var string
+     */
+    private $kernelDir;
+
+    /**
+     * @param string $kernelDir
+     */
+    public function __construct($kernelDir)
+    {
+        $this->kernelDir = $kernelDir;
+    }
+
+    /**
      * Returns an array of events this subscriber wants to listen to.
      *
      * @return array
@@ -142,6 +155,6 @@ class FileListener implements EventSubscriber
     {
         // the absolute directory path where uploaded
         // documents should be saved
-        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+        return $this->kernelDir . '/../web/'.$this->getUploadDir();
     }
 }
