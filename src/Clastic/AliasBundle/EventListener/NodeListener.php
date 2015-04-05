@@ -18,6 +18,7 @@ use Doctrine\Common\Persistence\Event\LifecycleEventArgs;
 use Doctrine\ORM\Events;
 use ProxyManager\Factory\LazyLoadingValueHolderFactory;
 use ProxyManager\Proxy\ValueHolderInterface;
+use Symfony\Component\Validator\Validator\RecursiveValidator;
 
 /**
  * NodeListener
@@ -34,6 +35,7 @@ class NodeListener implements EventSubscriber
     public function getSubscribedEvents()
     {
         return array(
+            Events::prePersist,
             Events::postLoad,
             Events::postPersist,
             Events::postRemove,
@@ -134,5 +136,41 @@ class NodeListener implements EventSubscriber
             $args->getObjectManager()
                 ->flush();
         }
+    }
+
+    /**
+     * @param LifecycleEventArgs $args
+     */
+    public function prePersist(LifecycleEventArgs $args)
+    {
+        $entity = $args->getObject();
+
+        if ($entity instanceof NodeReferenceInterface) {
+            $alias = $entity->getNode()->alias;
+            if (!$alias->getAlias()) {
+                $alias->setAlias($entity->getNode()->getTitle());
+
+                $i = 1;
+                while ($this->validateUnique($alias, $args)) {
+                    $alias->setAlias($entity->getNode()->getTitle() . '_' . $i);
+                    $i++;
+                }
+            }
+        }
+    }
+
+    /**
+     * @param Alias              $alias
+     * @param LifecycleEventArgs $args
+     *
+     * @return bool
+     */
+    private function validateUnique(Alias $alias, LifecycleEventArgs $args)
+    {
+        return (bool) $args->getObjectManager()
+            ->getRepository('ClasticAliasBundle:Alias')
+            ->findBy(array(
+                'alias' => $alias->getAlias(),
+            ));
     }
 }
