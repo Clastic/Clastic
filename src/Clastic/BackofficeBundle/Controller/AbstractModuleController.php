@@ -194,7 +194,13 @@ abstract class AbstractModuleController extends Controller
                     ->add('success', sprintf('You deleted "%s"!', $title));
             }
 
-            return $this->redirect($this->getListUrl());
+            if ($request->query->has('_return')) {
+                $redirectUrl = $this->generateUrl($request->query->get('_return'));
+            } else {
+                $redirectUrl = $this->getListUrl();
+            }
+
+            return $this->redirect($redirectUrl);
         }
 
         $module = $this->getModule($this->getType());

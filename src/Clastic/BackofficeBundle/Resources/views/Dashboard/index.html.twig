@@ -13,7 +13,7 @@
                     <li role="presentation"><a href="#mycontent" aria-controls="mycontent" role="tab" data-toggle="tab">{{ 'dashboard.my_content'|trans }}</a></li>
                 </ul>
                 <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane" id="recent">
+                    <div role="tabpanel" class="tab-pane active" id="recent">
                         <div class="table-responsive">
                             <table class="table table-striped table-hover">
                                 <thead>
@@ -30,7 +30,7 @@
                                     <tr>
                                         <td>
                                             <a class="btn btn-success btn-xs" href="{{ path('clastic_node_form', {type: node.type, id: node.id}) }}"><i class="fa fa-pencil"></i></a>
-                                            <a class="btn btn-danger btn-xs" href="{{ path('clastic_node_delete', {type: node.type, id: node.id}) }}"><i class="fa fa-trash"></i></a>
+                                            <a class="btn btn-danger btn-xs" href="{{ path('clastic_node_delete', {type: node.type, id: node.id, _return: 'clastic_backoffice_dashboard'}) }}"><i class="fa fa-trash"></i></a>
                                         </td>
                                         <td>{{ node.title }} <span class="label label-default pull-right">{{ moduleManager.getModule(node.type).name }}</span></td>
                                         <td>{{ node.user.username }}</td>
@@ -53,7 +53,7 @@
                             </table>
                         </div>
                     </div>
-                    <div role="tabpanel" class="tab-pane active" id="mycontent">
+                    <div role="tabpanel" class="tab-pane" id="mycontent">
                         <div class="table-responsive">
                             <table class="table table-striped table-hover">
                                 <thead>
@@ -70,7 +70,7 @@
                                     <tr>
                                         <td>
                                             <a class="btn btn-success btn-xs" href="{{ path('clastic_node_form', {type: node.type, id: node.id}) }}"><i class="fa fa-pencil"></i></a>
-                                            <a class="btn btn-danger btn-xs" href="{{ path('clastic_node_delete', {type: node.type, id: node.id}) }}"><i class="fa fa-trash"></i></a>
+                                            <a class="btn btn-danger btn-xs" href="{{ path('clastic_node_delete', {type: node.type, id: node.id, _return: 'clastic_backoffice_dashboard'}) }}"><i class="fa fa-trash"></i></a>
                                         </td>
                                         <td>{{ node.title }} <span class="label label-default pull-right">{{ moduleManager.getModule(node.type).name }}</span></td>
                                         <td>{{ node.user.username }}</td>
