@@ -65,7 +65,7 @@ class NodeController extends AbstractModuleController
     protected function resolveDataTitle($data)
     {
         if (!$data->getId()) {
-            return 'New';
+            return $this->get('translator')->trans('node.form.new', array(), 'clastic');
         }
 
         return $data->getNode()->getTitle();

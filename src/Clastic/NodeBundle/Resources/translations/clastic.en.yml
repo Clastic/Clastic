@@ -1,16 +1,18 @@
-node.form.tab:
-  general:
-    label: Generals
-    field:
-      title: Title
-  publication:
-    label: Publication
-    field:
-      available: Available
-      published_from: From
-      published_till: Till
-  author_information:
-    label: Author information
-    field:
-      author: Author
-      created: Created
+node.form:
+  new: New
+  tab:
+    general:
+      label: Generals
+      field:
+        title: Title
+    publication:
+      label: Publication
+      field:
+        available: Available
+        published_from: From
+        published_till: Till
+    author_information:
+      label: Author information
+      field:
+        author: Author
+        created: Created
