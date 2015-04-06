@@ -13,7 +13,7 @@
     <div class="container">
 
         <form class="form-signin" action="{{ path("fos_user_security_check") }}" method="post">
-            <h2 class="form-signin-heading">Please sign in</h2>
+            <h2 class="form-signin-heading">{{ 'security.login.title'|trans }}</h2>
             <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
 
             {% if error %}

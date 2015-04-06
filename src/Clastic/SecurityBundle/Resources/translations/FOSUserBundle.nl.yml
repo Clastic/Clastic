@@ -1,0 +1,8 @@
+# Security
+security:
+    login:
+        title: Gelieve aan te melden
+        username: Gebruikersnaam
+        password: Wachtwoord
+        remember_me: Onhoud mijn gegevens
+        submit: Aanmelden

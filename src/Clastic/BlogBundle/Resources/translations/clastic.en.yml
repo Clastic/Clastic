@@ -1,0 +1,9 @@
+blog.form.tab:
+  general:
+    field:
+      introduction: Introduction
+      body: Body
+  category:
+    label: Category
+    field:
+      categories: Categories

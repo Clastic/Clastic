@@ -109,11 +109,12 @@ class NodeFormType extends AbstractType
             ->create('actions', 'tabs_tab_actions', array(
                 'mapped' => false,
                 'inherit_data' => true,
+                'translation_domain' => 'clastic',
             ))
             ->add('save', 'submit', array(
-            'label' => 'Save',
-            'attr' => array('class' => 'btn btn-success'),
-        ));
+                'label' => 'node.form.tab.action.field.save',
+                'attr' => array('class' => 'btn btn-success'),
+            ));
     }
 
     /**

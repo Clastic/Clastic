@@ -55,8 +55,9 @@ class TabHelper
         $options = array_replace(
             $options,
             array(
-                'label'        => $label,
-                'inherit_data' => true,
+                'label'              => $label,
+                'inherit_data'       => true,
+                'translation_domain' => 'clastic',
             ));
 
         $tab = $this->formBuilder->create($name, 'tabs_tab', $options);

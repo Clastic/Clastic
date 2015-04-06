@@ -1,0 +1,19 @@
+node.form.tab:
+  general:
+    label: Algemeen
+    field:
+      title: Titel
+  publication:
+    label: Publicatie
+    field:
+      available: Beschikbaar
+      published_from: Van
+      published_till: Tot
+  author_information:
+    label: Auteursinformatie
+    field:
+      author: Auteur
+      created: Gemaakt op
+  action:
+    field:
+      save: Opslaan

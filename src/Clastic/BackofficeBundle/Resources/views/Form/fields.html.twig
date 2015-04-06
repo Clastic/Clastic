@@ -1,5 +1,7 @@
 {% use 'form_div_layout.html.twig' %}
 
+{% trans_default_domain 'clastic' %}
+
 {% block form_row -%}
     {% if form.parent.parent %}
         <div class="form-group">
@@ -134,7 +136,14 @@
 {%- endblock multi_select_widget %}
 
 {% block entity_multi_select_widget %}
-    <div class="multi_select">
+    <div class="multi_select" data-translation="{{ {
+        "selection": "form.type.multi_select.selection"|trans,
+        "available": "form.type.multi_select.available"|trans,
+        "search": "form.type.multi_select.search"|trans,
+        "delete_all": "form.type.multi_select.delete_all"|trans,
+        "add_all": "form.type.multi_select.add_all"|trans,
+        "items": "form.type.multi_select.items"|trans
+    }|json_encode }}">
         {{ block('choice_widget') }}
     </div>
 {% endblock entity_multi_select_widget %}
