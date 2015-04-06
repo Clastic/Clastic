@@ -156,6 +156,11 @@
     </div>
 {%- endblock datepicker_widget %}
 
+{% block wysiwyg_widget -%}
+    {% set attr = attr|merge({'data-config': {"language": app.request.locale|default('en')}|json_encode}) %}
+    {{- block('textarea_widget') -}}
+{%- endblock wysiwyg_widget %}
+
 {% block tree_widget -%}
     <div class="tree-container">
         <div class="tree" data-tree='{
