@@ -64,4 +64,16 @@ class TabHelper
 
         return $tab;
     }
+
+    /**
+     * Remove a tab with a given name.
+     *
+     * @param string $name
+     *
+     * @return FormBuilderInterface The builder object.
+     */
+    public function removeTab($name)
+    {
+        return $this->formBuilder->get('tabs')->remove($name);
+    }
 }
