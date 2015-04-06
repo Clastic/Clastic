@@ -40,12 +40,13 @@ class NodeFormType extends AbstractType
     {
         return $this
             ->createTab($builder, 'general', array(
-                'label' => 'General',
+                'label' => 'node.form.tab.general.label',
                 'position' => 'first',
+                'translation_domain' => 'clastic',
             ))
             ->add('title', 'text', array(
                 'property_path' => 'node.title',
-                'label' => 'Title',
+                'label' => 'node.form.tab.general.field.title',
             ));
     }
 
@@ -53,19 +54,20 @@ class NodeFormType extends AbstractType
     {
         return $this
             ->createTab($builder, 'publication', array(
-                'label' => 'Publication',
+                'label' => 'node.form.tab.publication.label',
+                'translation_domain' => 'clastic',
             ))
             ->add('available', 'checkbox', array(
                 'property_path' => 'node.publication.available',
-                'label' => 'Available',
+                'label' => 'node.form.tab.publication.field.available',
                 'required' => false,
             ))->add('publishedFrom', 'datepicker', array(
                 'property_path' => 'node.publication.publishedFrom',
-                'label' => 'From',
+                'label' => 'node.form.tab.publication.field.published_from',
                 'required' => false,
             ))->add('publishedTill', 'datepicker', array(
                 'property_path' => 'node.publication.publishedTill',
-                'label' => 'Till',
+                'label' => 'node.form.tab.publication.field.published_till',
                 'required' => false,
             ));
     }
@@ -74,17 +76,18 @@ class NodeFormType extends AbstractType
     {
         return $this
             ->createTab($builder, 'author_information', array(
-                'label' => 'Author information',
+                'label' => 'node.form.tab.author_information.label',
+                'translation_domain' => 'clastic',
             ))
             ->add('author', 'entity', array(
                 'class' => 'ClasticUserBundle:User',
                 'property_path' => 'node.user',
-                'label' => 'Author',
+                'label' => 'node.form.tab.author_information.field.author',
                 'required' => true,
             ))
             ->add('created', 'datepicker', array(
                 'property_path' => 'node.created',
-                'label' => 'Created',
+                'label' => 'node.form.tab.author_information.field.created',
                 'disabled' => true,
             ));
     }
