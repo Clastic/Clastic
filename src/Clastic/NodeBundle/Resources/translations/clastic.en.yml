@@ -2,7 +2,7 @@ node.form:
   new: New
   tab:
     general:
-      label: Generals
+      label: General
       field:
         title: Title
     publication:
