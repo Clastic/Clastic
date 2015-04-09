@@ -110,3 +110,8 @@ Generator
 ~~~~~~~~~
 
 The generator bundle provides a generator to increase development times.
+
+Contrib Bundles
+===============
+
+You can find more bundles in the :doc:`contrib`.
