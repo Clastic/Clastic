@@ -7,11 +7,22 @@
             return;
         }
 
-        $form.parsley();
+        $form.parsley({
+            errorClass: 'has-error',
+            classHandler: function(ParsleyField) {
+                return ParsleyField.$element.parents('.form-group');
+            },
+            errorsContainer: function(ParsleyField) {
+                return ParsleyField.$element.parents('.form-group');
+            },
+            errorsWrapper: '<span class="bg-danger help-block">',
+            errorTemplate: '<div></div>'
+        });
+
         $.listen('parsley:form:validated', function() {
-            var $tabpanel = $form.find('.tabpanel');
-            if ($tabpanel.length) {
-                var $firstError = $tabpanel.find('.parsley-error').first();
+            var $tabPanel = $form.find('.tabpanel');
+            if ($tabPanel.length) {
+                var $firstError = $tabPanel.find('.parsley-error').first();
                 if ($firstError.length) {
                     var $tab = $form.find('[role="tablist"] li').eq($firstError.closest('.tab-pane').index());
                     $tab.find('a').tab('show');
