@@ -47,6 +47,11 @@ User
 
 The user bundle provides everything to manage users.
 
+Security
+~~~~~~~~
+
+The security bundle adds security to the backoffice.
+
 Node
 ~~~~
 
