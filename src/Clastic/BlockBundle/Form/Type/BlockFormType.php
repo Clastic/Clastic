@@ -84,7 +84,7 @@ class BlockFormType extends AbstractType
             'inherit_data' => true,
         ))
             ->add('save', 'submit', array(
-                'label' => 'Save',
+                'label' => 'node.form.tab.action.field.save',
                 'attr' => array('class' => 'btn btn-success'),
             ));
     }
@@ -94,6 +94,9 @@ class BlockFormType extends AbstractType
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
+        $resolver->setDefaults(array(
+            'translation_domain' => 'clastic',
+        ));
     }
 
     /**
