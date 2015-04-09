@@ -63,35 +63,41 @@ class UserFormType extends AbstractType
 
     private function createGeneralTab(FormBuilderInterface $builder)
     {
-        return $this->createTab($builder, 'general', array('label' => 'General'))
+        return $this->createTab(
+                $builder,
+                'general',
+                array('label' => 'user.form.tab.general.label')
+            )
             ->add('username', 'text', array(
-                'label' => 'Username',
+                'label' => 'user.form.tab.general.field.username',
             ))
             ->add('email', 'text', array(
-                'label' => 'Email',
+                'label' => 'user.form.tab.general.field.email',
             ))
             ->add('enabled', 'checkbox', array(
                 'value' => true,
+                'label' => 'user.form.tab.general.field.enabled',
             ));
     }
 
     private function createPasswordTab(FormBuilderInterface $builder)
     {
-        return $this->createTab($builder, 'password', array('label' => 'Password'))
+        return $this->createTab($builder, 'password', array('label' => 'user.form.tab.password.label'))
             ->add('plainPassword', 'repeated', array(
                 'type' => 'password',
                 'required' => $this->isNew,
-                'first_options' => array('label' => 'Password'),
-                'second_options' => array('label' => 'Confirm password'),
+                'first_options' => array('label' => 'user.form.tab.password.field.password'),
+                'second_options' => array('label' => 'user.form.tab.password.field.password_repeat'),
                 'invalid_message' => 'The passwords don\'t match',
             ));
     }
 
     private function createRoleTab(FormBuilderInterface $builder)
     {
-        return $this->createTab($builder, 'role', array('label' => 'Role'))
+        return $this->createTab($builder, 'role', array('label' => 'user.form.tab.role.label'))
             ->add('roles', 'multi_select', array(
                 'choices' => $this->getAvailableRoles($builder),
+                'label' => 'user.form.tab.role.field.roles'
             ));
     }
 
@@ -113,6 +119,7 @@ class UserFormType extends AbstractType
             $options,
             array(
                 'inherit_data' => true,
+                'translation_domain' => 'clastic',
             ));
 
         return $builder->create($name, 'tabs_tab', $options);
