@@ -90,7 +90,7 @@ PHP
 ---
 
 To install PHP refer to your option of choice. Installation instructions are different for every platform.
-See the `PHP Installation Guide<http://php.net/manual/en/install.php>`_. Make sure your PHP version is higher than
+See the `PHP Installation Guide <http://php.net/manual/en/install.php>`_. Make sure your PHP version is higher than
 `5.4.0`.
 
 Composer
@@ -98,7 +98,7 @@ Composer
 
 Composer is a dependency manager for PHP.
 
-Use the following code to install, see the `Official installation documentation<https://getcomposer.org/download/>`_
+Use the following code to install, see the `Official installation documentation <https://getcomposer.org/download/>`_
 for detailed information.
 
 .. code-block:: bash
@@ -120,7 +120,7 @@ Gulp
 
 Gulp is a streaming build system. It is used to build assets.
 
-Use the following code to install, see the `Official installation documentation<https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md>`_
+Use the following code to install, see the `Official installation documentation <https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md>`_
 for detailed information.
 
 .. code-block:: bash
@@ -130,7 +130,7 @@ for detailed information.
 Bower
 -----
 
-Use the following code to install, see the `Official installation documentation<http://bower.io/#install-bower>`_
+Use the following code to install, see the `Official installation documentation <http://bower.io/#install-bower>`_
 for detailed information.
 
 .. code-block:: bash
