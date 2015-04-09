@@ -42,7 +42,6 @@ class NodeFormType extends AbstractType
             ->createTab($builder, 'general', array(
                 'label' => 'node.form.tab.general.label',
                 'position' => 'first',
-                'translation_domain' => 'clastic',
             ))
             ->add('title', 'text', array(
                 'property_path' => 'node.title',
@@ -55,7 +54,6 @@ class NodeFormType extends AbstractType
         return $this
             ->createTab($builder, 'publication', array(
                 'label' => 'node.form.tab.publication.label',
-                'translation_domain' => 'clastic',
             ))
             ->add('available', 'checkbox', array(
                 'property_path' => 'node.publication.available',
@@ -77,7 +75,6 @@ class NodeFormType extends AbstractType
         return $this
             ->createTab($builder, 'author_information', array(
                 'label' => 'node.form.tab.author_information.label',
-                'translation_domain' => 'clastic',
             ))
             ->add('author', 'entity', array(
                 'class' => 'ClasticUserBundle:User',
@@ -109,7 +106,6 @@ class NodeFormType extends AbstractType
             ->create('actions', 'tabs_tab_actions', array(
                 'mapped' => false,
                 'inherit_data' => true,
-                'translation_domain' => 'clastic',
             ))
             ->add('save', 'submit', array(
                 'label' => 'node.form.tab.action.field.save',
@@ -122,6 +118,9 @@ class NodeFormType extends AbstractType
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
+        $resolver->setDefaults(array(
+            'translation_domain' => 'clastic',
+        ));
     }
 
     /**

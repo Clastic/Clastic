@@ -106,7 +106,6 @@ class UserFormType extends AbstractType
         return $builder->create('actions', 'tabs_tab_actions', array(
                 'mapped' => false,
                 'inherit_data' => true,
-                'translation_domain' => 'clastic',
             ))
             ->add('save', 'submit', array(
                 'label' => 'node.form.tab.action.field.save',
@@ -120,7 +119,6 @@ class UserFormType extends AbstractType
             $options,
             array(
                 'inherit_data' => true,
-                'translation_domain' => 'clastic',
             ));
 
         return $builder->create($name, 'tabs_tab', $options);
@@ -131,6 +129,9 @@ class UserFormType extends AbstractType
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
+        $resolver->setDefaults(array(
+            'translation_domain' => 'clastic',
+        ));
     }
 
     /**

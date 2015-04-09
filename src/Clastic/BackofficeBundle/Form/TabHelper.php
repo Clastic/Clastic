@@ -57,7 +57,6 @@ class TabHelper
             array(
                 'label'              => $label,
                 'inherit_data'       => true,
-                'translation_domain' => 'clastic',
             ));
 
         $tab = $this->formBuilder->create($name, 'tabs_tab', $options);
