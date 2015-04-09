@@ -6,3 +6,5 @@ security:
         password: Wachtwoord
         remember_me: Onhoud mijn gegevens
         submit: Aanmelden
+
+user.profile.title: Profiel
