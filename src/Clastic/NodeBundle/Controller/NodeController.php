@@ -11,6 +11,7 @@ namespace Clastic\NodeBundle\Controller;
 
 use Clastic\BackofficeBundle\Controller\AbstractModuleController;
 use Clastic\NodeBundle\Entity\Node;
+use Clastic\NodeBundle\Event\NodeFormPrePersistEvent;
 use Clastic\NodeBundle\Event\NodeFormPersistEvent;
 use Clastic\NodeBundle\Node\NodeManager;
 use Clastic\NodeBundle\Node\NodeReferenceInterface;
@@ -146,6 +147,9 @@ class NodeController extends AbstractModuleController
         /** @var Node $node */
         $node = $form->getData()->getNode();
         $node->setChanged(new \DateTime());
+
+        $this->get('event_dispatcher')
+          ->dispatch(NodeFormPrePersistEvent::NODE_FORM_PREPERSIST, new NodeFormPrePersistEvent($node, $form));
 
         $objectManager = $this->getDoctrine()->getManager();
         $objectManager->persist($form->getData());
