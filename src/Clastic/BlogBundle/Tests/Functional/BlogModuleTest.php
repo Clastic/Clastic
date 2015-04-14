@@ -7,48 +7,17 @@
  * file that was distributed with this source code.
  */
 
-namespace Clastic\BlogBundle\Tests\Controller;
+namespace Clastic\BlogBundle\Tests\Functional;
 
-use Clastic\BackofficeBundle\Tests\AuthenticatedWebTestCase;
+use Clastic\BackofficeBundle\Tests\ModuleWebTestCase;
 
 /**
  * @author Dries De Peuter <dries@nousefreak.be>
  *
  * @group functional
  */
-class BlogModuleTest extends AuthenticatedWebTestCase
+class BlogModuleTest extends ModuleWebTestCase
 {
     protected $listUrl = '/admin/blog/list';
     protected $formUrl = '/admin/blog/edit';
-
-    public function testInMenu()
-    {
-        $client = $this->createAuthorizedClient();
-        $crawler = $client->request('GET', '/admin/');
-
-        $this->assertTrue($client->getResponse()->isSuccessful(), "Request failed");
-        $this->assertEquals(1, $crawler->filter('nav li a:contains("Blog")')->count());
-
-        $a = $crawler->filter('nav li a:contains("Blog")');
-        $this->assertEquals($this->listUrl, $a->attr('href'));
-    }
-
-    public function testList()
-    {
-        $client = $this->createAuthorizedClient();
-        $crawler = $client->request('GET', $this->listUrl);
-
-        $this->assertTrue($client->getResponse()->isSuccessful(), "Request failed");
-        $this->assertEquals(1, $crawler->filter('nav li a:contains("Blog")')->count());
-        $this->assertGreaterThan(0, $crawler->filter('table')->count());
-    }
-
-    public function testForm()
-    {
-        $client = $this->createAuthorizedClient();
-        $crawler = $client->request('GET', $this->formUrl);
-
-        $this->assertTrue($client->getResponse()->isSuccessful(), "Request failed");
-        $this->assertGreaterThan(0, $crawler->filter('form')->count());
-    }
 }

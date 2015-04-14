@@ -38,7 +38,7 @@
 
                 that.qs2 = $selectionSearch.quicksearch(selectionSearchString)
                     .on('keydown', function(e){
-                        if (e.which == 40){
+                        if (e.which === 40){
                             that.$selectionUl.focus();
                             return false;
                         }
@@ -62,8 +62,7 @@
                 that.updateCount = function() {
                     var $select = that.$element,
                         selection = $select.val(),
-                        selectionLength = selection ? selection.length : 0,
-                        selectableLength = $select.find('option').length - selectionLength;
+                        selectionLength = selection ? selection.length : 0;
 
                     that.$container.find('span.count').html(selectionLength + ' ' + translation.items);
                 };

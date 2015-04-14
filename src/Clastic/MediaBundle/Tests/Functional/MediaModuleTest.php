@@ -7,37 +7,16 @@
  * file that was distributed with this source code.
  */
 
-namespace Clastic\MediaBundle\Tests\Controller;
+namespace Clastic\MediaBundle\Tests\Functional;
 
-use Clastic\BackofficeBundle\Tests\AuthenticatedWebTestCase;
+use Clastic\BackofficeBundle\Tests\ModuleWebTestCase;
 
 /**
  * @author Dries De Peuter <dries@nousefreak.be>
  *
  * @group functional
  */
-class MediaModuleTest extends AuthenticatedWebTestCase
+class MediaModuleTest extends ModuleWebTestCase
 {
     protected $listUrl = '/admin/media/list';
-
-    public function testInMenu()
-    {
-        $client = $this->createAuthorizedClient();
-        $crawler = $client->request('GET', '/admin/');
-
-        $this->assertTrue($client->getResponse()->isSuccessful(), "Request failed");
-        $this->assertEquals(1, $crawler->filter('nav li a:contains("Media")')->count());
-
-        $a = $crawler->filter('nav li a:contains("Media")');
-        $this->assertEquals($this->listUrl, $a->attr('href'));
-    }
-
-    public function testList()
-    {
-        $client = $this->createAuthorizedClient();
-        $crawler = $client->request('GET', $this->listUrl);
-
-        $this->assertTrue($client->getResponse()->isSuccessful(), "Request failed");
-        $this->assertEquals(1, $crawler->filter('nav li a:contains("Media")')->count());
-    }
 }

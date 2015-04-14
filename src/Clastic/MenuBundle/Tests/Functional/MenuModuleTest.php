@@ -7,48 +7,17 @@
  * file that was distributed with this source code.
  */
 
-namespace Clastic\MenuBundle\Tests\Controller;
+namespace Clastic\MenuBundle\Tests\Functional;
 
-use Clastic\BackofficeBundle\Tests\AuthenticatedWebTestCase;
+use Clastic\BackofficeBundle\Tests\ModuleWebTestCase;
 
 /**
  * @author Dries De Peuter <dries@nousefreak.be>
  *
  * @group functional
  */
-class MenuModuleTest extends AuthenticatedWebTestCase
+class MenuModuleTest extends ModuleWebTestCase
 {
     protected $listUrl = '/admin/menu/list';
     protected $formUrl = '/admin/menu/edit';
-
-    public function testInMenu()
-    {
-        $client = $this->createAuthorizedClient();
-        $crawler = $client->request('GET', '/admin/');
-
-        $this->assertTrue($client->getResponse()->isSuccessful(), "Request failed");
-        $this->assertEquals(1, $crawler->filter('nav li a:contains("Menu")')->count());
-
-        $a = $crawler->filter('nav li a:contains("Menu")');
-        $this->assertEquals($this->listUrl, $a->attr('href'));
-    }
-
-    public function testList()
-    {
-        $client = $this->createAuthorizedClient();
-        $crawler = $client->request('GET', $this->listUrl);
-
-        $this->assertTrue($client->getResponse()->isSuccessful(), "Request failed");
-        $this->assertEquals(1, $crawler->filter('nav li a:contains("Menu")')->count());
-        $this->assertGreaterThan(0, $crawler->filter('table')->count());
-    }
-
-    public function testForm()
-    {
-        $client = $this->createAuthorizedClient();
-        $crawler = $client->request('GET', $this->formUrl);
-
-        $this->assertTrue($client->getResponse()->isSuccessful(), "Request failed");
-        $this->assertGreaterThan(0, $crawler->filter('form')->count());
-    }
 }
