@@ -15,6 +15,7 @@
         $addTagLink.on('click', function(e) {
             e.preventDefault();
             addCollectionNewForm($collectionHolder, $newLinkLi);
+            $addTagLink.closest('form').trigger('clastic.form.change');
         });
     });
     function addCollectionNewForm($collectionHolder, $newLinkLi) {
