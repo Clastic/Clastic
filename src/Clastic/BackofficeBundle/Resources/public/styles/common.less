@@ -51,8 +51,6 @@ body {
   }
 }
 
-
-
 @footer-height: 40px;
 .sticky-wrapper {
   min-height: 100%;
@@ -66,9 +64,14 @@ body {
   height: @footer-height;
 }
 .footer {
-  border-top: 1px solid #fff;
-  background-color: #000000;
-  color: #ccc;
   padding: 10px 0;
+  a {
+    color: #999;
+    text-decoration: none;
+    transition: all 0.5s;
+    &:hover {
+      color: #000;
+    }
+  }
 }
 

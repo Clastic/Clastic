@@ -31,6 +31,8 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    globals:
+        clastic_site_name: %clastic_site_name%
 
 # Assetic Configuration
 assetic:

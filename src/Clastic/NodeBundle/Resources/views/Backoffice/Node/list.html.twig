@@ -5,7 +5,8 @@
 {% block html_title %}Clastic - {{ module.name }}{% endblock %}
 {% block page_title -%}
     {{ module.name }}
-    <a href="{{ path('clastic_node_form', {type: type}) }}"><i class="fa fa-plus-circle text-success"></i></a>
+
+    <a class="btn-add" href="{{ path('clastic_node_form', {type: type}) }}"><i class="fa fa-plus"></i> Add</a>
 {%- endblock %}
 
 {% block header_actions %}
