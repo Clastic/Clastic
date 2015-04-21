@@ -45,12 +45,12 @@ class MenuData extends AbstractFixture implements OrderedFixtureInterface, Conta
         $menuItemHome->setTitle('Home');
         $menuItemHome->setUrl('/');
         $manager->persist($menuItemHome);
-
-        $menuItemBlog = new MenuItem();
-        $menuItemBlog->setMenu($this->getReference('menu-main'));
-        $menuItemBlog->setTitle('Test blog');
-        $menuItemBlog->setNode($this->getReference('demo-blog-first')->getNode());
-        $manager->persist($menuItemBlog);
+//
+//        $menuItemBlog = new MenuItem();
+//        $menuItemBlog->setMenu($this->getReference('menu-main'));
+//        $menuItemBlog->setTitle('Test blog');
+//        $menuItemBlog->setNode($this->getReference('demo-blog-first')->getNode());
+//        $manager->persist($menuItemBlog);
 
         $manager->flush();
     }

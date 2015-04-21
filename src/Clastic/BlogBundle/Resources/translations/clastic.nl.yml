@@ -1,9 +1,0 @@
-blog.form.tab:
-  general:
-    field:
-      introduction: Introductie
-      body: Inhoud
-  category:
-    label: Categorie
-    field:
-      categories: Categoriën
