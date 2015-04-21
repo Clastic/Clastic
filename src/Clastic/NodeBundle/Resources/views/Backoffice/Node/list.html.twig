@@ -72,7 +72,11 @@
                         {% else %}
                             <tr>
                                 <td></td>
-                                <td colspan="4">{{ 'list.no_results'|trans }} <a href="{{ path('clastic_node_form', {type: type}) }}">Create your first.</a></td>
+                                <td colspan="4">
+                                    {% block list_empty %}
+                                        {{ 'list.no_results'|trans }} <a href="{{ path('clastic_node_form', {type: type}) }}">Create your first.</a>
+                                    {% endblock %}
+                                </td>
                             </tr>
                         {% endfor %}
                         </tbody>
