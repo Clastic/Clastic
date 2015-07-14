@@ -16,3 +16,6 @@ node.form:
       field:
         author: Author
         created: Created
+    action:
+      field:
+        save: Save
