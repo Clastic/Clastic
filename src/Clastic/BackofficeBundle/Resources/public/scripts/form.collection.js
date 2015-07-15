@@ -1,23 +1,24 @@
 (function(){
-    var $collectionHolder;
-
-    var $addTagLink = $('<a href="#" class="btn btn-primary add_link">Add</a>');
-    var $newLinkLi = $('<li class="list-group-item"></li>').append($addTagLink);
-
     $(function() {
-        $collectionHolder = $('ul.collection');
-        $collectionHolder.find('li').each(function() {
-            addCollectionDeleteLink($(this));
-        });
-        $collectionHolder.append($newLinkLi);
-        $collectionHolder.data('index', $collectionHolder.find(':input').length);
+        $('ul.collection').each(function() {
+            var $addTagLink = $('<a href="#" class="btn btn-primary add_link">Add</a>');
+            var $newLinkLi = $('<li class="list-group-item"></li>').append($addTagLink);
 
-        $addTagLink.on('click', function(e) {
-            e.preventDefault();
-            addCollectionNewForm($collectionHolder, $newLinkLi);
-            $addTagLink.closest('form').trigger('clastic.form.change');
+            var $collectionHolder = $(this);
+            $collectionHolder.find('li').each(function() {
+                addCollectionDeleteLink($(this));
+            });
+            $collectionHolder.append($newLinkLi);
+            $collectionHolder.data('index', $collectionHolder.find(':input').length);
+
+            $addTagLink.on('click', function(e) {
+                e.preventDefault();
+                addCollectionNewForm($collectionHolder, $newLinkLi);
+                $addTagLink.closest('form').trigger('clastic.form.change');
+            });
         });
     });
+
     function addCollectionNewForm($collectionHolder, $newLinkLi) {
         var prototype = $collectionHolder.data('prototype');
         var index = $collectionHolder.data('index');
