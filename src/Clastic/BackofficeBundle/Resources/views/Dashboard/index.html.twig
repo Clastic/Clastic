@@ -2,7 +2,20 @@
 
 {% trans_default_domain 'clastic' %}
 
-{% block page_title %}{{ 'dashboard.title'|trans }}{% endblock %}
+{% block page_title -%}
+    {{ 'dashboard.title'|trans }}
+
+    <div class="btn-group">
+        <button type="button" class="btn dropdown-toggle btn-add" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-plus"></i>
+        </button>
+        <ul class="dropdown-menu">
+            {% for module in moduleManager.getContentModules %}
+                <li><a href="{{ path('clastic_node_form', {type: module.identifier}) }}">{{ module.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+{%- endblock %}
 
 {% block content %}
     <div class="row">
