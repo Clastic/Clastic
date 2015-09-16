@@ -77,6 +77,7 @@ class UserFormType extends AbstractType
             ->add('enabled', 'checkbox', array(
                 'value' => true,
                 'label' => 'user.form.tab.general.field.enabled',
+                'required' => false,
             ));
     }
 
