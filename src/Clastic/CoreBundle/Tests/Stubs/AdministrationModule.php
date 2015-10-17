@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the Clastic package.
  *
@@ -6,7 +7,6 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 namespace Clastic\CoreBundle\Tests\Stubs;
 
 use Clastic\CoreBundle\Module\AdministrationModuleInterface;
@@ -16,5 +16,4 @@ use Clastic\CoreBundle\Module\AdministrationModuleInterface;
  */
 class AdministrationModule extends Module implements AdministrationModuleInterface
 {
-
 }
