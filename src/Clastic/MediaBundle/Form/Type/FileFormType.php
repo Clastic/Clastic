@@ -26,9 +26,6 @@ class FileFormType extends AbstractType
     {
         $builder
             ->add('file', 'file')
-            ->add('directory', 'entity_hidden', array(
-                'class' => 'ClasticMediaBundle:Directory',
-            ))
             ->add('save', 'submit', array(
                 'label' => 'Save',
                 'attr' => array('class' => 'btn btn-success'),
