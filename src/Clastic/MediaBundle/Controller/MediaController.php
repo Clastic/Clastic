@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the Clastic package.
  *
@@ -6,7 +7,6 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 namespace Clastic\MediaBundle\Controller;
 
 use Clastic\BackofficeBundle\Controller\AbstractModuleController;
@@ -17,7 +17,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * MenuController
+ * MenuController.
  *
  * @author Dries De Peuter <dries@nousefreak.be>
  */
@@ -70,7 +70,7 @@ class MediaController extends AbstractModuleController
      */
     protected function resolveData($id)
     {
-        return null;
+        return;
     }
 
     /**
@@ -78,7 +78,7 @@ class MediaController extends AbstractModuleController
      */
     protected function getListTemplate()
     {
-        return null;
+        return;
     }
 
     /**
@@ -88,7 +88,7 @@ class MediaController extends AbstractModuleController
      */
     protected function buildForm($data)
     {
-        return null;
+        return;
     }
 
     /**
@@ -98,7 +98,7 @@ class MediaController extends AbstractModuleController
      */
     protected function resolveDataTitle($data)
     {
-        return null;
+        return;
     }
 
     /**
@@ -106,6 +106,6 @@ class MediaController extends AbstractModuleController
      */
     protected function getEntityName()
     {
-        return null;
+        return;
     }
 }

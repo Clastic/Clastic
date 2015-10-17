@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the Clastic package.
  *
@@ -6,7 +7,6 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 namespace Clastic\MediaBundle\Controller;
 
 use Clastic\MediaBundle\Entity\Directory;
@@ -28,6 +28,7 @@ class BrowserController extends Controller
      * @param Request $request
      *
      * @return JsonResponse
+     *
      * @throws \Doctrine\ORM\ORMException
      */
     public function directoryAction(Request $request)
@@ -46,7 +47,7 @@ class BrowserController extends Controller
                 'parent' => $parent,
             ));
 
-        $data = array_map(function(Directory $directory) use ($parent) {
+        $data = array_map(function (Directory $directory) use ($parent) {
             return array(
                 'id' => $directory->getId(),
                 'text' => $directory->getName(),
@@ -79,11 +80,11 @@ class BrowserController extends Controller
                 'directory' => $em->getReference('ClasticMediaBundle:Directory', $id),
             ));
 
-        $data = array_map(function(File $file) {
+        $data = array_map(function (File $file) {
             return array(
                 'id' => $file->getId(),
                 'text' => $file->getName(),
-                'path' => '/uploads/documents/' . $file->getPath(),
+                'path' => '/uploads/documents/'.$file->getPath(),
             );
         }, $files);
 

@@ -9,7 +9,7 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\Loader;
 
 /**
- * This is the class that loads and manages your bundle configuration
+ * This is the class that loads and manages your bundle configuration.
  *
  * To learn more see {@link http://symfony.com/doc/current/cookbook/bundles/extension.html}
  */
@@ -51,8 +51,6 @@ class ClasticMediaExtension extends Extension implements PrependExtensionInterfa
 
     /**
      * @param ContainerBuilder $container The service container
-     *
-     * @return void
      */
     protected function configureTwigBundle(ContainerBuilder $container)
     {
@@ -70,8 +68,6 @@ class ClasticMediaExtension extends Extension implements PrependExtensionInterfa
 
     /**
      * @param ContainerBuilder $container The service container
-     *
-     * @return void
      */
     protected function configureFMElfinderBundle(ContainerBuilder $container)
     {
@@ -88,7 +84,7 @@ class ClasticMediaExtension extends Extension implements PrependExtensionInterfa
     }
 
     /**
-     * Default ElFinder configuration
+     * Default ElFinder configuration.
      *
      * @return array
      */
@@ -114,8 +110,8 @@ class ClasticMediaExtension extends Extension implements PrependExtensionInterfa
                             ),
                         ),
                     ),
-                )
-            )
+                ),
+            ),
         );
     }
 }

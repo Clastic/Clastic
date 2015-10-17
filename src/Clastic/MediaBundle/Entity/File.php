@@ -5,12 +5,12 @@ namespace Clastic\MediaBundle\Entity;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
- * File
+ * File.
  */
 class File
 {
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
@@ -25,7 +25,7 @@ class File
     private $path;
 
     /**
-     * @var integer
+     * @var int
      */
     private $size;
 
@@ -50,9 +50,9 @@ class File
     private $directory;
 
     /**
-     * Get id
+     * Get id.
      *
-     * @return integer
+     * @return int
      */
     public function getId()
     {
@@ -60,7 +60,7 @@ class File
     }
 
     /**
-     * Set name
+     * Set name.
      *
      * @param string $name
      *
@@ -74,7 +74,7 @@ class File
     }
 
     /**
-     * Get name
+     * Get name.
      *
      * @return string
      */
@@ -84,7 +84,7 @@ class File
     }
 
     /**
-     * Set path
+     * Set path.
      *
      * @param string $path
      *
@@ -98,7 +98,7 @@ class File
     }
 
     /**
-     * Get path
+     * Get path.
      *
      * @return string
      */
@@ -108,9 +108,9 @@ class File
     }
 
     /**
-     * Set size
+     * Set size.
      *
-     * @param integer $size
+     * @param int $size
      *
      * @return File
      */
@@ -122,9 +122,9 @@ class File
     }
 
     /**
-     * Get size
+     * Get size.
      *
-     * @return integer
+     * @return int
      */
     public function getSize()
     {
@@ -132,7 +132,7 @@ class File
     }
 
     /**
-     * Set meta
+     * Set meta.
      *
      * @param array $meta
      *
@@ -146,7 +146,7 @@ class File
     }
 
     /**
-     * Get meta
+     * Get meta.
      *
      * @return array
      */

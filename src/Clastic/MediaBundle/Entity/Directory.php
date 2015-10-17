@@ -5,12 +5,12 @@ namespace Clastic\MediaBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * Directory
+ * Directory.
  */
 class Directory
 {
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
@@ -46,9 +46,9 @@ class Directory
     }
 
     /**
-     * Get id
+     * Get id.
      *
-     * @return integer
+     * @return int
      */
     public function getId()
     {
@@ -56,9 +56,10 @@ class Directory
     }
 
     /**
-     * Set name
+     * Set name.
      *
-     * @param  string    $name
+     * @param string $name
+     *
      * @return Directory
      */
     public function setName($name)
@@ -69,7 +70,7 @@ class Directory
     }
 
     /**
-     * Get name
+     * Get name.
      *
      * @return string
      */
@@ -79,9 +80,10 @@ class Directory
     }
 
     /**
-     * Set path
+     * Set path.
      *
-     * @param  string    $path
+     * @param string $path
+     *
      * @return Directory
      */
     public function setPath($path)
@@ -92,7 +94,7 @@ class Directory
     }
 
     /**
-     * Get path
+     * Get path.
      *
      * @return string
      */
