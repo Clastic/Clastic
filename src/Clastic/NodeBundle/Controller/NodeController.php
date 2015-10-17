@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the Clastic package.
  *
@@ -6,7 +7,6 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 namespace Clastic\NodeBundle\Controller;
 
 use Clastic\BackofficeBundle\Controller\AbstractModuleController;
@@ -21,7 +21,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * NodeController
+ * NodeController.
  *
  * @author Dries De Peuter <dries@nousefreak.be>
  */

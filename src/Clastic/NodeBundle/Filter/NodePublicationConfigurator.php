@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the Clastic package.
  *
@@ -6,7 +7,6 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 namespace Clastic\NodeBundle\Filter;
 
 use Doctrine\ORM\EntityManager;
@@ -34,7 +34,7 @@ class NodePublicationConfigurator
      */
     public function __construct(EntityManager $entityManager, SecurityContext $securityContext)
     {
-        $this->entityManager   = $entityManager;
+        $this->entityManager = $entityManager;
         $this->securityContext = $securityContext;
     }
 
