@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the Clastic package.
  *
@@ -6,7 +7,6 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 namespace Clastic\AliasBundle\Form\Extension;
 
 use Clastic\AliasBundle\Entity\AliasPattern;
@@ -21,7 +21,7 @@ use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 
 /**
- * NodeTypeExtension
+ * NodeTypeExtension.
  *
  * @author Dries De Peuter <dries@nousefreak.be>
  */
@@ -90,7 +90,7 @@ class SettingsTypeExtension extends AbstractTypeExtension
             $mainModuleName = $module->getName();
 
             $fieldset = $builder
-                ->create('fieldset_' . $module->getIdentifier(), 'fieldset', array(
+                ->create('fieldset_'.$module->getIdentifier(), 'fieldset', array(
                     'legend' => $mainModuleName,
                 ))->add($this->getModuleId($module->getIdentifier()), 'alias', array(
                     'required' => false,
@@ -206,5 +206,4 @@ class SettingsTypeExtension extends AbstractTypeExtension
     {
         return str_replace(':', '/', $string);
     }
-
 }

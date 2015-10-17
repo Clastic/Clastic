@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the Clastic package.
  *
@@ -6,7 +7,6 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 namespace Clastic\AliasBundle\Tests\Functional;
 
 use Clastic\BackofficeBundle\Tests\ModuleWebTestCase;
@@ -29,7 +29,7 @@ class AliasModuleTest extends ModuleWebTestCase
         $client = $this->createAuthorizedClient();
         $client->request('GET', $this->newUrl);
 
-        $this->assertFalse($client->getResponse()->isSuccessful(), "Request should failed");
+        $this->assertFalse($client->getResponse()->isSuccessful(), 'Request should failed');
     }
 
     public function testListNoAddButton()
@@ -37,7 +37,7 @@ class AliasModuleTest extends ModuleWebTestCase
         $client = $this->createAuthorizedClient();
         $crawler = $client->request('GET', $this->listUrl);
 
-        $this->assertTrue($client->getResponse()->isSuccessful(), "Request failed");
+        $this->assertTrue($client->getResponse()->isSuccessful(), 'Request failed');
         $this->assertEquals(
             0,
             $crawler->filter('h1 a')->count()
@@ -53,6 +53,6 @@ class AliasModuleTest extends ModuleWebTestCase
         $client = $this->createAuthorizedClient();
         $client->request('GET', $this->newUrl);
 
-        $this->assertFalse($client->getResponse()->isSuccessful(), "Request should failed");
+        $this->assertFalse($client->getResponse()->isSuccessful(), 'Request should failed');
     }
 }

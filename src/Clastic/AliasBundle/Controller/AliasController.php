@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the Clastic package.
  *
@@ -6,7 +7,6 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 namespace Clastic\AliasBundle\Controller;
 
 use Clastic\AliasBundle\Entity\Alias;
@@ -20,7 +20,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Exception\RouteNotFoundException;
 
 /**
- * NodeController
+ * NodeController.
  *
  * @author Dries De Peuter <dries@nousefreak.be>
  */
@@ -99,5 +99,4 @@ class AliasController extends AbstractModuleController
 
         return parent::formAction($id, $request);
     }
-
 }

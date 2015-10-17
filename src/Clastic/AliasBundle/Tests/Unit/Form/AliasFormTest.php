@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the Clastic package.
  *
@@ -6,13 +7,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 namespace Clastic\AliasBundle\Tests\Unit\Form;
 
 use Clastic\AliasBundle\Entity\Alias;
 use Clastic\AliasBundle\Form\Type\AliasFormType;
-use Clastic\AliasBundle\Form\TypeAliasFormType;
-use Clastic\AliasBundle\Form\AliasType;
 use Clastic\BackofficeBundle\Form\Type\TabsTabActionsType;
 use Clastic\BackofficeBundle\Form\Type\TabsTabType;
 use Clastic\BackofficeBundle\Form\Type\TabsType;
@@ -26,7 +24,7 @@ use Symfony\Component\HttpFoundation\RequestStack;
  *
  * @group functional
  */
-class AliasModuleTest extends TypeTestCase
+class AliasFormTest extends TypeTestCase
 {
     protected function getExtensions()
     {
