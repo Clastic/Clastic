@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the Clastic package.
  *
@@ -6,21 +7,20 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 namespace Clastic\GeneratorBundle\Tests\Generator;
 
 use Clastic\GeneratorBundle\Generator\ModuleGenerator;
 use Sensio\Bundle\GeneratorBundle\Tests\Generator\GeneratorTest;
 
 /**
- * ModuleGeneratorTest
+ * ModuleGeneratorTest.
  */
 class ModuleGeneratorTest extends GeneratorTest
 {
     public function testGenerateController()
     {
-        mkdir($this->tmpDir . '/Resources/config/', 0777, true);
-        copy(__DIR__ . '/../Stubs/services_empty.xml', $this->tmpDir . '/Resources/config/services.xml');
+        mkdir($this->tmpDir.'/Resources/config/', 0777, true);
+        copy(__DIR__.'/../Stubs/services_empty.xml', $this->tmpDir.'/Resources/config/services.xml');
         $this->getGenerator()->generate($this->getBundle(), 'Test', 'ClasticBlogBundle:Blog ');
 
         $files = array(
@@ -52,8 +52,8 @@ class ModuleGeneratorTest extends GeneratorTest
 
     public function testGeneratedXml()
     {
-        mkdir($this->tmpDir . '/Resources/config/', 0777, true);
-        copy(__DIR__ . '/../Stubs/services_empty.xml', $this->tmpDir . '/Resources/config/services.xml');
+        mkdir($this->tmpDir.'/Resources/config/', 0777, true);
+        copy(__DIR__.'/../Stubs/services_empty.xml', $this->tmpDir.'/Resources/config/services.xml');
         $this->getGenerator()->generate($this->getBundle(), 'Test', 'ClasticBlogBundle:Blog ');
 
         $xml = <<<EOL
@@ -77,13 +77,13 @@ class ModuleGeneratorTest extends GeneratorTest
 </container>
 EOL;
 
-        $this->assertXmlStringEqualsXmlString($xml, file_get_contents($this->tmpDir . '/Resources/config/services.xml'));
+        $this->assertXmlStringEqualsXmlString($xml, file_get_contents($this->tmpDir.'/Resources/config/services.xml'));
     }
 
     public function testGeneratedXmlContainer()
     {
-        mkdir($this->tmpDir . '/Resources/config/', 0777, true);
-        copy(__DIR__ . '/../Stubs/services_containers.xml', $this->tmpDir . '/Resources/config/services.xml');
+        mkdir($this->tmpDir.'/Resources/config/', 0777, true);
+        copy(__DIR__.'/../Stubs/services_containers.xml', $this->tmpDir.'/Resources/config/services.xml');
         $this->getGenerator()->generate($this->getBundle(), 'Test', 'ClasticBlogBundle:Blog ');
 
         $xml = <<<EOL
@@ -109,7 +109,7 @@ EOL;
 </container>
 EOL;
 
-        $this->assertXmlStringEqualsXmlString($xml, file_get_contents($this->tmpDir . '/Resources/config/services.xml'));
+        $this->assertXmlStringEqualsXmlString($xml, file_get_contents($this->tmpDir.'/Resources/config/services.xml'));
     }
 
     protected function getGenerator()

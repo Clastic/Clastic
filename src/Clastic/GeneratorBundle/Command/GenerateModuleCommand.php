@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the Clastic package.
  *
@@ -6,7 +7,6 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 namespace Clastic\GeneratorBundle\Command;
 
 use Clastic\GeneratorBundle\ClasticGeneratorBundle;
@@ -145,7 +145,7 @@ EOT
             '',
             $this->getHelper('formatter')->formatBlock('Summary before generation', 'bg=blue;fg=white', true),
             '',
-            sprintf("You are going to generate a \"<info>%s:%s</info>\" Clastic module", $bundle, $module),
+            sprintf('You are going to generate a "<info>%s:%s</info>" Clastic module', $bundle, $module),
             '',
         ));
     }
