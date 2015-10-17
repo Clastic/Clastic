@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the Clastic package.
  *
@@ -6,7 +7,6 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 namespace Clastic\MenuBundle\Twig;
 
 use Clastic\MenuBundle\Entity\MenuItem;
@@ -73,13 +73,13 @@ class MenuExtension extends \Twig_Extension
         $variables = $globals['app'];
         $currentUrl = $variables->getRequest()->server->get('REQUEST_URI');
 
-        $items = array_map(function(MenuItem $item) use ($currentUrl) {
+        $items = array_map(function (MenuItem $item) use ($currentUrl) {
 
             $url = $item->getUrl();
             $node = $item->getNode();
             // TODO Remove getTitle once a solution is found.
             if ($node && $node->getTitle() && isset($node->alias)) {
-                $url = '/' . $node->alias->getAlias();
+                $url = '/'.$node->alias->getAlias();
             }
 
             return array(

@@ -3,12 +3,12 @@
 namespace Clastic\MenuBundle\Entity;
 
 /**
- * Menu
+ * Menu.
  */
 class Menu
 {
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
@@ -23,9 +23,9 @@ class Menu
     private $identifier;
 
     /**
-     * Get id
+     * Get id.
      *
-     * @return integer
+     * @return int
      */
     public function getId()
     {
@@ -33,7 +33,7 @@ class Menu
     }
 
     /**
-     * Set title
+     * Set title.
      *
      * @param string $title
      *
@@ -47,7 +47,7 @@ class Menu
     }
 
     /**
-     * Get title
+     * Get title.
      *
      * @return string
      */

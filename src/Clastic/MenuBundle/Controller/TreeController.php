@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the Clastic package.
  *
@@ -6,7 +7,6 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 namespace Clastic\MenuBundle\Controller;
 
 use Clastic\MenuBundle\Entity\MenuItem;
@@ -15,7 +15,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * MenuController
+ * MenuController.
  *
  * @author Dries De Peuter <dries@nousefreak.be>
  */
@@ -26,6 +26,7 @@ class TreeController extends Controller
      * @param int|string $menuId
      *
      * @return JsonResponse
+     *
      * @throws \Doctrine\ORM\ORMException
      */
     public function ajaxAction(Request $request, $menuId)
@@ -47,7 +48,7 @@ class TreeController extends Controller
             ->getRepository('ClasticMenuBundle:MenuItem')
             ->findBy($filter);
 
-        $data = array_map(function(MenuItem $item) use ($currentId) {
+        $data = array_map(function (MenuItem $item) use ($currentId) {
             return array(
                 'id' => $item->getId(),
                 'text' => $item->getTitle(),

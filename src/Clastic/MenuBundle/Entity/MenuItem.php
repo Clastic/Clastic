@@ -6,12 +6,12 @@ use Clastic\NodeBundle\Entity\Node;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 /**
- * MenuItem
+ * MenuItem.
  */
 class MenuItem
 {
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
@@ -62,9 +62,9 @@ class MenuItem
     private $children;
 
     /**
-     * Get id
+     * Get id.
      *
-     * @return integer
+     * @return int
      */
     public function getId()
     {
@@ -72,7 +72,7 @@ class MenuItem
     }
 
     /**
-     * Set title
+     * Set title.
      *
      * @param string $title
      *
@@ -86,7 +86,7 @@ class MenuItem
     }
 
     /**
-     * Get title
+     * Get title.
      *
      * @return string
      */
