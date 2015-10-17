@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the Clastic package.
  *
@@ -6,7 +7,6 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 namespace Clastic\BackofficeBundle\Twig;
 
 use Symfony\Component\Security\Core\SecurityContext;
@@ -55,7 +55,7 @@ class AvatarExtension extends \Twig_Extension
         $token = $this->context->getToken();
 
         if (!$token) {
-            return null;
+            return;
         }
 
         return $token->getUser()->getEmail();

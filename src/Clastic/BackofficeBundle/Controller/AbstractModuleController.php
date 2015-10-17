@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the Clastic package.
  *
@@ -6,7 +7,6 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 namespace Clastic\BackofficeBundle\Controller;
 
 use Clastic\BackofficeBundle\Form\Type\DeleteFormType;
@@ -24,7 +24,7 @@ use Symfony\Component\Translation\TranslatorInterface;
 use WhiteOctober\BreadcrumbsBundle\Model\Breadcrumbs;
 
 /**
- * NodeController
+ * NodeController.
  *
  * @author Dries De Peuter <dries@nousefreak.be>
  */
@@ -92,7 +92,7 @@ abstract class AbstractModuleController extends Controller
             'data' => $data,
             'type' => $this->getType(),
             'module' => $module,
-            'submodules' => $this->getSubmodules($module)
+            'submodules' => $this->getSubmodules($module),
         ), $this->getExtraListVariables()));
     }
 
@@ -235,10 +235,10 @@ abstract class AbstractModuleController extends Controller
         $translator = $this->get('translator');
 
         /** @var Breadcrumbs $breadcrumbs */
-        $breadcrumbs = $this->get("white_october_breadcrumbs");
+        $breadcrumbs = $this->get('white_october_breadcrumbs');
         $breadcrumbs->addItem(
             $translator->trans('home', [], 'clastic'),
-            $this->get("router")->generate("clastic_backoffice_dashboard")
+            $this->get('router')->generate('clastic_backoffice_dashboard')
         );
 
         $module = $this->getModule($type);
@@ -260,7 +260,7 @@ abstract class AbstractModuleController extends Controller
             $this->buildModuleBreadcrumb($breadcrumbs, $parentModule);
         }
 
-        $breadcrumbs->addItem($module->getName(), $this->get("router")->generate("clastic_node_list", array(
+        $breadcrumbs->addItem($module->getName(), $this->get('router')->generate('clastic_node_list', array(
             'type' => $module->getIdentifier(),
         )));
     }

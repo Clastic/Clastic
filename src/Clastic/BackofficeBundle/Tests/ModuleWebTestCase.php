@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the Clastic package.
  *
@@ -6,12 +7,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 namespace Clastic\BackofficeBundle\Tests;
-
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
-use Symfony\Component\BrowserKit\Client;
-use Symfony\Component\BrowserKit\Cookie;
 
 /**
  * @author Dries De Peuter <dries@nousefreak.be>
@@ -26,8 +22,8 @@ abstract class ModuleWebTestCase extends AuthenticatedWebTestCase
         $client = $this->createAuthorizedClient();
         $crawler = $client->request('GET', '/admin/');
 
-        $this->assertTrue($client->getResponse()->isSuccessful(), "Request failed");
-        $this->assertEquals(1, $crawler->filter('nav li a[href="' . $this->listUrl . '"]')->count());
+        $this->assertTrue($client->getResponse()->isSuccessful(), 'Request failed');
+        $this->assertEquals(1, $crawler->filter('nav li a[href="'.$this->listUrl.'"]')->count());
     }
 
     /**
@@ -38,8 +34,8 @@ abstract class ModuleWebTestCase extends AuthenticatedWebTestCase
         $client = $this->createAuthorizedClient();
         $crawler = $client->request('GET', $this->listUrl);
 
-        $this->assertTrue($client->getResponse()->isSuccessful(), "Request failed");
-        $this->assertEquals(1, $crawler->filter('nav li a[href="' . $this->listUrl . '"]')->count());
+        $this->assertTrue($client->getResponse()->isSuccessful(), 'Request failed');
+        $this->assertEquals(1, $crawler->filter('nav li a[href="'.$this->listUrl.'"]')->count());
     }
 
     /**
@@ -54,7 +50,7 @@ abstract class ModuleWebTestCase extends AuthenticatedWebTestCase
         $client = $this->createAuthorizedClient();
         $crawler = $client->request('GET', $this->formUrl);
 
-        $this->assertTrue($client->getResponse()->isSuccessful(), "Request failed");
+        $this->assertTrue($client->getResponse()->isSuccessful(), 'Request failed');
         $this->assertGreaterThan(0, $crawler->filter('form')->count());
     }
 }
