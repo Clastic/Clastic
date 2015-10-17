@@ -12,6 +12,7 @@ namespace Clastic\BackofficeBundle\Form\Type;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
@@ -22,11 +23,11 @@ class FieldsetType extends FormType
     /**
      * {@inheritdoc}
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'legend' => '',
-            'virtual' => true,
+          'legend' => '',
+          'inherit_data' => true,
         ));
     }
 
