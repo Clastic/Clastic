@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the Clastic package.
  *
@@ -6,14 +7,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 namespace Clastic\TextBundle\Form\Module;
 
 use Clastic\NodeBundle\Form\Extension\AbstractNodeTypeExtension;
 use Symfony\Component\Form\FormBuilderInterface;
 
 /**
- * NodeTypeExtension
+ * NodeTypeExtension.
  *
  * @author Dries De Peuter <dries@nousefreak.be>
  */
@@ -26,7 +26,7 @@ class TextFormExtension extends AbstractNodeTypeExtension
     {
         $this->getTabHelper($builder)->findTab('general')
             ->add('body', 'wysiwyg', array(
-                'label' => 'text.form.tab.general.field.body'
+                'label' => 'text.form.tab.general.field.body',
             ));
     }
 }
