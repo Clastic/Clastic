@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the Clastic package.
  *
@@ -6,7 +7,6 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 namespace Clastic\UserBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
@@ -14,7 +14,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
- * UserType
+ * UserType.
  *
  * @author Dries De Peuter <dries@nousefreak.be>
  */
@@ -98,7 +98,7 @@ class UserFormType extends AbstractType
         return $this->createTab($builder, 'role', array('label' => 'user.form.tab.role.label'))
             ->add('roles', 'multi_select', array(
                 'choices' => $this->getAvailableRoles($builder),
-                'label' => 'user.form.tab.role.field.roles'
+                'label' => 'user.form.tab.role.field.roles',
             ));
     }
 

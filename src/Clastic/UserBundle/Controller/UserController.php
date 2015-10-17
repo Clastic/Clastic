@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the Clastic package.
  *
@@ -6,7 +7,6 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 namespace Clastic\UserBundle\Controller;
 
 use Clastic\BackofficeBundle\Controller\AbstractModuleController;
@@ -15,7 +15,7 @@ use Clastic\UserBundle\Form\Type\UserFormType;
 use Symfony\Component\Form\Form;
 
 /**
- * NodeController
+ * NodeController.
  *
  * @author Dries De Peuter <dries@nousefreak.be>
  */
