@@ -73,13 +73,6 @@ class AliasFormType extends AbstractType
     }
 
     /**
-     * @param OptionsResolverInterface $resolver
-     */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
-    {
-    }
-
-    /**
      * Returns the name of this type.
      *
      * @return string The name of this type
