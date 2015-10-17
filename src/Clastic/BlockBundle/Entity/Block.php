@@ -3,12 +3,12 @@
 namespace Clastic\BlockBundle\Entity;
 
 /**
- * Block
+ * Block.
  */
 class Block
 {
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
@@ -28,9 +28,9 @@ class Block
     private $body;
 
     /**
-     * Get id
+     * Get id.
      *
-     * @return integer
+     * @return int
      */
     public function getId()
     {
@@ -38,9 +38,10 @@ class Block
     }
 
     /**
-     * Set identifier
+     * Set identifier.
      *
-     * @param  string $identifier
+     * @param string $identifier
+     *
      * @return Block
      */
     public function setIdentifier($identifier)
@@ -51,7 +52,7 @@ class Block
     }
 
     /**
-     * Get identifier
+     * Get identifier.
      *
      * @return string
      */
@@ -61,9 +62,10 @@ class Block
     }
 
     /**
-     * Set title
+     * Set title.
      *
-     * @param  string $title
+     * @param string $title
+     *
      * @return Block
      */
     public function setTitle($title)
@@ -74,7 +76,7 @@ class Block
     }
 
     /**
-     * Get title
+     * Get title.
      *
      * @return string
      */
@@ -84,9 +86,10 @@ class Block
     }
 
     /**
-     * Set body
+     * Set body.
      *
-     * @param  string $body
+     * @param string $body
+     *
      * @return Block
      */
     public function setBody($body)
@@ -97,7 +100,7 @@ class Block
     }
 
     /**
-     * Get body
+     * Get body.
      *
      * @return string
      */
