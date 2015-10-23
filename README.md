@@ -2,7 +2,10 @@ Clastic
 =======
 
  [![Build Status](https://img.shields.io/travis/Clastic/Clastic/master.svg?style=flat-square)](https://travis-ci.org/Clastic/Clastic)
+ [![Packagist](https://img.shields.io/packagist/v/clastic/core-bundle.svg?style=flat-square)](https://packagist.org/packages/clastic/)
  [![Documentation](https://readthedocs.org/projects/clastic/badge/?version=latest&style=flat-square)](https://clastic.readthedocs.org/en/latest/)
+
+ [![Author](https://img.shields.io/badge/author-@NoUseFreak-blue.svg?style=flat-square)](http://nousefreak.be)
  [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE)
 
 Clastic is a PHP CMS. It is written on top of [symfony](http://symfony.com).
