@@ -45,7 +45,8 @@ If NOT "%1"=="" GOTO INFO
     GOTO DONE
 :DEV
     php app/console assets:install --symlink
-    gulp watch & php app/console server:run
+    start php app/console server:run
+    gulp watch
     GOTO DONE
 :DONE
     echo clastic is finished
