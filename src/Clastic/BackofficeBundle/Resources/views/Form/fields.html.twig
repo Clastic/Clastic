@@ -140,7 +140,14 @@
 {% endblock %}
 
 {% block multi_select_widget -%}
-    <div class="multi_select">
+    <div class="multi_select" data-translation="{{ {
+        "selection": "form.type.multi_select.selection"|trans,
+        "available": "form.type.multi_select.available"|trans,
+        "search": "form.type.multi_select.search"|trans,
+        "delete_all": "form.type.multi_select.delete_all"|trans,
+        "add_all": "form.type.multi_select.add_all"|trans,
+        "items": "form.type.multi_select.items"|trans
+    }|json_encode }}">
         {{ block('choice_widget') }}
     </div>
 {%- endblock multi_select_widget %}
