@@ -9,7 +9,7 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\Loader;
 
 /**
- * This is the class that loads and manages your bundle configuration
+ * This is the class that loads and manages your bundle configuration.
  *
  * To learn more see {@link http://symfony.com/doc/current/cookbook/bundles/extension.html}
  */
@@ -44,12 +44,13 @@ class ClasticMediaExtension extends Extension implements PrependExtensionInterfa
         if (true === isset($bundles['TwigBundle'])) {
             $this->configureTwigBundle($container);
         }
+        if (true === isset($bundles['FMElfinderBundle'])) {
+            $this->configureFMElfinderBundle($container);
+        }
     }
 
     /**
      * @param ContainerBuilder $container The service container
-     *
-     * @return void
      */
     protected function configureTwigBundle(ContainerBuilder $container)
     {
@@ -63,5 +64,54 @@ class ClasticMediaExtension extends Extension implements PrependExtensionInterfa
                     break;
             }
         }
+    }
+
+    /**
+     * @param ContainerBuilder $container The service container
+     */
+    protected function configureFMElfinderBundle(ContainerBuilder $container)
+    {
+        foreach (array_keys($container->getExtensions()) as $name) {
+            switch ($name) {
+                case 'fm_elfinder':
+                    $container->prependExtensionConfig(
+                        $name,
+                        $this->getElFinderConfiguration()
+                    );
+                    break;
+            }
+        }
+    }
+
+    /**
+     * Default ElFinder configuration.
+     *
+     * @return array
+     */
+    protected function getElFinderConfiguration()
+    {
+        return array(
+            'instances' => array(
+                'default' => array(
+                    'locale' => '',
+                    'editor' => 'ckeditor',
+                    'fullscreen' => true,
+                    'theme' => 'smoothness',
+                    'include_assets' => true,
+                    'connector' => array(
+                        'roots' => array(
+                            'uploads' => array(
+                                'show_hidden' => false,
+                                'driver' => 'clastic.elfinder.driver.filesystem',
+                                'path' => 'uploads',
+                                'upload_allow' => array('all'),
+                                'upload_deny' => array(),
+                                'upload_max_size' => '20M',
+                            ),
+                        ),
+                    ),
+                ),
+            ),
+        );
     }
 }

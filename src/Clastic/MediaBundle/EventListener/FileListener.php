@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the Clastic package.
  *
@@ -6,7 +7,6 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 namespace Clastic\MediaBundle\EventListener;
 
 use Clastic\MediaBundle\Entity\File;
@@ -15,12 +15,25 @@ use Doctrine\Common\Persistence\Event\LifecycleEventArgs;
 use Doctrine\ORM\Events;
 
 /**
- * NodeListener
+ * NodeListener.
  *
  * @author Dries De Peuter <dries@nousefreak.be>
  */
 class FileListener implements EventSubscriber
 {
+    /**
+     * @var string
+     */
+    private $kernelDir;
+
+    /**
+     * @param string $kernelDir
+     */
+    public function __construct($kernelDir)
+    {
+        $this->kernelDir = $kernelDir;
+    }
+
     /**
      * Returns an array of events this subscriber wants to listen to.
      *
@@ -101,7 +114,7 @@ class FileListener implements EventSubscriber
     {
         if (null !== $file->getFile()) {
             $filename = sha1(uniqid(mt_rand(), true));
-            $file->setPath($filename . '.' . $file->getFile()->guessExtension());
+            $file->setPath($filename.'.'.$file->getFile()->guessExtension());
             $file->setSize($file->getFile()->getSize());
             $file->setName($file->getFile()->getClientOriginalName());
             $file->setMeta(array(
@@ -142,6 +155,6 @@ class FileListener implements EventSubscriber
     {
         // the absolute directory path where uploaded
         // documents should be saved
-        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+        return $this->kernelDir.'/../web/'.$this->getUploadDir();
     }
 }

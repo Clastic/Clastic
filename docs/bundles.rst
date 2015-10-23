@@ -47,6 +47,11 @@ User
 
 The user bundle provides everything to manage users.
 
+Security
+~~~~~~~~
+
+The security bundle adds security to the backoffice.
+
 Node
 ~~~~
 
@@ -105,3 +110,8 @@ Generator
 ~~~~~~~~~
 
 The generator bundle provides a generator to increase development times.
+
+Contrib Bundles
+===============
+
+You can find more bundles in the :doc:`contrib`.

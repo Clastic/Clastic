@@ -1,0 +1,24 @@
+list:
+  username: Gebruikersnaam
+  roles: Rollen
+user:
+  profile:
+    title: Profiel
+user.form:
+  new: New
+  tab:
+    general:
+      label: Algemeen
+      field:
+        username: Gebruikersnaam
+        email: E-mail
+        enabled: Actief
+    password:
+      label: Wachtwoord
+      field:
+        password: Wachtwoord
+        password_repeat: Herhaal wachtwoord
+    role:
+      label: Rollen
+      field:
+        roles: Rollen

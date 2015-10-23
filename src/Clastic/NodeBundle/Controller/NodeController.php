@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the Clastic package.
  *
@@ -6,10 +7,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 namespace Clastic\NodeBundle\Controller;
 
 use Clastic\BackofficeBundle\Controller\AbstractModuleController;
+use Clastic\NodeBundle\Entity\Node;
+use Clastic\NodeBundle\Event\NodeFormPrePersistEvent;
 use Clastic\NodeBundle\Event\NodeFormPersistEvent;
 use Clastic\NodeBundle\Node\NodeManager;
 use Clastic\NodeBundle\Node\NodeReferenceInterface;
@@ -19,7 +21,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * NodeController
+ * NodeController.
  *
  * @author Dries De Peuter <dries@nousefreak.be>
  */
@@ -64,7 +66,7 @@ class NodeController extends AbstractModuleController
     protected function resolveDataTitle($data)
     {
         if (!$data->getId()) {
-            return 'New';
+            return $this->get('translator')->trans('node.form.new', array(), 'clastic');
         }
 
         return $data->getNode()->getTitle();
@@ -79,7 +81,8 @@ class NodeController extends AbstractModuleController
     }
 
     /**
-     * @param string $type
+     * @param Request     $request
+     * @param null|string $type
      *
      * @return Response
      */
@@ -141,16 +144,19 @@ class NodeController extends AbstractModuleController
      */
     protected function persistData(Form $form)
     {
-        /** @var NodeReferenceInterface $node */
+        /** @var Node $node */
         $node = $form->getData()->getNode();
         $node->setChanged(new \DateTime());
 
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($form->getData());
-        $em->flush();
+        $this->get('event_dispatcher')
+          ->dispatch(NodeFormPrePersistEvent::NODE_FORM_PREPERSIST, new NodeFormPrePersistEvent($node, $form));
+
+        $objectManager = $this->getDoctrine()->getManager();
+        $objectManager->persist($form->getData());
+        $objectManager->flush();
 
         $this->get('event_dispatcher')
-            ->dispatch(NodeFormPersistEvent::NODE_FORM_PERSIST, new NodeFormPersistEvent($node, $form, $em));
+            ->dispatch(NodeFormPersistEvent::NODE_FORM_PERSIST, new NodeFormPersistEvent($node, $form, $objectManager));
     }
 
     /**

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the Clastic package.
  *
@@ -6,7 +7,6 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 namespace Clastic\BackofficeBundle\Tests\Unit\Form\Type;
 
 use Clastic\BackofficeBundle\Form\Type\EntityHiddenType;
@@ -21,11 +21,11 @@ class EntityHiddenTypeTest extends TypeTestCase
 {
     public function testParent()
     {
-        $om = $this->getMockBuilder('Doctrine\Common\Persistence\ObjectManager')
+        $objectManager = $this->getMockBuilder('Doctrine\Common\Persistence\ObjectManager')
             ->disableOriginalConstructor()
             ->getMock();
 
-        $type = new EntityHiddenType($om);
+        $type = new EntityHiddenType($objectManager);
 
         $this->assertEquals('hidden', $type->getParent());
     }

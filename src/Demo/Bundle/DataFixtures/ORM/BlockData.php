@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the Clastic package.
  *
@@ -6,7 +7,6 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 namespace Demo\Bundle\DataFixtures\ORM;
 
 use Clastic\BlockBundle\Entity\Block;
@@ -27,7 +27,7 @@ class BlockData extends AbstractFixture implements OrderedFixtureInterface, Cont
     private $container;
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function setContainer(ContainerInterface $container = null)
     {
@@ -35,7 +35,7 @@ class BlockData extends AbstractFixture implements OrderedFixtureInterface, Cont
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function load(ObjectManager $manager)
     {
@@ -49,7 +49,7 @@ class BlockData extends AbstractFixture implements OrderedFixtureInterface, Cont
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getOrder()
     {

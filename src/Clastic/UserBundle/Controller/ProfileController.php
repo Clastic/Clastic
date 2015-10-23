@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the Clastic package.
  *
@@ -6,7 +7,6 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 namespace Clastic\UserBundle\Controller;
 
 use FOS\UserBundle\Controller\ProfileController as FOSProfileController;
@@ -32,18 +32,17 @@ class ProfileController extends FOSProfileController
     protected function buildBreadcrumbs($type)
     {
         /** @var Breadcrumbs $breadcrumbs */
-        $breadcrumbs = $this->get("white_october_breadcrumbs");
-        $breadcrumbs->addItem("Home", $this->get("router")->generate("clastic_backoffice_dashboard"));
+        $breadcrumbs = $this->get('white_october_breadcrumbs');
+        $breadcrumbs->addItem('Home', $this->get('router')->generate('clastic_backoffice_dashboard'));
 
         /** @var NodeModuleInterface $module */
         $module = $this->get('clastic.module_manager')->getModule($type);
         if ($module) {
-            $breadcrumbs->addItem($module->getName(), $this->get("router")->generate("clastic_node_list", array(
+            $breadcrumbs->addItem($module->getName(), $this->get('router')->generate('clastic_node_list', array(
                 'type' => $type,
             )));
         }
 
         return $breadcrumbs;
     }
-
 }

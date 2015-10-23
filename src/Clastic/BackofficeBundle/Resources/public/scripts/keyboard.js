@@ -1,5 +1,5 @@
 (function(){
-    Mousetrap.bind(['m'], function(e) {
+    Mousetrap.bind(['m'], function() {
         $('.js-nav-module-list').toggleClass('open');
     });
 })();

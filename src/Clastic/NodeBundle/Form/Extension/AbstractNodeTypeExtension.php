@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the Clastic package.
  *
@@ -6,20 +7,25 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 namespace Clastic\NodeBundle\Form\Extension;
 
+use Clastic\BackofficeBundle\Form\TabHelper;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
 
 /**
- * NodeTypeExtension
+ * NodeTypeExtension.
  *
  * @author Dries De Peuter <dries@nousefreak.be>
  */
 abstract class AbstractNodeTypeExtension
 {
+    /**
+     * @var TabHelper
+     */
+    private $tabHelper;
+
     /**
      * {@inheritdoc}
      */
@@ -41,6 +47,14 @@ abstract class AbstractNodeTypeExtension
     {
     }
 
+    /**
+     * @param FormBuilderInterface $builder
+     * @param string               $name
+     *
+     * @deprecated Use TabHelper instead.
+     *
+     * @return FormBuilderInterface
+     */
     protected function findTab(FormBuilderInterface $builder, $name)
     {
         return $builder->get('tabs')->get($name);
@@ -53,6 +67,8 @@ abstract class AbstractNodeTypeExtension
      * @param string               $name
      * @param array                $options
      *
+     * @deprecated Use TabHelper instead.
+     *
      * @return FormBuilderInterface
      */
     final protected function createTab(FormBuilderInterface $builder, $name, $options = array())
@@ -64,5 +80,19 @@ abstract class AbstractNodeTypeExtension
             ));
 
         return $builder->create($name, 'tabs_tab', $options);
+    }
+
+    /**
+     * @param FormBuilderInterface $builder
+     *
+     * @return TabHelper
+     */
+    protected function getTabHelper(FormBuilderInterface $builder)
+    {
+        if (is_null($this->tabHelper)) {
+            $this->tabHelper = new TabHelper($builder);
+        }
+
+        return $this->tabHelper;
     }
 }

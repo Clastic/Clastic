@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the Clastic package.
  *
@@ -6,7 +7,6 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 namespace Clastic\CoreBundle\Module;
 
 /**
@@ -33,7 +33,7 @@ class ModuleManager
     }
 
     /**
-     * Get all modules
+     * Get all modules.
      *
      * @return ModuleInterface[]
      */
@@ -49,9 +49,9 @@ class ModuleManager
      */
     public function getContentModules()
     {
-        return array_filter($this->getModules(), function(ModuleInterface $module) {
-            return ! ($module instanceof AdministrationModuleInterface)
-                && ! ($module instanceof SubmoduleInterface);
+        return array_filter($this->getModules(), function (ModuleInterface $module) {
+            return !($module instanceof AdministrationModuleInterface)
+                && !($module instanceof SubmoduleInterface);
         });
     }
 
@@ -62,7 +62,7 @@ class ModuleManager
      */
     public function getAdministrationModules()
     {
-        return array_filter($this->getModules(), function(ModuleInterface $module) {
+        return array_filter($this->getModules(), function (ModuleInterface $module) {
             return ($module instanceof AdministrationModuleInterface);
         });
     }
@@ -74,7 +74,7 @@ class ModuleManager
      */
     public function getSubmodules($mainIdentifier)
     {
-        return array_filter($this->getModules(), function(ModuleInterface $module) use ($mainIdentifier) {
+        return array_filter($this->getModules(), function (ModuleInterface $module) use ($mainIdentifier) {
             return ($module instanceof SubmoduleInterface)
                 && $module->getParentIdentifier() == $mainIdentifier;
         });
@@ -91,6 +91,6 @@ class ModuleManager
             return $this->modules[$name];
         }
 
-        return null;
+        return;
     }
 }

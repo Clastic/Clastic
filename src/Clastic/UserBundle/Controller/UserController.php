@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the Clastic package.
  *
@@ -6,17 +7,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 namespace Clastic\UserBundle\Controller;
 
 use Clastic\BackofficeBundle\Controller\AbstractModuleController;
 use Clastic\UserBundle\Entity\User;
-use Clastic\UserBundle\Form\UserType;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Clastic\UserBundle\Form\Type\UserFormType;
 use Symfony\Component\Form\Form;
 
 /**
- * NodeController
+ * NodeController.
  *
  * @author Dries De Peuter <dries@nousefreak.be>
  */
@@ -45,7 +44,7 @@ class UserController extends AbstractModuleController
      */
     protected function buildForm($data)
     {
-        return $this->createForm(new UserType(is_null($data->getId())), $data);
+        return $this->createForm(new UserFormType(is_null($data->getId())), $data);
     }
 
     /**
@@ -97,8 +96,8 @@ class UserController extends AbstractModuleController
         $userManager = $this->get('fos_user.user_manager');
         $userManager->updateUser($form->getData());
 
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($form->getData());
-        $em->flush();
+        $objectManager = $this->getDoctrine()->getManager();
+        $objectManager->persist($form->getData());
+        $objectManager->flush();
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the Clastic package.
  *
@@ -6,9 +7,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 namespace Clastic\BackofficeBundle\Controller;
 
+use Clastic\BackofficeBundle\BackofficeEvents;
+use Clastic\BackofficeBundle\Event\DashboardEvent;
 use Clastic\CoreBundle\Module\ModuleManager;
 use Pagerfanta\Adapter\DoctrineORMAdapter;
 use Pagerfanta\Pagerfanta;
@@ -17,7 +19,7 @@ use Symfony\Component\HttpFoundation\Response;
 use WhiteOctober\BreadcrumbsBundle\Model\Breadcrumbs;
 
 /**
- * DashboardController
+ * DashboardController.
  *
  * @author Dries De Peuter <dries@nousefreak.be>
  */
@@ -30,9 +32,28 @@ class DashboardController extends Controller
     {
         $this->buildBreadcrumbs();
 
+        $mainTab = array(
+            'recent' => array(
+                'title' => 'dashboard.recent',
+                'content' => $this->renderView('ClasticBackofficeBundle:Dashboard:contentList.html.twig', array(
+                    'records' => $this->getRecent(),
+                    'moduleManager' => $this->getModuleManager(),
+                )),
+            ),
+            'my_content' => array(
+                'title' => 'dashboard.my_content',
+                'content' => $this->renderView('ClasticBackofficeBundle:Dashboard:contentList.html.twig', array(
+                    'records' => $this->getMyContent(),
+                    'moduleManager' => $this->getModuleManager(),
+                )),
+            ),
+        );
+
+        $event = new DashboardEvent($mainTab);
+        $this->get('event_dispatcher')->dispatch(BackofficeEvents::DASHBOARD, $event);
+
         return $this->render('ClasticBackofficeBundle:Dashboard:index.html.twig', array(
-            'myContent' => $this->getMyContent(),
-            'recent' => $this->getRecent(),
+            'mainTabs' => $event->getMainTab(),
             'moduleManager' => $this->getModuleManager(),
         ));
     }
@@ -83,8 +104,8 @@ class DashboardController extends Controller
     protected function buildBreadcrumbs()
     {
         /** @var Breadcrumbs $breadcrumbs */
-        $breadcrumbs = $this->get("white_october_breadcrumbs");
-        $breadcrumbs->addItem("Home", $this->get("router")->generate("clastic_backoffice_dashboard"));
+        $breadcrumbs = $this->get('white_october_breadcrumbs');
+        $breadcrumbs->addItem('Home', $this->get('router')->generate('clastic_backoffice_dashboard'));
 
         return $breadcrumbs;
     }

@@ -11,13 +11,13 @@
     "require": {
         "php": ">=5.3.3",
         "clastic/core-bundle": "*",
-        "clastic/user-bundle": "*",
+        "clastic/security-bundle": "*",
         "symfony/dependency-injection": "~2.6",
         "doctrine/doctrine-bundle": "*",
         "thomaswelton/gravatarlib": "~0.1",
         "white-october/pagerfanta-bundle": "~1.0",
         "whiteoctober/breadcrumbs-bundle": "~1.0",
-        "egeloen/ordered-form-bundle": "~1.0",
+        "egeloen/ordered-form-bundle": "~2.0",
         "ezyang/htmlpurifier": "~4.6"
     },
     "autoload": {

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the Clastic package.
  *
@@ -6,7 +7,6 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 namespace Clastic\BackofficeBundle\Form\DataTransformer;
 
 use Symfony\Component\Form\DataTransformerInterface;
@@ -45,7 +45,7 @@ class EntityToIdTransformer implements DataTransformerInterface
     public function transform($entity)
     {
         if (null === $entity) {
-            return null;
+            return;
         }
 
         return $entity->getId();
@@ -59,7 +59,7 @@ class EntityToIdTransformer implements DataTransformerInterface
     public function reverseTransform($id)
     {
         if (!$id) {
-            return null;
+            return;
         }
 
         $entity = $this->objectManager

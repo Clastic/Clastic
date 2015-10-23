@@ -14,7 +14,7 @@
         <parameter key="clastic.backoffice.type.entity_hidden.class">Clastic\BackofficeBundle\Form\Type\EntityHiddenType</parameter>
         <parameter key="clastic.backoffice.type.entity_multi_select.class">Clastic\BackofficeBundle\Form\Type\EntityMultiSelectType</parameter>
         <parameter key="clastic.backoffice.type.tree.class">Clastic\BackofficeBundle\Form\Type\TreeType</parameter>
-        <parameter key="clastic.backoffice.type.settings.class">Clastic\BackofficeBundle\Form\SettingsType</parameter>
+        <parameter key="clastic.backoffice.type.settings.class">Clastic\BackofficeBundle\Form\Type\SettingsFormType</parameter>
         <parameter key="clastic.backoffice.type.fieldset.class">Clastic\BackofficeBundle\Form\Type\FieldsetType</parameter>
         <parameter key="clastic.backoffice.type.link.class">Clastic\BackofficeBundle\Form\Type\LinkType</parameter>
         <parameter key="clastic.backoffice.node.form_build.class">Clastic\BackofficeBundle\EventListener\NodeFormBuildListener</parameter>

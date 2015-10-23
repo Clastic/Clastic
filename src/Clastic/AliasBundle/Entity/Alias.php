@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the Clastic package.
  *
@@ -6,20 +7,19 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 namespace Clastic\AliasBundle\Entity;
 
 use Clastic\NodeBundle\Entity\Node;
 
 /**
- * Alias
+ * Alias.
  *
  * @author Dries De Peuter <dries@nousefreak.be>
  */
 class Alias
 {
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
@@ -39,9 +39,9 @@ class Alias
     private $path;
 
     /**
-     * Get id
+     * Get id.
      *
-     * @return integer
+     * @return int
      */
     public function getId()
     {
@@ -65,9 +65,10 @@ class Alias
     }
 
     /**
-     * Set alias
+     * Set alias.
      *
-     * @param  string $alias
+     * @param string $alias
+     *
      * @return Alias
      */
     public function setAlias($alias)
@@ -78,7 +79,7 @@ class Alias
     }
 
     /**
-     * Get alias
+     * Get alias.
      *
      * @return string
      */
@@ -88,9 +89,10 @@ class Alias
     }
 
     /**
-     * Set path
+     * Set path.
      *
-     * @param  string $path
+     * @param string $path
+     *
      * @return Alias
      */
     public function setPath($path)
@@ -101,7 +103,7 @@ class Alias
     }
 
     /**
-     * Get path
+     * Get path.
      *
      * @return string
      */

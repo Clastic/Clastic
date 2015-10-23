@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the Clastic package.
  *
@@ -6,7 +7,6 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 namespace Clastic\BackofficeBundle\Tests;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
@@ -39,7 +39,7 @@ abstract class AuthenticatedWebTestCase extends WebTestCase
         $loginManager->loginUser($firewallName, $user);
 
         // save the login token into the session and put it in a cookie
-        $container->get('session')->set('_security_' . $firewallName,
+        $container->get('session')->set('_security_'.$firewallName,
             serialize($container->get('security.context')->getToken()));
         $container->get('session')->save();
         $client->getCookieJar()->set(new Cookie($session->getName(), $session->getId()));

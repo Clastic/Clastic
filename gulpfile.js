@@ -9,6 +9,7 @@ var concat = require('gulp-concat'),
     filesize = require('gulp-filesize'),
     rename = require('gulp-rename'),
     less = require('gulp-less'),
+    cmq = require('gulp-combine-media-queries'),
     del = require('del'),
     livereload = require('gulp-livereload'),
     notify = require("gulp-notify"),
@@ -85,7 +86,7 @@ gulp.task('scripts:app', function() {
     gulp.src(paths.scripts.app)
         .pipe(concat('app.js'))
         //.pipe(stripDebug())
-        .pipe(uglify())
+        //.pipe(uglify())
         .on('error', errorHandler)
         .pipe(rename('app.min.js'))
         .pipe(gulp.dest(paths.build))

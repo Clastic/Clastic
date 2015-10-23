@@ -4,3 +4,21 @@ list:
 user:
   profile:
     title: Profile
+user.form:
+  new: New
+  tab:
+    general:
+      label: General
+      field:
+        username: Username
+        email: Email
+        enabled: Enabled
+    password:
+      label: Password
+      field:
+        password: Password
+        password_repeat: Confirm password
+    role:
+      label: Roles
+      field:
+        roles: Roles

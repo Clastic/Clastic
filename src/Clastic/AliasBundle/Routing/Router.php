@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the Clastic package.
  *
@@ -6,7 +7,6 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 namespace Clastic\AliasBundle\Routing;
 
 use Clastic\AliasBundle\Entity\AliasRepository;
@@ -57,9 +57,7 @@ class Router extends \Symfony\Bundle\FrameworkBundle\Routing\Router
         try {
             $parameters = parent::matchRequest($request);
             $canonical = $request->getPathInfo();
-
         } catch (ResourceNotFoundException $e) {
-
             $alias = $this->getAliasRepo()->findOneBy(array(
                 'alias' => substr($request->getPathInfo(), 1),
             ));
@@ -69,7 +67,7 @@ class Router extends \Symfony\Bundle\FrameworkBundle\Routing\Router
             }
 
             $parameters = $this->getMatcher()
-              ->match('/' . $alias->getPath());
+              ->match('/'.$alias->getPath());
             $canonical = $alias->getPath();
         }
 
@@ -124,7 +122,7 @@ class Router extends \Symfony\Bundle\FrameworkBundle\Routing\Router
               ));
 
             if ($alias) {
-                return $alias->getAlias() . (isset($matches[2]) ? $matches[2] : '');
+                return $alias->getAlias().(isset($matches[2]) ? $matches[2] : '');
             }
         }
 

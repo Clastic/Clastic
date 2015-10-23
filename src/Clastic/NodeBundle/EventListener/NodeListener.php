@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the Clastic package.
  *
@@ -6,7 +7,6 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 namespace Clastic\NodeBundle\EventListener;
 
 use Clastic\NodeBundle\Event\NodeCreateEvent;
@@ -18,7 +18,7 @@ use Doctrine\Bundle\DoctrineBundle\Registry;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**
- * NodeListener
+ * NodeListener.
  *
  * @author Dries De Peuter <dries@nousefreak.be>
  */
@@ -76,7 +76,7 @@ class NodeListener implements EventSubscriberInterface
     {
         $module = $this->moduleManager->getModule($type);
 
-        if (! $module instanceof NodeModuleInterface) {
+        if (!$module instanceof NodeModuleInterface) {
             throw new \Exception(sprintf('Type "%s" is not a NodeModule.', $type));
         }
 
@@ -96,5 +96,4 @@ class NodeListener implements EventSubscriberInterface
 
         $event->setEntity(new $className());
     }
-
 }

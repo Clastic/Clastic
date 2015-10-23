@@ -1,0 +1,32 @@
+list:
+  title: Titel
+  author: Auteur
+  created: Gemaakt op
+  status: Status
+  no_results: Geen items gevonden.
+  submodules: Submodules
+
+navigation:
+  module:
+    modules: Modules
+    administration: Administratie
+  user:
+    profile: Profiel
+    settings: Instellingen
+    logout: Afmelden
+
+dashboard:
+  title: Dashboard
+  recent: Recent
+  my_content: Mijn inhoud
+
+home: Home
+
+form.type:
+  multi_select:
+    selection: Selectie
+    add_all: Allen toevoegen
+    delete_all: Allen verwijderen
+    search: Zoeken
+    available: Beschikbaar
+    items: items

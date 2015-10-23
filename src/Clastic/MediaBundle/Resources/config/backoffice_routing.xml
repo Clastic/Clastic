@@ -8,10 +8,5 @@
         <default key="_controller">ClasticMediaBundle:Media:list</default>
     </route>
 
-    <route id="clastic_backoffice_media_browser_directory" path="/media/_browser/directory.json">
-        <default key="_controller">ClasticMediaBundle:Browser:directory</default>
-    </route>
-    <route id="clastic_backoffice_media_browser_files" path="/media/_browser/files.json">
-        <default key="_controller">ClasticMediaBundle:Browser:files</default>
-    </route>
+    <import resource="@FMElfinderBundle/Resources/config/routing.yml"/>
 </routes>

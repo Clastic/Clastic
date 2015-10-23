@@ -9,7 +9,7 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\Loader;
 
 /**
- * This is the class that loads and manages your bundle configuration
+ * This is the class that loads and manages your bundle configuration.
  *
  * To learn more see {@link http://symfony.com/doc/current/cookbook/bundles/extension.html}
  */
@@ -43,8 +43,6 @@ class ClasticNodeExtension extends Extension implements PrependExtensionInterfac
 
     /**
      * @param ContainerBuilder $container The service container
-     *
-     * @return void
      */
     protected function configureDoctrineBundle(ContainerBuilder $container)
     {
@@ -59,9 +57,9 @@ class ClasticNodeExtension extends Extension implements PrependExtensionInterfac
                                     'node_publication_filter' => array(
                                         'class' => 'Clastic\NodeBundle\Filter\NodePublicationFilter',
                                         'enabled' => true,
-                                    )
-                                )
-                            )
+                                    ),
+                                ),
+                            ),
                         )
                     );
                     break;

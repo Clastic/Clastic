@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the Clastic package.
  *
@@ -6,7 +7,6 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 namespace Clastic\BackofficeBundle\Controller;
 
 use Clastic\CoreBundle\Module\ModuleInterface;
@@ -18,7 +18,7 @@ use Symfony\Component\HttpFoundation\Response;
 use WhiteOctober\BreadcrumbsBundle\Model\Breadcrumbs;
 
 /**
- * SettingsController
+ * SettingsController.
  *
  * @author Dries De Peuter <dries@nousefreak.be>
  */
@@ -61,15 +61,15 @@ class SettingsController extends Controller
     protected function buildBreadcrumbs($type)
     {
         /** @var Breadcrumbs $breadcrumbs */
-        $breadcrumbs = $this->get("white_october_breadcrumbs");
-        $breadcrumbs->addItem("Home", $this->get("router")->generate("clastic_backoffice_dashboard"));
+        $breadcrumbs = $this->get('white_october_breadcrumbs');
+        $breadcrumbs->addItem('Home', $this->get('router')->generate('clastic_backoffice_dashboard'));
 
         $module = $this->getModuleManager()->getModule($type);
         if ($module) {
             $this->buildModuleBreadcrumb($breadcrumbs, $module);
         }
 
-        $breadcrumbs->addItem("Settings", $this->get("router")->generate("clastic_backoffice_setting", array(
+        $breadcrumbs->addItem('Settings', $this->get('router')->generate('clastic_backoffice_setting', array(
             'type' => $type,
         )));
 
@@ -87,7 +87,7 @@ class SettingsController extends Controller
             $this->buildModuleBreadcrumb($breadcrumbs, $parentModule);
         }
 
-        $breadcrumbs->addItem($module->getName(), $this->get("router")->generate("clastic_node_list", array(
+        $breadcrumbs->addItem($module->getName(), $this->get('router')->generate('clastic_node_list', array(
             'type' => $module->getIdentifier(),
         )));
     }

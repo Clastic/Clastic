@@ -5,7 +5,8 @@
 {% block html_title %}Clastic - {{ module.name }}{% endblock %}
 {% block page_title -%}
     {{ module.name }}
-    <a href="{{ path('clastic_node_form', {type: type}) }}"><i class="fa fa-plus-circle text-success"></i></a>
+
+    <a class="btn-add" href="{{ path('clastic_node_form', {type: type}) }}"><i class="fa fa-plus"></i></a>
 {%- endblock %}
 
 {% block header_actions %}
@@ -71,14 +72,18 @@
                         {% else %}
                             <tr>
                                 <td></td>
-                                <td colspan="4">{{ 'list.no_results'|trans }} <a href="{{ path('clastic_node_form', {type: type}) }}">Create your first.</a></td>
+                                <td colspan="4">
+                                    {% block list_empty %}
+                                        {{ 'list.no_results'|trans }} <a href="{{ path('clastic_node_form', {type: type}) }}">Create your first.</a>
+                                    {% endblock %}
+                                </td>
                             </tr>
                         {% endfor %}
                         </tbody>
                     </table>
                 </div>
                 <div class="pagerfanta">
-                    {{ pagerfanta(data, 'twitter_bootstrap3') }}
+                    {{ pagerfanta(data, 'twitter_bootstrap3_translated') }}
                 </div>
             </section>
         </div>

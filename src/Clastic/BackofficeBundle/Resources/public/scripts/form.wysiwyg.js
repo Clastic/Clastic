@@ -7,6 +7,8 @@
             return;
         }
 
+        var config = $elements.data('config') || {};
+
         $.ajax({
             url: "/vendor/ckeditor/ckeditor.js",
             dataType: "script",
@@ -17,7 +19,8 @@
                 dataType: "script",
                 cache: true
             }).done(function() {
-                $elements.ckeditor();
+                $elements.trigger('ckeditor-config', config);
+                $elements.ckeditor(config);
             });
         });
     });
