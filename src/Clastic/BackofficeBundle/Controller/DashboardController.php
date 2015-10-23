@@ -36,14 +36,14 @@ class DashboardController extends Controller
             'recent' => array(
                 'title' => 'dashboard.recent',
                 'content' => $this->renderView('ClasticBackofficeBundle:Dashboard:contentList.html.twig', array(
-                    'records' => $this->getMyContent(),
+                    'records' => $this->getRecent(),
                     'moduleManager' => $this->getModuleManager(),
                 )),
             ),
             'my_content' => array(
                 'title' => 'dashboard.my_content',
                 'content' => $this->renderView('ClasticBackofficeBundle:Dashboard:contentList.html.twig', array(
-                    'records' => $this->getRecent(),
+                    'records' => $this->getMyContent(),
                     'moduleManager' => $this->getModuleManager(),
                 )),
             ),
