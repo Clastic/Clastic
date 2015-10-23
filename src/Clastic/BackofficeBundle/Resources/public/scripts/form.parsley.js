@@ -22,7 +22,7 @@
         $.listen('parsley:form:validated', function() {
             var $tabPanel = $form.find('.tabpanel');
             if ($tabPanel.length) {
-                var $firstError = $tabPanel.find('.parsley-error').first();
+                var $firstError = $tabPanel.find('.has-error').first();
                 if ($firstError.length) {
                     var $tab = $form.find('[role="tablist"] li').eq($firstError.closest('.tab-pane').index());
                     $tab.find('a').tab('show');
