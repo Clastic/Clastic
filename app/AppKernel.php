@@ -34,14 +34,14 @@ class AppKernel extends Kernel
             new Clastic\NodeBundle\ClasticNodeBundle(),
 
             new Clastic\MenuBundle\ClasticMenuBundle(),
+            new FM\ElfinderBundle\FMElfinderBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
-            new Clastic\BlogBundle\ClasticBlogBundle(),
             new Demo\Bundle\DemoBundle(),
             new Clastic\FrontBundle\ClasticFrontBundle(),
             new Clastic\MediaBundle\ClasticMediaBundle(),
-            new Clastic\NewsBundle\ClasticNewsBundle(),
             new Clastic\TaxonomyBundle\ClasticTaxonomyBundle(),
             new Clastic\BlockBundle\ClasticBlockBundle(),
+            new Clastic\SecurityBundle\ClasticSecurityBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

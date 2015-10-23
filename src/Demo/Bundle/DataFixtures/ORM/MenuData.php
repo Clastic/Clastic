@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the Clastic package.
  *
@@ -6,7 +7,6 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 namespace Demo\Bundle\DataFixtures\ORM;
 
 use Clastic\BlogBundle\Entity\Blog;
@@ -28,7 +28,7 @@ class MenuData extends AbstractFixture implements OrderedFixtureInterface, Conta
     private $container;
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function setContainer(ContainerInterface $container = null)
     {
@@ -36,7 +36,7 @@ class MenuData extends AbstractFixture implements OrderedFixtureInterface, Conta
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function load(ObjectManager $manager)
     {
@@ -45,18 +45,18 @@ class MenuData extends AbstractFixture implements OrderedFixtureInterface, Conta
         $menuItemHome->setTitle('Home');
         $menuItemHome->setUrl('/');
         $manager->persist($menuItemHome);
-
-        $menuItemBlog = new MenuItem();
-        $menuItemBlog->setMenu($this->getReference('menu-main'));
-        $menuItemBlog->setTitle('Test blog');
-        $menuItemBlog->setNode($this->getReference('demo-blog-first')->getNode());
-        $manager->persist($menuItemBlog);
+//
+//        $menuItemBlog = new MenuItem();
+//        $menuItemBlog->setMenu($this->getReference('menu-main'));
+//        $menuItemBlog->setTitle('Test blog');
+//        $menuItemBlog->setNode($this->getReference('demo-blog-first')->getNode());
+//        $manager->persist($menuItemBlog);
 
         $manager->flush();
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getOrder()
     {

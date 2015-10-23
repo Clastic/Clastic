@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the Clastic package.
  *
@@ -6,47 +7,19 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 namespace Clastic\AliasBundle\Tests\Functional;
 
-use Clastic\BackofficeBundle\Tests\AuthenticatedWebTestCase;
+use Clastic\BackofficeBundle\Tests\ModuleWebTestCase;
 
 /**
  * @author Dries De Peuter <dries@nousefreak.be>
  *
  * @group functional
  */
-class AliasModuleTest extends AuthenticatedWebTestCase
+class AliasModuleTest extends ModuleWebTestCase
 {
     protected $listUrl = '/admin/alias/list';
     protected $newUrl = '/admin/alias/edit';
-
-    public function testInMenu()
-    {
-        $client = $this->createAuthorizedClient();
-        $crawler = $client->request('GET', '/admin/');
-
-        $this->assertTrue($client->getResponse()->isSuccessful(), "Request failed");
-        $this->assertEquals(
-            1,
-            $crawler->filter('nav li a:contains("Alias")')->count()
-        );
-
-        $a = $crawler->filter('nav li a:contains("Alias")');
-        $this->assertEquals($this->listUrl, $a->attr('href'));
-    }
-
-    public function testList()
-    {
-        $client = $this->createAuthorizedClient();
-        $crawler = $client->request('GET', $this->listUrl);
-
-        $this->assertTrue($client->getResponse()->isSuccessful(), "Request failed");
-        $this->assertEquals(
-            1,
-            $crawler->filter('nav li a:contains("Alias")')->count()
-        );
-    }
 
     /**
      * New form is not implemented yet.
@@ -56,7 +29,7 @@ class AliasModuleTest extends AuthenticatedWebTestCase
         $client = $this->createAuthorizedClient();
         $client->request('GET', $this->newUrl);
 
-        $this->assertFalse($client->getResponse()->isSuccessful(), "Request should failed");
+        $this->assertFalse($client->getResponse()->isSuccessful(), 'Request should failed');
     }
 
     public function testListNoAddButton()
@@ -64,7 +37,7 @@ class AliasModuleTest extends AuthenticatedWebTestCase
         $client = $this->createAuthorizedClient();
         $crawler = $client->request('GET', $this->listUrl);
 
-        $this->assertTrue($client->getResponse()->isSuccessful(), "Request failed");
+        $this->assertTrue($client->getResponse()->isSuccessful(), 'Request failed');
         $this->assertEquals(
             0,
             $crawler->filter('h1 a')->count()
@@ -80,6 +53,6 @@ class AliasModuleTest extends AuthenticatedWebTestCase
         $client = $this->createAuthorizedClient();
         $client->request('GET', $this->newUrl);
 
-        $this->assertFalse($client->getResponse()->isSuccessful(), "Request should failed");
+        $this->assertFalse($client->getResponse()->isSuccessful(), 'Request should failed');
     }
 }

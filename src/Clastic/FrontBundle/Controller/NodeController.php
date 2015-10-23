@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the Clastic package.
  *
@@ -6,7 +7,6 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 namespace Clastic\FrontBundle\Controller;
 
 use Clastic\FrontBundle\Event\FrontNodeEvent;
@@ -17,7 +17,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
- * Class NodeController
+ * Class NodeController.
  */
 class NodeController extends Controller
 {

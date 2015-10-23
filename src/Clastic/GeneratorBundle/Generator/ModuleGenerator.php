@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the Clastic package.
  *
@@ -6,12 +7,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 namespace Clastic\GeneratorBundle\Generator;
 
 use Sensio\Bundle\GeneratorBundle\Generator\Generator;
 use Symfony\Component\DependencyInjection\Container;
-use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpKernel\Bundle\BundleInterface;
 
 /**
@@ -21,18 +20,6 @@ use Symfony\Component\HttpKernel\Bundle\BundleInterface;
  */
 class ModuleGenerator extends Generator
 {
-    private $filesystem;
-
-    /**
-     * Constructor.
-     *
-     * @param Filesystem $filesystem A Filesystem instance
-     */
-    public function __construct(Filesystem $filesystem)
-    {
-        $this->filesystem = $filesystem;
-    }
-
     /**
      * @param BundleInterface $bundle
      * @param string          $module
@@ -41,10 +28,10 @@ class ModuleGenerator extends Generator
     public function generate(BundleInterface $bundle, $module, $entity)
     {
         $parameters = array(
-            'namespace'  => $bundle->getNamespace(),
-            'bundle'     => $bundle->getName(),
-            'module'     => $module,
-            'entity'     => $entity,
+            'namespace' => $bundle->getNamespace(),
+            'bundle' => $bundle->getName(),
+            'module' => $module,
+            'entity' => $entity,
             'identifier' => Container::underscore($module),
             'bundle_alias' => Container::underscore($bundle->getName()),
         );
@@ -70,9 +57,8 @@ class ModuleGenerator extends Generator
     {
         $file = $bundle->getPath().'/Resources/config/services.';
 
-        switch (true)
-        {
-            case file_exists($file . 'xml'):
+        switch (true) {
+            case file_exists($file.'xml'):
                 $this->updateDependencyInjectionXml($bundle, $parameters);
                 break;
             default;
@@ -87,7 +73,7 @@ class ModuleGenerator extends Generator
      * <service id="app.project.module" class="%app.project.module.class%">
      *  <tag name="clastic.module" node_module="true" alias="project" />
      *  <tag name="clastic.node_form" build_service="app.project.module.form_build" />
-     * </service>
+     * </service>.
      *
      * @param BundleInterface $bundle
      * @param array           $data

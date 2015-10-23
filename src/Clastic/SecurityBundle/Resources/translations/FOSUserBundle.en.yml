@@ -1,0 +1,10 @@
+# Security
+security:
+    login:
+        title: Please log in
+        username: "Username"
+        password: "Password"
+        remember_me: Remember me
+        submit: Login
+
+user.profile.title: Profile

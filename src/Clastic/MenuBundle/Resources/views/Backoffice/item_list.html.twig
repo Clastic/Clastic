@@ -4,7 +4,7 @@
 
 {% block page_title -%}
     Menu Item
-    <a href="{{ path('clastic_backoffice_menu_item_form', {menuId: menuId}) }}"><i class="fa fa-plus-circle text-success"></i></a>
+    <a class="btn-add" href="{{ path('clastic_backoffice_menu_item_form', {menuId: menuId}) }}"><i class="fa fa-plus"></i> Add</a>
 {%- endblock %}
 
 {% block list_header %}

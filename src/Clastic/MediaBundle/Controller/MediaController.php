@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the Clastic package.
  *
@@ -6,18 +7,17 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 namespace Clastic\MediaBundle\Controller;
 
 use Clastic\BackofficeBundle\Controller\AbstractModuleController;
 use Clastic\MediaBundle\Entity\File;
-use Clastic\MediaBundle\Form\FileType;
+use Clastic\MediaBundle\Form\Type\FileFormType;
 use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * MenuController
+ * MenuController.
  *
  * @author Dries De Peuter <dries@nousefreak.be>
  */
@@ -41,7 +41,7 @@ class MediaController extends AbstractModuleController
         $this->buildBreadcrumbs($this->getType());
 
         $file = new File();
-        $form = $this->createForm(new FileType(), $file);
+        $form = $this->createForm(new FileFormType(), $file);
 
         $form->handleRequest($request);
 
@@ -70,7 +70,7 @@ class MediaController extends AbstractModuleController
      */
     protected function resolveData($id)
     {
-        // TODO: Implement resolveData() method.
+        return;
     }
 
     /**
@@ -78,7 +78,7 @@ class MediaController extends AbstractModuleController
      */
     protected function getListTemplate()
     {
-        // TODO: Implement getListTemplate() method.
+        return;
     }
 
     /**
@@ -88,7 +88,7 @@ class MediaController extends AbstractModuleController
      */
     protected function buildForm($data)
     {
-        // TODO: Implement buildForm() method.
+        return;
     }
 
     /**
@@ -98,7 +98,7 @@ class MediaController extends AbstractModuleController
      */
     protected function resolveDataTitle($data)
     {
-        // TODO: Implement resolveDataTitle() method.
+        return;
     }
 
     /**
@@ -106,6 +106,6 @@ class MediaController extends AbstractModuleController
      */
     protected function getEntityName()
     {
-        // TODO: Implement getEntityName() method.
+        return;
     }
 }

@@ -16,9 +16,9 @@ $(function() {
                             };
                         }
                     },
-                    "check_callback" : function(operation, node, node_parent, node_position, more) {
+                    "check_callback" : function(operation, node, node_parent) {
 
-                        if (operation == 'move_node') {
+                        if (operation === 'move_node') {
                             // Wait for the parent to be opened before allowing to drop.
                             if (!node_parent.state.loaded) {
                                 return false;
@@ -31,7 +31,7 @@ $(function() {
                 "dnd": {
                     "copy": false,
                     "is_draggable": function(data) {
-                        return (data[0].id == props.currentId || data[0].id == 'current');
+                        return (data[0].id === props.currentId || data[0].id === 'current');
                     },
                     "open_onmove": true,
                     "inside_pos": 'last',

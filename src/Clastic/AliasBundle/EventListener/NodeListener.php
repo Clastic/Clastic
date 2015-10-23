@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the Clastic package.
  *
@@ -6,7 +7,6 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 namespace Clastic\AliasBundle\EventListener;
 
 use Clastic\AliasBundle\Entity\Alias;
@@ -20,7 +20,7 @@ use ProxyManager\Factory\LazyLoadingValueHolderFactory;
 use ProxyManager\Proxy\ValueHolderInterface;
 
 /**
- * NodeListener
+ * NodeListener.
  *
  * @author Dries De Peuter <dries@nousefreak.be>
  */
@@ -34,6 +34,7 @@ class NodeListener implements EventSubscriber
     public function getSubscribedEvents()
     {
         return array(
+            Events::prePersist,
             Events::postLoad,
             Events::postPersist,
             Events::postRemove,
@@ -50,8 +51,6 @@ class NodeListener implements EventSubscriber
 
     /**
      * @param LifecycleEventArgs $args
-     *
-     * @return null
      */
     public function postLoad(LifecycleEventArgs $args)
     {
@@ -73,7 +72,7 @@ class NodeListener implements EventSubscriber
 
         return $factory->createProxy(
             'Clastic\AliasBundle\Entity\Alias',
-            function (&$wrappedObject, $proxy, $method, $parameters, & $initializer) use ($args, $node) {
+            function (&$wrappedObject, $proxy, $method, $parameters, &$initializer) use ($args, $node) {
                 $wrappedObject = $args->getObjectManager()
                     ->getRepository('ClasticAliasBundle:Alias')
                     ->findOneBy(array(
@@ -94,7 +93,6 @@ class NodeListener implements EventSubscriber
         $entity = $args->getObject();
 
         if ($entity instanceof NodeReferenceInterface) {
-
             $node = $entity->getNode();
 
             $alias = $node->alias;
@@ -134,5 +132,41 @@ class NodeListener implements EventSubscriber
             $args->getObjectManager()
                 ->flush();
         }
+    }
+
+    /**
+     * @param LifecycleEventArgs $args
+     */
+    public function prePersist(LifecycleEventArgs $args)
+    {
+        $entity = $args->getObject();
+
+        if ($entity instanceof NodeReferenceInterface) {
+            $alias = $entity->getNode()->alias;
+            if (!$alias->getAlias()) {
+                $alias->setAlias($entity->getNode()->getTitle());
+
+                $i = 1;
+                while ($this->validateUnique($alias, $args)) {
+                    $alias->setAlias($entity->getNode()->getTitle().'_'.$i);
+                    ++$i;
+                }
+            }
+        }
+    }
+
+    /**
+     * @param Alias              $alias
+     * @param LifecycleEventArgs $args
+     *
+     * @return bool
+     */
+    private function validateUnique(Alias $alias, LifecycleEventArgs $args)
+    {
+        return (bool) $args->getObjectManager()
+            ->getRepository('ClasticAliasBundle:Alias')
+            ->findBy(array(
+                'alias' => $alias->getAlias(),
+            ));
     }
 }

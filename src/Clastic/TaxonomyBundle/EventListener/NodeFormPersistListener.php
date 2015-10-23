@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the Clastic package.
  *
@@ -6,7 +7,6 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 namespace Clastic\TaxonomyBundle\EventListener;
 
 use Clastic\NewsBundle\Entity\Category;
@@ -15,7 +15,7 @@ use Gedmo\Tree\Entity\Repository\NestedTreeRepository;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**
- * NodeListener
+ * NodeListener.
  *
  * @author Dries De Peuter <dries@nousefreak.be>
  */
@@ -38,7 +38,7 @@ class NodeFormPersistListener implements EventSubscriberInterface
      */
     public function saveCategoryTree(NodeFormPersistEvent $event)
     {
-        if (! $event->getForm()->getData() instanceof Category) {
+        if (!$event->getForm()->getData() instanceof Category) {
             return;
         }
 
@@ -49,15 +49,15 @@ class NodeFormPersistListener implements EventSubscriberInterface
             $positionData = json_decode($positionData);
             $data = $event->getForm()->getData();
 
-            $em = $event->getEm();
+            $entityManager = $event->getEntityManager();
             /** @var NestedTreeRepository $repo */
-            $repo = $em->getRepository($entityName);
+            $repo = $entityManager->getRepository($entityName);
 
             $positionData->parent = intval($positionData->parent) ? ($positionData->parent) : 0;
 
             $data->setParent(null);
             if (intval($positionData->parent) > 0) {
-                $data->setParent($em->getReference($entityName, $positionData->parent));
+                $data->setParent($entityManager->getReference($entityName, $positionData->parent));
             }
 
             $repo->persistAsFirstChild($data);
@@ -65,7 +65,7 @@ class NodeFormPersistListener implements EventSubscriberInterface
                 $repo->moveDown($data, $positionData->position);
             }
 
-            $em->flush();
+            $entityManager->flush();
         }
     }
 }

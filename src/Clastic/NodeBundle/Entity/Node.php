@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the Clastic package.
  *
@@ -6,20 +7,19 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 namespace Clastic\NodeBundle\Entity;
 
 use Clastic\UserBundle\Entity\User;
 
 /**
- * Node
+ * Node.
  *
  * @author Dries De Peuter <dries@nousefreak.be>
  */
 class Node
 {
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
@@ -59,9 +59,9 @@ class Node
         $this->changed = new \DateTime();
     }
     /**
-     * Get id
+     * Get id.
      *
-     * @return integer
+     * @return int
      */
     public function getId()
     {
@@ -69,7 +69,7 @@ class Node
     }
 
     /**
-     * Set title
+     * Set title.
      *
      * @param string $title
      *
@@ -83,7 +83,7 @@ class Node
     }
 
     /**
-     * Get title
+     * Get title.
      *
      * @return string
      */
@@ -109,7 +109,7 @@ class Node
     }
 
     /**
-     * Set user
+     * Set user.
      *
      * @param User $user
      *
@@ -123,7 +123,7 @@ class Node
     }
 
     /**
-     * Get user
+     * Get user.
      *
      * @return User
      */
@@ -133,7 +133,7 @@ class Node
     }
 
     /**
-     * Set created
+     * Set created.
      *
      * @param \DateTime $created
      *
@@ -147,7 +147,7 @@ class Node
     }
 
     /**
-     * Get created
+     * Get created.
      *
      * @return \DateTime
      */
@@ -157,7 +157,7 @@ class Node
     }
 
     /**
-     * Set changed
+     * Set changed.
      *
      * @param \DateTime $changed
      *
@@ -171,7 +171,7 @@ class Node
     }
 
     /**
-     * Get changed
+     * Get changed.
      *
      * @return \DateTime
      */

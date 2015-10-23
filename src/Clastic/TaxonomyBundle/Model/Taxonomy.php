@@ -6,14 +6,14 @@ use Clastic\NodeBundle\Entity\Node;
 use Clastic\NodeBundle\Node\NodeReferenceInterface;
 
 /**
- * Taxonomy
+ * Taxonomy.
  *
  * @author Dries De Peuter <dries@nousefreak.be>
  */
 abstract class Taxonomy implements NodeReferenceInterface
 {
     /**
-     * @var integer
+     * @var int
      */
     protected $id;
 
@@ -52,9 +52,9 @@ abstract class Taxonomy implements NodeReferenceInterface
     protected $children;
 
     /**
-     * Get id
+     * Get id.
      *
-     * @return integer
+     * @return int
      */
     public function getId()
     {
@@ -62,7 +62,7 @@ abstract class Taxonomy implements NodeReferenceInterface
     }
 
     /**
-     * Set description
+     * Set description.
      *
      * @param string $description
      *
@@ -76,7 +76,7 @@ abstract class Taxonomy implements NodeReferenceInterface
     }
 
     /**
-     * Get description
+     * Get description.
      *
      * @return string
      */

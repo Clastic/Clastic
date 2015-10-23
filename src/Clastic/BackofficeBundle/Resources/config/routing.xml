@@ -4,6 +4,10 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
 
+    <route id="clastic_backoffice_heartbeat" path="/_heartbeat">
+        <default key="_controller">ClasticBackofficeBundle:Heartbeat:tick</default>
+    </route>
+
     <import resource="@ClasticUserBundle/Resources/config/routing_backoffice.xml"/>
     <import resource="@ClasticNodeBundle/Resources/config/routing_backoffice.xml"/>
 

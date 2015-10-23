@@ -3,12 +3,12 @@
 namespace Clastic\AliasBundle\Entity;
 
 /**
- * AliasPattern
+ * AliasPattern.
  */
 class AliasPattern
 {
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
@@ -23,9 +23,9 @@ class AliasPattern
     private $pattern;
 
     /**
-     * Get id
+     * Get id.
      *
-     * @return integer
+     * @return int
      */
     public function getId()
     {
@@ -33,9 +33,10 @@ class AliasPattern
     }
 
     /**
-     * Set moduleIdentifier
+     * Set moduleIdentifier.
      *
-     * @param  string       $moduleIdentifier
+     * @param string $moduleIdentifier
+     *
      * @return AliasPattern
      */
     public function setModuleIdentifier($moduleIdentifier)
@@ -46,7 +47,7 @@ class AliasPattern
     }
 
     /**
-     * Get moduleIdentifier
+     * Get moduleIdentifier.
      *
      * @return string
      */
@@ -56,9 +57,10 @@ class AliasPattern
     }
 
     /**
-     * Set pattern
+     * Set pattern.
      *
-     * @param  string       $pattern
+     * @param string $pattern
+     *
      * @return AliasPattern
      */
     public function setPattern($pattern)
@@ -69,7 +71,7 @@ class AliasPattern
     }
 
     /**
-     * Get pattern
+     * Get pattern.
      *
      * @return string
      */

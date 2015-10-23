@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the Clastic package.
  *
@@ -6,21 +7,20 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 namespace Clastic\TextBundle\Entity;
 
 use Clastic\NodeBundle\Entity\Node;
 use Clastic\NodeBundle\Node\NodeReferenceInterface;
 
 /**
- * Text
+ * Text.
  *
  * @author Dries De Peuter <dries@nousefreak.be>
  */
 class Text implements NodeReferenceInterface
 {
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
@@ -35,9 +35,9 @@ class Text implements NodeReferenceInterface
     private $body;
 
     /**
-     * Get id
+     * Get id.
      *
-     * @return integer
+     * @return int
      */
     public function getId()
     {
@@ -61,9 +61,10 @@ class Text implements NodeReferenceInterface
     }
 
     /**
-     * Set body
+     * Set body.
      *
-     * @param  string $body
+     * @param string $body
+     *
      * @return Text
      */
     public function setBody($body)
@@ -74,7 +75,7 @@ class Text implements NodeReferenceInterface
     }
 
     /**
-     * Get body
+     * Get body.
      *
      * @return string
      */

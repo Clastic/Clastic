@@ -3,17 +3,17 @@
 namespace Clastic\NodeBundle\Entity;
 
 /**
- * NodePublication
+ * NodePublication.
  */
 class NodePublication
 {
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
     /**
-     * @var boolean
+     * @var bool
      */
     private $available;
 
@@ -35,9 +35,9 @@ class NodePublication
         $this->available = true;
     }
     /**
-     * Get id
+     * Get id.
      *
-     * @return integer
+     * @return int
      */
     public function getId()
     {
@@ -45,9 +45,9 @@ class NodePublication
     }
 
     /**
-     * Set available
+     * Set available.
      *
-     * @param boolean $available
+     * @param bool $available
      *
      * @return NodePublication
      */
@@ -59,17 +59,17 @@ class NodePublication
     }
 
     /**
-     * Get available
+     * Get available.
      *
-     * @return boolean
+     * @return bool
      */
-    public function getAvailable()
+    public function isAvailable()
     {
         return $this->available;
     }
 
     /**
-     * Set publishedFrom
+     * Set publishedFrom.
      *
      * @param \DateTime $publishedFrom
      *
@@ -83,7 +83,7 @@ class NodePublication
     }
 
     /**
-     * Get publishedFrom
+     * Get publishedFrom.
      *
      * @return \DateTime
      */
@@ -93,7 +93,7 @@ class NodePublication
     }
 
     /**
-     * Set publishedTill
+     * Set publishedTill.
      *
      * @param \DateTime $publishedTill
      *
@@ -107,7 +107,7 @@ class NodePublication
     }
 
     /**
-     * Get publishedTill
+     * Get publishedTill.
      *
      * @return \DateTime
      */

@@ -1,18 +1,30 @@
 {% use 'form_div_layout.html.twig' %}
 
+{% trans_default_domain 'clastic' %}
+
 {% block form_row -%}
     {% if form.parent.parent %}
-        <div class="form-group">
+        <div class="form-group{%- if errors|length > 0 %} has-error{%- endif -%}">
         {% set attr = attr|merge({'class': (attr.class|default('') ~ ' form-control')|trim}) %}
     {% endif %}
     {{- form_label(form) -}}
-    {{- form_errors(form) -}}
     {{- form_widget(form) -}}
+    {{- form_errors(form) -}}
 
     {% if form.parent.parent %}
         </div>
     {% endif %}
 {%- endblock form_row %}
+
+{%- block form_errors -%}
+    {%- if errors|length > 0 -%}
+        <span class="bg-danger help-block">
+            {%- for error in errors -%}
+                <div class="text-danger">{{ error.message }}</div>
+            {%- endfor -%}
+        </span>
+    {%- endif -%}
+{%- endblock form_errors -%}
 
 {##
  # Fields
@@ -90,7 +102,7 @@
             {% for child in form if child.vars.tab_type == 'tabs_tab' -%}
                 <li role="presentation"{% if loop.first %} class="active"{% endif %}>
                     <a href="#{{ child.vars.id }}" aria-controls="{{ child.vars.id }}" role="tab" data-toggle="tab">
-                        {{ child.vars.label }}
+                        {{ child.vars.label|trans({}, child.vars.translation_domain) }}
                     </a>
                 </li>
             {%- endfor %}
@@ -121,7 +133,7 @@
 {% block fieldset_widget %}
     <fieldset {{ block('widget_container_attributes') }}>
         {% if legend is defined and legend is not empty %}
-            <legend>{{ legend }}</legend>
+            <legend>{{ legend|trans({}, translation_domain) }}</legend>
         {% endif %}
         {{ form_widget(form) }}
     </fieldset>
@@ -134,7 +146,14 @@
 {%- endblock multi_select_widget %}
 
 {% block entity_multi_select_widget %}
-    <div class="multi_select">
+    <div class="multi_select" data-translation="{{ {
+        "selection": "form.type.multi_select.selection"|trans,
+        "available": "form.type.multi_select.available"|trans,
+        "search": "form.type.multi_select.search"|trans,
+        "delete_all": "form.type.multi_select.delete_all"|trans,
+        "add_all": "form.type.multi_select.add_all"|trans,
+        "items": "form.type.multi_select.items"|trans
+    }|json_encode }}">
         {{ block('choice_widget') }}
     </div>
 {% endblock entity_multi_select_widget %}
@@ -146,6 +165,11 @@
         <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
     </div>
 {%- endblock datepicker_widget %}
+
+{% block wysiwyg_widget -%}
+    {% set attr = attr|merge({'data-config': {"language": app.request.locale|default('en')}|json_encode}) %}
+    {{- block('textarea_widget') -}}
+{%- endblock wysiwyg_widget %}
 
 {% block tree_widget -%}
     <div class="tree-container">

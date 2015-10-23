@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the Clastic package.
  *
@@ -6,7 +7,6 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 namespace Clastic\NodeBundle\Event;
 
 use Clastic\NodeBundle\Entity\Node;
@@ -34,18 +34,18 @@ class NodeFormPersistEvent extends Event
     /**
      * @var EntityManager
      */
-    private $em;
+    private $entityManager;
 
     /**
      * @param Node          $node
      * @param Form          $form
-     * @param EntityManager $em
+     * @param EntityManager $entityManager
      */
-    public function __construct(Node $node, Form $form, EntityManager $em)
+    public function __construct(Node $node, Form $form, EntityManager $entityManager)
     {
         $this->node = $node;
         $this->form = $form;
-        $this->em = $em;
+        $this->entityManager = $entityManager;
     }
 
     /**
@@ -67,8 +67,8 @@ class NodeFormPersistEvent extends Event
     /**
      * @return EntityManager
      */
-    public function getEm()
+    public function getEntityManager()
     {
-        return $this->em;
+        return $this->entityManager;
     }
 }

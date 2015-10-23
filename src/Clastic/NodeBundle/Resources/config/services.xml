@@ -7,7 +7,7 @@
     <parameters>
         <parameter key="clastic.node_manager.class">Clastic\NodeBundle\Node\NodeManager</parameter>
         <parameter key="clastic.node_listener.class">Clastic\NodeBundle\EventListener\NodeListener</parameter>
-        <parameter key="clastic.node.form.node.class">Clastic\NodeBundle\Form\NodeType</parameter>
+        <parameter key="clastic.node.form.node.class">Clastic\NodeBundle\Form\Type\NodeFormType</parameter>
         <parameter key="clastic.node.type.node.class">Clastic\NodeBundle\Form\Type\NodeType</parameter>
         <parameter key="clastic.node.form.extension.node.class">Clastic\NodeBundle\Form\Extension\NodeTypeExtension</parameter>
         <parameter key="clastic.node.doctrine.filter.publication.configurator.class">Clastic\NodeBundle\Filter\NodePublicationConfigurator</parameter>

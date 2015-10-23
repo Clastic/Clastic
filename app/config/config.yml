@@ -31,6 +31,8 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    globals:
+        clastic_site_name: %clastic_site_name%
 
 # Assetic Configuration
 assetic:
@@ -73,8 +75,3 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
-
-stof_doctrine_extensions:
-    orm:
-        default:
-            tree: true

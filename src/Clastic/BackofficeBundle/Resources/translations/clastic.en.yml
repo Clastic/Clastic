@@ -21,3 +21,12 @@ dashboard:
   my_content: My content
 
 home: Home
+
+form.type:
+  multi_select:
+    selection: Selection
+    add_all: Add all
+    delete_all: Delete all
+    search: Search
+    available: Available
+    items: items

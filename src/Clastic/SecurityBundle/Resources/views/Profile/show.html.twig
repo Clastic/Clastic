@@ -1,0 +1,27 @@
+{% extends 'ClasticBackofficeBundle::base.html.twig' %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block page_title %}{{ 'user.profile.title'|trans }}{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-3">
+            <img src="{{ avatar() }}" class="img-thumbnail img-responsive" alt=""/>
+        </div>
+        <div class="col-md-9">
+            <table class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <th class="info">{{ 'profile.show.username'|trans }}</th>
+                        <td>{{ user.username }}</td>
+                    </tr>
+                    <tr>
+                        <th class="info">{{ 'profile.show.email'|trans }}</th>
+                        <td>{{ user.email }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

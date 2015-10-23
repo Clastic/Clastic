@@ -19,4 +19,5 @@ User guide
     entities
     modules
     bundles
+    contrib
 

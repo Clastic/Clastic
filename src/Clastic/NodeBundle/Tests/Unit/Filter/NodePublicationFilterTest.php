@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the Clastic package.
  *
@@ -6,7 +7,6 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 namespace Clastic\NodeBundle\Tests\Unit\Filter;
 
 use Clastic\NodeBundle\Filter\NodePublicationFilter;
@@ -23,10 +23,10 @@ class NodePublicationFilterTest extends TypeTestCase
             ->disableOriginalConstructor()
             ->getMock();
 
-        $em = $this->getMockBuilder('Doctrine\ORM\EntityManager')
+        $entityManager = $this->getMockBuilder('Doctrine\ORM\EntityManager')
             ->disableOriginalConstructor()
             ->getMock();
-        $filter = new NodePublicationFilter($em);
+        $filter = new NodePublicationFilter($entityManager);
 
         $filter->setApplyPublication(false);
 
@@ -45,10 +45,10 @@ class NodePublicationFilterTest extends TypeTestCase
             ->expects($this->once())
             ->method('implementsInterface');
 
-        $em = $this->getMockBuilder('Doctrine\ORM\EntityManager')
+        $entityManager = $this->getMockBuilder('Doctrine\ORM\EntityManager')
             ->disableOriginalConstructor()
             ->getMock();
-        $filter = new NodePublicationFilter($em);
+        $filter = new NodePublicationFilter($entityManager);
 
         $this->assertEquals('', $filter->addFilterConstraint($classMetadata, 'alias'));
     }
@@ -66,10 +66,10 @@ class NodePublicationFilterTest extends TypeTestCase
             ->method('implementsInterface')
             ->willReturn(true);
 
-        $em = $this->getMockBuilder('Doctrine\ORM\EntityManager')
+        $entityManager = $this->getMockBuilder('Doctrine\ORM\EntityManager')
             ->disableOriginalConstructor()
             ->getMock();
-        $filter = new NodePublicationFilter($em);
+        $filter = new NodePublicationFilter($entityManager);
 
         $query = $filter->addFilterConstraint($classMetadata, 'alias');
         $this->assertContains('publishedFrom', $query);
