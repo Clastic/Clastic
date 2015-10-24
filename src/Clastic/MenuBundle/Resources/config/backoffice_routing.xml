@@ -13,6 +13,10 @@
         <default key="id" xsi:nil="true" />
     </route>
 
+    <route id="clastic_backoffice_menu_delete" path="/menu/delete/{id}">
+        <default key="_controller">ClasticMenuBundle:Menu:delete</default>
+    </route>
+
     <route id="clastic_backoffice_menu_item_list" path="/menu/{menuId}/items/list">
         <default key="_controller">ClasticMenuBundle:MenuItem:list</default>
     </route>
