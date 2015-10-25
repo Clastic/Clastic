@@ -6,6 +6,7 @@
     <tr>
         <th></th>
         <th>{{ 'list.username'|trans }}</th>
+        <th>{{ 'list.groups'|trans }}</th>
         <th>{{ 'list.roles'|trans }}</th>
     </tr>
 {% endblock %}
@@ -17,6 +18,11 @@
             <a class="btn btn-danger btn-xs" href="{{ path('clastic_node_delete', {type: type, id: record.id}) }}"><i class="fa fa-trash"></i></a>
         </td>
         <td>{{ record.username }}</td>
+        <td>
+            {% for group in record.groups %}
+                <span class="label label-default">{{ group }}</span>
+            {% endfor %}
+        </td>
         <td>
             {% for role in record.roles %}
                 <span class="label label-default">{{ role }}</span>

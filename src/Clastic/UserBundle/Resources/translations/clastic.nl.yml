@@ -1,6 +1,7 @@
 list:
   username: Gebruikersnaam
   roles: Rollen
+  groups: Groepen
 user:
   profile:
     title: Profiel

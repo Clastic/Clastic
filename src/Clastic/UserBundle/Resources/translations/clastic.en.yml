@@ -1,6 +1,7 @@
 list:
   username: Username
   roles: Roles
+  groups: Groups
 user:
   profile:
     title: Profile
