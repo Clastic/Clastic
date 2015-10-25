@@ -9,13 +9,15 @@
  */
 namespace Clastic\UserBundle\Entity;
 
-use Doctrine\ORM\EntityRepository;
+use FOS\UserBundle\Model\Group as BaseGroup;
 
 /**
- * UserRepository.
- *
  * @author Dries De Peuter <dries@nousefreak.be>
  */
-class UserRepository extends EntityRepository
+class Group extends BaseGroup
 {
+    function __toString()
+    {
+        return $this->getName();
+    }
 }

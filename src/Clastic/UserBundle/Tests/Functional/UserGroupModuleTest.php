@@ -7,15 +7,17 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Clastic\UserBundle\Entity;
+namespace Clastic\UserBundle\Tests\Functional;
 
-use Doctrine\ORM\EntityRepository;
+use Clastic\BackofficeBundle\Tests\ModuleWebTestCase;
 
 /**
- * UserRepository.
- *
  * @author Dries De Peuter <dries@nousefreak.be>
+ *
+ * @group functional
  */
-class UserRepository extends EntityRepository
+class UserGroupModuleTest extends ModuleWebTestCase
 {
+    protected $listUrl = '/admin/user_group/list';
+    protected $formUrl = '/admin/user_group/edit';
 }

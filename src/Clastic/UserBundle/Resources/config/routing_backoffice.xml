@@ -19,4 +19,17 @@
     <route id="clastic_backoffice_user_delete" path="/user/delete/{id}">
         <default key="_controller">ClasticUserBundle:User:delete</default>
     </route>
+
+    <route id="clastic_backoffice_user_group_list" path="/user_group/list">
+        <default key="_controller">ClasticUserBundle:Group:list</default>
+    </route>
+
+    <route id="clastic_backoffice_user_group_form" path="/user_group/edit/{id}">
+        <default key="_controller">ClasticUserBundle:Group:form</default>
+        <default key="id" xsi:nil="true" />
+    </route>
+
+    <route id="clastic_backoffice_user_group_delete" path="/user_group/delete/{id}">
+        <default key="_controller">ClasticUserBundle:Group:delete</default>
+    </route>
 </routes>

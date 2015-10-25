@@ -22,3 +22,14 @@ user.form:
       label: Roles
       field:
         roles: Roles
+    group:
+      label: Groups
+      field:
+        groups: Groups
+
+user_group:
+  form:
+    tab:
+      general:
+        field:
+          name: Name

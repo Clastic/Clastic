@@ -12,10 +12,10 @@ namespace Clastic\UserBundle\Entity;
 use Doctrine\ORM\EntityRepository;
 
 /**
- * UserRepository.
+ * GroupRepository.
  *
  * @author Dries De Peuter <dries@nousefreak.be>
  */
-class UserRepository extends EntityRepository
+class GroupRepository extends EntityRepository
 {
 }

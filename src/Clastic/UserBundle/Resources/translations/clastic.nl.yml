@@ -22,3 +22,14 @@ user.form:
       label: Rollen
       field:
         roles: Rollen
+    group:
+      label: Groepen
+      field:
+        groups: Groepen
+
+user_group:
+  form:
+    tab:
+      general:
+        field:
+          name: Naam

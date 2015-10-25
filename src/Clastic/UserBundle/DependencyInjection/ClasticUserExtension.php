@@ -51,11 +51,12 @@ class ClasticUserExtension extends Extension implements PrependExtensionInterfac
                 case 'fos_user':
                     $container->prependExtensionConfig(
                         $name,
-                        array(
+                        [
                             'db_driver' => 'orm',
                             'firewall_name' => 'backoffice',
                             'user_class' => 'Clastic\UserBundle\Entity\User',
-                        )
+                            'group' => ['group_class' => 'Clastic\UserBundle\Entity\Group'],
+                        ]
                     );
                     break;
             }

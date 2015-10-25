@@ -42,6 +42,7 @@ class UserFormType extends AbstractType
                     ->add($this->createGeneralTab($builder))
                     ->add($this->createPasswordTab($builder))
                     ->add($this->createRoleTab($builder))
+                    ->add($this->createGroupTab($builder))
                     ->add($this->createActionTab($builder))
             );
     }
@@ -99,6 +100,15 @@ class UserFormType extends AbstractType
             ->add('roles', 'multi_select', array(
                 'choices' => $this->getAvailableRoles($builder),
                 'label' => 'user.form.tab.role.field.roles',
+            ));
+    }
+
+    private function createGroupTab(FormBuilderInterface $builder)
+    {
+        return $this->createTab($builder, 'group', array('label' => 'user.form.tab.group.label'))
+            ->add('groups', 'entity_multi_select', array(
+                'class' => 'ClasticUserBundle:Group',
+                'label' => 'user.form.tab.group.field.groups',
             ));
     }
 
