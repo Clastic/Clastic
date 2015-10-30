@@ -33,7 +33,7 @@ class ProfileController extends FOSProfileController
     {
         /** @var Breadcrumbs $breadcrumbs */
         $breadcrumbs = $this->get('white_october_breadcrumbs');
-        $breadcrumbs->addItem('Home', $this->get('router')->generate('clastic_backoffice_dashboard'));
+        $breadcrumbs->addItem('navigation.home', $this->get('router')->generate('clastic_backoffice_dashboard'));
 
         /** @var NodeModuleInterface $module */
         $module = $this->get('clastic.module_manager')->getModule($type);

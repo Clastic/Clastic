@@ -7,6 +7,8 @@ list:
   submodules: Submodules
 
 navigation:
+  home: Home
+  new: New
   module:
     modules: Modules
     administration: Administration

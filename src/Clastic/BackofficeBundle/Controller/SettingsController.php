@@ -62,7 +62,7 @@ class SettingsController extends Controller
     {
         /** @var Breadcrumbs $breadcrumbs */
         $breadcrumbs = $this->get('white_october_breadcrumbs');
-        $breadcrumbs->addItem('Home', $this->get('router')->generate('clastic_backoffice_dashboard'));
+        $breadcrumbs->addItem('navigation.home', $this->get('router')->generate('clastic_backoffice_dashboard'));
 
         $module = $this->getModuleManager()->getModule($type);
         if ($module) {

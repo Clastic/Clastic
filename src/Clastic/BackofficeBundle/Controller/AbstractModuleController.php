@@ -126,7 +126,11 @@ abstract class AbstractModuleController extends Controller
         $form = $this->buildForm($data);
 
         $breadcrumbs = $this->buildBreadcrumbs($this->getType());
-        $breadcrumbs->addItem($this->resolveDataTitle($data));
+        if (!$data->getId()) {
+            $breadcrumbs->addItem('navigation.new');
+        } else {
+            $breadcrumbs->addItem($this->resolveDataTitle($data));
+        }
 
         $form->handleRequest($request);
 
@@ -231,13 +235,10 @@ abstract class AbstractModuleController extends Controller
      */
     protected function buildBreadcrumbs($type)
     {
-        /** @var TranslatorInterface $translator */
-        $translator = $this->get('translator');
-
         /** @var Breadcrumbs $breadcrumbs */
         $breadcrumbs = $this->get('white_october_breadcrumbs');
         $breadcrumbs->addItem(
-            $translator->trans('home', [], 'clastic'),
+            'navigation.home',
             $this->get('router')->generate('clastic_backoffice_dashboard')
         );
 
