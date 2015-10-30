@@ -58,11 +58,12 @@ class NodeTypeExtension extends AbstractTypeExtension
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->addEventSubscriber($this->formSubscriber);
-        $aliasTab = $this->createTab($builder, 'alias', array('label' => 'Alias'));
+        $aliasTab = $this->createTab($builder, 'alias', array('label' => 'alias.module.alias'));
 
         $aliasTab->add('alias', 'alias', array(
             'property_path' => 'node.alias.alias',
             'alias_pattern' => $this->findPattern($builder),
+            'label' => 'alias.module.alias',
         ));
 
         $builder->get('tabs')
