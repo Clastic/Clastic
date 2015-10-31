@@ -11,7 +11,6 @@ namespace Clastic\MenuBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
  * MenuType.
@@ -75,13 +74,6 @@ class MenuFormType extends AbstractType
                 'label' => 'Save',
                 'attr' => array('class' => 'btn btn-success'),
             ));
-    }
-
-    /**
-     * @param OptionsResolverInterface $resolver
-     */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
-    {
     }
 
     /**

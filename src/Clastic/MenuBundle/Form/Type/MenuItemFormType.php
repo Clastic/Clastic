@@ -13,7 +13,6 @@ use Clastic\BackofficeBundle\Form\Type\TreeType;
 use Symfony\Bundle\FrameworkBundle\Routing\Router;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
  * @author Dries De Peuter <dries@nousefreak.be>
@@ -120,13 +119,6 @@ class MenuItemFormType extends AbstractType
             'label' => 'Position',
             ))
             ->add('position', $treeType);
-    }
-
-    /**
-     * @param OptionsResolverInterface $resolver
-     */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
-    {
     }
 
     /**
