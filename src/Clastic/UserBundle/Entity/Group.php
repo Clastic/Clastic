@@ -16,7 +16,7 @@ use FOS\UserBundle\Model\Group as BaseGroup;
  */
 class Group extends BaseGroup
 {
-    function __toString()
+    public function __toString()
     {
         return $this->getName();
     }
