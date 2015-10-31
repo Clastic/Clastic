@@ -75,7 +75,7 @@
 
         <service id="clastic.backoffice.twig.avatar_extension" class="%clastic.backoffice.twig.avatar_extension.class%">
             <tag name="twig.extension" />
-            <argument type="service" id="security.context" />
+            <argument type="service" id="security.token_storage" />
         </service>
 
         <service id="clastic.backoffice.exception_listener" class="%clastic.backoffice.exception_listener.class%">

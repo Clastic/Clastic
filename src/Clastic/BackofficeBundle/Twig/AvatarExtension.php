@@ -9,7 +9,7 @@
  */
 namespace Clastic\BackofficeBundle\Twig;
 
-use Symfony\Component\Security\Core\SecurityContext;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use thomaswelton\GravatarLib\Gravatar;
 
 /**
@@ -18,11 +18,11 @@ use thomaswelton\GravatarLib\Gravatar;
 class AvatarExtension extends \Twig_Extension
 {
     /**
-     * @param SecurityContext $context
+     * @param TokenStorageInterface $tokenStorage
      */
-    public function __construct(SecurityContext $context)
+    public function __construct(TokenStorageInterface $tokenStorage)
     {
-        $this->context = $context;
+        $this->tokenStorage = $tokenStorage;
     }
 
     /**
@@ -41,7 +41,7 @@ class AvatarExtension extends \Twig_Extension
     public function getFunctions()
     {
         return array(
-            new \Twig_SimpleFunction('avatar', array($this, 'buildAvatar')),
+            new \Twig_SimpleFunction('avatar', [$this, 'buildAvatar']),
         );
     }
 
@@ -52,7 +52,7 @@ class AvatarExtension extends \Twig_Extension
      */
     public function getUserEmail()
     {
-        $token = $this->context->getToken();
+        $token = $this->tokenStorage->getToken();
 
         if (!$token) {
             return;
