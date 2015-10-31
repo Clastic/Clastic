@@ -12,7 +12,7 @@ namespace Clastic\BackofficeBundle\Form\Type;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * MultiSelectType.
@@ -48,15 +48,17 @@ class TreeType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
-            'attr' => array(
+        parent::configureOptions($resolver);
+
+        $resolver->setDefaults([
+            'attr' => [
                 'class' => 'tree',
-            ),
+            ],
             'mapped' => false,
             'required' => false,
-        ));
+        ]);
     }
 
     /**

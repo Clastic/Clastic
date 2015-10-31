@@ -10,7 +10,7 @@
 namespace Clastic\BackofficeBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * MultiSelectType.
@@ -20,10 +20,12 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 class EntityMultiSelectType extends AbstractType
 {
     /**
-     * {@inheritdoc}
+     * @param OptionsResolver $resolver
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
+        parent::configureOptions($resolver);
+
         $resolver->setDefaults(array(
             'multiple' => true,
         ));
