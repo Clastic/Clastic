@@ -11,7 +11,6 @@ namespace Clastic\MediaBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
  * @author Dries De Peuter <dries@nousefreak.be>
@@ -30,13 +29,6 @@ class FileFormType extends AbstractType
                 'label' => 'Save',
                 'attr' => array('class' => 'btn btn-success'),
             ));
-    }
-
-    /**
-     * @param OptionsResolverInterface $resolver
-     */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
-    {
     }
 
     /**
