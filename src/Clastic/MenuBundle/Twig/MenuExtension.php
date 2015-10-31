@@ -19,11 +19,6 @@ use Symfony\Bundle\FrameworkBundle\Templating\GlobalVariables;
 class MenuExtension extends \Twig_Extension
 {
     /**
-     * @var \Twig_Environment
-     */
-    private $environment;
-
-    /**
      * @var MenuItemRepository
      */
     private $repo;
@@ -54,19 +49,20 @@ class MenuExtension extends \Twig_Extension
     }
 
     /**
-     * @param string $menuIdentifier
-     * @param int    $depth
+     * @param \Twig_Environment $environment
+     * @param string            $menuIdentifier
+     * @param int               $depth
      *
      * @return string
      */
-    public function renderMenu($menuIdentifier, $depth = 1)
+    public function renderMenu(\Twig_Environment $environment, $menuIdentifier, $depth = 1)
     {
         $queryBuilder = $this->repo->getNodesHierarchyQueryBuilder(null, false, array(), true)
             ->join('ClasticMenuBundle:Menu', 'menu', 'menu.id = node.menu')
             ->andWhere('menu.identifier = :identifier')
             ->setParameter('identifier', $menuIdentifier);
 
-        $globals = $this->environment->getGlobals();
+        $globals = $environment->getGlobals();
 
         /** @var GlobalVariables $variables */
         $variables = $globals['app'];
@@ -94,7 +90,7 @@ class MenuExtension extends \Twig_Extension
             );
         }, $queryBuilder->getQuery()->getResult());
 
-        return $this->environment->render('ClasticMenuBundle:Twig:menu.html.twig', array(
+        return $environment->render('ClasticMenuBundle:Twig:menu.html.twig', array(
             'tree' => $this->repo->buildTree($items),
         ));
     }
