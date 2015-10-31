@@ -39,19 +39,18 @@ class MenuExtension extends \Twig_Extension
     /**
      * {@inheritdoc}
      */
-    public function initRuntime(\Twig_Environment $environment)
-    {
-        $this->environment = $environment;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function getFunctions()
     {
-        return array(
-            new \Twig_SimpleFunction('clastic_menu', array($this, 'renderMenu'), array('is_safe' => array('html'))),
-        );
+        return [
+            new \Twig_SimpleFunction(
+                'clastic_menu',
+                [$this, 'renderMenu'],
+                [
+                    'is_safe' => ['html'],
+                    'needs_environment' => true,
+                ]
+            )
+        ];
     }
 
     /**
