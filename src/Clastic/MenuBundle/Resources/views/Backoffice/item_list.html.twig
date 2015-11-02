@@ -25,3 +25,7 @@
         <td></td>
     </tr>
 {% endblock %}
+
+{% block list_empty %}
+    {{ 'list.no_results'|trans }} <a href="{{ path('clastic_backoffice_menu_item_form', {menuId: menuId}) }}">Create your first.</a>
+{% endblock %}
