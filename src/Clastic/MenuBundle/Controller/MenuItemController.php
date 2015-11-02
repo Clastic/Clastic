@@ -165,10 +165,7 @@ class MenuItemController extends AbstractModuleController
      */
     protected function getFormSuccessUrl($data)
     {
-        return $this->generateUrl('clastic_backoffice_menu_item_form', array(
-            'menuId' => $this->menuId,
-            'id' => $data->getId(),
-        ));
+        return $this->getListUrl();
     }
 
     /**
