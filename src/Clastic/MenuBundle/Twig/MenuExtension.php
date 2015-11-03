@@ -11,6 +11,7 @@ namespace Clastic\MenuBundle\Twig;
 
 use Clastic\MenuBundle\Entity\MenuItem;
 use Clastic\MenuBundle\Entity\MenuItemRepository;
+use Doctrine\ORM\Query\Expr\Join;
 use Symfony\Bundle\FrameworkBundle\Templating\GlobalVariables;
 
 /**
@@ -58,7 +59,7 @@ class MenuExtension extends \Twig_Extension
     public function renderMenu(\Twig_Environment $environment, $menuIdentifier, $depth = 1)
     {
         $queryBuilder = $this->repo->getNodesHierarchyQueryBuilder(null, false, array(), true)
-            ->join('ClasticMenuBundle:Menu', 'menu', 'menu.id = node.menu')
+            ->join('ClasticMenuBundle:Menu', 'menu', Join::WITH, 'menu.id = node.menu')
             ->andWhere('menu.identifier = :identifier')
             ->setParameter('identifier', $menuIdentifier);
 
