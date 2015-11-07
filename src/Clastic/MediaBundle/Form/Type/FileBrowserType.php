@@ -26,11 +26,9 @@ class FileBrowserType extends AbstractType
     {
         parent::configureOptions($resolver);
 
-        $resolver->setDefaults(array(
-            'attr' => array(
-                'class' => 'media-browser',
-            ),
-        ));
+        $resolver->setDefaults([
+          'attr' => ['class' => 'media-browser'],
+        ]);
     }
 
     /**

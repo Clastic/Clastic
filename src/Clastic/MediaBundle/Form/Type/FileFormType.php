@@ -24,11 +24,11 @@ class FileFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('file', 'file')
-            ->add('save', 'submit', array(
-                'label' => 'Save',
-                'attr' => array('class' => 'btn btn-success'),
-            ));
+          ->add('file', 'file')
+          ->add('save', 'submit', [
+            'label' => 'Save',
+            'attr' => ['class' => 'btn btn-success'],
+          ]);
     }
 
     /**

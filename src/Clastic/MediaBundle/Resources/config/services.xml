@@ -1,13 +1,14 @@
 <?xml version="1.0" ?>
 
 <container xmlns="http://symfony.com/schema/dic/services"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <parameters>
         <parameter key="clastic.media.module.class">Clastic\MediaBundle\Module\MediaModule</parameter>
         <parameter key="clastic.media.file_listener.class">Clastic\MediaBundle\EventListener\FileListener</parameter>
         <parameter key="clastic.media.type.file_browser.class">Clastic\MediaBundle\Form\Type\FileBrowserType</parameter>
+        <parameter key="clastic.media.type.file_form.class">Clastic\MediaBundle\Form\Type\FileFormType</parameter>
     </parameters>
 
     <services>
@@ -25,6 +26,10 @@
         <service id="clastic.elfinder.driver.filesystem" class="Clastic\MediaBundle\ElFinder\Driver\ElFinderVolumeClasticFileSystem">
             <argument type="service" id="elfinder.driver.rootDriver"/>
             <argument type="service" id="event_dispatcher"/>
+        </service>
+
+        <service id="clastic.media.type.file_browser" class="%clastic.media.type.file_browser.class%">
+            <tag name="form.type" alias="file_browser"/>
         </service>
     </services>
 </container>
