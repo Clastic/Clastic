@@ -44,7 +44,7 @@ class UserController extends AbstractModuleController
      */
     protected function buildForm($data)
     {
-        return $this->createForm(new UserFormType(is_null($data->getId())), $data);
+        return $this->createForm(UserFormType::class, $data, ['isNew' => is_null($data->getId())]);
     }
 
     /**

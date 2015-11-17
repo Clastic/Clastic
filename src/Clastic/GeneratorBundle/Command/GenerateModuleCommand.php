@@ -10,6 +10,7 @@
 namespace Clastic\GeneratorBundle\Command;
 
 use Clastic\GeneratorBundle\ClasticGeneratorBundle;
+use Clastic\GeneratorBundle\Command\Validators;
 use Clastic\GeneratorBundle\Generator\ModuleGenerator;
 use Sensio\Bundle\GeneratorBundle\Command\GeneratorCommand;
 use Symfony\Component\Console\Input\InputInterface;
@@ -103,7 +104,7 @@ EOT
 
         while (true) {
             $question = new Question($questionHelper->getQuestion('The Module name', $input->getOption('module')), $input->getOption('module'));
-            $question->setValidator(array('Clastic\GeneratorBundle\Command\Validators', 'validateModuleName'));
+            $question->setValidator(array(Validators::class, 'validateModuleName'));
             $question->setAutocompleterValues($bundleNames);
             $module = $questionHelper->ask($input, $output, $question);
 
@@ -126,7 +127,7 @@ EOT
 
         while (true) {
             $question = new Question($questionHelper->getQuestion('The entity name', $input->getOption('entity')), $input->getOption('entity'));
-            $question->setValidator(array('Clastic\GeneratorBundle\Command\Validators', 'validateEntityName'));
+            $question->setValidator(array(Validators::class, 'validateEntityName'));
             $question->setAutocompleterValues($bundleNames);
             $entity = $questionHelper->ask($input, $output, $question);
 

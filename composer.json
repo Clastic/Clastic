@@ -11,13 +11,13 @@
         "clastic/alias-bundle": "self.version",
         "clastic/backoffice-bundle": "self.version",
         "clastic/block-bundle": "self.version",
-        "clastic/blog-bundle": "self.version",
         "clastic/core-bundle": "self.version",
         "clastic/front-bundle": "self.version",
+        "clastic/generator-bundle": "self.version",
         "clastic/media-bundle": "self.version",
         "clastic/menu-bundle": "self.version",
-        "clastic/news-bundle": "self.version",
         "clastic/node-bundle": "self.version",
+        "clastic/security-bundle": "self.version",
         "clastic/taxonomy-bundle": "self.version",
         "clastic/text-bundle": "self.version",
         "clastic/user-bundle": "self.version"
@@ -27,26 +27,18 @@
         "symfony/symfony": "2.8.*",
         "doctrine/orm": "^2.4.8",
         "doctrine/doctrine-bundle": "~1.4",
-        "symfony/assetic-bundle": "~2.3",
         "symfony/swiftmailer-bundle": "~2.3",
         "symfony/monolog-bundle": "~2.4",
         "sensio/distribution-bundle": "~5.0",
         "sensio/framework-extra-bundle": "^3.0.2",
         "incenteev/composer-parameter-handler": "~2.0",
 
-        "white-october/pagerfanta-bundle": "~1.0",
-        "whiteoctober/breadcrumbs-bundle": "~1.0",
-        "thomaswelton/gravatarlib": "~0.1",
-        "friendsofsymfony/user-bundle": "~2.0@dev",
-        "doctrine/doctrine-fixtures-bundle": "~2.2",
-        "ocramius/proxy-manager": "1.0.*",
-        "stof/doctrine-extensions-bundle": "~1.1",
-        "egeloen/ordered-form-bundle": "~2.0",
-        "ezyang/htmlpurifier": "~4.6",
-        "helios-ag/fm-elfinder-bundle": "~5"
+        "wikimedia/composer-merge-plugin": "^1.3"
     },
     "require-dev": {
-        "sensio/generator-bundle": "~2.3"
+        "sensio/generator-bundle": "~2.3",
+        "symfony/phpunit-bridge": "~2.7",
+        "phpunit/phpunit": "^5.1"
     },
     "scripts": {
         "post-root-package-install": [
@@ -80,8 +72,14 @@
         "incenteev-parameters": {
             "file": "app/config/parameters.yml"
         },
-        "branch-alias": {
-            "dev-master": "2.6-dev"
+        "merge-plugin": {
+            "require": [
+                "src/Clastic/*/composer.json"
+            ],
+            "recurse": false,
+            "replace": false,
+            "merge-dev": true,
+            "merge-extra": true
         }
     }
 }

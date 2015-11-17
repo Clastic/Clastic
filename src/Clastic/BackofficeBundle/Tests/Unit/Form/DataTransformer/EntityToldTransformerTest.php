@@ -10,6 +10,9 @@
 namespace Clastic\BackofficeBundle\Tests\Unit\Form\DataTransformer;
 
 use Clastic\BackofficeBundle\Form\DataTransformer\EntityToIdTransformer;
+use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\ORM\EntityRepository;
+use Symfony\Component\Form\Exception\TransformationFailedException;
 
 /**
  * EntityToldTransformerTest.
@@ -25,7 +28,7 @@ class EntityToldTransformerTest extends \PHPUnit_Framework_TestCase
      */
     public function testEntityToId()
     {
-        $objectManager = $this->getMock('Doctrine\Common\Persistence\ObjectManager');
+        $objectManager = $this->getMock(ObjectManager::class);
         $transformer = new EntityToIdTransformer($objectManager, 'class');
 
         $entity = $this->getMockBuilder('stdClass')
@@ -47,7 +50,7 @@ class EntityToldTransformerTest extends \PHPUnit_Framework_TestCase
      */
     public function testIdToEntityNoId()
     {
-        $objectManager = $this->getMock('Doctrine\Common\Persistence\ObjectManager');
+        $objectManager = $this->getMock(ObjectManager::class);
         $transformer = new EntityToIdTransformer($objectManager, 'class');
 
         $this->assertNull($transformer->reverseTransform(null));
@@ -59,10 +62,10 @@ class EntityToldTransformerTest extends \PHPUnit_Framework_TestCase
      */
     public function testIdToEntityNotFound()
     {
-        $objectManager = $this->getMockBuilder('Doctrine\Common\Persistence\ObjectManager')
+        $objectManager = $this->getMockBuilder(ObjectManager::class)
             ->getMock();
 
-        $repo = $this->getMockBuilder('Doctrine\ORM\EntityRepository')
+        $repo = $this->getMockBuilder(EntityRepository::class)
             ->disableOriginalConstructor()
             ->getMock();
 
@@ -77,7 +80,7 @@ class EntityToldTransformerTest extends \PHPUnit_Framework_TestCase
 
         $transformer = new EntityToIdTransformer($objectManager, 'class');
 
-        $this->setExpectedException('Symfony\Component\Form\Exception\TransformationFailedException');
+        $this->setExpectedException(TransformationFailedException::class);
         $transformer->reverseTransform(1);
     }
 
@@ -86,10 +89,10 @@ class EntityToldTransformerTest extends \PHPUnit_Framework_TestCase
      */
     public function testIdToEntityFound()
     {
-        $objectManager = $this->getMockBuilder('Doctrine\Common\Persistence\ObjectManager')
+        $objectManager = $this->getMockBuilder(ObjectManager::class)
             ->getMock();
 
-        $repo = $this->getMockBuilder('Doctrine\ORM\EntityRepository')
+        $repo = $this->getMockBuilder(EntityRepository::class)
             ->disableOriginalConstructor()
             ->getMock();
 

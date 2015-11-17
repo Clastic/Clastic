@@ -9,6 +9,7 @@
  */
 namespace Clastic\NodeBundle\Form\Extension;
 
+use Clastic\NodeBundle\Form\Type\NodeFormType;
 use Symfony\Component\Form\AbstractTypeExtension;
 use Symfony\Component\Form\FormBuilderInterface;
 
@@ -48,7 +49,7 @@ class NodeTypeExtension extends AbstractTypeExtension
      */
     public function getExtendedType()
     {
-        return 'clastic_node';
+        return NodeFormType::class;
     }
 
     /**

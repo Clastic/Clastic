@@ -34,14 +34,14 @@
         </service>
 
         <service id="clastic.node.form.extension.node" class="%clastic.node.form.extension.node.class%">
-            <tag name="form.type_extension" alias="clastic_node" />
+            <tag name="form.type_extension" extended-type="Clastic\NodeBundle\Form\Type\NodeFormType" />
             <argument type="service" id="event_dispatcher" />
         </service>
 
         <service id="clastic.node.doctrine.filter.publication.configurator" class="%clastic.node.doctrine.filter.publication.configurator.class%">
             <tag name="kernel.event_listener" event="kernel.request" />
             <argument type="service" id="doctrine.orm.entity_manager"/>
-            <argument type="service" id="security.context"/>
+            <argument type="service" id="security.token_storage"/>
         </service>
     </services>
 

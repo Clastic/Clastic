@@ -71,7 +71,7 @@ class DashboardController extends Controller
             ->where('e.user = :user')
             ->orderBy('e.id', 'DESC')
             ->setParameters(array(
-                'user' => $this->get('security.context')->getToken()->getUser(),
+                'user' => $this->get('security.token_storage')->getToken()->getUser(),
             ));
 
         $adapter = new DoctrineORMAdapter($queryBuilder);

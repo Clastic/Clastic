@@ -9,7 +9,13 @@
  */
 namespace Clastic\UserBundle\Form\Type;
 
+use Clastic\BackofficeBundle\Form\Type\MultiSelectType;
+use Clastic\BackofficeBundle\Form\Type\TabsTabActionsType;
+use Clastic\BackofficeBundle\Form\Type\TabsTabType;
+use Clastic\BackofficeBundle\Form\Type\TabsType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -28,7 +34,7 @@ class GroupFormType extends AbstractType
     {
         $builder
             ->add(
-                $builder->create('tabs', 'tabs', ['inherit_data' => true])
+                $builder->create('tabs', TabsType::class, ['inherit_data' => true])
                     ->add($this->createGeneralTab($builder))
                     ->add($this->createActionTab($builder))
             );
@@ -51,20 +57,20 @@ class GroupFormType extends AbstractType
                 'general',
                 ['label' => 'user.form.tab.general.label']
             )
-            ->add('name', 'text', ['label' => 'user_group.form.tab.general.field.name'])
-            ->add('roles', 'multi_select', [
-                'choices' => $this->getAvailableRoles($builder),
+            ->add('name', TextType::class, ['label' => 'user_group.form.tab.general.field.name'])
+            ->add('roles', MultiSelectType::class, [
+                'choices' => array_flip($this->getAvailableRoles($builder)),
                 'label' => 'user.form.tab.role.field.roles',
             ]);
     }
 
     private function createActionTab(FormBuilderInterface $builder)
     {
-        return $builder->create('actions', 'tabs_tab_actions', [
+        return $builder->create('actions', TabsTabActionsType::class, [
                 'mapped' => false,
                 'inherit_data' => true,
             ])
-            ->add('save', 'submit', [
+            ->add('save', SubmitType::class, [
                 'label' => 'node.form.tab.action.field.save',
                 'attr' => ['class' => 'btn btn-success'],
             ]);
@@ -77,7 +83,7 @@ class GroupFormType extends AbstractType
             ['inherit_data' => true]
         );
 
-        return $builder->create($name, 'tabs_tab', $options);
+        return $builder->create($name, TabsTabType::class, $options);
     }
 
     public function configureOptions(OptionsResolver $resolver)
@@ -90,12 +96,18 @@ class GroupFormType extends AbstractType
     }
 
     /**
-     * Returns the name of this type.
-     *
-     * @return string The name of this type
+     * {@inheritdoc}
+     */
+    public function getBlockPrefix()
+    {
+        return 'clastic_user_group';
+    }
+
+    /**
+     * {@inheritdoc}
      */
     public function getName()
     {
-        return 'clastic_user_group';
+        return $this->getBlockPrefix();
     }
 }

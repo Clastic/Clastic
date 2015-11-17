@@ -10,6 +10,7 @@
 namespace Clastic\AliasBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -64,7 +65,15 @@ class AliasType extends AbstractType
      */
     public function getParent()
     {
-        return 'text';
+        return TextType::class;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getBlockPrefix()
+    {
+        return 'alias';
     }
 
     /**
@@ -72,6 +81,6 @@ class AliasType extends AbstractType
      */
     public function getName()
     {
-        return 'alias';
+        return $this->getBlockPrefix();
     }
 }

@@ -11,6 +11,7 @@ namespace Clastic\BackofficeBundle\Form\Type;
 
 use Clastic\BackofficeBundle\Form\DataTransformer\SanitizerTransformer;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -48,7 +49,15 @@ class WysiwygType extends AbstractType
      */
     public function getParent()
     {
-        return 'textarea';
+        return TextareaType::class;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getBlockPrefix()
+    {
+        return 'wysiwyg';
     }
 
     /**
@@ -56,6 +65,6 @@ class WysiwygType extends AbstractType
      */
     public function getName()
     {
-        return 'wysiwyg';
+        return $this->getBlockPrefix();
     }
 }

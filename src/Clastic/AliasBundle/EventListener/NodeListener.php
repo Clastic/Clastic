@@ -71,7 +71,7 @@ class NodeListener implements EventSubscriber
         $factory = new LazyLoadingValueHolderFactory();
 
         return $factory->createProxy(
-            'Clastic\AliasBundle\Entity\Alias',
+            Alias::class,
             function (&$wrappedObject, $proxy, $method, $parameters, &$initializer) use ($args, $node) {
                 $wrappedObject = $args->getObjectManager()
                     ->getRepository('ClasticAliasBundle:Alias')

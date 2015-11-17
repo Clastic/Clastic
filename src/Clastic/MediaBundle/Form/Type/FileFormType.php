@@ -10,6 +10,8 @@
 namespace Clastic\MediaBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 /**
@@ -24,20 +26,26 @@ class FileFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-          ->add('file', 'file')
-          ->add('save', 'submit', [
+          ->add('file', FileType::class)
+          ->add('save', SubmitType::class, [
             'label' => 'Save',
             'attr' => ['class' => 'btn btn-success'],
           ]);
     }
 
     /**
-     * Returns the name of this type.
-     *
-     * @return string The name of this type
+     * {@inheritdoc}
+     */
+    public function getBlockPrefix()
+    {
+        return 'clastic_media_file';
+    }
+
+    /**
+     * {@inheritdoc}
      */
     public function getName()
     {
-        return 'clastic_media_file';
+        return $this->getBlockPrefix();
     }
 }

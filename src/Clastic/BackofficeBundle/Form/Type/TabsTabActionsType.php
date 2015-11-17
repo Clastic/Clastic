@@ -30,7 +30,15 @@ class TabsTabActionsType extends TabsTabType
      */
     public function getParent()
     {
-        return 'tabs_tab';
+        return __NAMESPACE__.'\TabsTabType';
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getBlockPrefix()
+    {
+        return 'tabs_tab_actions';
     }
 
     /**
@@ -38,6 +46,6 @@ class TabsTabActionsType extends TabsTabType
      */
     public function getName()
     {
-        return 'tabs_tab_actions';
+        return $this->getBlockPrefix();
     }
 }

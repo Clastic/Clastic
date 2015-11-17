@@ -17,7 +17,8 @@
     </parameters>
 
     <services>
-        <service id="clastic.repo.alias" class="%clastic.repo.alias.class%" factory-service="doctrine" factory-method="getRepository">
+        <service id="clastic.repo.alias" class="%clastic.repo.alias.class%">
+            <factory service="doctrine" method="getRepository" />
             <argument>%clastic.repo.alias.factory_argument%</argument>
         </service>
 
@@ -30,19 +31,19 @@
         </service>
 
         <service id="clastic.alias.extension.node" class="%clastic.alias.extension.node.class%">
-            <tag name="form.type_extension" alias="clastic_node" />
+            <tag name="form.type_extension" extended-type="Clastic\NodeBundle\Form\Type\NodeFormType" />
             <argument type="service" id="clastic.alias.form_subscriber" />
             <argument type="service" id="doctrine"/>
         </service>
 
         <service id="clastic.alias.extension.node_settings" class="%clastic.alias.extension.node_settings.class%">
-            <tag name="form.type_extension" alias="clastic_node_settings" />
+            <tag name="form.type_extension" extended-type="clastic_node_settings" />
             <argument type="service" id="doctrine"/>
             <argument type="service" id="clastic.module_manager"/>
         </service>
 
         <service id="clastic.alias.extension.settings" class="%clastic.alias.extension.settings.class%">
-            <tag name="form.type_extension" alias="clastic_settings" />
+            <tag name="form.type_extension" extended-type="clastic_settings" />
             <argument type="service" id="doctrine"/>
             <argument type="service" id="clastic.module_manager"/>
         </service>

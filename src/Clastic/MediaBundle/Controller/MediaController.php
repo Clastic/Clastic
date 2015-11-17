@@ -41,7 +41,7 @@ class MediaController extends AbstractModuleController
         $this->buildBreadcrumbs($this->getType());
 
         $file = new File();
-        $form = $this->createForm(new FileFormType(), $file);
+        $form = $this->createForm(FileFormType::class, $file);
 
         $form->handleRequest($request);
 

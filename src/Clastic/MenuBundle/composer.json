@@ -12,7 +12,8 @@
         "php": ">=5.6",
         "clastic/core-bundle": "*",
         "clastic/node-bundle": "*",
-        "stof/doctrine-extensions-bundle": "~1.1"
+        "stof/doctrine-extensions-bundle": "~1.1",
+        "helios-ag/fm-elfinder-bundle": "~5"
     },
     "autoload": {
         "psr-4": { "Clastic\\MenuBundle\\": "" }

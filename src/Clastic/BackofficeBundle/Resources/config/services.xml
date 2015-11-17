@@ -24,14 +24,14 @@
         <service id="clastic.backoffice.exception_listener" class="%clastic.backoffice.exception_listener.class%">
             <tag name="kernel.event_subscriber" />
             <tag name="monolog.logger" channel="request" />
-            <argument type="service" id="security.context" />
+            <argument type="service" id="security.token_storage" />
             <argument type="service" id="logger" on-invalid="null" />
         </service>
 
         <service id="clastic.backoffice.controller.exception" class="%clastic.backoffice.controller.exception.class%">
             <argument type="service" id="twig" />
             <argument>%kernel.debug%</argument>
-            <argument type="service" id="security.context" />
+            <argument type="service" id="security.token_storage" />
             <argument type="service" id="router" />
         </service>
 

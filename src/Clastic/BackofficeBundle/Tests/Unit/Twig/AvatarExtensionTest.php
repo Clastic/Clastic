@@ -12,6 +12,8 @@ namespace Clastic\BackofficeBundle\Tests\Unit\Controller;
 use Clastic\BackofficeBundle\Tests\AuthenticatedWebTestCase;
 use Clastic\BackofficeBundle\Twig\AvatarExtension;
 use Clastic\UserBundle\Entity\User;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 
 /**
  * @author Dries De Peuter <dries@nousefreak.be>
@@ -22,25 +24,25 @@ class AvatarExtensionTest extends AuthenticatedWebTestCase
 {
     public function testEmailNoUser()
     {
-        $securityContext = $this->getMockBuilder('Symfony\Component\Security\Core\SecurityContext')
+        $tokenStorage = $this->getMockBuilder(TokenStorage::class)
             ->disableOriginalConstructor()
             ->getMock();
 
-        $extension = new AvatarExtension($securityContext);
+        $extension = new AvatarExtension($tokenStorage);
 
         $this->assertNull($extension->getUserEmail());
     }
 
     public function testEmail()
     {
-        $securityContext = $this->getMockBuilder('Symfony\Component\Security\Core\SecurityContext')
+        $securityContext = $this->getMockBuilder(TokenStorage::class)
             ->disableOriginalConstructor()
             ->getMock();
 
         $user = new User();
         $user->setEmail('test@clastic.be');
 
-        $token = $this->getMockBuilder('Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken')
+        $token = $this->getMockBuilder(UsernamePasswordToken::class)
             ->disableOriginalConstructor()
             ->getMock();
         $token

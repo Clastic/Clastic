@@ -13,6 +13,9 @@ use Clastic\NodeBundle\Entity\Node;
 use Clastic\NodeBundle\Event\NodeCreateEvent;
 use Clastic\NodeBundle\Node\NodeManager;
 use Clastic\NodeBundle\Tests\Stubs\NodeReferenceEntity;
+use Doctrine\Bundle\DoctrineBundle\Registry;
+use Doctrine\Common\Persistence\ObjectRepository;
+use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\Form\Test\TypeTestCase;
 
 /**
@@ -23,10 +26,10 @@ class NodeManagerTest extends TypeTestCase
     public function testCreateNode()
     {
         $nodeReferenceEntity = new NodeReferenceEntity();
-        $registry = $this->getMockBuilder('Doctrine\Bundle\DoctrineBundle\Registry')
+        $registry = $this->getMockBuilder(Registry::class)
             ->disableOriginalConstructor()
             ->getMock();
-        $dispatcher = $this->getMockBuilder('Symfony\Component\EventDispatcher\EventDispatcher')
+        $dispatcher = $this->getMockBuilder(EventDispatcher::class)
             ->getMock();
         $dispatcher
             ->expects($this->once())
@@ -46,10 +49,10 @@ class NodeManagerTest extends TypeTestCase
         $this->setExpectedException('Exception');
 
         $nodeReferenceEntity = new NodeReferenceEntity();
-        $registry = $this->getMockBuilder('Doctrine\Bundle\DoctrineBundle\Registry')
+        $registry = $this->getMockBuilder(Registry::class)
             ->disableOriginalConstructor()
             ->getMock();
-        $dispatcher = $this->getMockBuilder('Symfony\Component\EventDispatcher\EventDispatcher')
+        $dispatcher = $this->getMockBuilder(EventDispatcher::class)
             ->getMock();
         $dispatcher
             ->expects($this->once())
@@ -67,7 +70,7 @@ class NodeManagerTest extends TypeTestCase
 
         $nodeReferenceEntity = new NodeReferenceEntity();
 
-        $repository = $this->getMockBuilder('Doctrine\Common\Persistence\ObjectRepository')
+        $repository = $this->getMockBuilder(ObjectRepository::class)
             ->getMock();
         $repository
             ->expects($this->once())
@@ -78,7 +81,7 @@ class NodeManagerTest extends TypeTestCase
             ->method('findOneBy')
             ->willReturn($nodeReferenceEntity);
 
-        $registry = $this->getMockBuilder('Doctrine\Bundle\DoctrineBundle\Registry')
+        $registry = $this->getMockBuilder(Registry::class)
             ->disableOriginalConstructor()
             ->getMock();
         $registry
@@ -87,7 +90,7 @@ class NodeManagerTest extends TypeTestCase
             ->withConsecutive(array('ClasticNodeBundle:Node'), array(null))
             ->willReturnOnConsecutiveCalls($repository, $repository);
 
-        $dispatcher = $this->getMockBuilder('Symfony\Component\EventDispatcher\EventDispatcher')
+        $dispatcher = $this->getMockBuilder(EventDispatcher::class)
             ->getMock();
         $dispatcher
             ->expects($this->once())
@@ -105,14 +108,14 @@ class NodeManagerTest extends TypeTestCase
 
         $nodeReferenceEntity = new NodeReferenceEntity();
 
-        $repository = $this->getMockBuilder('Doctrine\Common\Persistence\ObjectRepository')
+        $repository = $this->getMockBuilder(ObjectRepository::class)
             ->getMock();
         $repository
             ->expects($this->once())
             ->method('findOneBy')
             ->willReturn($nodeReferenceEntity);
 
-        $registry = $this->getMockBuilder('Doctrine\Bundle\DoctrineBundle\Registry')
+        $registry = $this->getMockBuilder(Registry::class)
             ->disableOriginalConstructor()
             ->getMock();
         $registry
@@ -121,7 +124,7 @@ class NodeManagerTest extends TypeTestCase
             ->with(null)
             ->willReturn($repository);
 
-        $dispatcher = $this->getMockBuilder('Symfony\Component\EventDispatcher\EventDispatcher')
+        $dispatcher = $this->getMockBuilder(EventDispatcher::class)
             ->getMock();
         $dispatcher
             ->expects($this->once())
@@ -134,11 +137,11 @@ class NodeManagerTest extends TypeTestCase
 
     public function testGetEntityName()
     {
-        $registry = $this->getMockBuilder('Doctrine\Bundle\DoctrineBundle\Registry')
+        $registry = $this->getMockBuilder(Registry::class)
             ->disableOriginalConstructor()
             ->getMock();
 
-        $dispatcher = $this->getMockBuilder('Symfony\Component\EventDispatcher\EventDispatcher')
+        $dispatcher = $this->getMockBuilder(EventDispatcher::class)
             ->getMock();
         $dispatcher
             ->expects($this->once())

@@ -18,7 +18,8 @@
         "white-october/pagerfanta-bundle": "~1.0",
         "whiteoctober/breadcrumbs-bundle": "~1.0",
         "egeloen/ordered-form-bundle": "~2.0",
-        "ezyang/htmlpurifier": "~4.6"
+        "ezyang/htmlpurifier": "~4.6",
+        "symfony/assetic-bundle": "~2.7@dev"
     },
     "autoload": {
         "psr-4": { "Clastic\\BackofficeBundle\\": "" }

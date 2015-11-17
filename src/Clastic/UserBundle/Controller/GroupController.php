@@ -44,7 +44,7 @@ class GroupController extends AbstractModuleController
      */
     protected function buildForm($data)
     {
-        return $this->createForm(new GroupFormType(), $data);
+        return $this->createForm(GroupFormType::class, $data);
     }
 
     /**

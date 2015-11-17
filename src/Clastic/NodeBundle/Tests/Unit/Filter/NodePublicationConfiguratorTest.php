@@ -10,7 +10,13 @@
 namespace Clastic\NodeBundle\Tests\Unit\Filter;
 
 use Clastic\NodeBundle\Filter\NodePublicationConfigurator;
+use Clastic\NodeBundle\Filter\NodePublicationFilter;
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\Query\FilterCollection;
 use Symfony\Component\Form\Test\TypeTestCase;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
+use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 
 /**
  * @author Dries De Peuter <dries@nousefreak.be>
@@ -19,25 +25,25 @@ class NodePublicationConfiguratorTest extends TypeTestCase
 {
     public function testNoToken()
     {
-        $entityManager = $this->getMockBuilder('Doctrine\ORM\EntityManager')
+        $entityManager = $this->getMockBuilder(EntityManager::class)
             ->disableOriginalConstructor()
             ->getMock();
 
-        $securityContext = $this->getMockBuilder('Symfony\Component\Security\Core\SecurityContext')
+        $tokenStorage = $this->getMockBuilder(TokenStorage::class)
             ->disableOriginalConstructor()
             ->getMock();
-        $securityContext
+        $tokenStorage
             ->expects($this->once())
             ->method('getToken')
             ->willReturn(null);
 
-        $configurator = new NodePublicationConfigurator($entityManager, $securityContext);
+        $configurator = new NodePublicationConfigurator($entityManager, $tokenStorage);
         $configurator->onKernelRequest();
     }
 
     public function testFull()
     {
-        $nodePublicationFilter = $this->getMockBuilder('Clastic\NodeBundle\Filter\NodePublicationFilter')
+        $nodePublicationFilter = $this->getMockBuilder(NodePublicationFilter::class)
             ->disableOriginalConstructor()
             ->getMock();
         $nodePublicationFilter
@@ -45,7 +51,7 @@ class NodePublicationConfiguratorTest extends TypeTestCase
             ->method('setApplyPublication')
             ->withConsecutive([false]);
 
-        $filterCollection = $this->getMockBuilder('Doctrine\ORM\Query\FilterCollection')
+        $filterCollection = $this->getMockBuilder(FilterCollection::class)
             ->disableOriginalConstructor()
             ->getMock();
         $filterCollection
@@ -53,14 +59,14 @@ class NodePublicationConfiguratorTest extends TypeTestCase
             ->method('enable')
             ->willReturn($nodePublicationFilter);
 
-        $entityManager = $this->getMockBuilder('Doctrine\ORM\EntityManager')
+        $entityManager = $this->getMockBuilder(EntityManager::class)
             ->disableOriginalConstructor()
             ->getMock();
         $entityManager->expects($this->once())
             ->method('getFilters')
             ->willReturn($filterCollection);
 
-        $token = $this->getMockBuilder('Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken')
+        $token = $this->getMockBuilder(UsernamePasswordToken::class)
             ->disableOriginalConstructor()
             ->getMock();
         $token
@@ -68,27 +74,27 @@ class NodePublicationConfiguratorTest extends TypeTestCase
             ->method('getProviderKey')
             ->willReturn('backoffice');
 
-        $securityContext = $this->getMockBuilder('Symfony\Component\Security\Core\SecurityContext')
+        $tokenStorage = $this->getMockBuilder(TokenStorage::class)
             ->disableOriginalConstructor()
             ->getMock();
-        $securityContext
+        $tokenStorage
             ->expects($this->once())
             ->method('getToken')
             ->willReturn($token);
 
-        $configurator = new NodePublicationConfigurator($entityManager, $securityContext);
+        $configurator = new NodePublicationConfigurator($entityManager, $tokenStorage);
         $configurator->onKernelRequest();
     }
 
     public function testOtherFirewall()
     {
-        $entityManager = $this->getMockBuilder('Doctrine\ORM\EntityManager')
+        $entityManager = $this->getMockBuilder(EntityManager::class)
             ->disableOriginalConstructor()
             ->getMock();
         $entityManager->expects($this->never())
             ->method('getFilters');
 
-        $token = $this->getMockBuilder('Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken')
+        $token = $this->getMockBuilder(UsernamePasswordToken::class)
             ->disableOriginalConstructor()
             ->getMock();
         $token
@@ -96,49 +102,49 @@ class NodePublicationConfiguratorTest extends TypeTestCase
             ->method('getProviderKey')
             ->willReturn('not_backoffice');
 
-        $securityContext = $this->getMockBuilder('Symfony\Component\Security\Core\SecurityContext')
+        $tokenStorage = $this->getMockBuilder(TokenStorage::class)
             ->disableOriginalConstructor()
             ->getMock();
-        $securityContext
+        $tokenStorage
             ->expects($this->once())
             ->method('getToken')
             ->willReturn($token);
 
-        $configurator = new NodePublicationConfigurator($entityManager, $securityContext);
+        $configurator = new NodePublicationConfigurator($entityManager, $tokenStorage);
         $configurator->onKernelRequest();
     }
 
     public function testOtherToken()
     {
-        $filterCollection = $this->getMockBuilder('Doctrine\ORM\Query\FilterCollection')
+        $filterCollection = $this->getMockBuilder(FilterCollection::class)
             ->disableOriginalConstructor()
             ->getMock();
         $filterCollection
             ->expects($this->never())
             ->method('enable');
 
-        $entityManager = $this->getMockBuilder('Doctrine\ORM\EntityManager')
+        $entityManager = $this->getMockBuilder(EntityManager::class)
             ->disableOriginalConstructor()
             ->getMock();
         $entityManager->expects($this->never())
             ->method('getFilters');
 
-        $token = $this->getMockBuilder('Symfony\Component\Security\Core\Authentication\Token\TokenInterface')
+        $token = $this->getMockBuilder(TokenInterface::class)
             ->disableOriginalConstructor()
             ->getMockForAbstractClass();
         $token
             ->expects($this->never())
             ->method('getProviderKey');
 
-        $securityContext = $this->getMockBuilder('Symfony\Component\Security\Core\SecurityContext')
+        $tokenStorage = $this->getMockBuilder(TokenStorage::class)
             ->disableOriginalConstructor()
             ->getMock();
-        $securityContext
+        $tokenStorage
             ->expects($this->once())
             ->method('getToken')
             ->willReturn($token);
 
-        $configurator = new NodePublicationConfigurator($entityManager, $securityContext);
+        $configurator = new NodePublicationConfigurator($entityManager, $tokenStorage);
         $configurator->onKernelRequest();
     }
 }

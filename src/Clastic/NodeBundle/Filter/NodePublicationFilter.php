@@ -9,6 +9,7 @@
  */
 namespace Clastic\NodeBundle\Filter;
 
+use Clastic\NodeBundle\Node\NodeReferenceInterface;
 use Doctrine\ORM\Mapping\ClassMetaData;
 use Doctrine\ORM\Query\Filter\SQLFilter;
 
@@ -28,7 +29,7 @@ class NodePublicationFilter extends SQLFilter
             return '';
         }
 
-        if (!$targetEntity->reflClass->implementsInterface('Clastic\NodeBundle\Node\NodeReferenceInterface')) {
+        if (!$targetEntity->reflClass->implementsInterface(NodeReferenceInterface::class)) {
             return '';
         }
 

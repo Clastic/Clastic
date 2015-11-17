@@ -13,6 +13,7 @@ use Symfony\Bundle\TwigBundle\Controller\ExceptionController as BaseExceptionCon
 use Symfony\Bundle\FrameworkBundle\Templating\TemplateReference;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Router;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\Security\Core\SecurityContext;
 
@@ -22,9 +23,9 @@ use Symfony\Component\Security\Core\SecurityContext;
 class ExceptionController extends BaseExceptionController
 {
     /**
-     * @var SecurityContext
+     * @var TokenStorageInterface
      */
-    private $securityContext;
+    private $tokenStorage;
 
     /**
      * @var Request
@@ -37,16 +38,16 @@ class ExceptionController extends BaseExceptionController
     private $router;
 
     /**
-     * @param \Twig_Environment $twig
-     * @param int               $debug
-     * @param SecurityContext   $securityContext
-     * @param Router            $router
+     * @param \Twig_Environment     $twig
+     * @param int                   $debug
+     * @param TokenStorageInterface $tokenStorage
+     * @param Router                $router
      */
-    public function __construct(\Twig_Environment $twig, $debug, SecurityContext $securityContext, Router $router)
+    public function __construct(\Twig_Environment $twig, $debug, TokenStorageInterface $tokenStorage, Router $router)
     {
         $this->twig = $twig;
         $this->debug = $debug;
-        $this->securityContext = $securityContext;
+        $this->tokenStorage = $tokenStorage;
         $this->router = $router;
     }
 
@@ -79,7 +80,7 @@ class ExceptionController extends BaseExceptionController
      */
     private function isBackoffice()
     {
-        $token = $this->securityContext->getToken();
+        $token = $this->tokenStorage->getToken();
         if (!$token) {
             return false;
         }

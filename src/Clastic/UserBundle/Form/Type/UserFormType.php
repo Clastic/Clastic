@@ -9,7 +9,17 @@
  */
 namespace Clastic\UserBundle\Form\Type;
 
+use Clastic\BackofficeBundle\Form\Type\EntityMultiSelectType;
+use Clastic\BackofficeBundle\Form\Type\MultiSelectType;
+use Clastic\BackofficeBundle\Form\Type\TabsTabActionsType;
+use Clastic\BackofficeBundle\Form\Type\TabsTabType;
+use Clastic\BackofficeBundle\Form\Type\TabsType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -20,16 +30,6 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  */
 class UserFormType extends AbstractType
 {
-    private $isNew;
-
-    /**
-     * @param bool $isNew
-     */
-    public function __construct($isNew)
-    {
-        $this->isNew = $isNew;
-    }
-
     /**
      * @param FormBuilderInterface $builder
      * @param array                $options
@@ -38,7 +38,7 @@ class UserFormType extends AbstractType
     {
         $builder
             ->add(
-                $builder->create('tabs', 'tabs', array('inherit_data' => true))
+                $builder->create('tabs', TabsType::class, array('inherit_data' => true))
                     ->add($this->createGeneralTab($builder))
                     ->add($this->createPasswordTab($builder))
                     ->add($this->createRoleTab($builder))
@@ -49,10 +49,10 @@ class UserFormType extends AbstractType
 
     private function getAvailableRoles(FormBuilderInterface $builder)
     {
-        $roles = array(
+        $roles = [
             'ROLE_ADMIN' => 'Admin',
             'ROLE_USER' => 'User',
-        );
+        ];
 
         if ($builder->getData() && $builder->getData()->getId() === 1) {
             $roles['ROLE_SUPER_ADMIN'] = sprintf('%s (super)', $roles['ROLE_ADMIN']);
@@ -69,13 +69,13 @@ class UserFormType extends AbstractType
                 'general',
                 array('label' => 'user.form.tab.general.label')
             )
-            ->add('username', 'text', array(
+            ->add('username', TextType::class, array(
                 'label' => 'user.form.tab.general.field.username',
             ))
-            ->add('email', 'text', array(
+            ->add('email', TextType::class, array(
                 'label' => 'user.form.tab.general.field.email',
             ))
-            ->add('enabled', 'checkbox', array(
+            ->add('enabled', CheckboxType::class, array(
                 'value' => true,
                 'label' => 'user.form.tab.general.field.enabled',
                 'required' => false,
@@ -85,9 +85,9 @@ class UserFormType extends AbstractType
     private function createPasswordTab(FormBuilderInterface $builder)
     {
         return $this->createTab($builder, 'password', array('label' => 'user.form.tab.password.label'))
-            ->add('plainPassword', 'repeated', array(
-                'type' => 'password',
-                'required' => $this->isNew,
+            ->add('plainPassword', RepeatedType::class, array(
+                'type' => PasswordType::class,
+                'required' => $builder->getOption('isNew'),
                 'first_options' => array('label' => 'user.form.tab.password.field.password'),
                 'second_options' => array('label' => 'user.form.tab.password.field.password_repeat'),
                 'invalid_message' => 'The passwords don\'t match',
@@ -97,8 +97,8 @@ class UserFormType extends AbstractType
     private function createRoleTab(FormBuilderInterface $builder)
     {
         return $this->createTab($builder, 'role', array('label' => 'user.form.tab.role.label'))
-            ->add('roles', 'multi_select', array(
-                'choices' => $this->getAvailableRoles($builder),
+            ->add('roles', MultiSelectType::class, array(
+                'choices' => array_flip($this->getAvailableRoles($builder)),
                 'label' => 'user.form.tab.role.field.roles',
             ));
     }
@@ -106,7 +106,7 @@ class UserFormType extends AbstractType
     private function createGroupTab(FormBuilderInterface $builder)
     {
         return $this->createTab($builder, 'group', array('label' => 'user.form.tab.group.label'))
-            ->add('groups', 'entity_multi_select', array(
+            ->add('groups', EntityMultiSelectType::class, array(
                 'class' => 'ClasticUserBundle:Group',
                 'label' => 'user.form.tab.group.field.groups',
             ));
@@ -114,11 +114,11 @@ class UserFormType extends AbstractType
 
     private function createActionTab(FormBuilderInterface $builder)
     {
-        return $builder->create('actions', 'tabs_tab_actions', array(
+        return $builder->create('actions', TabsTabActionsType::class, array(
                 'mapped' => false,
                 'inherit_data' => true,
             ))
-            ->add('save', 'submit', array(
+            ->add('save', SubmitType::class, array(
                 'label' => 'node.form.tab.action.field.save',
                 'attr' => array('class' => 'btn btn-success'),
             ));
@@ -126,13 +126,14 @@ class UserFormType extends AbstractType
 
     private function createTab(FormBuilderInterface $builder, $name, $options = array())
     {
+
         $options = array_replace(
             $options,
             array(
                 'inherit_data' => true,
             ));
 
-        return $builder->create($name, 'tabs_tab', $options);
+        return $builder->create($name, TabsTabType::class, $options);
     }
 
     public function configureOptions(OptionsResolver $resolver)
@@ -141,16 +142,23 @@ class UserFormType extends AbstractType
 
         $resolver->setDefaults(array(
             'translation_domain' => 'clastic',
+            'isNew' => true,
         ));
     }
 
     /**
-     * Returns the name of this type.
-     *
-     * @return string The name of this type
+     * {@inheritdoc}
+     */
+    public function getBlockPrefix()
+    {
+        return 'clastic_user';
+    }
+
+    /**
+     * {@inheritdoc}
      */
     public function getName()
     {
-        return 'clastic_user';
+        return $this->getBlockPrefix();
     }
 }

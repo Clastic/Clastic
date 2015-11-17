@@ -10,6 +10,7 @@
 namespace Clastic\NodeBundle\Filter;
 
 use Doctrine\ORM\EntityManager;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\Security\Core\SecurityContext;
 
@@ -24,18 +25,18 @@ class NodePublicationConfigurator
     protected $entityManager;
 
     /**
-     * @var SecurityContext
+     * @var TokenStorageInterface
      */
-    protected $securityContext;
+    protected $tokenStorage;
 
     /**
      * @param EntityManager   $entityManager
      * @param SecurityContext $securityContext
      */
-    public function __construct(EntityManager $entityManager, SecurityContext $securityContext)
+    public function __construct(EntityManager $entityManager, TokenStorageInterface $tokenStorage)
     {
         $this->entityManager = $entityManager;
-        $this->securityContext = $securityContext;
+        $this->tokenStorage = $tokenStorage;
     }
 
     /**
@@ -43,7 +44,7 @@ class NodePublicationConfigurator
      */
     public function onKernelRequest()
     {
-        $token = $this->securityContext->getToken();
+        $token = $this->tokenStorage->getToken();
         if (!$token) {
             return;
         }
