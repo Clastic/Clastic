@@ -68,7 +68,7 @@ class ExceptionController extends BaseExceptionController
     protected function templateExists($template)
     {
         if ($this->isBackoffice() || $this->inBackofficeRoot()) {
-            $template->set('bundle', 'ClasticBackofficeBundle');
+            $template = '@ClasticBackofficeBundle/Exception/exception_full.html.twig';
         }
 
         return parent::templateExists($template);

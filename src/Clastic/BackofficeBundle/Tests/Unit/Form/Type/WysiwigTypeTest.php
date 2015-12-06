@@ -10,6 +10,7 @@
 namespace Clastic\BackofficeBundle\Tests\Unit\Form\Type;
 
 use Clastic\BackofficeBundle\Form\Type\WysiwygType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Test\TypeTestCase;
 
 /**
@@ -23,8 +24,7 @@ class WysiwigTypeTest extends TypeTestCase
     {
         $formData = 'text';
 
-        $type = new WysiwygType();
-        $form = $this->factory->create($type);
+        $form = $this->factory->create(WysiwygType::class);
 
         // submit the data to the form directly
         $form->submit($formData);
@@ -37,6 +37,6 @@ class WysiwigTypeTest extends TypeTestCase
     {
         $type = new WysiwygType();
 
-        $this->assertEquals('textarea', $type->getParent());
+        $this->assertEquals(TextareaType::class, $type->getParent());
     }
 }

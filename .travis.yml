@@ -10,6 +10,7 @@ php:
 env:
   global:
     - SYMFONY_ENV=test
+    - SYMFONY__TEST_DATABASE_HOST=127.0.0.1
     - SYMFONY__TEST_DATABASE_NAME=clastic_test
     - SYMFONY__TEST_DATABASE_USER=travis
     - SYMFONY__TEST_DATABASE_PASSWORD=""

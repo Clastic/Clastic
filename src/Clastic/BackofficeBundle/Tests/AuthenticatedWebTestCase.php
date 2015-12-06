@@ -40,7 +40,7 @@ abstract class AuthenticatedWebTestCase extends WebTestCase
 
         // save the login token into the session and put it in a cookie
         $container->get('session')->set('_security_'.$firewallName,
-            serialize($container->get('security.context')->getToken()));
+            serialize($container->get('security.token_storage')->getToken()));
         $container->get('session')->save();
         $client->getCookieJar()->set(new Cookie($session->getName(), $session->getId()));
 

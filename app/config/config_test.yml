@@ -4,6 +4,7 @@ imports:
 doctrine:
     dbal:
         dbname:   "%test_database_name%"
+        host:     "%test_database_host%"
         driver:   pdo_mysql
         user:     "%test_database_user%"
         password: "%test_database_password%"

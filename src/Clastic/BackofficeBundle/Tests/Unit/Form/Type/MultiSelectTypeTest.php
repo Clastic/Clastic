@@ -10,6 +10,7 @@
 namespace Clastic\BackofficeBundle\Tests\Unit\Form\Type;
 
 use Clastic\BackofficeBundle\Form\Type\MultiSelectType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Test\TypeTestCase;
 
 /**
@@ -23,8 +24,7 @@ class MultiSelectTypeTest extends TypeTestCase
     {
         $formData = array();
 
-        $type = new MultiSelectType();
-        $form = $this->factory->create($type);
+        $form = $this->factory->create(MultiSelectType::class);
 
         // submit the data to the form directly
         $form->submit($formData);
@@ -37,6 +37,6 @@ class MultiSelectTypeTest extends TypeTestCase
     {
         $type = new MultiSelectType();
 
-        $this->assertEquals('choice', $type->getParent());
+        $this->assertEquals(ChoiceType::class, $type->getParent());
     }
 }

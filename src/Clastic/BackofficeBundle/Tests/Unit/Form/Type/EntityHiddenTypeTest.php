@@ -10,6 +10,7 @@
 namespace Clastic\BackofficeBundle\Tests\Unit\Form\Type;
 
 use Clastic\BackofficeBundle\Form\Type\EntityHiddenType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Test\TypeTestCase;
 
 /**
@@ -27,6 +28,6 @@ class EntityHiddenTypeTest extends TypeTestCase
 
         $type = new EntityHiddenType($objectManager);
 
-        $this->assertEquals('hidden', $type->getParent());
+        $this->assertEquals(HiddenType::class, $type->getParent());
     }
 }
