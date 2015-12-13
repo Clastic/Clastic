@@ -12,7 +12,7 @@
         "php": ">=5.6",
         "clastic/core-bundle": "*",
         "clastic/security-bundle": "*",
-        "symfony/dependency-injection": "~2.6",
+        "symfony/dependency-injection": "^3.0",
         "doctrine/doctrine-bundle": "*",
         "thomaswelton/gravatarlib": "~0.1",
         "white-october/pagerfanta-bundle": "~1.0",
