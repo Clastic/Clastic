@@ -9,8 +9,8 @@
  */
 namespace Clastic\TaxonomyBundle\EventListener;
 
-use Clastic\NewsBundle\Entity\Category;
 use Clastic\NodeBundle\Event\NodeFormPersistEvent;
+use Clastic\TaxonomyBundle\Model\Taxonomy;
 use Gedmo\Tree\Entity\Repository\NestedTreeRepository;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
@@ -38,7 +38,7 @@ class NodeFormPersistListener implements EventSubscriberInterface
      */
     public function saveCategoryTree(NodeFormPersistEvent $event)
     {
-        if (!$event->getForm()->getData() instanceof Category) {
+        if (!$event->getForm()->getData() instanceof Taxonomy) {
             return;
         }
 

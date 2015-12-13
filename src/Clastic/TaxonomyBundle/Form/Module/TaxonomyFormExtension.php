@@ -10,6 +10,7 @@
 namespace Clastic\TaxonomyBundle\Form\Module;
 
 use Clastic\BackofficeBundle\Form\Type\TreeType;
+use Clastic\BackofficeBundle\Form\Type\WysiwygType;
 use Clastic\NodeBundle\Form\Extension\AbstractNodeTypeExtension;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Routing\Router;
@@ -45,7 +46,7 @@ class TaxonomyFormExtension extends AbstractNodeTypeExtension
             ));
 
         $this->getTabHelper($builder)->findTab('general')
-          ->add('description', 'wysiwyg')
-          ->add('position', new TreeType($url));
+            ->add('description', WysiwygType::class)
+            ->add('position', TreeType::class, ['source' => $url]);
     }
 }

@@ -132,4 +132,12 @@ abstract class Taxonomy implements NodeReferenceInterface
     {
         $this->children = $children;
     }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getNode()->getTitle();
+    }
 }
