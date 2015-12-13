@@ -19,23 +19,18 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * @author Dries De Peuter <dries@nousefreak.be>
  */
 class MenuItemFormType extends AbstractType
 {
-    /**
-     * @var Router
-     */
-    private $router;
-
-    /**
-     * @param Router $router
-     */
-    public function __construct(Router $router)
+    public function configureOptions(OptionsResolver $resolver)
     {
-        $this->router = $router;
+        parent::configureOptions($resolver);
+        $resolver->setDefault('router', null);
+        $resolver->isRequired('router');
     }
 
     /**
@@ -115,16 +110,16 @@ class MenuItemFormType extends AbstractType
      */
     private function createPositionTab(FormBuilderInterface $builder)
     {
-        $treeType = new TreeType(
-            $this->router->generate(
-                'clastic_backoffice_menu_item_tree',
-                array('menuId' => $builder->getData()->getMenu()->getId()))
+        $source = $builder->getOption('router')->generate(
+            'clastic_backoffice_menu_item_tree',
+            ['menuId' => $builder->getData()->getMenu()->getId()]
         );
 
-        return $this->createTab($builder, 'position_tab', array(
-            'label' => 'Position',
-            ))
-            ->add('position', $treeType);
+        return $this->createTab(
+            $builder,
+            'position_tab',
+            ['label' => 'Position',]
+        )->add('position', TreeType::class, ['source' => $source]);
     }
 
     /**

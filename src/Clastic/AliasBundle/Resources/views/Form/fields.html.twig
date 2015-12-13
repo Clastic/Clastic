@@ -7,7 +7,7 @@
         {%- set attr = attr|merge({'data-alias-pattern': alias_pattern|default('{title}') }) -%}
     {% endif %}
     <div class="input-group">
-        <span class="input-group-addon" id="basic-addon1">{{ prefix_text }}</span>
+        <span class="input-group-addon">{{ prefix_text }}</span>
         {{ block('form_widget_simple') }}
     </div>
 {%- endblock alias_widget %}

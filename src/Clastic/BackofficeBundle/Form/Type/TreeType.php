@@ -23,19 +23,6 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class TreeType extends AbstractType
 {
     /**
-     * @var string
-     */
-    private $source;
-
-    /**
-     * @param string $source Path to the data source.
-     */
-    public function __construct($source)
-    {
-        $this->source = $source;
-    }
-
-    /**
      * {@inheritdoc}
      */
     public function finishView(FormView $view, FormInterface $form, array $options)
@@ -43,7 +30,7 @@ class TreeType extends AbstractType
         parent::finishView($view, $form, $options);
 
         $view->vars['tree_current'] = $form->getParent()->getData()->getId();
-        $view->vars['tree_source'] = $this->source;
+        $view->vars['tree_source'] = $options['source'];
     }
 
     /**
@@ -59,7 +46,10 @@ class TreeType extends AbstractType
             ],
             'mapped' => false,
             'required' => false,
+            'source' => null,
         ]);
+
+        $resolver->setRequired('source');
     }
 
     /**

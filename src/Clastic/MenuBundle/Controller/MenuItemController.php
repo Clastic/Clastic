@@ -55,7 +55,9 @@ class MenuItemController extends AbstractModuleController
      */
     protected function buildForm($data)
     {
-        return $this->createForm(new MenuItemFormType($this->get('router')), $data);
+        return $this->createForm(MenuItemFormType::class, $data, [
+            'router' => $this->get('router'),
+        ]);
     }
 
     /**
