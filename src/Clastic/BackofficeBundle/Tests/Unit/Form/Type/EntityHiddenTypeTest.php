@@ -10,6 +10,8 @@
 namespace Clastic\BackofficeBundle\Tests\Unit\Form\Type;
 
 use Clastic\BackofficeBundle\Form\Type\EntityHiddenType;
+use Doctrine\Common\Persistence\ObjectManager;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Test\TypeTestCase;
 
 /**
@@ -21,12 +23,12 @@ class EntityHiddenTypeTest extends TypeTestCase
 {
     public function testParent()
     {
-        $objectManager = $this->getMockBuilder('Doctrine\Common\Persistence\ObjectManager')
+        $objectManager = $this->getMockBuilder(ObjectManager::class)
             ->disableOriginalConstructor()
             ->getMock();
 
         $type = new EntityHiddenType($objectManager);
 
-        $this->assertEquals('hidden', $type->getParent());
+        $this->assertEquals(HiddenType::class, $type->getParent());
     }
 }

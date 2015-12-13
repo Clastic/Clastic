@@ -9,6 +9,7 @@
  */
 namespace Clastic\TextBundle\Form\Module;
 
+use Clastic\BackofficeBundle\Form\Type\WysiwygType;
 use Clastic\NodeBundle\Form\Extension\AbstractNodeTypeExtension;
 use Symfony\Component\Form\FormBuilderInterface;
 
@@ -25,7 +26,7 @@ class TextFormExtension extends AbstractNodeTypeExtension
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $this->getTabHelper($builder)->findTab('general')
-            ->add('body', 'wysiwyg', array(
+            ->add('body', WysiwygType::class, array(
                 'label' => 'text.form.tab.general.field.body',
             ));
     }

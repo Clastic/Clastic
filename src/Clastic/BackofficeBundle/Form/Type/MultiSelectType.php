@@ -10,6 +10,7 @@
 namespace Clastic\BackofficeBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
@@ -28,6 +29,7 @@ class MultiSelectType extends AbstractType
 
         $resolver->setDefaults(array(
             'multiple' => true,
+            'choices_as_values' => true,
         ));
     }
 
@@ -36,7 +38,15 @@ class MultiSelectType extends AbstractType
      */
     public function getParent()
     {
-        return 'choice';
+        return ChoiceType::class;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getBlockPrefix()
+    {
+        return 'multi_select';
     }
 
     /**
@@ -44,6 +54,6 @@ class MultiSelectType extends AbstractType
      */
     public function getName()
     {
-        return 'multi_select';
+        return $this->getBlockPrefix();
     }
 }

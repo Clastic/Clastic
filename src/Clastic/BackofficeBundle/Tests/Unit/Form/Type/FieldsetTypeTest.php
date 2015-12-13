@@ -10,6 +10,7 @@
 namespace Clastic\BackofficeBundle\Tests\Unit\Form\Type;
 
 use Clastic\BackofficeBundle\Form\Type\FieldsetType;
+use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\Test\TypeTestCase;
 
 /**
@@ -23,8 +24,7 @@ class FieldsetTypeTest extends TypeTestCase
     {
         $formData = array();
 
-        $type = new FieldsetType();
-        $form = $this->factory->create($type);
+        $form = $this->factory->create(FieldsetType::class);
 
         // submit the data to the form directly
         $form->submit($formData);
@@ -36,6 +36,6 @@ class FieldsetTypeTest extends TypeTestCase
     {
         $type = new FieldsetType();
 
-        $this->assertEquals('form', $type->getParent());
+        $this->assertEquals(FormType::class, $type->getParent());
     }
 }

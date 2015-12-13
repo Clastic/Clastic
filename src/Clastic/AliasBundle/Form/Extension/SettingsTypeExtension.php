@@ -12,6 +12,7 @@ namespace Clastic\AliasBundle\Form\Extension;
 use Clastic\AliasBundle\Entity\AliasPattern;
 use Clastic\AliasBundle\Entity\AliasPatternRepository;
 use Clastic\AliasBundle\Module\AliasModule;
+use Clastic\BackofficeBundle\Form\Type\TabsTabType;
 use Clastic\CoreBundle\Module\ModuleManager;
 use Clastic\NodeBundle\Module\NodeModuleInterface;
 use Symfony\Bridge\Doctrine\RegistryInterface;
@@ -127,7 +128,7 @@ class SettingsTypeExtension extends AbstractTypeExtension
                 'inherit_data' => true,
             ));
 
-        return $builder->create($name, 'tabs_tab', $options);
+        return $builder->create($name, TabsTabType::class, $options);
     }
 
     /**

@@ -10,6 +10,8 @@
 namespace Clastic\BackofficeBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FormType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 /**
@@ -25,8 +27,8 @@ class LinkType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('label', 'text', array('required' => false))
-            ->add('link', 'text', array('required' => false));
+            ->add('label', TextType::class, array('required' => false))
+            ->add('link', TextType::class, array('required' => false));
     }
 
     /**
@@ -34,7 +36,15 @@ class LinkType extends AbstractType
      */
     public function getParent()
     {
-        return 'form';
+        return FormType::class;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getBlockPrefix()
+    {
+        return 'link';
     }
 
     /**
@@ -42,6 +52,6 @@ class LinkType extends AbstractType
      */
     public function getName()
     {
-        return 'link';
+        return $this->getBlockPrefix();
     }
 }

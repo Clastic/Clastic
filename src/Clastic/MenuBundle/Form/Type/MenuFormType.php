@@ -9,7 +9,12 @@
  */
 namespace Clastic\MenuBundle\Form\Type;
 
+use Clastic\BackofficeBundle\Form\Type\TabsTabActionsType;
+use Clastic\BackofficeBundle\Form\Type\TabsTabType;
+use Clastic\BackofficeBundle\Form\Type\TabsType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 /**
@@ -27,13 +32,13 @@ class MenuFormType extends AbstractType
     {
         $builder
             ->add(
-                $builder->create('tabs', 'tabs', array('inherit_data' => true))
+                $builder->create('tabs', TabsType::class, array('inherit_data' => true))
                     ->add(
                         $this->createTab($builder, 'general', array('label' => 'General'))
-                            ->add('title', 'text', array(
+                            ->add('title', TextType::class, array(
                                     'label' => 'Title',
                                 ))
-                            ->add('identifier', 'text', array(
+                            ->add('identifier', TextType::class, array(
                                 'label' => 'Identifier',
                             ))
                     )
@@ -56,7 +61,7 @@ class MenuFormType extends AbstractType
                 'inherit_data' => true,
             ));
 
-        return $builder->create($name, 'tabs_tab', $options);
+        return $builder->create($name, TabsTabType::class, $options);
     }
 
     /**
@@ -66,23 +71,29 @@ class MenuFormType extends AbstractType
      */
     private function createActionTab(FormBuilderInterface $builder)
     {
-        return $builder->create('actions', 'tabs_tab_actions', array(
+        return $builder->create('actions', TabsTabActionsType::class, array(
             'mapped' => false,
             'inherit_data' => true,
         ))
-            ->add('save', 'submit', array(
+            ->add('save', SubmitType::class, array(
                 'label' => 'Save',
                 'attr' => array('class' => 'btn btn-success'),
             ));
     }
 
     /**
-     * Returns the name of this type.
-     *
-     * @return string The name of this type
+     * {@inheritdoc}
+     */
+    public function getBlockPrefix()
+    {
+        return 'clastic_menu';
+    }
+
+    /**
+     * {@inheritdoc}
      */
     public function getName()
     {
-        return 'clastic_menu';
+        return $this->getBlockPrefix();
     }
 }

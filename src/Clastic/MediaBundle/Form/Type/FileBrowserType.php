@@ -10,6 +10,7 @@
 namespace Clastic\MediaBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
@@ -36,7 +37,15 @@ class FileBrowserType extends AbstractType
      */
     public function getParent()
     {
-        return 'text';
+        return TextType::class;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getBlockPrefix()
+    {
+        return 'file_browser';
     }
 
     /**
@@ -44,6 +53,6 @@ class FileBrowserType extends AbstractType
      */
     public function getName()
     {
-        return 'file_browser';
+        return $this->getBlockPrefix();
     }
 }

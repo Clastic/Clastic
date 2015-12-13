@@ -9,6 +9,7 @@
  */
 namespace Clastic\NodeBundle\Form\Type;
 
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -28,7 +29,7 @@ class NodeType extends AbstractType
 
         $resolver->setDefaults(array(
             'class' => 'ClasticNodeBundle:Node',
-            'property' => 'title',
+            'choice_label' => 'title',
         ));
     }
 
@@ -37,7 +38,15 @@ class NodeType extends AbstractType
      */
     public function getParent()
     {
-        return 'entity';
+        return EntityType::class;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getBlockPrefix()
+    {
+        return 'node';
     }
 
     /**
@@ -45,6 +54,6 @@ class NodeType extends AbstractType
      */
     public function getName()
     {
-        return 'node';
+        return $this->getBlockPrefix();
     }
 }

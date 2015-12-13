@@ -10,6 +10,9 @@
 namespace Clastic\AliasBundle\Form\Extension;
 
 use Clastic\AliasBundle\EventListener\FormSubscriber;
+use Clastic\AliasBundle\Form\Type\AliasType;
+use Clastic\BackofficeBundle\Form\Type\TabsTabType;
+use Clastic\NodeBundle\Form\Type\NodeFormType;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 use Symfony\Component\Form\AbstractTypeExtension;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -48,7 +51,7 @@ class NodeTypeExtension extends AbstractTypeExtension
      */
     public function getExtendedType()
     {
-        return 'clastic_node';
+        return NodeFormType::class;
     }
 
     /**
@@ -60,7 +63,7 @@ class NodeTypeExtension extends AbstractTypeExtension
         $builder->addEventSubscriber($this->formSubscriber);
         $aliasTab = $this->createTab($builder, 'alias', array('label' => 'alias.module.alias'));
 
-        $aliasTab->add('alias', 'alias', array(
+        $aliasTab->add('alias', AliasType::class, array(
             'property_path' => 'node.alias.alias',
             'alias_pattern' => $this->findPattern($builder),
             'label' => 'alias.module.alias',
@@ -98,6 +101,6 @@ class NodeTypeExtension extends AbstractTypeExtension
                 'inherit_data' => true,
             ));
 
-        return $builder->create($name, 'tabs_tab', $options);
+        return $builder->create($name, TabsTabType::class, $options);
     }
 }

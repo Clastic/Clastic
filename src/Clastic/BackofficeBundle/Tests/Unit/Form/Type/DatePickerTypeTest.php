@@ -12,6 +12,7 @@ namespace Clastic\BackofficeBundle\Tests\Unit\Form\Type;
 use Clastic\BackofficeBundle\Form\Type\DatePickerType;
 use Symfony\Component\Form\Test\TypeTestCase;
 use Symfony\Component\Intl\Util\IntlTestHelper;
+use Symfony\Component\OptionsResolver\Exception\InvalidOptionsException;
 
 /**
  * @author Dries De Peuter <dries@nousefreak.be>
@@ -41,7 +42,7 @@ class DatePickerTypeTest extends TypeTestCase
 
     public function testThrowExceptionIfYearsIsInvalid()
     {
-        $this->setExpectedException('Symfony\Component\OptionsResolver\Exception\InvalidOptionsException');
+        $this->setExpectedException(InvalidOptionsException::class);
 
         $this->factory->create(new DatePickerType(), null, array(
             'years' => 'bad value',
@@ -50,7 +51,7 @@ class DatePickerTypeTest extends TypeTestCase
 
     public function testThrowExceptionIfMonthsIsInvalid()
     {
-        $this->setExpectedException('Symfony\Component\OptionsResolver\Exception\InvalidOptionsException');
+        $this->setExpectedException(InvalidOptionsException::class);
 
         $this->factory->create(new DatePickerType(), null, array(
             'months' => 'bad value',
@@ -59,7 +60,7 @@ class DatePickerTypeTest extends TypeTestCase
 
     public function testThrowExceptionIfDaysIsInvalid()
     {
-        $this->setExpectedException('Symfony\Component\OptionsResolver\Exception\InvalidOptionsException');
+        $this->setExpectedException(InvalidOptionsException::class);
 
         $this->factory->create(new DatePickerType(), array(), array(
             'days' => 'bad value',

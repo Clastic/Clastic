@@ -21,7 +21,8 @@
             <argument type="service" id="clastic.repo.menu_item"/>
         </service>
 
-        <service id="clastic.repo.menu_item" class="%clastic.repo.menu_item.class%" factory-service="doctrine" factory-method="getRepository">
+        <service id="clastic.repo.menu_item" class="%clastic.repo.menu_item.class%">
+            <factory service="doctrine" method="getRepository" />
             <argument>%clastic.repo.menu_item.factory_argument%</argument>
         </service>
     </services>

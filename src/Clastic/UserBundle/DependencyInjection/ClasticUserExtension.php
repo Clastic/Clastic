@@ -2,6 +2,8 @@
 
 namespace Clastic\UserBundle\DependencyInjection;
 
+use Clastic\UserBundle\Entity\Group;
+use Clastic\UserBundle\Entity\User;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
@@ -54,8 +56,8 @@ class ClasticUserExtension extends Extension implements PrependExtensionInterfac
                         [
                             'db_driver' => 'orm',
                             'firewall_name' => 'backoffice',
-                            'user_class' => 'Clastic\UserBundle\Entity\User',
-                            'group' => ['group_class' => 'Clastic\UserBundle\Entity\Group'],
+                            'user_class' => User::class,
+                            'group' => ['group_class' => Group::class],
                         ]
                     );
                     break;

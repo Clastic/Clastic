@@ -9,6 +9,7 @@
  */
 namespace Clastic\AliasBundle\Tests\Unit\Form\Type;
 
+use Clastic\AliasBundle\Form\Extension\AliasExtension;
 use Clastic\AliasBundle\Form\Type\AliasType;
 use Symfony\Component\Form\Test\TypeTestCase;
 use Symfony\Component\HttpFoundation\Request;
@@ -21,15 +22,34 @@ use Symfony\Component\HttpFoundation\RequestStack;
  */
 class AliasTypeTest extends TypeTestCase
 {
+    private $requestStack;
+
+    protected function setUp()
+    {
+        $this->requestStack = new RequestStack();
+        $this->requestStack->push(new Request());
+
+        parent::setUp();
+    }
+
+    protected function tearDown()
+    {
+        parent::tearDown();
+
+        $this->requestStack = null;
+    }
+
+    protected function getExtensions()
+    {
+        return array_merge(parent::getExtensions(), array(
+            new AliasExtension($this->requestStack),
+        ));
+    }
+
     public function testSubmitValidData()
     {
         $formData = 'alias';
-
-        $requestStack = new RequestStack();
-        $requestStack->push(new Request());
-
-        $type = new AliasType($requestStack);
-        $form = $this->factory->create($type);
+        $form = $this->factory->create(AliasType::class);
 
         // submit the data to the form directly
         $form->submit($formData);

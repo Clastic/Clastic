@@ -10,6 +10,7 @@
 namespace Clastic\BackofficeBundle\Tests\Unit\Form\Type;
 
 use Clastic\BackofficeBundle\Form\Type\LinkType;
+use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\Test\TypeTestCase;
 
 /**
@@ -26,8 +27,7 @@ class LinkTypeTest extends TypeTestCase
             'link' => 'link',
         );
 
-        $type = new LinkType();
-        $form = $this->factory->create($type);
+        $form = $this->factory->create(LinkType::class);
 
         // submit the data to the form directly
         $form->submit($formData);
@@ -47,6 +47,6 @@ class LinkTypeTest extends TypeTestCase
     {
         $type = new LinkType();
 
-        $this->assertEquals('form', $type->getParent());
+        $this->assertEquals(FormType::class, $type->getParent());
     }
 }

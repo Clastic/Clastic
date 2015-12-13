@@ -10,6 +10,7 @@
 namespace Clastic\BackofficeBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -66,7 +67,15 @@ class TreeType extends AbstractType
      */
     public function getParent()
     {
-        return 'text';
+        return TextType::class;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getBlockPrefix()
+    {
+        return 'tree';
     }
 
     /**
@@ -74,6 +83,6 @@ class TreeType extends AbstractType
      */
     public function getName()
     {
-        return 'tree';
+        return $this->getBlockPrefix();
     }
 }

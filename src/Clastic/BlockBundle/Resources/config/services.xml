@@ -17,7 +17,8 @@
             <tag name="clastic.module" node_module="false" alias="block" />
         </service>
 
-        <service id="clastic.repo.block" class="%clastic.repo.block.class%" factory-service="doctrine" factory-method="getRepository">
+        <service id="clastic.repo.block" class="%clastic.repo.block.class%">
+            <factory service="doctrine" method="getRepository" />
             <argument>%clastic.repo.block.factory_argument%</argument>
         </service>
 

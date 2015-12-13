@@ -10,6 +10,7 @@
 namespace Clastic\NodeBundle\Tests\Unit\Form\Type;
 
 use Clastic\NodeBundle\Form\Type\NodeType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Test\TypeTestCase;
 
 /**
@@ -23,6 +24,6 @@ class NodeTypeTest extends TypeTestCase
     {
         $type = new NodeType();
 
-        $this->assertEquals('entity', $type->getParent());
+        $this->assertEquals(EntityType::class, $type->getParent());
     }
 }

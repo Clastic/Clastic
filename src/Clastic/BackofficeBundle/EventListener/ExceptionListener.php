@@ -12,6 +12,7 @@ namespace Clastic\BackofficeBundle\EventListener;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpKernel\EventListener\ExceptionListener as BaseExceptionListener;
 use Symfony\Component\HttpKernel\KernelEvents;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Core\SecurityContext;
 
 /**
@@ -20,10 +21,10 @@ use Symfony\Component\Security\Core\SecurityContext;
 class ExceptionListener extends BaseExceptionListener
 {
     /**
-     * @param SecurityContext $securityContext
+     * @param TokenStorageInterface $tokenStorage
      * @param LoggerInterface $logger
      */
-    public function __construct(SecurityContext $securityContext, LoggerInterface $logger = null)
+    public function __construct(TokenStorageInterface $tokenStorage, LoggerInterface $logger = null)
     {
         parent::__construct('clastic.backoffice.controller.exception:showAction', $logger);
     }

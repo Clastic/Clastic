@@ -11,6 +11,7 @@ namespace Clastic\GeneratorBundle\Tests\Generator;
 
 use Clastic\GeneratorBundle\Generator\ModuleGenerator;
 use Sensio\Bundle\GeneratorBundle\Tests\Generator\GeneratorTest;
+use Symfony\Component\HttpKernel\Bundle\BundleInterface;
 
 /**
  * ModuleGeneratorTest.
@@ -122,7 +123,7 @@ EOL;
 
     protected function getBundle()
     {
-        $bundle = $this->getMock('Symfony\Component\HttpKernel\Bundle\BundleInterface');
+        $bundle = $this->getMock(BundleInterface::class);
         $bundle->expects($this->any())->method('getPath')->will($this->returnValue($this->tmpDir));
         $bundle->expects($this->any())->method('getName')->will($this->returnValue('FooBarBundle'));
         $bundle->expects($this->any())->method('getNamespace')->will($this->returnValue('Foo\BarBundle'));

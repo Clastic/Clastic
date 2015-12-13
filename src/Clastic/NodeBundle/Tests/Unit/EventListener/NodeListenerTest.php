@@ -9,10 +9,15 @@
  */
 namespace Clastic\NodeBundle\Tests\Unit\EventListener;
 
+use Clastic\CoreBundle\Module\ModuleManager;
 use Clastic\NodeBundle\Entity\Node;
 use Clastic\NodeBundle\Event\NodeCreateEvent;
 use Clastic\NodeBundle\Event\NodeResolveEntityNameEvent;
 use Clastic\NodeBundle\EventListener\NodeListener;
+use Clastic\NodeBundle\Module\NodeModuleInterface;
+use Clastic\NodeBundle\Tests\Stubs\NodeReferenceEntity;
+use Doctrine\Bundle\DoctrineBundle\Registry;
+use Doctrine\Common\Persistence\ObjectRepository;
 use Symfony\Component\Form\Test\TypeTestCase;
 
 /**
@@ -24,10 +29,10 @@ class NodeListenerTest extends TypeTestCase
     {
         $this->setExpectedException('Exception');
 
-        $moduleManager = $this->getMockBuilder('Clastic\CoreBundle\Module\ModuleManager')
+        $moduleManager = $this->getMockBuilder(ModuleManager::class)
             ->getMock();
 
-        $registry = $this->getMockBuilder('Doctrine\Bundle\DoctrineBundle\Registry')
+        $registry = $this->getMockBuilder(Registry::class)
             ->disableOriginalConstructor()
             ->getMock();
 
@@ -40,24 +45,24 @@ class NodeListenerTest extends TypeTestCase
 
     public function testCreateEntityEventFound()
     {
-        $module = $this->getMockBuilder('Clastic\NodeBundle\Module\NodeModuleInterface')
+        $module = $this->getMockBuilder(NodeModuleInterface::class)
             ->getMockForAbstractClass();
 
-        $moduleManager = $this->getMockBuilder('Clastic\CoreBundle\Module\ModuleManager')
+        $moduleManager = $this->getMockBuilder(ModuleManager::class)
             ->getMock();
         $moduleManager
             ->expects($this->once())
             ->method('getModule')
             ->willReturn($module);
 
-        $repo = $this->getMockBuilder('Doctrine\Common\Persistence\ObjectRepository')
+        $repo = $this->getMockBuilder(ObjectRepository::class)
             ->getMock();
         $repo
             ->expects($this->once())
             ->method('getClassName')
-            ->willReturn('Clastic\NodeBundle\Tests\Stubs\NodeReferenceEntity');
+            ->willReturn(NodeReferenceEntity::class);
 
-        $registry = $this->getMockBuilder('Doctrine\Bundle\DoctrineBundle\Registry')
+        $registry = $this->getMockBuilder(Registry::class)
             ->disableOriginalConstructor()
             ->getMock();
         $registry
@@ -70,26 +75,26 @@ class NodeListenerTest extends TypeTestCase
 
         $listener->createEntity($event);
 
-        $this->assertInstanceOf('Clastic\NodeBundle\Tests\Stubs\NodeReferenceEntity', $event->getEntity());
+        $this->assertInstanceOf(NodeReferenceEntity::class, $event->getEntity());
     }
 
     public function testResolveEntityName()
     {
-        $module = $this->getMockBuilder('Clastic\NodeBundle\Module\NodeModuleInterface')
+        $module = $this->getMockBuilder(NodeModuleInterface::class)
             ->getMockForAbstractClass();
         $module
             ->expects($this->once())
             ->method('getEntityName')
             ->willReturn('EntityName');
 
-        $moduleManager = $this->getMockBuilder('Clastic\CoreBundle\Module\ModuleManager')
+        $moduleManager = $this->getMockBuilder(ModuleManager::class)
             ->getMock();
         $moduleManager
             ->expects($this->once())
             ->method('getModule')
             ->willReturn($module);
 
-        $registry = $this->getMockBuilder('Doctrine\Bundle\DoctrineBundle\Registry')
+        $registry = $this->getMockBuilder(Registry::class)
             ->disableOriginalConstructor()
             ->getMock();
 

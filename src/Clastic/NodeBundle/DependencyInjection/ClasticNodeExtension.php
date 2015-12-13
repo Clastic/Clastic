@@ -2,6 +2,7 @@
 
 namespace Clastic\NodeBundle\DependencyInjection;
 
+use Clastic\NodeBundle\Filter\NodePublicationFilter;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
@@ -55,7 +56,7 @@ class ClasticNodeExtension extends Extension implements PrependExtensionInterfac
                             'orm' => array(
                                 'filters' => array(
                                     'node_publication_filter' => array(
-                                        'class' => 'Clastic\NodeBundle\Filter\NodePublicationFilter',
+                                        'class' => NodePublicationFilter::class,
                                         'enabled' => true,
                                     ),
                                 ),

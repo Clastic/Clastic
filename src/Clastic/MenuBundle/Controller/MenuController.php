@@ -45,7 +45,7 @@ class MenuController extends AbstractModuleController
      */
     protected function buildForm($data)
     {
-        return $this->createForm(new MenuFormType(), $data);
+        return $this->createForm(MenuFormType::class, $data);
     }
 
     /**

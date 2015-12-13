@@ -9,6 +9,7 @@
  */
 namespace Clastic\BackofficeBundle\Form\Type;
 
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -36,7 +37,15 @@ class EntityMultiSelectType extends AbstractType
      */
     public function getParent()
     {
-        return 'entity';
+        return EntityType::class;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getBlockPrefix()
+    {
+        return 'entity_multi_select';
     }
 
     /**
@@ -44,6 +53,6 @@ class EntityMultiSelectType extends AbstractType
      */
     public function getName()
     {
-        return 'entity_multi_select';
+        return $this->getBlockPrefix();
     }
 }

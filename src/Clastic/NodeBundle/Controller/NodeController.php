@@ -13,6 +13,7 @@ use Clastic\BackofficeBundle\Controller\AbstractModuleController;
 use Clastic\NodeBundle\Entity\Node;
 use Clastic\NodeBundle\Event\NodeFormPrePersistEvent;
 use Clastic\NodeBundle\Event\NodeFormPersistEvent;
+use Clastic\NodeBundle\Form\Type\NodeFormType;
 use Clastic\NodeBundle\Node\NodeManager;
 use Clastic\NodeBundle\Node\NodeReferenceInterface;
 use Symfony\Component\Form\Form;
@@ -55,7 +56,7 @@ class NodeController extends AbstractModuleController
      */
     protected function buildForm($data)
     {
-        return $this->createForm('clastic_node', $data);
+        return $this->createForm(NodeFormType::class, $data);
     }
 
     /**
@@ -134,7 +135,7 @@ class NodeController extends AbstractModuleController
 
         $data = $this->getNodeManager()->createNode($this->getType());
 
-        $data->getNode()->setUser($this->get('security.context')->getToken()->getUser());
+        $data->getNode()->setUser($this->get('security.token_storage')->getToken()->getUser());
 
         return $data;
     }

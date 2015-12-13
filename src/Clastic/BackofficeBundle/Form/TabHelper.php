@@ -9,6 +9,7 @@
  */
 namespace Clastic\BackofficeBundle\Form;
 
+use Clastic\BackofficeBundle\Form\Type\TabsTabType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 /**
@@ -59,7 +60,7 @@ class TabHelper
                 'inherit_data' => true,
             ));
 
-        $tab = $this->formBuilder->create($name, 'tabs_tab', $options);
+        $tab = $this->formBuilder->create($name, new TabsTabType(), $options);
         $this->formBuilder->get('tabs')->add($tab);
 
         return $tab;

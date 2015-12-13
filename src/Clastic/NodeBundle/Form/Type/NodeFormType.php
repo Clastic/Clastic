@@ -9,7 +9,15 @@
  */
 namespace Clastic\NodeBundle\Form\Type;
 
+use Clastic\BackofficeBundle\Form\Type\DatePickerType;
+use Clastic\BackofficeBundle\Form\Type\TabsTabActionsType;
+use Clastic\BackofficeBundle\Form\Type\TabsTabType;
+use Clastic\BackofficeBundle\Form\Type\TabsType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -28,7 +36,7 @@ class NodeFormType extends AbstractType
     {
         $builder
             ->add(
-                $builder->create('tabs', 'tabs', array('inherit_data' => true))
+                $builder->create('tabs', TabsType::class, array('inherit_data' => true))
                     ->add($this->createGeneralTab($builder))
                     ->add($this->createPublicationTab($builder))
                     ->add($this->createAuthorInformationTab($builder))
@@ -43,7 +51,7 @@ class NodeFormType extends AbstractType
                 'label' => 'node.form.tab.general.label',
                 'position' => 'first',
             ))
-            ->add('title', 'text', array(
+            ->add('title', TextType::class, array(
                 'property_path' => 'node.title',
                 'label' => 'node.form.tab.general.field.title',
             ));
@@ -55,15 +63,15 @@ class NodeFormType extends AbstractType
             ->createTab($builder, 'publication', array(
                 'label' => 'node.form.tab.publication.label',
             ))
-            ->add('available', 'checkbox', array(
+            ->add('available', CheckboxType::class, array(
                 'property_path' => 'node.publication.available',
                 'label' => 'node.form.tab.publication.field.available',
                 'required' => false,
-            ))->add('publishedFrom', 'datepicker', array(
+            ))->add('publishedFrom', DatePickerType::class, array(
                 'property_path' => 'node.publication.publishedFrom',
                 'label' => 'node.form.tab.publication.field.published_from',
                 'required' => false,
-            ))->add('publishedTill', 'datepicker', array(
+            ))->add('publishedTill', DatePickerType::class, array(
                 'property_path' => 'node.publication.publishedTill',
                 'label' => 'node.form.tab.publication.field.published_till',
                 'required' => false,
@@ -76,13 +84,13 @@ class NodeFormType extends AbstractType
             ->createTab($builder, 'author_information', array(
                 'label' => 'node.form.tab.author_information.label',
             ))
-            ->add('author', 'entity', array(
+            ->add('author', EntityType::class, array(
                 'class' => 'ClasticUserBundle:User',
                 'property_path' => 'node.user',
                 'label' => 'node.form.tab.author_information.field.author',
                 'required' => true,
             ))
-            ->add('created', 'datepicker', array(
+            ->add('created', DatePickerType::class, array(
                 'property_path' => 'node.created',
                 'label' => 'node.form.tab.author_information.field.created',
                 'disabled' => true,
@@ -97,17 +105,17 @@ class NodeFormType extends AbstractType
                 'inherit_data' => true,
             ));
 
-        return $builder->create($name, 'tabs_tab', $options);
+        return $builder->create($name, TabsTabType::class, $options);
     }
 
     private function createActionTab(FormBuilderInterface $builder)
     {
         return $builder
-            ->create('actions', 'tabs_tab_actions', array(
+            ->create('actions', TabsTabActionsType::class, array(
                 'mapped' => false,
                 'inherit_data' => true,
             ))
-            ->add('save', 'submit', array(
+            ->add('save', SubmitType::class, array(
                 'label' => 'node.form.tab.action.field.save',
                 'attr' => array('class' => 'btn btn-success'),
             ));
@@ -126,10 +134,18 @@ class NodeFormType extends AbstractType
     }
 
     /**
-     * @return string
+     * {@inheritdoc}
+     */
+    public function getBlockPrefix()
+    {
+        return 'clastic_node';
+    }
+
+    /**
+     * {@inheritdoc}
      */
     public function getName()
     {
-        return 'clastic_node';
+        return $this->getBlockPrefix();
     }
 }

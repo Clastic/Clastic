@@ -10,6 +10,7 @@
 namespace Clastic\NodeBundle\Form\Extension;
 
 use Clastic\BackofficeBundle\Form\TabHelper;
+use Clastic\BackofficeBundle\Form\Type\TabsTabType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
@@ -79,7 +80,7 @@ abstract class AbstractNodeTypeExtension
                 'inherit_data' => true,
             ));
 
-        return $builder->create($name, 'tabs_tab', $options);
+        return $builder->create($name, TabsTabType::class, $options);
     }
 
     /**

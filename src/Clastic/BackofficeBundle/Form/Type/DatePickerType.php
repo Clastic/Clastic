@@ -10,6 +10,7 @@
 namespace Clastic\BackofficeBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
@@ -38,7 +39,15 @@ class DatePickerType extends AbstractType
      */
     public function getParent()
     {
-        return 'date';
+        return DateType::class;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getBlockPrefix()
+    {
+        return 'datepicker';
     }
 
     /**
@@ -46,6 +55,6 @@ class DatePickerType extends AbstractType
      */
     public function getName()
     {
-        return 'datepicker';
+        return $this->getBlockPrefix();
     }
 }

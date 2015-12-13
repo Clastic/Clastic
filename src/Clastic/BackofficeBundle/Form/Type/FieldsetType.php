@@ -46,7 +46,15 @@ class FieldsetType extends FormType
      */
     public function getParent()
     {
-        return 'form';
+        return FormType::class;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getBlockPrefix()
+    {
+        return 'fieldset';
     }
 
     /**
@@ -54,6 +62,6 @@ class FieldsetType extends FormType
      */
     public function getName()
     {
-        return 'fieldset';
+        return $this->getBlockPrefix();
     }
 }

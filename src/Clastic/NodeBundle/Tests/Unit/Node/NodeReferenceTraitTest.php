@@ -9,6 +9,8 @@
  */
 namespace Clastic\NodeBundle\Tests\Unit\Node;
 
+use Clastic\NodeBundle\Entity\Node;
+use Clastic\NodeBundle\Node\NodeReferenceTrait;
 use Symfony\Component\Form\Test\TypeTestCase;
 
 /**
@@ -18,8 +20,8 @@ class NodeReferenceTraitTest extends TypeTestCase
 {
     public function testGetSetNode()
     {
-        $trait = $this->getMockForTrait('Clastic\NodeBundle\Node\NodeReferenceTrait');
-        $node = $this->getMock('Clastic\NodeBundle\Entity\Node');
+        $trait = $this->getMockForTrait(NodeReferenceTrait::class);
+        $node = $this->getMock(Node::class);
 
         $trait->setNode($node);
 

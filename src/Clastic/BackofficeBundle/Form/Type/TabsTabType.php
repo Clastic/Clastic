@@ -43,7 +43,15 @@ class TabsTabType extends FormType
      */
     public function getParent()
     {
-        return 'form';
+        return FormType::class;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getBlockPrefix()
+    {
+        return 'tabs_tab';
     }
 
     /**
@@ -51,6 +59,6 @@ class TabsTabType extends FormType
      */
     public function getName()
     {
-        return 'tabs_tab';
+        return $this->getBlockPrefix();
     }
 }

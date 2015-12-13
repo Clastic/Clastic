@@ -49,7 +49,7 @@ class AliasController extends AbstractModuleController
      */
     protected function buildForm($data)
     {
-        return $this->createForm(new AliasFormType(), $data);
+        return $this->createForm(AliasFormType::class, $data);
     }
 
     /**

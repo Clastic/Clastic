@@ -11,6 +11,7 @@ namespace Clastic\BackofficeBundle\Form\Type;
 
 use Clastic\BackofficeBundle\Form\DataTransformer\EntityToIdTransformer;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -57,11 +58,22 @@ class EntityHiddenType extends FormType
 
     public function getParent()
     {
-        return 'hidden';
+        return HiddenType::class;
     }
 
-    public function getName()
+    /**
+     * {@inheritdoc}
+     */
+    public function getBlockPrefix()
     {
         return 'entity_hidden';
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getName()
+    {
+        return $this->getBlockPrefix();
     }
 }
