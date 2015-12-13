@@ -10,7 +10,6 @@
 namespace Clastic\GeneratorBundle\Command;
 
 use Clastic\GeneratorBundle\ClasticGeneratorBundle;
-use Clastic\GeneratorBundle\Command\Validators;
 use Clastic\GeneratorBundle\Generator\ModuleGenerator;
 use Sensio\Bundle\GeneratorBundle\Command\GeneratorCommand;
 use Symfony\Component\Console\Input\InputInterface;

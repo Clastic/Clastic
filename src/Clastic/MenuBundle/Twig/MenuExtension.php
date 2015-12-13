@@ -45,7 +45,7 @@ class MenuExtension extends \Twig_Extension
                     'is_safe' => ['html'],
                     'needs_environment' => true,
                 ]
-            )
+            ),
         ];
     }
 

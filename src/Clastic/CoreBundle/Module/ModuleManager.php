@@ -63,7 +63,7 @@ class ModuleManager
     public function getAdministrationModules()
     {
         return array_filter($this->getModules(), function (ModuleInterface $module) {
-            return ($module instanceof AdministrationModuleInterface);
+            return $module instanceof AdministrationModuleInterface;
         });
     }
 

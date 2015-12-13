@@ -126,7 +126,6 @@ class UserFormType extends AbstractType
 
     private function createTab(FormBuilderInterface $builder, $name, $options = array())
     {
-
         $options = array_replace(
             $options,
             array(

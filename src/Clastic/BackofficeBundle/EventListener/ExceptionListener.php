@@ -13,7 +13,6 @@ use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpKernel\EventListener\ExceptionListener as BaseExceptionListener;
 use Symfony\Component\HttpKernel\KernelEvents;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
-use Symfony\Component\Security\Core\SecurityContext;
 
 /**
  * @author Dries De Peuter <dries@nousefreak.be>
@@ -22,7 +21,7 @@ class ExceptionListener extends BaseExceptionListener
 {
     /**
      * @param TokenStorageInterface $tokenStorage
-     * @param LoggerInterface $logger
+     * @param LoggerInterface       $logger
      */
     public function __construct(TokenStorageInterface $tokenStorage, LoggerInterface $logger = null)
     {

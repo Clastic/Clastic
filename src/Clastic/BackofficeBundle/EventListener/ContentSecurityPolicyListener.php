@@ -46,15 +46,15 @@ class ContentSecurityPolicyListener
     {
         $options = [
             'default-src' => '',
-            'img-src'     => 'https://secure.gravatar.com',
-            'font-src'    => 'https://netdna.bootstrapcdn.com',
+            'img-src' => 'https://secure.gravatar.com',
+            'font-src' => 'https://netdna.bootstrapcdn.com',
 
             // Needed for CKeditor
-            'style-src'   => '\'unsafe-inline\'',
-            'script-src'  => '\'unsafe-inline\' \'unsafe-eval\'',
+            'style-src' => '\'unsafe-inline\'',
+            'script-src' => '\'unsafe-inline\' \'unsafe-eval\'',
 
             // Needed for jsTree
-            'child-src'  => 'blob:',
+            'child-src' => 'blob:',
         ];
 
         if ($this->environment == 'dev') {
