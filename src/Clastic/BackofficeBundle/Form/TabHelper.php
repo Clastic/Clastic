@@ -60,7 +60,7 @@ class TabHelper
                 'inherit_data' => true,
             ));
 
-        $tab = $this->formBuilder->create($name, new TabsTabType(), $options);
+        $tab = $this->formBuilder->create($name, TabsTabType::class, $options);
         $this->formBuilder->get('tabs')->add($tab);
 
         return $tab;
