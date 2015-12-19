@@ -1,0 +1,20 @@
+app:
+  image: busybox
+  volumes:
+    - .:/app
+
+web:
+  image: nginx
+  volumes_from:
+    - app:ro
+  volumes:
+    - "./docker/nginx.conf:/etc/nginx/conf.d/clastic.conf:ro"
+  links:
+    - php
+  ports:
+    - 80:80
+
+php:
+  build: ./docker
+  volumes_from:
+    - app
