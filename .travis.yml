@@ -1,11 +1,11 @@
 language: php
+sudo: false
 
 php:
   - 5.6
   - 7.0
   - nightly
   - hhvm
-  - hhvm-nightly
 
 env:
   global:
@@ -15,20 +15,22 @@ env:
     - SYMFONY__TEST_DATABASE_USER=travis
     - SYMFONY__TEST_DATABASE_PASSWORD=""
 
+cache:
+  directories:
+    - $HOME/.composer/cache
+
 before_script:
   - mysql -e 'create database clastic_test;'
   - composer self-update
-  - composer install --prefer-source --no-interaction
-  - php ./app/console assets:install
-  - php ./app/console doctrine:schema:drop --force
-  - php ./app/console doctrine:schema:create
-  - php ./app/console doctrine:fixtures:load -n
+  - composer install --prefer-dist --no-interaction $COMPOSER_FLAGS
+  - php ./bin/console assets:install
+  - php ./bin/console doctrine:schema:drop --force
+  - php ./bin/console doctrine:schema:create
+  - php ./bin/console doctrine:fixtures:load -n
 
 script:
-  - bin/phpunit -c app
+  - php ./vendor/bin/phpunit
 
 matrix:
   allow_failures:
     - php: nightly # Allow failures till stable release.
-    - php: hhvm # Dropping hhvm support for now. Can't determine if failures are correct.
-    - php: hhvm-nightly # hhvm-nightly currently chokes on composer installation

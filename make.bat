@@ -12,17 +12,17 @@ If NOT "%1"=="" GOTO INFO
     echo npm done
     call bower install
     echo bower done
-    php app/console assets:install
+    php bin/console assets:install
     echo assets done
     call gulp build
     echo gulp done
-    php app/console doctrine:schema:drop --force
+    php bin/console doctrine:schema:drop --force
     echo drop done
-    php app/console doctrine:schema:create
+    php bin/console doctrine:schema:create
     echo create done
-    php app/console doctrine:fixtures:load -n
+    php bin/console doctrine:fixtures:load -n
     echo fixtures done
-    php app/console cache:clear
+    php bin/console cache:clear
     echo clastic install is finished
     GOTO DONE
 :UPDATE
@@ -32,20 +32,20 @@ If NOT "%1"=="" GOTO INFO
     echo npm done
     call bower install
     echo composer done
-    php app/console assets:install
+    php bin/console assets:install
     echo assests done
     call gulp build
     echo gulp done
-    php app/console doctrine:schema:update --force
+    php bin/console doctrine:schema:update --force
     echo update done
-    php app/console doctrine:fixtures:load
+    php bin/console doctrine:fixtures:load
     echo fixtures done
-    php app/console cache:clear
+    php bin/console cache:clear
     echo clastic update is finished
     GOTO DONE
 :DEV
-    php app/console assets:install --symlink
-    start php app/console server:run
+    php bin/console assets:install --symlink
+    start php bin/console server:run
     gulp watch
     GOTO DONE
 :DONE

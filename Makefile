@@ -3,23 +3,23 @@ install:
 	composer install
 	npm install --production
 	bower install
-	app/console assets:install
+	bin/console assets:install
 	gulp build
-	app/console doctrine:schema:drop --force
-	app/console doctrine:schema:create
-	app/console doctrine:fixtures:load -n
-	app/console cache:clear
+	bin/console doctrine:schema:drop --force
+	bin/console doctrine:schema:create
+	bin/console doctrine:fixtures:load -n
+	bin/console cache:clear
 
 update:
 	composer install
 	npm install --production
 	bower install
-	app/console assets:install
+	bin/console assets:install
 	gulp build
-	app/console doctrine:schema:update --force
-	app/console doctrine:fixtures:load
-	app/console cache:clear
+	bin/console doctrine:schema:update --force
+	bin/console doctrine:fixtures:load
+	bin/console cache:clear
 
 dev:
-	app/console assets:install --symlink
-	gulp watch & app/console server:run
+	bin/console assets:install --symlink
+	gulp watch & bin/console server:run
