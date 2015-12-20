@@ -6,13 +6,13 @@
 {%- endblock %}
 
 {% block html_head %}
-    {% include "FMElfinderBundle:Elfinder:helper/assets_css.html.twig" with {'prefix': 'assets', 'theme': ''} %}
+    {% include "FMElfinderBundle:Elfinder:helper/assets_css.html.twig" with {'prefix': '/assets', 'theme': 'base'} %}
 {% endblock html_head %}
 
 {% block content %}
     <div class="row">
         <div class="col-md-12">
-            {{ render(controller('FMElfinderBundle:ElFinder:show', {'instance': 'default', 'homeFolder': ''} )) }}
+            <div class="elfinder" data-elfinder='{{ {'instance': 'default', 'homeFolder': ''}|json_encode }}'></div>
         </div>
     </div>
 {% endblock %}
@@ -20,6 +20,8 @@
 {% block html_body_js %}
     {{ parent() }}
     <script src="/assets/jquery-ui/jquery-ui.min.js"></script>
-    <script src="/assets/elfinder/js/elfinder.min.js"></script>
-    <script src="/assets/elfinder/js/i18n/elfinder.en.js"></script>
+    <script src="/assets/elfinder/dist/js/elfinder.min.js"></script>
+    {% if app.request.locale != 'en' %}
+        <script src="/assets/elfinder/dist/js/i18n/elfinder.{{ app.request.locale }}.js"></script>
+    {% endif %}
 {% endblock %}
