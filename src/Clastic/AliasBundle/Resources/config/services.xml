@@ -57,5 +57,28 @@
             <tag name="form.type" alias="alias" />
             <argument type="service" id="request_stack"/>
         </service>
+
+        <service id="clastic.alias.router" class="Clastic\AliasBundle\Routing\Router" public="false">
+            <tag name="monolog.logger" channel="router" />
+            <argument type="service" id="service_container" />
+            <argument>%router.resource%</argument>
+            <argument type="collection">
+                <argument key="cache_dir">%kernel.cache_dir%</argument>
+                <argument key="debug">%kernel.debug%</argument>
+                <argument key="generator_class">%router.options.generator_class%</argument>
+                <argument key="generator_base_class">%router.options.generator_base_class%</argument>
+                <argument key="generator_dumper_class">%router.options.generator_dumper_class%</argument>
+                <argument key="generator_cache_class">%router.options.generator.cache_class%</argument>
+                <argument key="matcher_class">%router.options.matcher_class%</argument>
+                <argument key="matcher_base_class">%router.options.matcher_base_class%</argument>
+                <argument key="matcher_dumper_class">%router.options.matcher_dumper_class%</argument>
+                <argument key="matcher_cache_class">%router.options.matcher.cache_class%</argument>
+            </argument>
+            <argument type="service" id="router.request_context" on-invalid="ignore" />
+            <argument type="service" id="logger" on-invalid="ignore" />
+            <call method="setConfigCacheFactory">
+                <argument type="service" id="config_cache_factory" />
+            </call>
+        </service>
     </services>
 </container>
