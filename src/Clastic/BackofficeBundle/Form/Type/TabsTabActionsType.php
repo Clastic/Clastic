@@ -30,7 +30,7 @@ class TabsTabActionsType extends TabsTabType
      */
     public function getParent()
     {
-        return __NAMESPACE__.'\TabsTabType';
+        return TabsTabType::class;
     }
 
     /**

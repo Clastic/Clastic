@@ -46,7 +46,7 @@ class NodeManagerTest extends TypeTestCase
 
     public function testCreateNodeNotFound()
     {
-        $this->setExpectedException('Exception');
+        $this->setExpectedException(\Exception::class);
 
         $nodeReferenceEntity = new NodeReferenceEntity();
         $registry = $this->getMockBuilder(Registry::class)

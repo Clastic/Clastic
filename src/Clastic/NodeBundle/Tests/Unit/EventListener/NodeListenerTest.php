@@ -27,7 +27,7 @@ class NodeListenerTest extends TypeTestCase
 {
     public function testCreateEntityEventNotFound()
     {
-        $this->setExpectedException('Exception');
+        $this->setExpectedException(\Exception::class);
 
         $moduleManager = $this->getMockBuilder(ModuleManager::class)
             ->getMock();

@@ -179,7 +179,7 @@ abstract class AbstractModuleController extends Controller
         $breadcrumbs = $this->buildBreadcrumbs($this->getType());
         $breadcrumbs->addItem(sprintf('Delete "%s"', $this->resolveDataTitle($data)));
 
-        $form = $this->createForm(new DeleteFormType(), array(
+        $form = $this->createForm(DeleteFormType::class, array(
             'id' => $data->getId(),
             'title' => $title,
         ));
