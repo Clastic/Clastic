@@ -3,6 +3,7 @@
 {% trans_default_domain 'clastic' %}
 
 {% block file_browser_widget -%}
+    {% include "FMElfinderBundle:Elfinder:helper/assets_css.html.twig" with {'prefix': '/assets', 'theme': 'base'} %}
     <div class="file_browser_container">
         <div class="panel panel-default">
             <div class="panel-body">
