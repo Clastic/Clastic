@@ -10,6 +10,7 @@
 namespace Clastic\BackofficeBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 /**
@@ -29,11 +30,11 @@ class SettingsFormType extends AbstractType
                 $builder->create('tabs', 'tabs', array('inherit_data' => true))
                     ->add(
                         $this->createActionTab($builder)
-                            ->add('save', 'submit', array(
+                            ->add('save', SubmitType::class, array(
                                 'label' => 'Save',
                                 'attr' => array('class' => 'btn btn-success pull-left'),
                             ))
-                            ->add('cancel', 'submit', array(
+                            ->add('cancel', SubmitType::class, array(
                                 'label' => 'Cancel',
                                 'attr' => array('class' => 'btn btn-default pull-left'),
                             ))
@@ -43,7 +44,7 @@ class SettingsFormType extends AbstractType
 
     private function createActionTab(FormBuilderInterface $builder)
     {
-        return $builder->create('actions', 'tabs_tab_actions', array(
+        return $builder->create('actions', TabsTabActionsType::class, array(
             'mapped' => false,
             'inherit_data' => true,
         ));

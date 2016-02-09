@@ -10,6 +10,7 @@
 namespace Clastic\BackofficeBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 /**
@@ -26,14 +27,14 @@ class DeleteFormType extends AbstractType
     {
         $builder
             ->add(
-                $builder->create('tabs', 'tabs', array('inherit_data' => true))
+                $builder->create('tabs', TabsType::class, array('inherit_data' => true))
                     ->add(
                         $this->createActionTab($builder)
-                            ->add('delete', 'submit', array(
+                            ->add('delete', SubmitType::class, array(
                                 'label' => 'Delete',
                                 'attr' => array('class' => 'btn btn-danger pull-left'),
                             ))
-                            ->add('cancel', 'submit', array(
+                            ->add('cancel', SubmitType::class, array(
                                 'label' => 'Cancel',
                                 'attr' => array('class' => 'btn btn-default pull-left'),
                             ))
@@ -43,7 +44,7 @@ class DeleteFormType extends AbstractType
 
     private function createActionTab(FormBuilderInterface $builder)
     {
-        return $builder->create('actions', 'tabs_tab_actions', array(
+        return $builder->create('actions', TabsTabActionsType::class, array(
             'mapped' => false,
             'inherit_data' => true,
         ));
