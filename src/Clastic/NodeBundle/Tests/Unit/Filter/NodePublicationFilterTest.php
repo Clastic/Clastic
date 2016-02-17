@@ -12,7 +12,9 @@ namespace Clastic\NodeBundle\Tests\Unit\Filter;
 use Clastic\NodeBundle\Filter\NodePublicationFilter;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Mapping\ClassMetaData;
+use Doctrine\ORM\Mapping\ClassMetadataInfo;
 use Symfony\Component\Form\Test\TypeTestCase;
+use Zend\Hydrator\Reflection;
 
 /**
  * @author Dries De Peuter <dries@nousefreak.be>
@@ -68,15 +70,34 @@ class NodePublicationFilterTest extends TypeTestCase
             ->method('implementsInterface')
             ->willReturn(true);
 
+        $metadataInfo = $this->getMockBuilder(ClassMetadataInfo::class)
+            ->disableOriginalConstructor()
+            ->getMock();
+        $metadataInfo
+            ->expects($this->exactly(2))
+            ->method('getTableName')
+            ->willReturn('placeholder');
+
         $entityManager = $this->getMockBuilder(EntityManager::class)
             ->disableOriginalConstructor()
             ->getMock();
+        $entityManager
+            ->expects($this->exactly(2))
+            ->method('getClassMetadata')
+            ->willReturn($metadataInfo);
+
         $filter = new NodePublicationFilter($entityManager);
+        $reflector = new \ReflectionClass($filter);
+        $property = $reflector->getParentClass()
+            ->getProperty('em');
+        $property->setAccessible(true);
+        $property->setValue($filter, $entityManager);
 
         $query = $filter->addFilterConstraint($classMetadata, 'alias');
+
         $this->assertContains('publishedFrom', $query);
         $this->assertContains('publishedTill', $query);
-        $this->assertContains('NodePublication', $query);
+        $this->assertContains('placeholder', $query);
         $this->assertContains('alias', $query);
     }
 }
