@@ -472,31 +472,31 @@ class ElFinderVolumeClasticFileSystem extends ElFinderVolumeDriver
     /**
      * {@inheritdoc).
      */
-    public function extract($hash)
+    public function extract($hash, $makedir = null)
     {
         $this->dispatcher
             ->dispatch('elfinder.'.__METHOD__, new ElFinderEvent(func_get_args()));
 
-        return $this->driver->extract($hash);
+        return $this->driver->extract($hash, $makedir);
     }
 
     /**
      * {@inheritdoc).
      */
-    public function archive($hashes, $mime)
+    public function archive($hashes, $mime, $name = '')
     {
         $this->dispatcher
             ->dispatch('elfinder.'.__METHOD__, new ElFinderEvent(func_get_args()));
 
-        $this->driver->archive($hashes, $mime);
+        $this->driver->archive($hashes, $mime, $name);
     }
 
     /**
      * {@inheritdoc).
      */
-    public function resize($hash, $width, $height, $x, $y, $mode = 'resize', $bg = '', $degree = 0)
+    public function resize($hash, $width, $height, $x, $y, $mode = 'resize', $bg = '', $degree = 0, $jpgQuality = null)
     {
-        return $this->driver->resize($hash, $width, $height, $x, $y, $mode, $bg, $degree);
+        return $this->driver->resize($hash, $width, $height, $x, $y, $mode, $bg, $degree, $jpgQuality);
     }
 
     /**
@@ -510,9 +510,9 @@ class ElFinderVolumeClasticFileSystem extends ElFinderVolumeDriver
     /**
      * {@inheritdoc).
      */
-    public function search($q, $mimes)
+    public function search($q, $mimes, $hash = null)
     {
-        return $this->driver->search($q, $mimes);
+        return $this->driver->search($q, $mimes, $hash);
     }
 
     /**
@@ -550,9 +550,9 @@ class ElFinderVolumeClasticFileSystem extends ElFinderVolumeDriver
     /**
      * {@inheritdoc).
      */
-    public function uniqueName($dir, $name, $suffix = ' copy', $checkNum = true)
+    public function uniqueName($dir, $name, $suffix = ' copy', $checkNum = true, $start = 1)
     {
-        return $this->driver->uniqueName($dir, $name, $suffix, $checkNum);
+        return $this->driver->uniqueName($dir, $name, $suffix, $checkNum, $start);
     }
 
     /**
@@ -637,6 +637,9 @@ class ElFinderVolumeClasticFileSystem extends ElFinderVolumeDriver
     {
     }
     protected function _checkArchivers()
+    {
+    }
+    protected function _chmod($path, $mode)
     {
     }
 }
