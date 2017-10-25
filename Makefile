@@ -23,3 +23,10 @@ update:
 dev:
 	bin/console assets:install --symlink
 	gulp watch & bin/console server:run
+
+test:
+	docker-compose -f docker-compose.test.yml up -d
+	composer install
+	set -a; . .env; vendor/bin/phpunit
+	docker-compose -f docker-compose.test.yml down
+
